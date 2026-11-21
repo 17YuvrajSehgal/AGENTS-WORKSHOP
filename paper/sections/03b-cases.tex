@@ -5,9 +5,8 @@ medians.
 
 \paragraph{Faster, but not for the claimed reason}
 iPhotron PR~\#453 (Copilot) claims to remove the slowdown of deep SQL
-pagination and to load assets on demand instead of all at once. Head takes
-\caseAWall\ of base's wall time (base \caseAWallBase\,s, head
-\caseAWallHead\,s). Yet the kernel shows more work, not less: \caseASyscalls\
+pagination and to load assets on demand instead of all at once. Head is faster
+(base \caseAWallBase\,s, head \caseAWallHead\,s; \caseAWall). Yet the kernel shows more work, not less: \caseASyscalls\
 as many system calls (base \caseASyscallsBase, head \caseASyscallsHead),
 \caseAPread\ as many \texttt{pread64} calls, \caseABytes\ the bytes read
 and \caseASys\ the system time. Total CPU time grows \caseATask, while the
@@ -37,6 +36,6 @@ calls grow \caseDSyscalls, \texttt{futex} calls \caseDFutexc\ and CPU time
 \paragraph{A claim that holds}
 mlflow PR~\#19520 (Copilot) changes artifact transfer to chunked
 streaming. The footprint matches the claim: \texttt{read} calls fall to
-\caseCRead\ (base \caseCReadBase, head \caseCReadHead) for the same number
-of bytes read. Instructions fall to \caseCInstr\ and wall time to
+\caseCRead\ (base \caseCReadBase, head \caseCReadHead) with equal bytes
+read. Instructions fall to \caseCInstr\ and wall time to
 \caseCWall\ of base.
