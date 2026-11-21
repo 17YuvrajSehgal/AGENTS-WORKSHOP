@@ -1,0 +1,32 @@
+{
+ "base_exit_ok": true,
+ "base_last_line": "ab34efa3e987b53df1ec8b8471e7fb19423af605bdadfaa972270b951d3911c6",
+ "head_exit_ok": true,
+ "head_last_line": "ab34efa3e987b53df1ec8b8471e7fb19423af605bdadfaa972270b951d3911c6",
+ "base_time_s": 2.57,
+ "head_time_s": 2.309,
+ "no_network_ok": true,
+ "coverage": {
+  "changed_files": [
+   "src/prefect/cli/cloud/__init__.py"
+  ],
+  "base": {
+   "changed_executable_lines": 22,
+   "executed": 22,
+   "share": 1.0
+  },
+  "head": {
+   "changed_executable_lines": 26,
+   "executed": 26,
+   "share": 1.0
+  },
+  "output_digest_base": "ab34efa3e987b53df1ec8b8471e7fb19423af605bdadfaa972270b951d3911c6",
+  "output_digest_head": "ab34efa3e987b53df1ec8b8471e7fb19423af605bdadfaa972270b951d3911c6",
+  "output_equal": true,
+  "coverage_gate_pass": true
+ },
+ "coverage_needed": 0.8,
+ "output_equal": true,
+ "pass": true,
+ "reasons": []
+}

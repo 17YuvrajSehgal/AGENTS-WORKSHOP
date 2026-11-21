@@ -1,0 +1,79 @@
+{
+ "job": {
+  "order": 97,
+  "id": 3782241167,
+  "agent": "Google_Jules",
+  "repo": "OliverZhaohaibin/iPhotron-LocalPhotoAlbumManager",
+  "number": 494,
+  "api_base_sha": "da4bbbf0e208ef63621a75ee5c6b2bc7e7691acf",
+  "head_sha": "f0e5e85e0fa1147bd1f319a6d4a68f5cf188b575",
+  "created": "2026-01-05",
+  "changed_files": [
+   "src/iPhoto/io/scanner.py"
+  ],
+  "n_files": 1,
+  "final_diff_files": [
+   "src/iPhoto/io/scanner.py"
+  ]
+ },
+ "agent": {
+  "status": "built",
+  "reason": "none",
+  "tier": "repo_tests",
+  "uses_parallelism": false,
+  "behaviour_change_expected": false,
+  "notes": "Workload builds a synthetic library under /tmp/kt_494: 1,800 files in nested dirs with .iPhoto/exported subfolders at several depths and broken symlinks. It calls gather_media_paths six times, plus once with the root inside .iPhoto, and hashes the sorted results because rglob and os.walk return files in different orders. Base and head digests match. Coverage of changed lines is about 95% on head and 94% on base. Base runs in 2.9 s."
+ },
+ "agent_is_error": false,
+ "timed_out": false,
+ "models": [
+  "claude-opus-5-5"
+ ],
+ "list_usd": 0.1345212,
+ "num_turns": 7,
+ "setup_ok": true,
+ "setup_s": 24,
+ "agent_s": 56,
+ "check": {
+  "base_exit_ok": true,
+  "base_last_line": "586a03a906e0b56299b9701fc980e200f48d2331332358a4b9e0534281fbc273",
+  "head_exit_ok": true,
+  "head_last_line": "586a03a906e0b56299b9701fc980e200f48d2331332358a4b9e0534281fbc273",
+  "base_time_s": 2.585,
+  "head_time_s": 2.467,
+  "no_network_ok": true,
+  "coverage": {
+   "changed_files": [
+    "src/iPhoto/io/scanner.py"
+   ],
+   "base": {
+    "changed_executable_lines": 16,
+    "executed": 15,
+    "share": 0.938
+   },
+   "head": {
+    "changed_executable_lines": 22,
+    "executed": 21,
+    "share": 0.955
+   },
+   "output_digest_base": "586a03a906e0b56299b9701fc980e200f48d2331332358a4b9e0534281fbc273",
+   "output_digest_head": "586a03a906e0b56299b9701fc980e200f48d2331332358a4b9e0534281fbc273",
+   "output_equal": true,
+   "coverage_gate_pass": true
+  },
+  "coverage_needed": 0.8,
+  "output_equal": true,
+  "pass": true,
+  "reasons": []
+ },
+ "harness_pass": true,
+ "audit": {
+  "mentions_github_pull": false,
+  "used_gh_cli": false,
+  "read_git_history": false
+ },
+ "changed_code_lines": {
+  "py": 47
+ },
+ "python_share_of_code_change": 1.0
+}

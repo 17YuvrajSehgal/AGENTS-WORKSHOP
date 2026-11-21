@@ -1,0 +1,114 @@
+{
+ "job": {
+  "order": 168,
+  "id": 3934859819,
+  "agent": "Cursor",
+  "repo": "allenai/olmoearth_pretrain",
+  "number": 493,
+  "api_base_sha": "fe8ef444a158bca6c9c80202197f1fe66795c3e6",
+  "head_sha": "a00df05a8d4d2491e0e810c6b68251e4c3182404",
+  "created": "2026-02-13",
+  "changed_files": [
+   "olmoearth_pretrain/internal/experiment.py",
+   "olmoearth_pretrain/nn/attention.py",
+   "olmoearth_pretrain/nn/flexi_patch_embed.py",
+   "olmoearth_pretrain/nn/flexi_vit.py",
+   "olmoearth_pretrain/nn/pooled_modality_predictor.py",
+   "olmoearth_pretrain/train/loss.py",
+   "olmoearth_pretrain/train/masking.py",
+   "olmoearth_pretrain/train/train_module/contrastive_latentmim.py",
+   "olmoearth_pretrain/train/train_module/galileo.py",
+   "olmoearth_pretrain/train/train_module/train_module.py",
+   "scripts/official/script.py",
+   "scripts/official/tiny_single_gpu.py",
+   "tests/unit/train/test_loss.py"
+  ],
+  "n_files": 13,
+  "final_diff_files": [
+   "olmoearth_pretrain/internal/experiment.py",
+   "olmoearth_pretrain/nn/attention.py",
+   "olmoearth_pretrain/nn/flexi_patch_embed.py",
+   "olmoearth_pretrain/nn/flexi_vit.py",
+   "olmoearth_pretrain/nn/pooled_modality_predictor.py",
+   "olmoearth_pretrain/train/loss.py",
+   "olmoearth_pretrain/train/masking.py",
+   "olmoearth_pretrain/train/train_module/contrastive_latentmim.py",
+   "olmoearth_pretrain/train/train_module/galileo.py",
+   "olmoearth_pretrain/train/train_module/train_module.py",
+   "scripts/official/script.py",
+   "scripts/official/tiny_single_gpu.py",
+   "tests/unit/train/test_loss.py"
+  ]
+ },
+ "agent": {
+  "status": "built",
+  "reason": "none",
+  "tier": "own_calls",
+  "uses_parallelism": false,
+  "behaviour_change_expected": true,
+  "notes": "Installed ai2-olmo-core==2.3.0, class-registry, setuptools<81 into both venvs (training extra missing). Workload calls FlexiPatchEmbed (Conv2d->Linear), Encoder.add_removed_tokens (scatter rewrite), pool_unmasked_tokens MEAN, and ModalityPatchDiscriminationLossNew (head name resolves to new vectorised class). Digests differ because Linear vs Conv2d weight layout gives different outputs for the same seed. Base 3.8 s, head 4.3 s."
+ },
+ "agent_is_error": false,
+ "timed_out": false,
+ "models": [
+  "claude-opus-5-5"
+ ],
+ "list_usd": 0.4327292,
+ "num_turns": 15,
+ "setup_ok": true,
+ "setup_s": 6,
+ "agent_s": 133,
+ "check": {
+  "base_exit_ok": true,
+  "base_last_line": "e756b27f5b86a6231c2f52e5007c82beba4ead450fdce40a0b9fb81eeb0609b0",
+  "head_exit_ok": true,
+  "head_last_line": "0138875f6bf6cbe02ef9f6e0115dc78a0a8a648d95e171c80b61a00a7e814082",
+  "base_time_s": 3.784,
+  "head_time_s": 4.061,
+  "no_network_ok": true,
+  "coverage": {
+   "changed_files": [
+    "olmoearth_pretrain/internal/experiment.py",
+    "olmoearth_pretrain/nn/attention.py",
+    "olmoearth_pretrain/nn/flexi_patch_embed.py",
+    "olmoearth_pretrain/nn/flexi_vit.py",
+    "olmoearth_pretrain/nn/pooled_modality_predictor.py",
+    "olmoearth_pretrain/train/loss.py",
+    "olmoearth_pretrain/train/masking.py",
+    "olmoearth_pretrain/train/train_module/contrastive_latentmim.py",
+    "olmoearth_pretrain/train/train_module/galileo.py",
+    "olmoearth_pretrain/train/train_module/train_module.py",
+    "scripts/official/script.py",
+    "scripts/official/tiny_single_gpu.py"
+   ],
+   "base": {
+    "changed_executable_lines": 22,
+    "executed": 11,
+    "share": 0.5
+   },
+   "head": {
+    "changed_executable_lines": 81,
+    "executed": 69,
+    "share": 0.852
+   },
+   "output_digest_base": "e756b27f5b86a6231c2f52e5007c82beba4ead450fdce40a0b9fb81eeb0609b0",
+   "output_digest_head": "0138875f6bf6cbe02ef9f6e0115dc78a0a8a648d95e171c80b61a00a7e814082",
+   "output_equal": false,
+   "coverage_gate_pass": true
+  },
+  "coverage_needed": 0.8,
+  "output_equal": false,
+  "pass": true,
+  "reasons": []
+ },
+ "harness_pass": true,
+ "audit": {
+  "mentions_github_pull": false,
+  "used_gh_cli": false,
+  "read_git_history": false
+ },
+ "changed_code_lines": {
+  "py": 558
+ },
+ "python_share_of_code_change": 1.0
+}

@@ -1,0 +1,70 @@
+all_pull_request rows: 7685281 distinct ids: 7685281
+agent values: {'OpenAI_Codex': 3844602, 'Copilot': 1581924, 'Claude_Code': 1567100, 'Cursor': 317453, 'Google_Jules': 296411, 'Devin': 77791}
+state values: {'closed': 6950113, 'open': 735168}
+
+agent          field            README        data
+OpenAI Codex   prs           3,844,602   3,844,602
+OpenAI Codex   pct_open            7.3         7.3
+OpenAI Codex   pct_closed          6.5         6.5
+OpenAI Codex   pct_merged         86.2        86.2
+OpenAI Codex   developers      237,223     237,223
+OpenAI Codex   repos           355,920     354,337   <-- differs
+Copilot        prs           1,581,924   1,581,924
+Copilot        pct_open           14.2        14.2
+Copilot        pct_closed         15.8        15.8
+Copilot        pct_merged         69.9        69.9
+Copilot        developers            0       8,463   <-- differs
+Copilot        repos           347,971     346,224   <-- differs
+Claude Code    prs           1,567,100   1,567,100
+Claude Code    pct_open            4.2         4.2
+Claude Code    pct_closed          7.8         7.8
+Claude Code    pct_merged         88.0        88.0
+Claude Code    developers      114,516     114,516
+Claude Code    repos           174,038     173,325   <-- differs
+Cursor         prs             317,453     317,453
+Cursor         pct_open           28.3        28.3
+Cursor         pct_closed         14.3        14.3
+Cursor         pct_merged         57.4        57.4
+Cursor         developers       62,246      62,246
+Cursor         repos            81,915      81,786   <-- differs
+Google Jules   prs             296,411     296,411
+Google Jules   pct_open           21.0        21.0
+Google Jules   pct_closed         15.6        15.6
+Google Jules   pct_merged         63.4        63.4
+Google Jules   developers           18          18
+Google Jules   repos            41,125      41,105   <-- differs
+Devin          prs              77,791      77,791
+Devin          pct_open           17.0        17.0
+Devin          pct_closed         23.3        23.3
+Devin          pct_merged         59.6        59.6
+Devin          developers            0           1   <-- differs
+Devin          repos            10,321      10,259   <-- differs
+Total          prs           7,685,281   7,685,281
+Total          pct_open            9.6         9.6
+Total          pct_closed          9.5         9.5
+Total          pct_merged         80.9        80.9
+Total          developers      393,349     399,963   <-- differs
+Total          repos           961,168     957,209   <-- differs
+
+all_repository_rows                               957,209
+all_repository_distinct_id                        957,209
+pr_repo_ids_missing_from_all_repository                 1
+all_repository_ids_without_prs                          0
+all_user_rows                                     399,962
+all_user_distinct_login                           399,962
+pop top users for bot agents: {'Copilot': {'Copilot': 98384}, 'Devin': {'devin-ai-integration[bot]': 11219}, 'Google_Jules': {'google-labs-jules[bot]': 3457}}
+pop distinct users per agent: {'Claude_Code': 22472, 'Copilot': 1, 'Cursor': 1628, 'Devin': 1, 'Google_Jules': 1, 'OpenAI_Codex': 6478}
+full-set top users for Copilot: {'Copilot': 1561101, 'lunamidori5': 1012, 'henrylkirk': 942, 'github-actions[bot]': 435, 'FuzzysTodd': 385}
+full-set PRs with null repo_id: 44547
+
+pop_prs                                           361,296
+pop_pr_ids_distinct                               361,296
+pop_repos_rows                                     25,402
+pop_repos_with_prs                                 25,402
+pop_pr_repo_ids_missing_from_repository                 0
+pop_repo_stars_min                                    101
+pop_repos_with_stars_le_100                             0
+pop_prs_not_in_all_pull_request                         0
+pop by agent: {'Claude_Code': 172597, 'Copilot': 98384, 'OpenAI_Codex': 62731, 'Cursor': 12908, 'Devin': 11219, 'Google_Jules': 3457}
+pop open/closed/merged %: (np.float64(8.0), np.float64(23.7), np.float64(68.3))
+pop repo languages (top 15): {'TypeScript': 4994, 'Python': 4941, 'Go': 2180, 'JavaScript': 1669, 'Rust': 1568, 'C++': 1096, 'C#': 1093, 'Java': 909, 'PHP': 693, 'C': 603, 'Shell': 543, 'Swift': 478, 'Kotlin': 450, 'Ruby': 411, 'HTML': 408}

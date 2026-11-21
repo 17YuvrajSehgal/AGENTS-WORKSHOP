@@ -1,0 +1,20 @@
+{
+ "changed_files": [
+  "src/iPhoto/gui/qml_main.py",
+  "src/iPhoto/gui/ui/qml/qml_providers.py"
+ ],
+ "base": {
+  "changed_executable_lines": 2,
+  "executed": 2,
+  "share": 1.0
+ },
+ "head": {
+  "changed_executable_lines": 25,
+  "executed": 23,
+  "share": 0.92
+ },
+ "output_digest_base": "efb1c7ca181d55ac05be346750b74ea2f65ee0cd00d6f860fb1dc773b02344b2",
+ "output_digest_head": "47b174fbea9628661c8a18d8f5ac74ee72ddaa5093222736a730d08ca078c0c2",
+ "output_equal": false,
+ "coverage_gate_pass": true
+}

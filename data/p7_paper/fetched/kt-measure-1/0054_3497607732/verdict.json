@@ -1,0 +1,51 @@
+{
+ "job": {
+  "order": 54,
+  "id": 3497607732,
+  "agent": "Copilot",
+  "repo": "resilient-tech/india-compliance",
+  "number": 3727,
+  "api_base_sha": "408d8c9659cf27ee8daf55a3e7179ce4effef2bf",
+  "head_sha": "0790a0d8c3adbd139cc4878b4b88eb0990b358b2",
+  "created": "2025-10-09",
+  "changed_files": [
+   "india_compliance/gst_india/report/hsn_wise_summary_of_outward_supplies/hsn_wise_summary_of_outward_supplies.js",
+   "india_compliance/gst_india/report/hsn_wise_summary_of_outward_supplies/hsn_wise_summary_of_outward_supplies.py"
+  ],
+  "n_files": 2,
+  "final_diff_files": [
+   "india_compliance/gst_india/report/hsn_wise_summary_of_outward_supplies/hsn_wise_summary_of_outward_supplies.js",
+   "india_compliance/gst_india/report/hsn_wise_summary_of_outward_supplies/hsn_wise_summary_of_outward_supplies.py"
+  ]
+ },
+ "agent": {
+  "status": "unbuildable",
+  "reason": "install_failed",
+  "tier": "none",
+  "uses_parallelism": false,
+  "behaviour_change_expected": true,
+  "notes": "The changed module (an india_compliance Frappe app report) imports frappe, frappe.query_builder, frappe.contacts and frappe.desk. The Frappe framework is not installable from PyPI (only a 0.0.1 placeholder exists there); it needs bench plus MariaDB. Neither venv has frappe, so the module cannot be imported. The Python change is trivial anyway: get_json's return dict now uses a 'filename' key, and download_json_file only gets a new docstring. The rest of the diff is JavaScript."
+ },
+ "agent_is_error": false,
+ "timed_out": false,
+ "models": [
+  "claude-opus-5-5"
+ ],
+ "list_usd": 0.15185159999999998,
+ "num_turns": 9,
+ "setup_ok": true,
+ "setup_s": 5,
+ "agent_s": 28,
+ "check": null,
+ "harness_pass": false,
+ "audit": {
+  "mentions_github_pull": false,
+  "used_gh_cli": false,
+  "read_git_history": false
+ },
+ "changed_code_lines": {
+  "js": 10,
+  "py": 9
+ },
+ "python_share_of_code_change": 0.474
+}

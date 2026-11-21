@@ -1,0 +1,32 @@
+{
+ "base_exit_ok": true,
+ "base_last_line": "d1f50bcf443905fa5ab5c2fc97b3175d466e67e971df6a4a444dc35425f82ed4",
+ "head_exit_ok": true,
+ "head_last_line": "d1f50bcf443905fa5ab5c2fc97b3175d466e67e971df6a4a444dc35425f82ed4",
+ "base_time_s": 3.313,
+ "head_time_s": 2.591,
+ "no_network_ok": true,
+ "coverage": {
+  "changed_files": [
+   "src/foamlib/_files/_parsing/_parser.py"
+  ],
+  "base": {
+   "changed_executable_lines": 3,
+   "executed": 3,
+   "share": 1.0
+  },
+  "head": {
+   "changed_executable_lines": 14,
+   "executed": 13,
+   "share": 0.929
+  },
+  "output_digest_base": "d1f50bcf443905fa5ab5c2fc97b3175d466e67e971df6a4a444dc35425f82ed4",
+  "output_digest_head": "d1f50bcf443905fa5ab5c2fc97b3175d466e67e971df6a4a444dc35425f82ed4",
+  "output_equal": true,
+  "coverage_gate_pass": true
+ },
+ "coverage_needed": 0.8,
+ "output_equal": true,
+ "pass": true,
+ "reasons": []
+}

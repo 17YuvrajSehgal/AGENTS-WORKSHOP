@@ -1,0 +1,33 @@
+{
+ "base_exit_ok": true,
+ "base_last_line": "a06cff5b59697ebd94ef3df4ff5841217abf83766151cccfe04d53f3361bedeb",
+ "head_exit_ok": true,
+ "head_last_line": "a06cff5b59697ebd94ef3df4ff5841217abf83766151cccfe04d53f3361bedeb",
+ "base_time_s": 12.56,
+ "head_time_s": 12.862,
+ "no_network_ok": true,
+ "coverage": {
+  "changed_files": [
+   "experiments/pretraining_datasets/nemotron.py",
+   "lib/marin/src/marin/processing/tokenize/tokenize.py"
+  ],
+  "base": {
+   "changed_executable_lines": 14,
+   "executed": 12,
+   "share": 0.857
+  },
+  "head": {
+   "changed_executable_lines": 31,
+   "executed": 29,
+   "share": 0.935
+  },
+  "output_digest_base": "a06cff5b59697ebd94ef3df4ff5841217abf83766151cccfe04d53f3361bedeb",
+  "output_digest_head": "a06cff5b59697ebd94ef3df4ff5841217abf83766151cccfe04d53f3361bedeb",
+  "output_equal": true,
+  "coverage_gate_pass": true
+ },
+ "coverage_needed": 0.8,
+ "output_equal": true,
+ "pass": true,
+ "reasons": []
+}

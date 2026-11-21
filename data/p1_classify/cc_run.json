@@ -1,0 +1,30 @@
+{
+ "claude_code_version": "2.1.318 (Claude Code)",
+ "model": "claude-opus-5-5",
+ "effort": "low",
+ "flags": [
+  "-p",
+  "--system-prompt-file",
+  "C:\\workplace\\JiraAndLogs\\AGENTS-WORKSHOP\\data\\p1_classify\\cc_cwd\\system.txt",
+  "--json-schema",
+  "{\"type\": \"object\", \"properties\": {\"perf_role\": {\"type\": \"string\", \"enum\": [\"primary\", \"secondary\", \"measurement_only\", \"none\"]}, \"perf_scope\": {\"type\": \"string\", \"enum\": [\"runtime\", \"build_or_ci\", \"test_suite\", \"other\", \"not_applicable\"]}, \"evidence_quote\": {\"type\": \"string\"}, \"confidence\": {\"type\": \"string\", \"enum\": [\"high\", \"medium\", \"low\"]}}, \"required\": [\"perf_role\", \"perf_scope\", \"evidence_quote\", \"confidence\"], \"additionalProperties\": false}",
+  "--settings",
+  "{\"disableAllHooks\": true}",
+  "--model",
+  "claude-opus-5-5",
+  "--effort",
+  "low",
+  "--tools",
+  "",
+  "--strict-mcp-config",
+  "--setting-sources",
+  "",
+  "--no-session-persistence",
+  "--exclude-dynamic-system-prompt-sections",
+  "--output-format",
+  "json"
+ ],
+ "codebook": "codebook-perf-v0.md",
+ "started": "2026-11-20T02:28:54",
+ "system_prompt_sha256": "6a81a7a2d10787b9e9f24d02d2857a94f9c53c110869cddf1d674c78cf411b75"
+}

@@ -1,0 +1,80 @@
+{
+ "job": {
+  "order": 137,
+  "id": 4107903785,
+  "agent": "OpenAI_Codex",
+  "repo": "jvnhaoWen/PolyAgent",
+  "number": 8,
+  "api_base_sha": "7c1f303ae812c3cfb2a9b49af21d943f98e68e4f",
+  "head_sha": "26ce3be904ccb7801e5fcaae27e4fce6230627d2",
+  "created": "2026-03-20",
+  "changed_files": [
+   "src/polyagent/dashboard.py",
+   "src/polyagent/tasking.py"
+  ],
+  "n_files": 2,
+  "final_diff_files": [
+   "src/polyagent/dashboard.py"
+  ]
+ },
+ "agent": {
+  "status": "built",
+  "reason": "none",
+  "tier": "own_calls",
+  "uses_parallelism": false,
+  "behaviour_change_expected": true,
+  "notes": "Install failed on the twikit git dependency (it can't be fetched here). Fixed by installing requests, eth-account and coverage into both venvs (pinned to the PR date) and the project with --no-deps. The workload renders the PolyMonitorDashboard repeatedly with a stand-in requests.get for the Polymarket API and runs loop() against a fake stdout that stops it after a few frames. Clock-dependent text (current time, heartbeat) is blanked before hashing. Coverage is 100% on both sides. Base and head digests differ because the PR changes the layout (fixed 112-column, fixed-height boxes, fewer activity rows and tweets, new header text). tasking.py is listed in job.json but has no changes in pr.diff."
+ },
+ "agent_is_error": false,
+ "timed_out": false,
+ "models": [
+  "claude-opus-5-5"
+ ],
+ "list_usd": 0.3379726,
+ "num_turns": 12,
+ "setup_ok": false,
+ "setup_s": 2,
+ "agent_s": 140,
+ "check": {
+  "base_exit_ok": true,
+  "base_last_line": "b4d60d2f7f1f0cff67f8c03238f87283c3bc270c527cc6fd78fb0b9679c9a2cf",
+  "head_exit_ok": true,
+  "head_last_line": "66337a51e70ef4dd114d901c83038cc65c1c2f2d79ff0cdc5daae421b2b10362",
+  "base_time_s": 2.353,
+  "head_time_s": 2.358,
+  "no_network_ok": true,
+  "coverage": {
+   "changed_files": [
+    "src/polyagent/dashboard.py"
+   ],
+   "base": {
+    "changed_executable_lines": 27,
+    "executed": 27,
+    "share": 1.0
+   },
+   "head": {
+    "changed_executable_lines": 43,
+    "executed": 43,
+    "share": 1.0
+   },
+   "output_digest_base": "b4d60d2f7f1f0cff67f8c03238f87283c3bc270c527cc6fd78fb0b9679c9a2cf",
+   "output_digest_head": "66337a51e70ef4dd114d901c83038cc65c1c2f2d79ff0cdc5daae421b2b10362",
+   "output_equal": false,
+   "coverage_gate_pass": true
+  },
+  "coverage_needed": 0.8,
+  "output_equal": false,
+  "pass": true,
+  "reasons": []
+ },
+ "harness_pass": true,
+ "audit": {
+  "mentions_github_pull": false,
+  "used_gh_cli": false,
+  "read_git_history": false
+ },
+ "changed_code_lines": {
+  "py": 115
+ },
+ "python_share_of_code_change": 1.0
+}

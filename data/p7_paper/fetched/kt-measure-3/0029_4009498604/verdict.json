@@ -1,0 +1,85 @@
+{
+ "job": {
+  "order": 29,
+  "id": 4009498604,
+  "agent": "Claude_Code",
+  "repo": "osuAkatsuki/bancho.py",
+  "number": 748,
+  "api_base_sha": "404bb98e30097645d8c41aa1d6db51faf9ef43f0",
+  "head_sha": "482ea55dc0e8aca04c17797a6a20583a14db7bb8",
+  "created": "2026-03-02",
+  "changed_files": [
+   "app/api/domains/cho.py",
+   "app/api/domains/osu.py",
+   "app/objects/player.py"
+  ],
+  "n_files": 3,
+  "final_diff_files": [
+   "app/api/domains/cho.py",
+   "app/api/domains/osu.py",
+   "app/objects/player.py"
+  ]
+ },
+ "agent": {
+  "status": "built",
+  "reason": "none",
+  "tier": "own_calls",
+  "uses_parallelism": false,
+  "behaviour_change_expected": true,
+  "notes": "Installed deps from pyproject manually (poetry non-package install failed; needed apt cargo for akatsuki-pp-py, plus pyyaml/coverage). Workload: 300 in-memory players, ChangeAction packets via BanchoPacketReader, Player priv/stats_from_sql_full calls, and 60 full handle_osu_login_request calls; MySQL/Redis replaced by in-memory stand-ins. Head coverage 0.867, base 0.667. Digests differ legitimately: head caches presence and does not invalidate it on ChangeAction mode change, so login sends stale presence (mode bits/rank). osu.py score-submission lines not exercised."
+ },
+ "agent_is_error": false,
+ "timed_out": false,
+ "models": [
+  "claude-opus-5-5"
+ ],
+ "list_usd": 0.8074893999999998,
+ "num_turns": 31,
+ "setup_ok": false,
+ "setup_s": 2,
+ "agent_s": 293,
+ "check": {
+  "base_exit_ok": true,
+  "base_last_line": "4aff1fcd98c8d5203c4eb6531cda39cc5121cc3fe7d9cc856fa5d7f7ec31b750",
+  "head_exit_ok": true,
+  "head_last_line": "b8a84942296615218956d64d6f350efc1cc2bb038790b7ad301a589a8b8e9d55",
+  "base_time_s": 2.031,
+  "head_time_s": 1.898,
+  "no_network_ok": true,
+  "coverage": {
+   "changed_files": [
+    "app/api/domains/cho.py",
+    "app/api/domains/osu.py",
+    "app/objects/player.py"
+   ],
+   "base": {
+    "changed_executable_lines": 6,
+    "executed": 4,
+    "share": 0.667
+   },
+   "head": {
+    "changed_executable_lines": 30,
+    "executed": 26,
+    "share": 0.867
+   },
+   "output_digest_base": "4aff1fcd98c8d5203c4eb6531cda39cc5121cc3fe7d9cc856fa5d7f7ec31b750",
+   "output_digest_head": "b8a84942296615218956d64d6f350efc1cc2bb038790b7ad301a589a8b8e9d55",
+   "output_equal": false,
+   "coverage_gate_pass": true
+  },
+  "coverage_needed": 0.8,
+  "output_equal": false,
+  "pass": true,
+  "reasons": []
+ },
+ "harness_pass": true,
+ "audit": {
+  "mentions_github_pull": false,
+  "used_gh_cli": false,
+  "read_git_history": false
+ },
+ "changed_code_lines": {
+  "py": 46
+ },
+ "python_share_of_code_change": 1.0
+}

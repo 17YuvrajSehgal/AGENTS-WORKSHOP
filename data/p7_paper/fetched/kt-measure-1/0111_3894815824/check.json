@@ -1,0 +1,33 @@
+{
+ "base_exit_ok": true,
+ "base_last_line": "c99749e21dc4b10e44adcdc843ba2314f024def95e62ceec47ac70bca7376e2a",
+ "head_exit_ok": true,
+ "head_last_line": "15f49457efd93719b1cacebb772a4fbfb9b49cb99ba4cecb14a039dbe7e1fd9e",
+ "base_time_s": 7.709,
+ "head_time_s": 0.493,
+ "no_network_ok": true,
+ "coverage": {
+  "changed_files": [
+   "geoparquet_io/core/common.py",
+   "geoparquet_io/core/duckdb_metadata.py"
+  ],
+  "base": {
+   "changed_executable_lines": 9,
+   "executed": 8,
+   "share": 0.889
+  },
+  "head": {
+   "changed_executable_lines": 185,
+   "executed": 152,
+   "share": 0.822
+  },
+  "output_digest_base": "c99749e21dc4b10e44adcdc843ba2314f024def95e62ceec47ac70bca7376e2a",
+  "output_digest_head": "15f49457efd93719b1cacebb772a4fbfb9b49cb99ba4cecb14a039dbe7e1fd9e",
+  "output_equal": false,
+  "coverage_gate_pass": true
+ },
+ "coverage_needed": 0.8,
+ "output_equal": false,
+ "pass": true,
+ "reasons": []
+}

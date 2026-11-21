@@ -1,0 +1,102 @@
+{
+ "job": {
+  "order": 45,
+  "id": 3727550320,
+  "agent": "Google_Jules",
+  "repo": "OliverZhaohaibin/iPhotron-LocalPhotoAlbumManager",
+  "number": 435,
+  "api_base_sha": "3b27b344e85004ef2c43973062bbb7056935e2fc",
+  "head_sha": "2ac4768f61792136187982137662717265c3cae9",
+  "created": "2025-12-14",
+  "changed_files": [
+   "src/iPhoto/cache/index_store.py",
+   "src/iPhoto/gui/ui/models/asset_cache_manager.py",
+   "src/iPhoto/gui/ui/models/asset_row_adapter.py",
+   "src/iPhoto/gui/ui/models/roles.py",
+   "src/iPhoto/gui/ui/tasks/asset_loader_worker.py",
+   "src/iPhoto/gui/ui/widgets/asset_delegate.py",
+   "src/iPhoto/io/scanner.py",
+   "src/iPhoto/utils/image_loader.py",
+   "tests/test_utils_image_loader.py"
+  ],
+  "n_files": 9,
+  "final_diff_files": [
+   "src/iPhoto/cache/index_store.py",
+   "src/iPhoto/gui/ui/models/asset_cache_manager.py",
+   "src/iPhoto/gui/ui/models/asset_row_adapter.py",
+   "src/iPhoto/gui/ui/models/roles.py",
+   "src/iPhoto/gui/ui/tasks/asset_loader_worker.py",
+   "src/iPhoto/gui/ui/widgets/asset_delegate.py",
+   "src/iPhoto/io/scanner.py",
+   "src/iPhoto/utils/image_loader.py",
+   "tests/test_utils_image_loader.py"
+  ]
+ },
+ "agent": {
+  "status": "built",
+  "reason": "none",
+  "tier": "own_calls",
+  "uses_parallelism": false,
+  "behaviour_change_expected": true,
+  "notes": "Scans 121 generated images (incl. a corrupt one) via scanner.process_media_paths and the cache-hit path of _process_path_stream, round-trips them through IndexStore (write_rows/read_all/read_geometry_only), builds asset entries, and calls AssetCacheManager.resolve_thumbnail, AssetRowAdapter.data and AssetGridDelegate.paint offscreen. Installed PyOpenGL in both venvs and libpulse0 via apt; the workload adds the repo root to sys.path because the code imports itself as src.iPhoto. exiftool is missing, so metadata lookup fails and is caught on both sides. Digests differ because head creates, stores and draws micro thumbnails."
+ },
+ "agent_is_error": false,
+ "timed_out": false,
+ "models": [
+  "claude-opus-5-5"
+ ],
+ "list_usd": 0.45023280000000004,
+ "num_turns": 15,
+ "setup_ok": true,
+ "setup_s": 8,
+ "agent_s": 133,
+ "check": {
+  "base_exit_ok": true,
+  "base_last_line": "3c560121b1d4004f32829d7baa3fda160de933be469902792f9e6f0960acb4c4",
+  "head_exit_ok": true,
+  "head_last_line": "5ce675dbe6a5ca2162590c2d0e852ad4366d16025c96cab7adc7fae58ae4e3b9",
+  "base_time_s": 1.791,
+  "head_time_s": 2.971,
+  "no_network_ok": true,
+  "coverage": {
+   "changed_files": [
+    "src/iPhoto/cache/index_store.py",
+    "src/iPhoto/gui/ui/models/asset_cache_manager.py",
+    "src/iPhoto/gui/ui/models/asset_row_adapter.py",
+    "src/iPhoto/gui/ui/models/roles.py",
+    "src/iPhoto/gui/ui/tasks/asset_loader_worker.py",
+    "src/iPhoto/gui/ui/widgets/asset_delegate.py",
+    "src/iPhoto/io/scanner.py",
+    "src/iPhoto/utils/image_loader.py"
+   ],
+   "base": {
+    "changed_executable_lines": 1,
+    "executed": 1,
+    "share": 1.0
+   },
+   "head": {
+    "changed_executable_lines": 55,
+    "executed": 51,
+    "share": 0.927
+   },
+   "output_digest_base": "3c560121b1d4004f32829d7baa3fda160de933be469902792f9e6f0960acb4c4",
+   "output_digest_head": "5ce675dbe6a5ca2162590c2d0e852ad4366d16025c96cab7adc7fae58ae4e3b9",
+   "output_equal": false,
+   "coverage_gate_pass": true
+  },
+  "coverage_needed": 0.8,
+  "output_equal": false,
+  "pass": true,
+  "reasons": []
+ },
+ "harness_pass": true,
+ "audit": {
+  "mentions_github_pull": false,
+  "used_gh_cli": false,
+  "read_git_history": false
+ },
+ "changed_code_lines": {
+  "py": 170
+ },
+ "python_share_of_code_change": 1.0
+}

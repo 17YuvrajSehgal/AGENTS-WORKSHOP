@@ -1,0 +1,66 @@
+{
+ "job": {
+  "order": 46,
+  "id": 3765719640,
+  "agent": "Copilot",
+  "repo": "royshil/obs-backgroundremoval",
+  "number": 742,
+  "api_base_sha": "67b9b045222b73dc073ae238ae86b605b680de95",
+  "head_sha": "3ae539f9bbbdde8f3273a3dbea4dbc7d8b21f299",
+  "created": "2025-12-28",
+  "changed_files": [
+   ".gitignore",
+   "data/locale/en-US.ini",
+   "data/models/README_SELFIE_MULTICLASS.md",
+   "data/models/selfie_multiclass_256x256.onnx",
+   "docs/FINAL_REPORT.md",
+   "docs/IMPLEMENTATION_SELFIE_MULTICLASS.md",
+   "docs/PR_SUMMARY.md",
+   "scripts/convert_selfie_multiclass.py",
+   "src/background-filter.cpp",
+   "src/consts.h",
+   "src/models/ModelSelfieMulticlass.h"
+  ],
+  "n_files": 11,
+  "final_diff_files": [
+   ".gitignore",
+   "data/locale/en-US.ini",
+   "data/models/selfie_multiclass_256x256.onnx",
+   "scripts/convert_selfie_multiclass.py",
+   "src/background-filter.cpp",
+   "src/consts.h",
+   "src/models/ModelSelfieMulticlass.h"
+  ]
+ },
+ "agent": {
+  "status": "unbuildable",
+  "reason": "not_python_change",
+  "tier": "none",
+  "uses_parallelism": false,
+  "behaviour_change_expected": false,
+  "notes": "The repo is a C++ OBS plugin with no pyproject.toml or setup.py, so the install fails on both sides. The changed code is C++ (ModelSelfieMulticlass.h, background-filter.cpp, consts.h) plus an ONNX model and docs. The only Python file, scripts/convert_selfie_multiclass.py, is new in head and only prints instructions; its last line is `main` without parentheses, so running it does nothing."
+ },
+ "agent_is_error": false,
+ "timed_out": false,
+ "models": [
+  "claude-opus-5-5"
+ ],
+ "list_usd": 0.10123739999999999,
+ "num_turns": 4,
+ "setup_ok": false,
+ "setup_s": 6,
+ "agent_s": 10,
+ "check": null,
+ "harness_pass": false,
+ "audit": {
+  "mentions_github_pull": false,
+  "used_gh_cli": false,
+  "read_git_history": false
+ },
+ "changed_code_lines": {
+  "py": 82,
+  "cpp": 5,
+  "h": 112
+ },
+ "python_share_of_code_change": 0.412
+}

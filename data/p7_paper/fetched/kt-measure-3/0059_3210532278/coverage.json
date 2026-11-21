@@ -1,0 +1,22 @@
+{
+ "changed_files": [
+  "examples/caching_prototype/run_real.py",
+  "instructor/auto_client.py",
+  "instructor/cache/__init__.py",
+  "instructor/patch.py"
+ ],
+ "base": {
+  "changed_executable_lines": 9,
+  "executed": 3,
+  "share": 0.333
+ },
+ "head": {
+  "changed_executable_lines": 156,
+  "executed": 128,
+  "share": 0.821
+ },
+ "output_digest_base": "cfdcd65c3b9ea1ded4f9a1645ff63cbb883307fd8d4fe6ad652471d029e5009a",
+ "output_digest_head": "cfdcd65c3b9ea1ded4f9a1645ff63cbb883307fd8d4fe6ad652471d029e5009a",
+ "output_equal": true,
+ "coverage_gate_pass": true
+}

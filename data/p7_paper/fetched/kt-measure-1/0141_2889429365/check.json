@@ -1,0 +1,32 @@
+{
+ "base_exit_ok": true,
+ "base_last_line": "c1bacad768bc392c79f18a39b9c494b25961dd8c9395e83e694925251edc206a",
+ "head_exit_ok": true,
+ "head_last_line": "e8175acc32b9f86482e3a73e77bce5ecb0919fa6f8e18ae14957e476a7f7fc00",
+ "base_time_s": 4.308,
+ "head_time_s": 5.125,
+ "no_network_ok": true,
+ "coverage": {
+  "changed_files": [
+   "crewai_tools/tools/selenium_scraping_tool/selenium_scraping_tool.py"
+  ],
+  "base": {
+   "changed_executable_lines": 3,
+   "executed": 3,
+   "share": 1.0
+  },
+  "head": {
+   "changed_executable_lines": 16,
+   "executed": 13,
+   "share": 0.812
+  },
+  "output_digest_base": "c1bacad768bc392c79f18a39b9c494b25961dd8c9395e83e694925251edc206a",
+  "output_digest_head": "e8175acc32b9f86482e3a73e77bce5ecb0919fa6f8e18ae14957e476a7f7fc00",
+  "output_equal": false,
+  "coverage_gate_pass": true
+ },
+ "coverage_needed": 0.8,
+ "output_equal": false,
+ "pass": true,
+ "reasons": []
+}

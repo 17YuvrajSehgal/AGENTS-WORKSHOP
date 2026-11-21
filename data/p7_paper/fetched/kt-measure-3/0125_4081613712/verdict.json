@@ -1,0 +1,81 @@
+{
+ "job": {
+  "order": 125,
+  "id": 4081613712,
+  "agent": "Claude_Code",
+  "repo": "DataDog/datadog-serverless-functions",
+  "number": 1080,
+  "api_base_sha": "b6366a37a3fafbf7bc7d0548f0984284c90a2d88",
+  "head_sha": "30f773376f7a6e65d9dd9681361ad65fe5b35be5",
+  "created": "2026-03-16",
+  "changed_files": [
+   "aws/logs_monitoring/steps/splitting.py",
+   "aws/logs_monitoring/tests/test_splitting.py"
+  ],
+  "n_files": 2,
+  "final_diff_files": [
+   "aws/logs_monitoring/steps/splitting.py",
+   "aws/logs_monitoring/tests/test_splitting.py"
+  ]
+ },
+ "agent": {
+  "status": "built",
+  "reason": "none",
+  "tier": "own_calls",
+  "uses_parallelism": false,
+  "behaviour_change_expected": false,
+  "notes": "Rebuilt both venvs with Python 3.14 (project requires >=3.14) and installed boto3 and requests, which settings.py imports. The workload calls steps.splitting.split(), the only API common to both sides, 150 times on 4,000 fixed-seed events covering metrics, valid and invalid traces, plain-text logs and JSON logs. Base 2.45 s, head 1.57 s. Changed-line coverage 100% on base, 96% on head. Outputs are equal and the no-network run passes."
+ },
+ "agent_is_error": false,
+ "timed_out": false,
+ "models": [
+  "claude-opus-5-5"
+ ],
+ "list_usd": 0.2091528,
+ "num_turns": 11,
+ "setup_ok": false,
+ "setup_s": 2,
+ "agent_s": 61,
+ "check": {
+  "base_exit_ok": true,
+  "base_last_line": "bdf098719ab8d2f18fecfb585e5c04b4f30aaadfc9e20b4293ecf876dff1dad7",
+  "head_exit_ok": true,
+  "head_last_line": "bdf098719ab8d2f18fecfb585e5c04b4f30aaadfc9e20b4293ecf876dff1dad7",
+  "base_time_s": 2.347,
+  "head_time_s": 1.485,
+  "no_network_ok": true,
+  "coverage": {
+   "changed_files": [
+    "aws/logs_monitoring/steps/splitting.py"
+   ],
+   "base": {
+    "changed_executable_lines": 24,
+    "executed": 24,
+    "share": 1.0
+   },
+   "head": {
+    "changed_executable_lines": 24,
+    "executed": 23,
+    "share": 0.958
+   },
+   "output_digest_base": "bdf098719ab8d2f18fecfb585e5c04b4f30aaadfc9e20b4293ecf876dff1dad7",
+   "output_digest_head": "bdf098719ab8d2f18fecfb585e5c04b4f30aaadfc9e20b4293ecf876dff1dad7",
+   "output_equal": true,
+   "coverage_gate_pass": true
+  },
+  "coverage_needed": 0.8,
+  "output_equal": true,
+  "pass": true,
+  "reasons": []
+ },
+ "harness_pass": true,
+ "audit": {
+  "mentions_github_pull": false,
+  "used_gh_cli": false,
+  "read_git_history": false
+ },
+ "changed_code_lines": {
+  "py": 144
+ },
+ "python_share_of_code_change": 1.0
+}

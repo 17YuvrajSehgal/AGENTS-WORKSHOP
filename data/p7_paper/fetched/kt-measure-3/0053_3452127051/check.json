@@ -1,0 +1,11 @@
+{
+ "base_exit_ok": false,
+ "base_last_line": "",
+ "head_exit_ok": false,
+ "head_last_line": "",
+ "pass": false,
+ "reasons": [
+  "base workload failed: timeout",
+  "head workload failed: timeout"
+ ]
+}

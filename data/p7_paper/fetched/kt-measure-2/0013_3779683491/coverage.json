@@ -1,0 +1,21 @@
+{
+ "changed_files": [
+  "src/iPhoto/gui/ui/models/asset_list/model.py",
+  "src/iPhoto/gui/ui/models/asset_list/orchestrator.py",
+  "src/iPhoto/gui/ui/tasks/asset_loader_worker.py"
+ ],
+ "base": {
+  "changed_executable_lines": 31,
+  "executed": 27,
+  "share": 0.871
+ },
+ "head": {
+  "changed_executable_lines": 41,
+  "executed": 37,
+  "share": 0.902
+ },
+ "output_digest_base": "a873be42138636d529645298c53b8f6020f2f74d35b2ecd69025bf42c067b5ac",
+ "output_digest_head": "a873be42138636d529645298c53b8f6020f2f74d35b2ecd69025bf42c067b5ac",
+ "output_equal": true,
+ "coverage_gate_pass": true
+}

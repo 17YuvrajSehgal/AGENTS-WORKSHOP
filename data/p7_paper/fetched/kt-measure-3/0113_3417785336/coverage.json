@@ -1,0 +1,20 @@
+{
+ "changed_files": [
+  "ultralytics/engine/model.py",
+  "ultralytics/models/yolo/model.py"
+ ],
+ "base": {
+  "changed_executable_lines": 4,
+  "executed": 4,
+  "share": 1.0
+ },
+ "head": {
+  "changed_executable_lines": 9,
+  "executed": 9,
+  "share": 1.0
+ },
+ "output_digest_base": "2d0f1a4b8582f631c8bf6006cdc9a4dfacaf0b42ed44c35c637cddafdbde84c7",
+ "output_digest_head": "2d0f1a4b8582f631c8bf6006cdc9a4dfacaf0b42ed44c35c637cddafdbde84c7",
+ "output_equal": true,
+ "coverage_gate_pass": true
+}

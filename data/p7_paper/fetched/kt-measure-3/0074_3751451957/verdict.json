@@ -1,0 +1,79 @@
+{
+ "job": {
+  "order": 74,
+  "id": 3751451957,
+  "agent": "Copilot",
+  "repo": "makerforgetech/modular-biped",
+  "number": 146,
+  "api_base_sha": "5349956751720a6050f7b8ea6eedbd7f9cc9f731",
+  "head_sha": "97676895cd2fd75dc75e32758353034ea4682138",
+  "created": "2025-12-21",
+  "changed_files": [
+   "system_loop.py"
+  ],
+  "n_files": 1,
+  "final_diff_files": [
+   "system_loop.py"
+  ]
+ },
+ "agent": {
+  "status": "built",
+  "reason": "none",
+  "tier": "own_calls",
+  "uses_parallelism": false,
+  "behaviour_change_expected": true,
+  "notes": "PR changes SystemLoop.DEFAULT_SLEEP_INTERVAL from 0.1 to 0.01. Installed pyyaml, pypubsub and coverage into both venvs (the repo has no installable package). The workload uses the real PubSubMessagingService, drives the throttle/wake/motion state changes, then runs SystemLoop.start() for 60 loop iterations. A subscriber stops the loop by setting its state to stopped. Base takes 6.1 s and head 0.65 s. The digests differ only because the recorded sleep_interval value differs (0.1 vs 0.01)."
+ },
+ "agent_is_error": false,
+ "timed_out": false,
+ "models": [
+  "claude-opus-5-5"
+ ],
+ "list_usd": 0.16607480000000002,
+ "num_turns": 9,
+ "setup_ok": false,
+ "setup_s": 9,
+ "agent_s": 110,
+ "check": {
+  "base_exit_ok": true,
+  "base_last_line": "cbc79334897fc1c027c8e54d3f8412696a239534b6b257cb766b0ad11052cb41",
+  "head_exit_ok": true,
+  "head_last_line": "f46229966b111c7eb153d829c66cd950466d531f3350c7c1455d8c7e5414039f",
+  "base_time_s": 6.098,
+  "head_time_s": 0.679,
+  "no_network_ok": true,
+  "coverage": {
+   "changed_files": [
+    "system_loop.py"
+   ],
+   "base": {
+    "changed_executable_lines": 1,
+    "executed": 1,
+    "share": 1.0
+   },
+   "head": {
+    "changed_executable_lines": 1,
+    "executed": 1,
+    "share": 1.0
+   },
+   "output_digest_base": "cbc79334897fc1c027c8e54d3f8412696a239534b6b257cb766b0ad11052cb41",
+   "output_digest_head": "f46229966b111c7eb153d829c66cd950466d531f3350c7c1455d8c7e5414039f",
+   "output_equal": false,
+   "coverage_gate_pass": true
+  },
+  "coverage_needed": 0.8,
+  "output_equal": false,
+  "pass": true,
+  "reasons": []
+ },
+ "harness_pass": true,
+ "audit": {
+  "mentions_github_pull": false,
+  "used_gh_cli": false,
+  "read_git_history": false
+ },
+ "changed_code_lines": {
+  "py": 2
+ },
+ "python_share_of_code_change": 1.0
+}

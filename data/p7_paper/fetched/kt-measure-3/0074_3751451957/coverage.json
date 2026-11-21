@@ -1,0 +1,19 @@
+{
+ "changed_files": [
+  "system_loop.py"
+ ],
+ "base": {
+  "changed_executable_lines": 1,
+  "executed": 1,
+  "share": 1.0
+ },
+ "head": {
+  "changed_executable_lines": 1,
+  "executed": 1,
+  "share": 1.0
+ },
+ "output_digest_base": "cbc79334897fc1c027c8e54d3f8412696a239534b6b257cb766b0ad11052cb41",
+ "output_digest_head": "f46229966b111c7eb153d829c66cd950466d531f3350c7c1455d8c7e5414039f",
+ "output_equal": false,
+ "coverage_gate_pass": true
+}

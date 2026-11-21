@@ -1,0 +1,79 @@
+{
+ "job": {
+  "order": 145,
+  "id": 3336159265,
+  "agent": "Cursor",
+  "repo": "browser-use/browser-use",
+  "number": 2727,
+  "api_base_sha": "3dcfa7ebb17fe83b6faa377c6c42918e3b94d8bd",
+  "head_sha": "283ede6d11eab022d16e7bc00548f51b4146b90f",
+  "created": "2025-08-20",
+  "changed_files": [
+   "browser_use/browser/default_action_watchdog.py"
+  ],
+  "n_files": 1,
+  "final_diff_files": [
+   "browser_use/browser/default_action_watchdog.py"
+  ]
+ },
+ "agent": {
+  "status": "built",
+  "reason": "none",
+  "tier": "own_calls",
+  "uses_parallelism": false,
+  "behaviour_change_expected": false,
+  "notes": "The PR shortens the per-keystroke asyncio.sleep in _type_to_page (18 ms to 1.8 ms) and in _input_text_element_node_impl (90 ms to 9 ms). The workload calls both methods on a real DefaultActionWatchdog. Only the external browser connection (the CDP client and session) is replaced by an in-process stand-in that records commands; the watchdog code, event loop and sleeps are unmodified. Config and cache directories point to /tmp/kt_2727 so the no-network run works. Both changed lines are covered on both sides; outputs are equal; run time is about 5.8 s on base and 1.4 s on head."
+ },
+ "agent_is_error": false,
+ "timed_out": false,
+ "models": [
+  "claude-opus-5-5"
+ ],
+ "list_usd": 0.25495959999999995,
+ "num_turns": 9,
+ "setup_ok": true,
+ "setup_s": 4,
+ "agent_s": 115,
+ "check": {
+  "base_exit_ok": true,
+  "base_last_line": "9c53bad35dc5a9db5bd38b0c9b18166081e278a3abec3e82c53a2ac25e4b4dd6",
+  "head_exit_ok": true,
+  "head_last_line": "9c53bad35dc5a9db5bd38b0c9b18166081e278a3abec3e82c53a2ac25e4b4dd6",
+  "base_time_s": 5.64,
+  "head_time_s": 1.506,
+  "no_network_ok": true,
+  "coverage": {
+   "changed_files": [
+    "browser_use/browser/default_action_watchdog.py"
+   ],
+   "base": {
+    "changed_executable_lines": 2,
+    "executed": 2,
+    "share": 1.0
+   },
+   "head": {
+    "changed_executable_lines": 2,
+    "executed": 2,
+    "share": 1.0
+   },
+   "output_digest_base": "9c53bad35dc5a9db5bd38b0c9b18166081e278a3abec3e82c53a2ac25e4b4dd6",
+   "output_digest_head": "9c53bad35dc5a9db5bd38b0c9b18166081e278a3abec3e82c53a2ac25e4b4dd6",
+   "output_equal": true,
+   "coverage_gate_pass": true
+  },
+  "coverage_needed": 0.8,
+  "output_equal": true,
+  "pass": true,
+  "reasons": []
+ },
+ "harness_pass": true,
+ "audit": {
+  "mentions_github_pull": false,
+  "used_gh_cli": false,
+  "read_git_history": false
+ },
+ "changed_code_lines": {
+  "py": 8
+ },
+ "python_share_of_code_change": 1.0
+}

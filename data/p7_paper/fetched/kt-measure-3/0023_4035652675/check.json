@@ -1,0 +1,33 @@
+{
+ "base_exit_ok": true,
+ "base_last_line": "fa0d7411ce39b911ce6c50f284e5cf2d4c0d8c9d2757921212ea76f2f8aadd3d",
+ "head_exit_ok": true,
+ "head_last_line": "fa4146e784d313d573d1b9bd6ce23ec8b4580080459af8385e2e91f25b811de5",
+ "base_time_s": 5.626,
+ "head_time_s": 5.67,
+ "no_network_ok": true,
+ "coverage": {
+  "changed_files": [
+   "graphiti_core/edges.py",
+   "graphiti_core/utils/maintenance/edge_operations.py"
+  ],
+  "base": {
+   "changed_executable_lines": 0,
+   "executed": 0,
+   "share": null
+  },
+  "head": {
+   "changed_executable_lines": 8,
+   "executed": 8,
+   "share": 1.0
+  },
+  "output_digest_base": "2d1d48fa57d6c73a7f0f071a38b07efab9d3bf4b97c0f1a79b7e6a485c93a9fa",
+  "output_digest_head": "0814c9b08026b947fb896b1d68012ba40320f5206516fceafa51f9f588360258",
+  "output_equal": false,
+  "coverage_gate_pass": true
+ },
+ "coverage_needed": 0.8,
+ "output_equal": false,
+ "pass": true,
+ "reasons": []
+}

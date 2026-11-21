@@ -1,0 +1,13 @@
+{
+ "base_exit_ok": true,
+ "base_last_line": "af843efada57d7cf732559a67981558f9fe5bff90f4f06d111e6e3ca9c849e9d",
+ "head_exit_ok": true,
+ "head_last_line": "af843efada57d7cf732559a67981558f9fe5bff90f4f06d111e6e3ca9c849e9d",
+ "base_time_s": 5.438,
+ "head_time_s": 2.045,
+ "no_network_ok": true,
+ "pass": false,
+ "reasons": [
+  "coverage run failed: hat match the pattern \"/tmp/kt_3840/run/logs/logs_0000000000000000001_0000000000000030000.parquet\"\n\nLINE 1: ... seq, source, data, epoch_ms, level FROM (SELECT * FROM read_parquet(['/tmp/kt_3840/run/logs/logs_00000000000000000...\n                                                                   ^\n\n"
+ ]
+}

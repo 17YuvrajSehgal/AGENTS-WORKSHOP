@@ -1,0 +1,21 @@
+{
+ "changed_files": [
+  "src/integrations/prefect-dbt/prefect_dbt/core/_orchestrator.py",
+  "src/prefect/context.py",
+  "src/prefect/settings/models/client.py"
+ ],
+ "base": {
+  "changed_executable_lines": 2,
+  "executed": 2,
+  "share": 1.0
+ },
+ "head": {
+  "changed_executable_lines": 7,
+  "executed": 7,
+  "share": 1.0
+ },
+ "output_digest_base": "02f906c5c2ed994087a03d4debd2a4f7a9b3d50d6b3d00cd00a5d8c3394de3e1",
+ "output_digest_head": "02f906c5c2ed994087a03d4debd2a4f7a9b3d50d6b3d00cd00a5d8c3394de3e1",
+ "output_equal": true,
+ "coverage_gate_pass": true
+}

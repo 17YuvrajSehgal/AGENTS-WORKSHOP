@@ -1,0 +1,32 @@
+{
+ "n": 2000,
+ "status": {
+  "ok": 1999,
+  "safety_stop": 1
+ },
+ "perf_role": {
+  "none": 1377,
+  "secondary": 316,
+  "primary": 243,
+  "measurement_only": 63
+ },
+ "perf_scope": {
+  "not_applicable": 1440,
+  "runtime": 465,
+  "build_or_ci": 67,
+  "other": 14,
+  "test_suite": 13
+ },
+ "confidence": {
+  "high": 1396,
+  "medium": 481,
+  "low": 122
+ },
+ "quote_not_found": 6,
+ "labels_not_from_model_alone": 0,
+ "runs_with_safety_stops": 2,
+ "tokens_in_mean": 8715,
+ "tokens_out_mean": 165,
+ "list_usd_total": 122.42,
+ "wall_s_median": 2.9
+}

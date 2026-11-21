@@ -1,0 +1,81 @@
+{
+ "job": {
+  "order": 130,
+  "id": 3617786284,
+  "agent": "Devin",
+  "repo": "PrefectHQ/prefect",
+  "number": 19427,
+  "api_base_sha": "9ff605b526fc7c5efb6c07291402eb1a62d8b8c1",
+  "head_sha": "1d13c0348bd579a2ce632a4d6bd8f9df8f9bcbb8",
+  "created": "2025-11-12",
+  "changed_files": [
+   "src/prefect/server/api/concurrency_limits_v2.py",
+   "tests/server/orchestration/api/test_concurrency_limits_v2.py"
+  ],
+  "n_files": 2,
+  "final_diff_files": [
+   "src/prefect/server/api/concurrency_limits_v2.py",
+   "tests/server/orchestration/api/test_concurrency_limits_v2.py"
+  ]
+ },
+ "agent": {
+  "status": "built",
+  "reason": "none",
+  "tier": "own_calls",
+  "uses_parallelism": false,
+  "behaviour_change_expected": true,
+  "notes": "Calls _generate_concurrency_locked_response 300x against a local SQLite Prefect DB with tag/non-tag/decay limits. Head caps wait_time_per_slot (30s) and adds seeded clamped_poisson_interval jitter, so Retry-After values (and digest) differ from base. Full coverage of changed lines on both sides."
+ },
+ "agent_is_error": false,
+ "timed_out": false,
+ "models": [
+  "claude-opus-5-5"
+ ],
+ "list_usd": 0.18695019999999998,
+ "num_turns": 7,
+ "setup_ok": true,
+ "setup_s": 14,
+ "agent_s": 150,
+ "check": {
+  "base_exit_ok": true,
+  "base_last_line": "054bc5d34159c5dcf7e84fef38bf73df93f8111e6f13172e64c9d9573e8ccf25",
+  "head_exit_ok": true,
+  "head_last_line": "f057644f2414c4c531ce8753cc9943ed9df20f3648f02eded8de5c405e2512a3",
+  "base_time_s": 6.085,
+  "head_time_s": 5.763,
+  "no_network_ok": true,
+  "coverage": {
+   "changed_files": [
+    "src/prefect/server/api/concurrency_limits_v2.py"
+   ],
+   "base": {
+    "changed_executable_lines": 2,
+    "executed": 2,
+    "share": 1.0
+   },
+   "head": {
+    "changed_executable_lines": 9,
+    "executed": 9,
+    "share": 1.0
+   },
+   "output_digest_base": "054bc5d34159c5dcf7e84fef38bf73df93f8111e6f13172e64c9d9573e8ccf25",
+   "output_digest_head": "f057644f2414c4c531ce8753cc9943ed9df20f3648f02eded8de5c405e2512a3",
+   "output_equal": false,
+   "coverage_gate_pass": true
+  },
+  "coverage_needed": 0.8,
+  "output_equal": false,
+  "pass": true,
+  "reasons": []
+ },
+ "harness_pass": true,
+ "audit": {
+  "mentions_github_pull": false,
+  "used_gh_cli": false,
+  "read_git_history": false
+ },
+ "changed_code_lines": {
+  "py": 190
+ },
+ "python_share_of_code_change": 1.0
+}

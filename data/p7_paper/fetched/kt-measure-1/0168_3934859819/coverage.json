@@ -1,0 +1,30 @@
+{
+ "changed_files": [
+  "olmoearth_pretrain/internal/experiment.py",
+  "olmoearth_pretrain/nn/attention.py",
+  "olmoearth_pretrain/nn/flexi_patch_embed.py",
+  "olmoearth_pretrain/nn/flexi_vit.py",
+  "olmoearth_pretrain/nn/pooled_modality_predictor.py",
+  "olmoearth_pretrain/train/loss.py",
+  "olmoearth_pretrain/train/masking.py",
+  "olmoearth_pretrain/train/train_module/contrastive_latentmim.py",
+  "olmoearth_pretrain/train/train_module/galileo.py",
+  "olmoearth_pretrain/train/train_module/train_module.py",
+  "scripts/official/script.py",
+  "scripts/official/tiny_single_gpu.py"
+ ],
+ "base": {
+  "changed_executable_lines": 22,
+  "executed": 11,
+  "share": 0.5
+ },
+ "head": {
+  "changed_executable_lines": 81,
+  "executed": 69,
+  "share": 0.852
+ },
+ "output_digest_base": "e756b27f5b86a6231c2f52e5007c82beba4ead450fdce40a0b9fb81eeb0609b0",
+ "output_digest_head": "0138875f6bf6cbe02ef9f6e0115dc78a0a8a648d95e171c80b61a00a7e814082",
+ "output_equal": false,
+ "coverage_gate_pass": true
+}

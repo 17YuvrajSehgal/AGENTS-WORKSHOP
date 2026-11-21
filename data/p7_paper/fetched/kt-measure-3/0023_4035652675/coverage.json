@@ -1,0 +1,20 @@
+{
+ "changed_files": [
+  "graphiti_core/edges.py",
+  "graphiti_core/utils/maintenance/edge_operations.py"
+ ],
+ "base": {
+  "changed_executable_lines": 0,
+  "executed": 0,
+  "share": null
+ },
+ "head": {
+  "changed_executable_lines": 8,
+  "executed": 8,
+  "share": 1.0
+ },
+ "output_digest_base": "2d1d48fa57d6c73a7f0f071a38b07efab9d3bf4b97c0f1a79b7e6a485c93a9fa",
+ "output_digest_head": "0814c9b08026b947fb896b1d68012ba40320f5206516fceafa51f9f588360258",
+ "output_equal": false,
+ "coverage_gate_pass": true
+}

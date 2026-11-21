@@ -1,0 +1,34 @@
+{
+ "base_exit_ok": true,
+ "base_last_line": "24288307c1dd3cc4decc6c91c80fd4a112900331569c9c117913f73b8a2184f3",
+ "head_exit_ok": true,
+ "head_last_line": "24288307c1dd3cc4decc6c91c80fd4a112900331569c9c117913f73b8a2184f3",
+ "base_time_s": 9.452,
+ "head_time_s": 6.675,
+ "no_network_ok": true,
+ "coverage": {
+  "changed_files": [
+   "air_llm/airllm/airllm_base.py"
+  ],
+  "base": {
+   "changed_executable_lines": 87,
+   "executed": 56,
+   "share": 0.644
+  },
+  "head": {
+   "changed_executable_lines": 185,
+   "executed": 107,
+   "share": 0.578
+  },
+  "output_digest_base": "24288307c1dd3cc4decc6c91c80fd4a112900331569c9c117913f73b8a2184f3",
+  "output_digest_head": "24288307c1dd3cc4decc6c91c80fd4a112900331569c9c117913f73b8a2184f3",
+  "output_equal": true,
+  "coverage_gate_pass": false
+ },
+ "coverage_needed": 0.8,
+ "output_equal": true,
+ "pass": false,
+ "reasons": [
+  "head coverage 0.578 < 0.8"
+ ]
+}

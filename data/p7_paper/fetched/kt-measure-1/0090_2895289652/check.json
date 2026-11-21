@@ -1,0 +1,32 @@
+{
+ "base_exit_ok": true,
+ "base_last_line": "41892097186b49e27a8c52a82d9c0c32ab68ccd43525d198c5854a03463dc1fa",
+ "head_exit_ok": true,
+ "head_last_line": "9c168b702c32306e7fee45409c36a8543767751c5ff5946112b5bfededae7ca3",
+ "base_time_s": 2.731,
+ "head_time_s": 2.166,
+ "no_network_ok": true,
+ "coverage": {
+  "changed_files": [
+   "src/crewai/telemetry/telemetry.py"
+  ],
+  "base": {
+   "changed_executable_lines": 17,
+   "executed": 12,
+   "share": 0.706
+  },
+  "head": {
+   "changed_executable_lines": 39,
+   "executed": 32,
+   "share": 0.821
+  },
+  "output_digest_base": "41892097186b49e27a8c52a82d9c0c32ab68ccd43525d198c5854a03463dc1fa",
+  "output_digest_head": "9c168b702c32306e7fee45409c36a8543767751c5ff5946112b5bfededae7ca3",
+  "output_equal": false,
+  "coverage_gate_pass": true
+ },
+ "coverage_needed": 0.8,
+ "output_equal": false,
+ "pass": true,
+ "reasons": []
+}

@@ -1,0 +1,85 @@
+{
+ "job": {
+  "order": 157,
+  "id": 3377998462,
+  "agent": "Google_Jules",
+  "repo": "curvedinf/dir-assistant",
+  "number": 41,
+  "api_base_sha": "c6cb3739d8b3d10d0247d6c3ee01545f95d473f1",
+  "head_sha": "a4e6f78e717e1c5deebd923f47d404abb96b291e",
+  "created": "2025-09-03",
+  "changed_files": [
+   "dir_assistant/assistant/index.py",
+   "dir_assistant/cli/config.py",
+   "dir_assistant/cli/start.py"
+  ],
+  "n_files": 3,
+  "final_diff_files": [
+   "dir_assistant/assistant/index.py",
+   "dir_assistant/cli/config.py",
+   "dir_assistant/cli/start.py"
+  ]
+ },
+ "agent": {
+  "status": "built",
+  "reason": "none",
+  "tier": "own_calls",
+  "uses_parallelism": true,
+  "behaviour_change_expected": false,
+  "notes": "Installed missing dependency wove==0.3.0 into both venvs. Workload builds 150 seeded text files, calls create_file_index (cold + cached) with a local hash-based stand-in for the embedding model; config_dict passed only when the signature has it (head). Coverage ~81% both sides; digests equal."
+ },
+ "agent_is_error": false,
+ "timed_out": false,
+ "models": [
+  "claude-opus-5-5"
+ ],
+ "list_usd": 0.19927620000000004,
+ "num_turns": 8,
+ "setup_ok": true,
+ "setup_s": 4,
+ "agent_s": 71,
+ "check": {
+  "base_exit_ok": true,
+  "base_last_line": "bb23d6ee2a75bd927ab3a4b871aece93d1727f2baab1781b29cc12d85e4d218b",
+  "head_exit_ok": true,
+  "head_last_line": "bb23d6ee2a75bd927ab3a4b871aece93d1727f2baab1781b29cc12d85e4d218b",
+  "base_time_s": 1.896,
+  "head_time_s": 3.935,
+  "no_network_ok": true,
+  "coverage": {
+   "changed_files": [
+    "dir_assistant/assistant/index.py",
+    "dir_assistant/cli/config.py",
+    "dir_assistant/cli/start.py"
+   ],
+   "base": {
+    "changed_executable_lines": 22,
+    "executed": 18,
+    "share": 0.818
+   },
+   "head": {
+    "changed_executable_lines": 32,
+    "executed": 26,
+    "share": 0.812
+   },
+   "output_digest_base": "bb23d6ee2a75bd927ab3a4b871aece93d1727f2baab1781b29cc12d85e4d218b",
+   "output_digest_head": "bb23d6ee2a75bd927ab3a4b871aece93d1727f2baab1781b29cc12d85e4d218b",
+   "output_equal": true,
+   "coverage_gate_pass": true
+  },
+  "coverage_needed": 0.8,
+  "output_equal": true,
+  "pass": true,
+  "reasons": []
+ },
+ "harness_pass": true,
+ "audit": {
+  "mentions_github_pull": false,
+  "used_gh_cli": false,
+  "read_git_history": false
+ },
+ "changed_code_lines": {
+  "py": 102
+ },
+ "python_share_of_code_change": 1.0
+}

@@ -1,0 +1,13 @@
+{
+ "base_exit_ok": true,
+ "base_last_line": "10571443db499099cf993b9db4d8891d9015782b61d3b9744b0e3efe1738fbe0",
+ "head_exit_ok": true,
+ "head_last_line": "10571443db499099cf993b9db4d8891d9015782b61d3b9744b0e3efe1738fbe0",
+ "base_time_s": 1.458,
+ "head_time_s": 1.374,
+ "no_network_ok": true,
+ "pass": false,
+ "reasons": [
+  "coverage run failed: base workload failed:\n\n"
+ ]
+}

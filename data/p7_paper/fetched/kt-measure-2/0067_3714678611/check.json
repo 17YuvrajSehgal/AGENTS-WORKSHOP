@@ -1,0 +1,37 @@
+{
+ "base_exit_ok": true,
+ "base_last_line": "d10705c118cca0e01795bc321e739c252a28c1bf13c5e7d900d1c87ba204d8c1",
+ "head_exit_ok": true,
+ "head_last_line": "e6ef4db820bec2e86553e82fb3fa7e560c5fb02c3c0591c329f37476c7c794e4",
+ "base_time_s": 7.764,
+ "head_time_s": 8.588,
+ "no_network_ok": true,
+ "coverage": {
+  "changed_files": [
+   "src/nexus/backends/base_blob_connector.py",
+   "src/nexus/backends/cache_mixin.py",
+   "src/nexus/backends/gmail_connector.py",
+   "src/nexus/backends/hn_connector.py",
+   "src/nexus/core/nexus_fs_mounts.py",
+   "src/nexus/fuse/operations.py"
+  ],
+  "base": {
+   "changed_executable_lines": 1,
+   "executed": 1,
+   "share": 1.0
+  },
+  "head": {
+   "changed_executable_lines": 79,
+   "executed": 64,
+   "share": 0.81
+  },
+  "output_digest_base": "d10705c118cca0e01795bc321e739c252a28c1bf13c5e7d900d1c87ba204d8c1",
+  "output_digest_head": "e6ef4db820bec2e86553e82fb3fa7e560c5fb02c3c0591c329f37476c7c794e4",
+  "output_equal": false,
+  "coverage_gate_pass": true
+ },
+ "coverage_needed": 0.8,
+ "output_equal": false,
+ "pass": true,
+ "reasons": []
+}

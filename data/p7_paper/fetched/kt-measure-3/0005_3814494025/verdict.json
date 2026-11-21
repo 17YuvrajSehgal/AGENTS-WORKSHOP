@@ -1,0 +1,86 @@
+{
+ "job": {
+  "order": 5,
+  "id": 3814494025,
+  "agent": "Google_Jules",
+  "repo": "OliverZhaohaibin/iPhotron-LocalPhotoAlbumManager",
+  "number": 564,
+  "api_base_sha": "13333cf70063f74be8b87a8022036bb113faf394",
+  "head_sha": "cfa7ee3e6a2b50dab3a1134bfa654aba1ad3682e",
+  "created": "2026-01-14",
+  "changed_files": [
+   "src/iPhoto/gui/qml_main.py",
+   "src/iPhoto/gui/ui/qml/BranchIndicator.qml",
+   "src/iPhoto/gui/ui/qml/SidebarItem.qml",
+   "src/iPhoto/gui/ui/qml/qml_providers.py"
+  ],
+  "n_files": 4,
+  "final_diff_files": [
+   "src/iPhoto/gui/qml_main.py",
+   "src/iPhoto/gui/ui/qml/BranchIndicator.qml",
+   "src/iPhoto/gui/ui/qml/SidebarItem.qml",
+   "src/iPhoto/gui/ui/qml/qml_providers.py"
+  ]
+ },
+ "agent": {
+  "status": "built",
+  "reason": "none",
+  "tier": "own_calls",
+  "uses_parallelism": false,
+  "behaviour_change_expected": true,
+  "notes": "Exercises ThumbnailImageProvider.requestImage (offscreen Qt) on a synthetic library with .iPhoto/thumbs cache files. set_library_root is called only if present (head), so head returns cached thumbnails while base loads originals -> digests differ. QML changes and qml_main.main() GUI wiring not exercised. Head coverage 23/25 (exception handler missing)."
+ },
+ "agent_is_error": false,
+ "timed_out": false,
+ "models": [
+  "claude-opus-5-5"
+ ],
+ "list_usd": 0.2005746,
+ "num_turns": 8,
+ "setup_ok": true,
+ "setup_s": 11,
+ "agent_s": 132,
+ "check": {
+  "base_exit_ok": true,
+  "base_last_line": "efb1c7ca181d55ac05be346750b74ea2f65ee0cd00d6f860fb1dc773b02344b2",
+  "head_exit_ok": true,
+  "head_last_line": "47b174fbea9628661c8a18d8f5ac74ee72ddaa5093222736a730d08ca078c0c2",
+  "base_time_s": 0.872,
+  "head_time_s": 11.926,
+  "no_network_ok": true,
+  "coverage": {
+   "changed_files": [
+    "src/iPhoto/gui/qml_main.py",
+    "src/iPhoto/gui/ui/qml/qml_providers.py"
+   ],
+   "base": {
+    "changed_executable_lines": 2,
+    "executed": 2,
+    "share": 1.0
+   },
+   "head": {
+    "changed_executable_lines": 25,
+    "executed": 23,
+    "share": 0.92
+   },
+   "output_digest_base": "efb1c7ca181d55ac05be346750b74ea2f65ee0cd00d6f860fb1dc773b02344b2",
+   "output_digest_head": "47b174fbea9628661c8a18d8f5ac74ee72ddaa5093222736a730d08ca078c0c2",
+   "output_equal": false,
+   "coverage_gate_pass": true
+  },
+  "coverage_needed": 0.8,
+  "output_equal": false,
+  "pass": true,
+  "reasons": []
+ },
+ "harness_pass": true,
+ "audit": {
+  "mentions_github_pull": false,
+  "used_gh_cli": false,
+  "read_git_history": false
+ },
+ "changed_code_lines": {
+  "py": 64
+ },
+ "python_share_of_code_change": 1.0
+}

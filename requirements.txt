@@ -1,0 +1,5 @@
+anthropic
+pandas
+pyarrow
+huggingface_hub
+openpyxl

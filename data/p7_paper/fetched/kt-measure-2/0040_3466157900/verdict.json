@@ -1,0 +1,59 @@
+{
+ "job": {
+  "order": 40,
+  "id": 3466157900,
+  "agent": "Copilot",
+  "repo": "polarsource/polar",
+  "number": 7065,
+  "api_base_sha": "db97377a323dcef80467ea65e4c431cf3fbdd158",
+  "head_sha": "108613b256b61dd62b6fd5db41c28a370ea1a00f",
+  "created": "2025-09-29",
+  "changed_files": [
+   "server/migrations/versions/2025-09-30-0756_add_statement_descriptor_to_orders.py",
+   "server/polar/models/order.py",
+   "server/polar/models/organization.py",
+   "server/polar/order/service.py",
+   "server/polar/order/tasks.py",
+   "server/polar/subscription/service.py",
+   "server/tests/order/test_service.py"
+  ],
+  "n_files": 7,
+  "final_diff_files": [
+   "server/migrations/versions/2025-09-30-0756_add_statement_descriptor_to_orders.py",
+   "server/polar/models/order.py",
+   "server/polar/order/service.py",
+   "server/polar/order/tasks.py",
+   "server/polar/subscription/service.py",
+   "server/tests/order/test_service.py"
+  ]
+ },
+ "agent": {
+  "status": "unbuildable",
+  "reason": "needs_external_service",
+  "tier": "none",
+  "uses_parallelism": false,
+  "behaviour_change_expected": true,
+  "notes": "The changed lines are in Polar server service methods (SubscriptionService.cycle, OrderService.create_subscription_order, the order payment and retry paths, and the order.create_subscription_order task). These need a PostgreSQL database because the models use Postgres-only types, plus the Dramatiq/Redis job queue (enqueue_job) and the Stripe API. The PR adds a required argument to create_subscription_order, so the same direct call can't run on both versions, and _generate_statement_descriptor exists only in head. The rest is a migration (SQL) and a new non-null model column. Neither venv installed (setuptools package discovery error). The new logic is trivial string prefixing and slicing, which would be dominated by database and Stripe I/O."
+ },
+ "agent_is_error": false,
+ "timed_out": false,
+ "models": [
+  "claude-opus-5-5"
+ ],
+ "list_usd": 0.167511,
+ "num_turns": 5,
+ "setup_ok": false,
+ "setup_s": 13,
+ "agent_s": 27,
+ "check": null,
+ "harness_pass": false,
+ "audit": {
+  "mentions_github_pull": false,
+  "used_gh_cli": false,
+  "read_git_history": false
+ },
+ "changed_code_lines": {
+  "py": 164
+ },
+ "python_share_of_code_change": 1.0
+}

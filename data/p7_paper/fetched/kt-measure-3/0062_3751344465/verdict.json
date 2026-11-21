@@ -1,0 +1,81 @@
+{
+ "job": {
+  "order": 62,
+  "id": 3751344465,
+  "agent": "Copilot",
+  "repo": "The-XSS-Rat/subScraper",
+  "number": 46,
+  "api_base_sha": "cbe9f31c0530d31837090ef5ab724523717176a6",
+  "head_sha": "3956f01868767f44a5578c6d47e56ae0e2da613f",
+  "created": "2025-12-21",
+  "changed_files": [
+   "OPTIMIZATION_SUMMARY.md",
+   "main.py"
+  ],
+  "n_files": 2,
+  "final_diff_files": [
+   "OPTIMIZATION_SUMMARY.md",
+   "main.py"
+  ]
+ },
+ "agent": {
+  "status": "built",
+  "reason": "none",
+  "tier": "own_calls",
+  "uses_parallelism": true,
+  "behaviour_change_expected": true,
+  "notes": "Builds a local SQLite DB in /tmp/kt_46 (400 targets, 9,400 subdomains) and calls load_state() and build_state_payload_summary() 15 times each. These are the functions where the PR replaces one query per target with a single JOIN. It also serves the app's own HTTP handler on 127.0.0.1 (ThreadingHTTPServer in a thread) and requests /api/state with page/per_page, which runs build_state_payload_paginated on head. Digests differ because base ignores the pagination parameters and returns all targets, while head returns 50 per page; the load_state and summary results are identical on both sides. Coverage of changed lines: base 71%, head 75%. Base run time 3.5 s. The httpx pipeline error-handling changes are not run because they need the external httpx tool. Only coverage was installed into both venvs."
+ },
+ "agent_is_error": false,
+ "timed_out": false,
+ "models": [
+  "claude-opus-5-5"
+ ],
+ "list_usd": 0.39881,
+ "num_turns": 15,
+ "setup_ok": false,
+ "setup_s": 1,
+ "agent_s": 143,
+ "check": {
+  "base_exit_ok": true,
+  "base_last_line": "2a270c5856d4a1635b3ac1758c212ad85d186dbcd3709b17459092b14b64e729",
+  "head_exit_ok": true,
+  "head_last_line": "9cdfea371a5f3bb2318f74ee4180b8c52020a2dbb6bcccbaaaa0697dfb08697e",
+  "base_time_s": 3.212,
+  "head_time_s": 2.77,
+  "no_network_ok": true,
+  "coverage": {
+   "changed_files": [
+    "main.py"
+   ],
+   "base": {
+    "changed_executable_lines": 56,
+    "executed": 40,
+    "share": 0.714
+   },
+   "head": {
+    "changed_executable_lines": 205,
+    "executed": 153,
+    "share": 0.746
+   },
+   "output_digest_base": "2a270c5856d4a1635b3ac1758c212ad85d186dbcd3709b17459092b14b64e729",
+   "output_digest_head": "9cdfea371a5f3bb2318f74ee4180b8c52020a2dbb6bcccbaaaa0697dfb08697e",
+   "output_equal": false,
+   "coverage_gate_pass": false
+  },
+  "coverage_needed": 0.5,
+  "output_equal": false,
+  "pass": true,
+  "reasons": []
+ },
+ "harness_pass": true,
+ "audit": {
+  "mentions_github_pull": false,
+  "used_gh_cli": false,
+  "read_git_history": false
+ },
+ "changed_code_lines": {
+  "py": 533
+ },
+ "python_share_of_code_change": 1.0
+}

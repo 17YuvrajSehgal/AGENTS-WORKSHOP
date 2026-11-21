@@ -1,0 +1,20 @@
+{
+ "changed_files": [
+  "bolna/agent_manager/task_manager.py",
+  "bolna/synthesizer/cartesia_synthesizer.py"
+ ],
+ "base": {
+  "changed_executable_lines": 1,
+  "executed": 1,
+  "share": 1.0
+ },
+ "head": {
+  "changed_executable_lines": 5,
+  "executed": 4,
+  "share": 0.8
+ },
+ "output_digest_base": "a44e17c32e2de82a88548c49524155519d7dd6c199560c93db41793abde1c6d6",
+ "output_digest_head": "bb1dac32fd181133d05cedfab6bb02066490377c0b98fcc88a29ba741b6b0a13",
+ "output_equal": false,
+ "coverage_gate_pass": true
+}

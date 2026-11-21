@@ -1,0 +1,47 @@
+{
+ "job": {
+  "order": 98,
+  "id": 4063203194,
+  "agent": "Claude_Code",
+  "repo": "tradingstrategy-ai/trading-strategy",
+  "number": 226,
+  "api_base_sha": "9ab21205832e4c13f8a5ee8c317ee501a0af198a",
+  "head_sha": "4ae8f76d6081152659012d9affe3a102118ee481",
+  "created": "2026-03-12",
+  "changed_files": [
+   "CHANGELOG.md",
+   "tradingstrategy/alternative_data/vault.py",
+   "tradingstrategy/binance/downloader.py",
+   "tradingstrategy/pair.py",
+   "tradingstrategy/vault.py"
+  ],
+  "n_files": 5,
+  "final_diff_files": [
+   "CHANGELOG.md",
+   "tradingstrategy/alternative_data/vault.py",
+   "tradingstrategy/binance/downloader.py",
+   "tradingstrategy/pair.py",
+   "tradingstrategy/vault.py"
+  ]
+ },
+ "agent": null,
+ "agent_is_error": null,
+ "timed_out": false,
+ "models": [],
+ "list_usd": 0,
+ "num_turns": null,
+ "setup_ok": true,
+ "setup_s": 4,
+ "agent_s": 18,
+ "check": null,
+ "harness_pass": false,
+ "audit": {
+  "mentions_github_pull": false,
+  "used_gh_cli": false,
+  "read_git_history": false
+ },
+ "changed_code_lines": {
+  "py": 58
+ },
+ "python_share_of_code_change": 1.0
+}

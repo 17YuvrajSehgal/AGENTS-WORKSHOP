@@ -1,0 +1,21 @@
+{
+ "changed_files": [
+  "eth_defi/hyperliquid/api.py",
+  "eth_defi/hyperliquid/evm_escrow.py",
+  "eth_defi/hyperliquid/trader_stats.py"
+ ],
+ "base": {
+  "changed_executable_lines": 2,
+  "executed": 2,
+  "share": 1.0
+ },
+ "head": {
+  "changed_executable_lines": 60,
+  "executed": 34,
+  "share": 0.567
+ },
+ "output_digest_base": "d347873daa8e397782d67fa2767bfd189f51959e10a2bdab2e971b63a4ea6df9",
+ "output_digest_head": "d347873daa8e397782d67fa2767bfd189f51959e10a2bdab2e971b63a4ea6df9",
+ "output_equal": true,
+ "coverage_gate_pass": false
+}

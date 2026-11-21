@@ -1,0 +1,94 @@
+{
+ "job": {
+  "order": 96,
+  "id": 3105891938,
+  "agent": "Claude_Code",
+  "repo": "haasonsaas/ocode",
+  "number": 2,
+  "api_base_sha": "807dfd663ff5c260691b1c3d515529adadf9a828",
+  "head_sha": "2675f20f0d22bb0d7936d02df6a5c39b67e01713",
+  "created": "2025-05-31",
+  "changed_files": [
+   "ocode_python/tools/data_tools.py",
+   "ocode_python/tools/find_tool.py",
+   "ocode_python/tools/head_tail_tool.py",
+   "ocode_python/tools/notebook_tools.py",
+   "tests/unit/test_basic_unix_tools.py",
+   "tests/unit/test_data_tools.py",
+   "tests/unit/test_new_tools.py"
+  ],
+  "n_files": 7,
+  "final_diff_files": [
+   "ocode_python/tools/data_tools.py",
+   "ocode_python/tools/find_tool.py",
+   "ocode_python/tools/head_tail_tool.py",
+   "ocode_python/tools/notebook_tools.py",
+   "tests/unit/test_basic_unix_tools.py",
+   "tests/unit/test_data_tools.py",
+   "tests/unit/test_new_tools.py"
+  ]
+ },
+ "agent": {
+  "status": "built",
+  "reason": "none",
+  "tier": "own_calls",
+  "uses_parallelism": false,
+  "behaviour_change_expected": false,
+  "notes": "Workload exercises FindTool, HeadTool/TailTool, JsonYamlTool and NotebookRead/EditTool on a generated tree, text file, JSON/YAML files and notebook, covering both success and error paths. The digest records success flags and outputs of successful calls only, because the PR rewrites error messages and Find's metadata (new default maxdepth of 20). Base and head digests match. Changed-line coverage is about 72% on base and 70% on head; base run time is about 2.4 s."
+ },
+ "agent_is_error": false,
+ "timed_out": false,
+ "models": [
+  "claude-opus-5-5"
+ ],
+ "list_usd": 0.37594879999999997,
+ "num_turns": 14,
+ "setup_ok": true,
+ "setup_s": 3,
+ "agent_s": 88,
+ "check": {
+  "base_exit_ok": true,
+  "base_last_line": "0b3cf3ec64e2cd18d435ab9f6365084c8709b3ab8717f37ef59fb52433d2bd33",
+  "head_exit_ok": true,
+  "head_last_line": "0b3cf3ec64e2cd18d435ab9f6365084c8709b3ab8717f37ef59fb52433d2bd33",
+  "base_time_s": 2.47,
+  "head_time_s": 2.728,
+  "no_network_ok": true,
+  "coverage": {
+   "changed_files": [
+    "ocode_python/tools/data_tools.py",
+    "ocode_python/tools/find_tool.py",
+    "ocode_python/tools/head_tail_tool.py",
+    "ocode_python/tools/notebook_tools.py"
+   ],
+   "base": {
+    "changed_executable_lines": 153,
+    "executed": 111,
+    "share": 0.725
+   },
+   "head": {
+    "changed_executable_lines": 262,
+    "executed": 184,
+    "share": 0.702
+   },
+   "output_digest_base": "0b3cf3ec64e2cd18d435ab9f6365084c8709b3ab8717f37ef59fb52433d2bd33",
+   "output_digest_head": "0b3cf3ec64e2cd18d435ab9f6365084c8709b3ab8717f37ef59fb52433d2bd33",
+   "output_equal": true,
+   "coverage_gate_pass": false
+  },
+  "coverage_needed": 0.5,
+  "output_equal": true,
+  "pass": true,
+  "reasons": []
+ },
+ "harness_pass": true,
+ "audit": {
+  "mentions_github_pull": false,
+  "used_gh_cli": false,
+  "read_git_history": false
+ },
+ "changed_code_lines": {
+  "py": 800
+ },
+ "python_share_of_code_change": 1.0
+}

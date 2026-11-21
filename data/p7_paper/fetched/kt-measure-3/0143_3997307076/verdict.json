@@ -1,0 +1,98 @@
+{
+ "job": {
+  "order": 143,
+  "id": 3997307076,
+  "agent": "Claude_Code",
+  "repo": "cvxpy/cvxpylayers",
+  "number": 209,
+  "api_base_sha": "9345d1ba0f7555e0de0c5219a087ab189bb5daf3",
+  "head_sha": "b8293f5fcd45f208fbf0daf376114a5725868a8c",
+  "created": "2026-02-26",
+  "changed_files": [
+   "src/cvxpylayers/interfaces/cuclarabel_if.py",
+   "src/cvxpylayers/interfaces/diffcp_if.py",
+   "src/cvxpylayers/interfaces/moreau_if.py",
+   "src/cvxpylayers/interfaces/mpax_if.py",
+   "src/cvxpylayers/jax/cvxpylayer.py",
+   "src/cvxpylayers/torch/cvxpylayer.py",
+   "tests/test_moreau.py"
+  ],
+  "n_files": 7,
+  "final_diff_files": [
+   "src/cvxpylayers/interfaces/cuclarabel_if.py",
+   "src/cvxpylayers/interfaces/diffcp_if.py",
+   "src/cvxpylayers/interfaces/moreau_if.py",
+   "src/cvxpylayers/interfaces/mpax_if.py",
+   "src/cvxpylayers/jax/cvxpylayer.py",
+   "src/cvxpylayers/torch/cvxpylayer.py",
+   "tests/test_moreau.py"
+  ]
+ },
+ "agent": {
+  "status": "unbuildable",
+  "reason": "needs_external_service",
+  "tier": "none",
+  "uses_parallelism": false,
+  "behaviour_change_expected": false,
+  "notes": "The PR adds warm-start support for the commercial Moreau solver. Moreau can't be installed: the PyPI 'moreau' package is a placeholder, so cvxpy reports MOREAU as not installed. The CuClarabel changes need a GPU. I installed torch-cpu, jax and mpax into both venvs. Running only through DIFFCP and MPAX, head coverage is 16/82 (0.195) and base 2/21, below the 0.8 threshold. Outputs matched between base and head, base runtime was about 7.4 s, and the no-network run passed. The rest of the changed lines (warm-start cache, moreau_if, the jax Moreau solve path) only run with solver='MOREAU'."
+ },
+ "agent_is_error": false,
+ "timed_out": false,
+ "models": [
+  "claude-opus-5-5"
+ ],
+ "list_usd": 0.38492099999999996,
+ "num_turns": 15,
+ "setup_ok": true,
+ "setup_s": 4,
+ "agent_s": 203,
+ "check": {
+  "base_exit_ok": true,
+  "base_last_line": "1f1793ee7f44760a151f05a3f8bc30bc87e791122c72be37966c941494b089b8",
+  "head_exit_ok": true,
+  "head_last_line": "1f1793ee7f44760a151f05a3f8bc30bc87e791122c72be37966c941494b089b8",
+  "base_time_s": 7.591,
+  "head_time_s": 7.543,
+  "no_network_ok": true,
+  "coverage": {
+   "changed_files": [
+    "src/cvxpylayers/interfaces/cuclarabel_if.py",
+    "src/cvxpylayers/interfaces/diffcp_if.py",
+    "src/cvxpylayers/interfaces/moreau_if.py",
+    "src/cvxpylayers/interfaces/mpax_if.py",
+    "src/cvxpylayers/jax/cvxpylayer.py",
+    "src/cvxpylayers/torch/cvxpylayer.py"
+   ],
+   "base": {
+    "changed_executable_lines": 21,
+    "executed": 2,
+    "share": 0.095
+   },
+   "head": {
+    "changed_executable_lines": 82,
+    "executed": 16,
+    "share": 0.195
+   },
+   "output_digest_base": "1f1793ee7f44760a151f05a3f8bc30bc87e791122c72be37966c941494b089b8",
+   "output_digest_head": "1f1793ee7f44760a151f05a3f8bc30bc87e791122c72be37966c941494b089b8",
+   "output_equal": true,
+   "coverage_gate_pass": false
+  },
+  "coverage_needed": 0.8,
+  "output_equal": true,
+  "pass": false,
+  "reasons": [
+   "head coverage 0.195 < 0.8"
+  ]
+ },
+ "harness_pass": false,
+ "audit": {
+  "mentions_github_pull": false,
+  "used_gh_cli": false,
+  "read_git_history": false
+ },
+ "changed_code_lines": {
+  "py": 620
+ },
+ "python_share_of_code_change": 1.0
+}

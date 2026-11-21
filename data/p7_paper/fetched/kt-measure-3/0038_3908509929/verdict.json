@@ -1,0 +1,91 @@
+{
+ "job": {
+  "order": 38,
+  "id": 3908509929,
+  "agent": "Claude_Code",
+  "repo": "FZJ-IEK3-VSA/tsam",
+  "number": 147,
+  "api_base_sha": "d7f7a007d3d7394f2cd4af0815740adc5fec406e",
+  "head_sha": "d5fbe0f01f38dce8ede5b893aa0ce4fc3291152b",
+  "created": "2026-02-06",
+  "changed_files": [
+   "src/tsam/utils/durationRepresentation.py",
+   "test/data/clustering_e2e/expected_hierarchical_distribution_8clusters.csv",
+   "test/data/clustering_e2e/meta_hierarchical_distribution_8clusters.json",
+   "test/data/golden/hierarchical_distribution/testdata.csv",
+   "test/data/golden/hierarchical_distribution/with_zero_column.csv",
+   "test/data/golden/hierarchical_distribution_minmax/testdata.csv",
+   "test/data/golden/hierarchical_distribution_minmax/with_zero_column.csv"
+  ],
+  "n_files": 7,
+  "final_diff_files": [
+   "src/tsam/utils/durationRepresentation.py",
+   "test/data/clustering_e2e/expected_hierarchical_distribution_8clusters.csv",
+   "test/data/clustering_e2e/meta_hierarchical_distribution_8clusters.json",
+   "test/data/golden/hierarchical_distribution/testdata.csv",
+   "test/data/golden/hierarchical_distribution/with_zero_column.csv",
+   "test/data/golden/hierarchical_distribution_minmax/testdata.csv",
+   "test/data/golden/hierarchical_distribution_minmax/with_zero_column.csv"
+  ]
+ },
+ "agent": {
+  "status": "built",
+  "reason": "none",
+  "tier": "own_calls",
+  "uses_parallelism": false,
+  "behaviour_change_expected": true,
+  "notes": "Calls tsam.utils.durationRepresentation.durationRepresentation(distributionPeriodWise=True) directly on seeded synthetic data, with representMinMax both off and on. Every changed line runs on both sides. Base and head digests differ because the new stable argsort and sort order tied values differently (the PR updates its golden data for the same reason). With untied (continuous) inputs only, the outputs are identical. Run time: 2.7 s on base, 1.7 s on head."
+ },
+ "agent_is_error": false,
+ "timed_out": false,
+ "models": [
+  "claude-opus-5-5"
+ ],
+ "list_usd": 0.2087014,
+ "num_turns": 9,
+ "setup_ok": true,
+ "setup_s": 5,
+ "agent_s": 71,
+ "check": {
+  "base_exit_ok": true,
+  "base_last_line": "c3de5c3c7b9e2bcd90a42d296870f5bd386173960f6eccc1fd52b71e2d58e6e2",
+  "head_exit_ok": true,
+  "head_last_line": "ccac9cd18212bd0f0ef3a8aeaf0c66f3d843c7580451d14eb8ad330e26f940d5",
+  "base_time_s": 2.674,
+  "head_time_s": 1.772,
+  "no_network_ok": true,
+  "coverage": {
+   "changed_files": [
+    "src/tsam/utils/durationRepresentation.py"
+   ],
+   "base": {
+    "changed_executable_lines": 16,
+    "executed": 16,
+    "share": 1.0
+   },
+   "head": {
+    "changed_executable_lines": 20,
+    "executed": 20,
+    "share": 1.0
+   },
+   "output_digest_base": "c3de5c3c7b9e2bcd90a42d296870f5bd386173960f6eccc1fd52b71e2d58e6e2",
+   "output_digest_head": "ccac9cd18212bd0f0ef3a8aeaf0c66f3d843c7580451d14eb8ad330e26f940d5",
+   "output_equal": false,
+   "coverage_gate_pass": true
+  },
+  "coverage_needed": 0.8,
+  "output_equal": false,
+  "pass": true,
+  "reasons": []
+ },
+ "harness_pass": true,
+ "audit": {
+  "mentions_github_pull": false,
+  "used_gh_cli": false,
+  "read_git_history": false
+ },
+ "changed_code_lines": {
+  "py": 69
+ },
+ "python_share_of_code_change": 1.0
+}

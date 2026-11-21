@@ -1,0 +1,82 @@
+{
+ "job": {
+  "order": 22,
+  "id": 3206997775,
+  "agent": "Devin",
+  "repo": "bolna-ai/bolna",
+  "number": 221,
+  "api_base_sha": "d0b4d142cb12487cc896723fce6adfd72e37341c",
+  "head_sha": "01e65271b72fa689621e152b7647d2d754d1738f",
+  "created": "2025-07-06",
+  "changed_files": [
+   "bolna/agent_manager/task_manager.py",
+   "bolna/synthesizer/cartesia_synthesizer.py"
+  ],
+  "n_files": 2,
+  "final_diff_files": [
+   "bolna/agent_manager/task_manager.py",
+   "bolna/synthesizer/cartesia_synthesizer.py"
+  ]
+ },
+ "agent": {
+  "status": "built",
+  "reason": "none",
+  "tier": "own_calls",
+  "uses_parallelism": false,
+  "behaviour_change_expected": true,
+  "notes": "Envs rebuilt with Python 3.11 + override lancedb>=0.13 (lancedb==0.12.0 unavailable at that date; torchaudio 2.0.1 has no cp312). Workload drives CartesiaSynthesizer push/sender/receiver/generate against an in-process fake Cartesia websocket (stand-in for external service) and a trivial task-manager stand-in. Head changes context only on turn change (10 vs 100 context changes), so digests differ legitimately. TaskManager sleep(0.2->0.01) line not covered (requires full pipeline)."
+ },
+ "agent_is_error": false,
+ "timed_out": false,
+ "models": [
+  "claude-opus-5-5"
+ ],
+ "list_usd": 0.26153099999999996,
+ "num_turns": 13,
+ "setup_ok": false,
+ "setup_s": 6,
+ "agent_s": 285,
+ "check": {
+  "base_exit_ok": true,
+  "base_last_line": "a44e17c32e2de82a88548c49524155519d7dd6c199560c93db41793abde1c6d6",
+  "head_exit_ok": true,
+  "head_last_line": "bb1dac32fd181133d05cedfab6bb02066490377c0b98fcc88a29ba741b6b0a13",
+  "base_time_s": 3.237,
+  "head_time_s": 3.174,
+  "no_network_ok": true,
+  "coverage": {
+   "changed_files": [
+    "bolna/agent_manager/task_manager.py",
+    "bolna/synthesizer/cartesia_synthesizer.py"
+   ],
+   "base": {
+    "changed_executable_lines": 1,
+    "executed": 1,
+    "share": 1.0
+   },
+   "head": {
+    "changed_executable_lines": 5,
+    "executed": 4,
+    "share": 0.8
+   },
+   "output_digest_base": "a44e17c32e2de82a88548c49524155519d7dd6c199560c93db41793abde1c6d6",
+   "output_digest_head": "bb1dac32fd181133d05cedfab6bb02066490377c0b98fcc88a29ba741b6b0a13",
+   "output_equal": false,
+   "coverage_gate_pass": true
+  },
+  "coverage_needed": 0.8,
+  "output_equal": false,
+  "pass": true,
+  "reasons": []
+ },
+ "harness_pass": true,
+ "audit": {
+  "mentions_github_pull": false,
+  "used_gh_cli": false,
+  "read_git_history": false
+ },
+ "changed_code_lines": {
+  "py": 17
+ },
+ "python_share_of_code_change": 1.0
+}

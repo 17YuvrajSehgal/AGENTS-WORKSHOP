@@ -1,0 +1,32 @@
+% Case studies. Every number is a macro from analysis/p7_cases.py, which
+% reads the medians of the measured runs and asserts full separation.
+\paragraph{Faster, but not for the claimed reason}
+iPhotron PR~\#453 (Copilot) claims to remove the slowdown of deep SQL
+pagination and to load assets on demand instead of all at once. The workload
+runs \caseAWall\ of the base wall time (\caseAWallBase\,s to
+\caseAWallHead\,s), yet the kernel shows more work, not less: \caseASyscalls\
+the syscalls (\caseASyscallsBase\ to \caseASyscallsHead), \caseAPread\ the
+\texttt{pread64} calls, \caseABytes\ the bytes read and \caseASys\ the system
+time. Total CPU time grows \caseATask\ while the process runs
+\caseAThreadsHead\ threads instead of \caseAThreadsBase. Peak memory does not
+change. A stopwatch would credit the claim; the trace does not support it.
+
+\paragraph{Slower, and the trace shows where}
+iPhotron PR~\#564 (Jules) uses pre-generated thumbnails. On our workload,
+which keeps 500 unrelated files in the thumbnail folder, it is
+\caseBWall\ slower (\caseBWallBase\,s to \caseBWallHead\,s) and its output
+changes. The trace shows a likely cause: \texttt{getdents64}, the call that
+lists a directory, rises from \caseBGetdentsBase\ to \caseBGetdentsHead\
+(\caseBGetdents), and instructions grow \caseBInstr.
+
+\paragraph{The mechanism happens, but hurts}
+iPhotron PR~\#445 (Jules) moves asset loading onto a thread pool with
+back-pressure and time slicing. The concurrency footprint appears, so the
+mechanism holds by our rule, but the workload is \caseDWall\ slower: the
+main thread spends \caseDOffcpu\ more time off the CPU, futex waiting grows
+\caseDFutex\ and CPU migrations go from \caseDMigrBase\ to \caseDMigrHead.
+
+\paragraph{A claim that holds}
+btcrecover PR~\#633 (Codex) stops batch work once a seed matches. Wall
+time falls to \caseCWall\ of the base (\caseCWallBase\,s to
+\caseCWallHead\,s) and instructions to \caseCInstr, as the claim predicts.

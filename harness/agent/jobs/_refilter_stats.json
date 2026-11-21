@@ -1,0 +1,23 @@
+{
+ "kt-measure-1": {
+  "jobs": 335,
+  "kept": 312,
+  "no_py_in_final_diff": 23,
+  "github_error": 0,
+  "final_diff_over_3000_files": 1
+ },
+ "kt-measure-2": {
+  "jobs": 335,
+  "kept": 315,
+  "no_py_in_final_diff": 20,
+  "github_error": 0,
+  "final_diff_over_3000_files": 1
+ },
+ "kt-measure-3": {
+  "jobs": 341,
+  "kept": 322,
+  "no_py_in_final_diff": 19,
+  "github_error": 0,
+  "final_diff_over_3000_files": 1
+ }
+}

@@ -1,0 +1,19 @@
+{
+ "changed_files": [
+  "apps/backend/runners/github/services/parallel_orchestrator_reviewer.py"
+ ],
+ "base": {
+  "changed_executable_lines": 6,
+  "executed": 6,
+  "share": 1.0
+ },
+ "head": {
+  "changed_executable_lines": 36,
+  "executed": 36,
+  "share": 1.0
+ },
+ "output_digest_base": "c47a96f4f49f1842a4fa1fd06f33ebdee0a0aadb0a23290934b8ab7fdf315711",
+ "output_digest_head": "2c1ea6f46eb852b1771738c0fb710aee4fccabca00e1aa6040903d6c6a13ca21",
+ "output_equal": false,
+ "coverage_gate_pass": true
+}

@@ -1,0 +1,56 @@
+{
+ "job": {
+  "order": 151,
+  "id": 4137467217,
+  "agent": "Claude_Code",
+  "repo": "PostHog/posthog",
+  "number": 52306,
+  "api_base_sha": "b29d6cd8f67d5c265394256c878e1cb8f815f4c5",
+  "head_sha": "5c8fdb7436ff62fc27ffc0c3b6de3bcb188f666c",
+  "created": "2026-03-25",
+  "changed_files": [
+   "posthog/api/insight.py",
+   "posthog/api/query.py",
+   "posthog/api/query_coalescing_mixin.py",
+   "posthog/api/test/test_query_coalescing.py",
+   "posthog/models/resource_transfer/test/__snapshots__/test_visitor_field_snapshots.ambr"
+  ],
+  "n_files": 5,
+  "final_diff_files": [
+   "posthog/api/insight.py",
+   "posthog/api/query.py",
+   "posthog/api/query_coalescing_mixin.py",
+   "posthog/api/test/test_query_coalescing.py",
+   "posthog/models/resource_transfer/test/__snapshots__/test_visitor_field_snapshots.ambr"
+  ]
+ },
+ "agent": {
+  "status": "unbuildable",
+  "reason": "needs_external_service",
+  "tier": "none",
+  "uses_parallelism": false,
+  "behaviour_change_expected": false,
+  "notes": "All changed code is in PostHog's Django API viewsets (QueryViewSet.create, InsightViewSet.retrieve and the new QueryCoalescingMixin). Reaching it needs a migrated Postgres database (team, user and insight rows), Redis for the coalescing lock and ClickHouse for query execution. PostHog does not support SQLite. The only new helper, _compute_insight_coalescing_key, is absent from base. Both venvs also failed to install because the project pins Python==3.12.12 and the environment has 3.12.11. No workload.py was written and check.py was not run."
+ },
+ "agent_is_error": false,
+ "timed_out": false,
+ "models": [
+  "claude-opus-5-5"
+ ],
+ "list_usd": 0.142623,
+ "num_turns": 5,
+ "setup_ok": false,
+ "setup_s": 106,
+ "agent_s": 16,
+ "check": null,
+ "harness_pass": false,
+ "audit": {
+  "mentions_github_pull": false,
+  "used_gh_cli": false,
+  "read_git_history": false
+ },
+ "changed_code_lines": {
+  "py": 482
+ },
+ "python_share_of_code_change": 1.0
+}

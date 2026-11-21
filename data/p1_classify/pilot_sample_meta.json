@@ -1,0 +1,16 @@
+{
+ "n": 2000,
+ "seed": 42,
+ "population": 108708,
+ "by_agent": {
+  "Claude_Code": 1011,
+  "Copilot": 584,
+  "OpenAI_Codex": 284,
+  "Cursor": 53,
+  "Devin": 51,
+  "Google_Jules": 17
+ },
+ "cut_body": 19,
+ "cut_commits": 82,
+ "no_file_list": 53
+}

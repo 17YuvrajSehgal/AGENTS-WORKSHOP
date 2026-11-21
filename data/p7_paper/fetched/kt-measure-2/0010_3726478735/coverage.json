@@ -1,0 +1,20 @@
+{
+ "changed_files": [
+  "github_dependents_info/__main__.py",
+  "github_dependents_info/gh_dependents_info.py"
+ ],
+ "base": {
+  "changed_executable_lines": 0,
+  "executed": 0,
+  "share": null
+ },
+ "head": {
+  "changed_executable_lines": 6,
+  "executed": 6,
+  "share": 1.0
+ },
+ "output_digest_base": "fd25d065474078f3e9a78ac06013df9aac437165e3d553a891df611f4f34f813",
+ "output_digest_head": "06b594bc6d29abe6ea68c51451f5233e45ecfa5c78fd35d65be7b4a10b7eaa43",
+ "output_equal": false,
+ "coverage_gate_pass": true
+}

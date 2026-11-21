@@ -1,0 +1,142 @@
+{
+ "job": {
+  "order": 31,
+  "id": 4048862508,
+  "agent": "Claude_Code",
+  "repo": "PrimeIntellect-ai/prime-rl",
+  "number": 2006,
+  "api_base_sha": "aa432f2c1f7b7e6f2f91d986f91c5e55a962b52d",
+  "head_sha": "4e70339982ccd40bc03bf16fe76423430f8c4aed",
+  "created": "2026-03-10",
+  "changed_files": [
+   "benchmarks/baselines/benchmark-1xa6000-Qwen--Qwen3-0.6B-rl-16-1gpu-Recompute-flash_attention_2-16384-cp1-ep1.json",
+   "benchmarks/baselines/benchmark-1xa6000-Qwen--Qwen3-0.6B-rl-16-1gpu-Recompute-flash_attention_2-65536-cp1-ep1.json",
+   "benchmarks/baselines/benchmark-1xa6000-Qwen--Qwen3-0.6B-rl-full-1gpu-Recompute-flash_attention_2-16384-cp1-ep1.json",
+   "benchmarks/baselines/benchmark-1xa6000-Qwen--Qwen3-0.6B-rl-full-1gpu-Recompute-flash_attention_2-65536-cp1-ep1.json",
+   "benchmarks/baselines/benchmark-1xa6000-Qwen--Qwen3-0.6B-sft-full-1gpu-Recompute-flash_attention_2-8192-cp1-ep1.json",
+   "benchmarks/baselines/benchmark-1xa6000-Qwen--Qwen3-4B-Instruct-2507-rl-16-1gpu-Recompute-flash_attention_2-16384-cp1-ep1.json",
+   "benchmarks/baselines/benchmark-1xh100-Qwen--Qwen3-0.6B-rl-16-1gpu-Offload-flash_attention_3-65536-cp1-ep1.json",
+   "benchmarks/baselines/benchmark-1xh100-Qwen--Qwen3-0.6B-rl-16-1gpu-Recompute-flash_attention_3-16384-cp1-ep1.json",
+   "benchmarks/baselines/benchmark-1xh100-Qwen--Qwen3-0.6B-rl-16-1gpu-Recompute-flash_attention_3-65536-cp1-ep1.json",
+   "benchmarks/baselines/benchmark-1xh100-Qwen--Qwen3-0.6B-rl-full-1gpu-Offload-flash_attention_3-65536-cp1-ep1.json",
+   "benchmarks/baselines/benchmark-1xh100-Qwen--Qwen3-0.6B-rl-full-1gpu-Recompute-flash_attention_3-16384-cp1-ep1.json",
+   "benchmarks/baselines/benchmark-1xh100-Qwen--Qwen3-0.6B-rl-full-1gpu-Recompute-flash_attention_3-65536-cp1-ep1.json",
+   "benchmarks/baselines/benchmark-1xh100-Qwen--Qwen3-0.6B-sft-full-1gpu-Recompute-flash_attention_3-16384-cp1-ep1.json",
+   "benchmarks/baselines/benchmark-1xh100-Qwen--Qwen3-0.6B-sft-full-1gpu-Recompute-flash_attention_3-65536-cp1-ep1.json",
+   "benchmarks/baselines/benchmark-1xh100-Qwen--Qwen3-0.6B-sft-full-1gpu-Recompute-flash_attention_3-8192-cp1-ep1.json",
+   "benchmarks/baselines/benchmark-1xh100-Qwen--Qwen3-4B-Instruct-2507-rl-16-1gpu-Offload-flash_attention_3-16384-cp1-ep1.json",
+   "benchmarks/baselines/benchmark-1xh100-Qwen--Qwen3-4B-Instruct-2507-rl-16-1gpu-Offload-flash_attention_3-65536-cp1-ep1.json",
+   "benchmarks/baselines/benchmark-1xh100-Qwen--Qwen3-4B-Instruct-2507-rl-16-1gpu-Recompute-flash_attention_3-16384-cp1-ep1.json",
+   "benchmarks/baselines/benchmark-1xh100-Qwen--Qwen3-4B-Instruct-2507-rl-16-1gpu-Recompute-flash_attention_3-65536-cp1-ep1.json",
+   "benchmarks/baselines/benchmark-4xa6000-Qwen--Qwen3-0.6B-rl-full-4gpu-Recompute-flash_attention_2-65536-cp1-ep1.json",
+   "benchmarks/baselines/benchmark-8xb200-PrimeIntellect--INTELLECT-3-rl-16-8gpu-Offload-flash_attention_2-65536-cp1-ep1.json",
+   "benchmarks/baselines/benchmark-8xb200-PrimeIntellect--INTELLECT-3-rl-16-8gpu-Recompute-flash_attention_2-16384-cp1-ep1.json",
+   "benchmarks/baselines/benchmark-8xb200-PrimeIntellect--INTELLECT-3-rl-16-8gpu-Recompute-flash_attention_2-65536-cp1-ep1.json",
+   "benchmarks/baselines/benchmark-8xb200-Qwen--Qwen3-235B-A22B-Instruct-2507-rl-16-8gpu-Offload-flash_attention_2-16384-cp1-ep1.json",
+   "benchmarks/baselines/benchmark-8xb200-Qwen--Qwen3-235B-A22B-Instruct-2507-rl-16-8gpu-Offload-flash_attention_2-65536-cp1-ep1.json",
+   "benchmarks/baselines/benchmark-8xb200-Qwen--Qwen3-235B-A22B-Instruct-2507-rl-16-8gpu-Recompute-flash_attention_2-16384-cp1-ep1.json",
+   "benchmarks/baselines/benchmark-8xb200-Qwen--Qwen3-235B-A22B-Instruct-2507-rl-16-8gpu-Recompute-flash_attention_2-65536-cp1-ep1.json",
+   "benchmarks/baselines/benchmark-8xb200-Qwen--Qwen3-30B-A3B-Instruct-2507-rl-16-8gpu-Recompute-flash_attention_2-16384-cp1-ep1.json",
+   "benchmarks/baselines/benchmark-8xb200-Qwen--Qwen3-30B-A3B-Instruct-2507-rl-16-8gpu-Recompute-flash_attention_2-65536-cp1-ep1.json",
+   "benchmarks/baselines/benchmark-8xb200-Qwen--Qwen3-30B-A3B-Instruct-2507-rl-full-8gpu-Recompute-flash_attention_3-16384-cp1-ep1.json",
+   "benchmarks/baselines/benchmark-8xb200-Qwen--Qwen3-30B-A3B-Instruct-2507-rl-full-8gpu-Recompute-flash_attention_3-65536-cp1-ep1.json",
+   "benchmarks/baselines/benchmark-8xb200-Qwen--Qwen3-30B-A3B-Instruct-2507-sft-full-8gpu-Recompute-flash_attention_3-16384-cp1-ep1.json",
+   "benchmarks/baselines/benchmark-8xb200-Qwen--Qwen3-4B-Instruct-2507-rl-16-8gpu-Recompute-flash_attention_2-16384-cp1-ep1.json",
+   "benchmarks/baselines/benchmark-8xb200-Qwen--Qwen3-4B-Instruct-2507-rl-16-8gpu-Recompute-flash_attention_2-65536-cp1-ep1.json",
+   "benchmarks/baselines/benchmark-8xb200-Qwen--Qwen3-4B-Instruct-2507-rl-full-8gpu-Recompute-flash_attention_2-16384-cp1-ep1.json",
+   "benchmarks/baselines/benchmark-8xb200-Qwen--Qwen3-4B-Instruct-2507-rl-full-8gpu-Recompute-flash_attention_3-65536-cp1-ep1.json",
+   "benchmarks/baselines/benchmark-8xb200-Qwen--Qwen3-4B-Instruct-2507-sft-full-8gpu-Recompute-flash_attention_2-16384-cp1-ep1.json",
+   "benchmarks/baselines/benchmark-8xb200-Qwen--Qwen3-4B-Instruct-2507-sft-full-8gpu-Recompute-flash_attention_2-65536-cp1-ep1.json",
+   "benchmarks/baselines/benchmark-8xh100-Qwen--Qwen3-30B-A3B-Instruct-2507-rl-16-8gpu-Recompute-flash_attention_3-16384-cp1-ep1.json",
+   "benchmarks/baselines/benchmark-8xh100-Qwen--Qwen3-30B-A3B-Instruct-2507-rl-16-8gpu-Recompute-flash_attention_3-65536-cp1-ep1.json",
+   "benchmarks/baselines/benchmark-8xh100-Qwen--Qwen3-30B-A3B-Instruct-2507-rl-full-8gpu-Recompute-flash_attention_3-16384-cp1-ep1.json",
+   "benchmarks/baselines/benchmark-8xh100-Qwen--Qwen3-4B-Instruct-2507-rl-16-8gpu-Recompute-flash_attention_3-16384-cp1-ep1.json",
+   "benchmarks/baselines/benchmark-8xh100-Qwen--Qwen3-4B-Instruct-2507-rl-16-8gpu-Recompute-flash_attention_3-65536-cp1-ep1.json",
+   "benchmarks/baselines/benchmark-8xh100-Qwen--Qwen3-4B-Instruct-2507-rl-full-8gpu-Recompute-flash_attention_3-16384-cp1-ep1.json",
+   "benchmarks/baselines/benchmark-8xh100-Qwen--Qwen3-4B-Instruct-2507-rl-full-8gpu-Recompute-flash_attention_3-65536-cp1-ep1.json",
+   "benchmarks/baselines/benchmark-8xh100-Qwen--Qwen3-4B-Instruct-2507-sft-full-8gpu-Recompute-flash_attention_2-16384-cp1-ep1.json",
+   "benchmarks/baselines/benchmark-8xh200-PrimeIntellect--INTELLECT-3-rl-16-8gpu-Offload-flash_attention_2-65536-cp1-ep1.json",
+   "benchmarks/baselines/benchmark-8xh200-PrimeIntellect--INTELLECT-3-rl-16-8gpu-Offload-flash_attention_3-16384-cp1-ep1.json",
+   "benchmarks/baselines/benchmark-8xh200-PrimeIntellect--INTELLECT-3-rl-16-8gpu-Offload-flash_attention_3-65536-cp1-ep1.json",
+   "benchmarks/baselines/benchmark-8xh200-PrimeIntellect--INTELLECT-3-rl-16-8gpu-Recompute-flash_attention_3-16384-cp1-ep1.json",
+   "benchmarks/baselines/benchmark-8xh200-Qwen--Qwen3-30B-A3B-Instruct-2507-rl-16-8gpu-Recompute-flash_attention_3-16384-cp1-ep1.json",
+   "benchmarks/baselines/benchmark-8xh200-Qwen--Qwen3-30B-A3B-Instruct-2507-rl-16-8gpu-Recompute-flash_attention_3-65536-cp1-ep1.json",
+   "benchmarks/baselines/benchmark-8xh200-Qwen--Qwen3-30B-A3B-Instruct-2507-rl-full-8gpu-Recompute-flash_attention_3-16384-cp1-ep1.json",
+   "benchmarks/baselines/benchmark-8xh200-Qwen--Qwen3-30B-A3B-Instruct-2507-rl-full-8gpu-Recompute-flash_attention_3-65536-cp1-ep1.json",
+   "benchmarks/baselines/benchmark-8xh200-Qwen--Qwen3-30B-A3B-Instruct-2507-sft-full-8gpu-Recompute-flash_attention_3-16384-cp1-ep1.json",
+   "benchmarks/baselines/benchmark-8xh200-Qwen--Qwen3-4B-Instruct-2507-rl-16-8gpu-Recompute-flash_attention_3-16384-cp1-ep1.json",
+   "benchmarks/baselines/benchmark-8xh200-Qwen--Qwen3-4B-Instruct-2507-rl-16-8gpu-Recompute-flash_attention_3-65536-cp1-ep1.json",
+   "benchmarks/baselines/benchmark-8xh200-Qwen--Qwen3-4B-Instruct-2507-rl-full-8gpu-Recompute-flash_attention_3-16384-cp1-ep1.json",
+   "benchmarks/baselines/benchmark-8xh200-Qwen--Qwen3-4B-Instruct-2507-rl-full-8gpu-Recompute-flash_attention_3-65536-cp1-ep1.json",
+   "benchmarks/baselines/benchmark-8xh200-Qwen--Qwen3-4B-Instruct-2507-sft-full-8gpu-Recompute-flash_attention_2-16384-cp1-ep1.json"
+  ],
+  "n_files": 66,
+  "final_diff_files": [
+   "src/prime_rl/orchestrator/orchestrator.py",
+   "src/prime_rl/orchestrator/trajectories.py"
+  ]
+ },
+ "agent": {
+  "status": "built",
+  "reason": "none",
+  "tier": "own_calls",
+  "uses_parallelism": true,
+  "behaviour_change_expected": true,
+  "notes": "check.py does not pass: head coverage is 22/49 changed lines (0.449, threshold 0.8); base coverage is 9/9, runtime is about 3.3 s on both sides, and the no-network run is ok. The uncovered head lines are the new offload_images_to_disk function (head-only API, so not called) and the new lines inside the async orchestrate() loop in orchestrator.py (needs an inference server). Every changed line in functions that exist in both versions is executed. Full install failed on both sides (unsatisfiable vllm>=0.17 / transformers>=5 override), so both venvs were set up the same way: prime-rl --no-deps plus CPU torch, verifiers, pillow, msgspec, pyzmq, loguru, pydantic, tomli/tomli-w, rich, coverage (frozen at 2026-03-10) and pydantic-config from git main (commit 73c1d84). Workload runs _extract_images_from_examples (ThreadPoolExecutor decode, _decode_image vs _decode_b64_image, key collection, strip_base64_images) and _extract_images_from_messages on base64 data URLs plus file:// URLs to PNGs it writes under /tmp/kt_2006. Base ignores file:// URLs and head loads and strips them, so the output digests differ by design."
+ },
+ "agent_is_error": false,
+ "timed_out": false,
+ "models": [
+  "claude-opus-5-5"
+ ],
+ "list_usd": 0.41344060000000005,
+ "num_turns": 18,
+ "setup_ok": false,
+ "setup_s": 67,
+ "agent_s": 313,
+ "check": {
+  "base_exit_ok": true,
+  "base_last_line": "6e558552c7ffa15952df5bb788ff57b03abc81e4a01f995cd80e888589821a91",
+  "head_exit_ok": true,
+  "head_last_line": "704714cd3a107c51c597ab1992fee11126d5071bbf8890d30962bd2d67eac26d",
+  "base_time_s": 3.635,
+  "head_time_s": 3.267,
+  "no_network_ok": true,
+  "coverage": {
+   "changed_files": [
+    "src/prime_rl/orchestrator/orchestrator.py",
+    "src/prime_rl/orchestrator/trajectories.py"
+   ],
+   "base": {
+    "changed_executable_lines": 9,
+    "executed": 9,
+    "share": 1.0
+   },
+   "head": {
+    "changed_executable_lines": 49,
+    "executed": 22,
+    "share": 0.449
+   },
+   "output_digest_base": "6e558552c7ffa15952df5bb788ff57b03abc81e4a01f995cd80e888589821a91",
+   "output_digest_head": "704714cd3a107c51c597ab1992fee11126d5071bbf8890d30962bd2d67eac26d",
+   "output_equal": false,
+   "coverage_gate_pass": false
+  },
+  "coverage_needed": 0.8,
+  "output_equal": false,
+  "pass": false,
+  "reasons": [
+   "head coverage 0.449 < 0.8"
+  ]
+ },
+ "harness_pass": false,
+ "audit": {
+  "mentions_github_pull": false,
+  "used_gh_cli": false,
+  "read_git_history": false
+ },
+ "changed_code_lines": {
+  "py": 103
+ },
+ "python_share_of_code_change": 1.0
+}

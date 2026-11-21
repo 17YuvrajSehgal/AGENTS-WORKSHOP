@@ -1,0 +1,35 @@
+{
+ "base_exit_ok": true,
+ "base_last_line": "6c39e4b4f93d256d774fa7f05be2a60c198f2681cf426aac2260cedf5e03e46d",
+ "head_exit_ok": true,
+ "head_last_line": "7ee09aad97235a2131811693c8fdb68586f78554b74482868961d2e32a7ae4ef",
+ "base_time_s": 2.002,
+ "head_time_s": 2.186,
+ "no_network_ok": true,
+ "coverage": {
+  "changed_files": [
+   "browser_use/browser/events.py",
+   "browser_use/dom/serializer/serializer.py",
+   "browser_use/dom/service.py",
+   "browser_use/dom/views.py"
+  ],
+  "base": {
+   "changed_executable_lines": 7,
+   "executed": 6,
+   "share": 0.857
+  },
+  "head": {
+   "changed_executable_lines": 30,
+   "executed": 25,
+   "share": 0.833
+  },
+  "output_digest_base": "6c39e4b4f93d256d774fa7f05be2a60c198f2681cf426aac2260cedf5e03e46d",
+  "output_digest_head": "7ee09aad97235a2131811693c8fdb68586f78554b74482868961d2e32a7ae4ef",
+  "output_equal": false,
+  "coverage_gate_pass": true
+ },
+ "coverage_needed": 0.8,
+ "output_equal": false,
+ "pass": true,
+ "reasons": []
+}

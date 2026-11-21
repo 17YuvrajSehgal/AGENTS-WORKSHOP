@@ -1,0 +1,52 @@
+{
+ "job": {
+  "order": 120,
+  "id": 3831713167,
+  "agent": "Claude_Code",
+  "repo": "lance-format/lance-graph",
+  "number": 93,
+  "api_base_sha": "2ba1faa71f995c9d0f55f3fd1abf883b8891d2b0",
+  "head_sha": "5e72d7421f83ceebb39735cc0e2a2ec7c0057a1b",
+  "created": "2026-01-20",
+  "changed_files": [
+   "python/python/knowledge_graph/store.py",
+   "python/python/lance_graph/__init__.py",
+   "python/python/tests/test_namespace.py"
+  ],
+  "n_files": 3,
+  "final_diff_files": [
+   "python/python/knowledge_graph/store.py",
+   "python/python/lance_graph/__init__.py",
+   "python/python/tests/test_namespace.py"
+  ]
+ },
+ "agent": {
+  "status": "unbuildable",
+  "reason": "new_code_only",
+  "tier": "none",
+  "uses_parallelism": false,
+  "behaviour_change_expected": false,
+  "notes": "The PR only adds new code: LanceGraphStore.infer_graph_config, lance_graph.execute_with_store and a new test file. Neither function exists in base (a search of base/src finds no matches), so no workload can run on both versions."
+ },
+ "agent_is_error": false,
+ "timed_out": false,
+ "models": [
+  "claude-opus-5-5"
+ ],
+ "list_usd": 0.08956999999999998,
+ "num_turns": 4,
+ "setup_ok": false,
+ "setup_s": 729,
+ "agent_s": 8,
+ "check": null,
+ "harness_pass": false,
+ "audit": {
+  "mentions_github_pull": false,
+  "used_gh_cli": false,
+  "read_git_history": false
+ },
+ "changed_code_lines": {
+  "py": 354
+ },
+ "python_share_of_code_change": 1.0
+}

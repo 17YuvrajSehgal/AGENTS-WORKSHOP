@@ -1,0 +1,79 @@
+{
+ "repo": "hao-li/AIDev",
+ "revision": "b37f9fd1613cfec55886105bb76721918d015dc7",
+ "tag": "v5",
+ "files": {
+  "pull_request.parquet": {
+   "bytes": 362078556,
+   "sha256": "a9341e2ef692ae4220830b046da228000becc623a1591c5634728d78c331c32b",
+   "sha256_ok": true,
+   "rows": 361296
+  },
+  "repository.parquet": {
+   "bytes": 1496533,
+   "sha256": "1c84f195fd9813c4bb2c1f2436a9dde71329348f23b5ddd7b92f66125e626f3d",
+   "sha256_ok": true,
+   "rows": 25402
+  },
+  "pr_commits.parquet": {
+   "bytes": 341101690,
+   "sha256": "381add099897bded6281b1968cc128646a6c6e223cb529d253f1cbd6b585bd21",
+   "sha256_ok": true,
+   "rows": 1718829
+  },
+  "pr_commit_details.parquet": {
+   "bytes": 12449618050,
+   "sha256": "feec2f74de1ea7a43d7b2a07daac54e02ddac4cf83808cc0f6c296ff5c95cb51",
+   "sha256_ok": true,
+   "rows": 12116310
+  },
+  "pr_timeline.parquet": {
+   "bytes": 1100479400,
+   "sha256": "12baa3224361a2cadb6e55a12e2a35e43ff2bc4e450473fcc53d676b3d49ea15",
+   "sha256_ok": true,
+   "rows": 6515552
+  },
+  "pr_reviews.parquet": {
+   "bytes": 212297906,
+   "sha256": "e825557fb4913129dea6d76f61c2ba903eb54b26a372945258d25b4fa7a7a67b",
+   "sha256_ok": true,
+   "rows": 541831
+  },
+  "pr_review_comments.parquet": {
+   "bytes": 326309123,
+   "sha256": "40c164f9bc8c7837bd501d19de62b65b46035842a8132a77560c087a896d7b61",
+   "sha256_ok": true,
+   "rows": 291248
+  },
+  "pr_comments.parquet": {
+   "bytes": 690491134,
+   "sha256": "d7795bf9b41e881ddbed1d66667959b5f10042f06c2bba5e1e41c734df3a90a3",
+   "sha256_ok": true,
+   "rows": 676098
+  },
+  "issue.parquet": {
+   "bytes": 74957881,
+   "sha256": "fc45ba381ca3566a88ffce91272dd0a37eba3fa31e681a333ef2ded85e9c3a30",
+   "sha256_ok": true,
+   "rows": 72664
+  },
+  "related_issue.parquet": {
+   "bytes": 1264494,
+   "sha256": "16a22395a2572b29345888c76aba4c39e98dc1cf79b54685a521451c469e7aef",
+   "sha256_ok": true,
+   "rows": 100050
+  },
+  "all_repository.parquet": {
+   "bytes": 58452322,
+   "sha256": "ed4dce3ec60e82c64efae8a30b019c597fd3e26e2efb5e5601ef612f45de2700",
+   "sha256_ok": true,
+   "rows": 957209
+  },
+  "all_user.parquet": {
+   "bytes": 13646451,
+   "sha256": "d56df8653b59cccae68677dd7a07fd53f987ebeb0fd96ba065d1c9a456a9d6e1",
+   "sha256_ok": true,
+   "rows": 399962
+  }
+ }
+}

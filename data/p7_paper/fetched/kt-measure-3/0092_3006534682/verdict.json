@@ -1,0 +1,79 @@
+{
+ "job": {
+  "order": 92,
+  "id": 3006534682,
+  "agent": "Devin",
+  "repo": "saturday06/VRM-Addon-for-Blender",
+  "number": 797,
+  "api_base_sha": "e4d71f1038d600870cc2b86b0c1695666a9a1126",
+  "head_sha": "9ba89e799597a3675c5c71cb10a75962403a2bb9",
+  "created": "2025-04-19",
+  "changed_files": [
+   "src/io_scene_vrm/editor/spring_bone1/handler.py"
+  ],
+  "n_files": 1,
+  "final_diff_files": [
+   "src/io_scene_vrm/editor/spring_bone1/handler.py"
+  ]
+ },
+ "agent": {
+  "status": "built",
+  "reason": "none",
+  "tier": "repo_tests",
+  "uses_parallelism": false,
+  "behaviour_change_expected": false,
+  "notes": "The project pins bpy==3.6.*, but PyPI no longer has it (only bpy>=4.2, which needs Python 3.11). I rebuilt both venvs by hand with Python 3.11: bpy 4.4 at the exclude-newer date, numpy<2 (bpy's compiled modules fail under numpy 2), coverage, and the add-on installed editable with --no-deps. These manual steps are recorded in rebuild.log. The workload registers the add-on in bpy and runs the repo's 14 spring-bone tests from tests/blender_test_spring_bone.py. It then simulates 4 armatures, each with a 12-joint chain and 3 sphere colliders, for 1000 steps of update_spring_bone1_animation, and prints a SHA-256 digest of the pose-bone heads. check.py passes: every changed line runs on both sides (18 on head, 3 on base), the outputs are equal, base takes 3.3 s, and the run without network works."
+ },
+ "agent_is_error": false,
+ "timed_out": false,
+ "models": [
+  "claude-opus-5-5"
+ ],
+ "list_usd": 0.4334526000000001,
+ "num_turns": 18,
+ "setup_ok": false,
+ "setup_s": 5,
+ "agent_s": 120,
+ "check": {
+  "base_exit_ok": true,
+  "base_last_line": "Error: Not freed memory blocks: 39004, total unfreed memory 9.610786 MB",
+  "head_exit_ok": true,
+  "head_last_line": "Error: Not freed memory blocks: 39004, total unfreed memory 9.610786 MB",
+  "base_time_s": 3.224,
+  "head_time_s": 3.392,
+  "no_network_ok": true,
+  "coverage": {
+   "changed_files": [
+    "src/io_scene_vrm/editor/spring_bone1/handler.py"
+   ],
+   "base": {
+    "changed_executable_lines": 3,
+    "executed": 3,
+    "share": 1.0
+   },
+   "head": {
+    "changed_executable_lines": 18,
+    "executed": 18,
+    "share": 1.0
+   },
+   "output_digest_base": "Error: Not freed memory blocks: 39004, total unfreed memory 9.610786 MB",
+   "output_digest_head": "Error: Not freed memory blocks: 39004, total unfreed memory 9.610786 MB",
+   "output_equal": true,
+   "coverage_gate_pass": true
+  },
+  "coverage_needed": 0.8,
+  "output_equal": true,
+  "pass": true,
+  "reasons": []
+ },
+ "harness_pass": true,
+ "audit": {
+  "mentions_github_pull": false,
+  "used_gh_cli": false,
+  "read_git_history": false
+ },
+ "changed_code_lines": {
+  "py": 72
+ },
+ "python_share_of_code_change": 1.0
+}

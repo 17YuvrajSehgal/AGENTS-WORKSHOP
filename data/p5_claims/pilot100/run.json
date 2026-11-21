@@ -1,0 +1,27 @@
+{
+ "codebook": "codebook-claims-v0.md",
+ "model": "claude-haiku-5-5",
+ "flags": [
+  "-p",
+  "--system-prompt-file",
+  "C:\\workplace\\JiraAndLogs\\AGENTS-WORKSHOP\\data\\p5_claims\\pilot100\\cc_cwd\\system.txt",
+  "--json-schema",
+  "{\"type\": \"object\", \"properties\": {\"mechanisms\": {\"type\": \"array\", \"items\": {\"type\": \"object\", \"properties\": {\"id\": {\"type\": \"string\", \"enum\": [\"avoid_repeated_io\", \"cache_results\", \"batch_calls\", \"fewer_db_queries\", \"faster_db_query\", \"fewer_processes\", \"less_output\", \"less_memory\", \"algorithmic\", \"vectorize_locality\", \"less_locking\", \"parallelize\", \"async_io\", \"lazy_loading\", \"fewer_syscalls\", \"io_granularity\", \"smaller_payload\", \"gpu_accelerator\", \"other\"]}, \"quote\": {\"type\": \"string\"}, \"other_description\": {\"type\": \"string\"}}, \"required\": [\"id\", \"quote\", \"other_description\"], \"additionalProperties\": false}}, \"mechanism_stated\": {\"type\": \"boolean\"}, \"claimed_effect\": {\"type\": \"string\"}, \"evidence\": {\"type\": \"string\", \"enum\": [\"benchmark\", \"profile\", \"test\", \"reasoning\", \"none\"]}, \"targets\": {\"type\": \"array\", \"items\": {\"type\": \"string\"}}}, \"required\": [\"mechanisms\", \"mechanism_stated\", \"claimed_effect\", \"evidence\", \"targets\"], \"additionalProperties\": false}",
+  "--settings",
+  "{\"disableAllHooks\": true}",
+  "--model",
+  "claude-haiku-5-5",
+  "--effort",
+  "low",
+  "--tools",
+  "",
+  "--strict-mcp-config",
+  "--setting-sources",
+  "",
+  "--no-session-persistence",
+  "--exclude-dynamic-system-prompt-sections",
+  "--output-format",
+  "json"
+ ],
+ "n": 100
+}

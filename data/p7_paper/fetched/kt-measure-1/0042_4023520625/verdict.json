@@ -1,0 +1,87 @@
+{
+ "job": {
+  "order": 42,
+  "id": 4023520625,
+  "agent": "Devin",
+  "repo": "PrefectHQ/prefect",
+  "number": 20965,
+  "api_base_sha": "f8874f41fd2bbdb282f1586dfa355a32a6fe7135",
+  "head_sha": "af4cae1511a75e3d876143e05ce40e5bc6dc6538",
+  "created": "2026-03-04",
+  "changed_files": [
+   ".github/workflows/dbt-benchmarks.yaml",
+   "docs/v3/how-to-guides/deployments/prefect-yaml.mdx",
+   "src/integrations/prefect-dbt/benches/bench_orchestrator.py",
+   "src/integrations/prefect-dbt/prefect_dbt/core/_orchestrator.py",
+   "src/integrations/prefect-dbt/tests/core/test_orchestrator_per_node.py",
+   "src/integrations/prefect-dbt/tests/core/test_orchestrator_plan.py"
+  ],
+  "n_files": 6,
+  "final_diff_files": [
+   "src/integrations/prefect-dbt/prefect_dbt/core/_orchestrator.py",
+   "src/integrations/prefect-dbt/tests/core/test_orchestrator_plan.py"
+  ]
+ },
+ "agent": {
+  "status": "built",
+  "reason": "none",
+  "tier": "own_calls",
+  "uses_parallelism": false,
+  "behaviour_change_expected": false,
+  "notes": "check.py does NOT pass. It fails only on head coverage (0.398 < 0.8). Everything else passes: base coverage 0.824, outputs equal, no-network run OK, base run time ~2.6 s. Most of the added head lines are the new plan() method and BuildPlan class, which don't exist in base, so a workload that runs on both versions can't call them. The selector branch of _prepare_build would need `dbt ls` with a dbt adapter, and none is installed. The workload covers the refactored PrefectDbtOrchestrator.run_build path (base inline pipeline vs head _prepare_build + _run_execution). It runs in PER_WAVE mode on a synthetic 1072-node manifest with IMMEDIATE, DEFERRED and SKIP test strategies, full_refresh on and off, and extra_cli_args validation, including a rejected flag. The dbt executor is replaced by a mock that only stands in for dbt execution; settings are a mock and PREFECT_HOME points to /tmp. The repo's own benchmark needs Postgres. The 'built' status is a judgement call made despite the failed check: the refactored path is measurable, but the new-only code is not."
+ },
+ "agent_is_error": false,
+ "timed_out": false,
+ "models": [
+  "claude-opus-5-5"
+ ],
+ "list_usd": 0.42830879999999993,
+ "num_turns": 16,
+ "setup_ok": true,
+ "setup_s": 21,
+ "agent_s": 195,
+ "check": {
+  "base_exit_ok": true,
+  "base_last_line": "54f690dc5eb4cc5f761b56f4694e20037d31cd522d0f1503dc28c5f974286224",
+  "head_exit_ok": true,
+  "head_last_line": "54f690dc5eb4cc5f761b56f4694e20037d31cd522d0f1503dc28c5f974286224",
+  "base_time_s": 2.49,
+  "head_time_s": 2.509,
+  "no_network_ok": true,
+  "coverage": {
+   "changed_files": [
+    "src/integrations/prefect-dbt/prefect_dbt/core/_orchestrator.py"
+   ],
+   "base": {
+    "changed_executable_lines": 34,
+    "executed": 28,
+    "share": 0.824
+   },
+   "head": {
+    "changed_executable_lines": 108,
+    "executed": 43,
+    "share": 0.398
+   },
+   "output_digest_base": "54f690dc5eb4cc5f761b56f4694e20037d31cd522d0f1503dc28c5f974286224",
+   "output_digest_head": "54f690dc5eb4cc5f761b56f4694e20037d31cd522d0f1503dc28c5f974286224",
+   "output_equal": true,
+   "coverage_gate_pass": false
+  },
+  "coverage_needed": 0.8,
+  "output_equal": true,
+  "pass": false,
+  "reasons": [
+   "head coverage 0.398 < 0.8"
+  ]
+ },
+ "harness_pass": false,
+ "audit": {
+  "mentions_github_pull": false,
+  "used_gh_cli": false,
+  "read_git_history": false
+ },
+ "changed_code_lines": {
+  "py": 1218
+ },
+ "python_share_of_code_change": 1.0
+}

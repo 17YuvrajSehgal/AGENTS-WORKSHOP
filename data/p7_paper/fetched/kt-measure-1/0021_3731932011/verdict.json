@@ -1,0 +1,105 @@
+{
+ "job": {
+  "order": 21,
+  "id": 3731932011,
+  "agent": "Copilot",
+  "repo": "OliverZhaohaibin/iPhotron-LocalPhotoAlbumManager",
+  "number": 453,
+  "api_base_sha": "54ed42cfca140b981b692e240a6d71fc39f39379",
+  "head_sha": "9f0404b31d09794ea0927351f2f0799f5a6fea2a",
+  "created": "2025-12-15",
+  "changed_files": [
+   "src/iPhoto/cache/index_store.py",
+   "src/iPhoto/core/merger.py",
+   "src/iPhoto/gui/ui/models/asset_list_model.py",
+   "src/iPhoto/gui/ui/models/data_source.py",
+   "src/iPhoto/gui/ui/tasks/asset_loader_worker.py",
+   "src/iPhoto/gui/ui/tasks/page_fetch_worker.py",
+   "src/iPhoto/io/cursor_fetcher.py",
+   "src/iPhoto/tests/gui/ui/models/test_asset_list_model_paging.py",
+   "src/iPhoto/tests/gui/ui/models/test_backpressure.py",
+   "tests/cache/test_index_store_features.py",
+   "tests/core/test_photo_stream_merger.py"
+  ],
+  "n_files": 11,
+  "final_diff_files": [
+   "src/iPhoto/cache/index_store.py",
+   "src/iPhoto/core/merger.py",
+   "src/iPhoto/gui/ui/models/asset_list_model.py",
+   "src/iPhoto/gui/ui/models/data_source.py",
+   "src/iPhoto/gui/ui/tasks/asset_loader_worker.py",
+   "src/iPhoto/gui/ui/tasks/page_fetch_worker.py",
+   "src/iPhoto/io/cursor_fetcher.py",
+   "src/iPhoto/tests/gui/ui/models/test_asset_list_model_paging.py",
+   "src/iPhoto/tests/gui/ui/models/test_backpressure.py",
+   "tests/cache/test_index_store_features.py",
+   "tests/core/test_photo_stream_merger.py"
+  ]
+ },
+ "agent": {
+  "status": "built",
+  "reason": "none",
+  "tier": "own_calls",
+  "uses_parallelism": true,
+  "behaviour_change_expected": true,
+  "notes": "Real SQLite IndexStores for 3 albums of 1200 rows each, plus a combined library index. Calls AssetLoaderWorker._build_payload_chunks directly. Loads a single album, a favourites-filtered album and the whole library through a real AssetListModel on a Qt event loop (QThreadPool workers), with only a fake facade and library manager. The filter is set via model._active_filter because set_filter_mode starts its own reload. Coverage 78.5% head / 67% base; 2.7 s on base. Row counts match on both sides. The digest differs because the final progress signal changed: base (1129,1129) counts rows whose files are missing, head (1026,1129) counts only returned entries. Head logs duplicate-path warnings when loading the whole library; not investigated, and the counts still match."
+ },
+ "agent_is_error": false,
+ "timed_out": false,
+ "models": [
+  "claude-opus-5-5"
+ ],
+ "list_usd": 0.6324256,
+ "num_turns": 20,
+ "setup_ok": true,
+ "setup_s": 9,
+ "agent_s": 170,
+ "check": {
+  "base_exit_ok": true,
+  "base_last_line": "7cfdf59e0e3231f603bc91e3ef23a36d10e2693ec5b9cb08b84c9bd9ae1aec2a",
+  "head_exit_ok": true,
+  "head_last_line": "e21d83b56918c4763f709b58c32b75929528f43ec4e79bc18f653e0579f533b7",
+  "base_time_s": 3.393,
+  "head_time_s": 2.688,
+  "no_network_ok": true,
+  "coverage": {
+   "changed_files": [
+    "src/iPhoto/cache/index_store.py",
+    "src/iPhoto/core/merger.py",
+    "src/iPhoto/gui/ui/models/asset_list_model.py",
+    "src/iPhoto/gui/ui/models/data_source.py",
+    "src/iPhoto/gui/ui/tasks/asset_loader_worker.py",
+    "src/iPhoto/gui/ui/tasks/page_fetch_worker.py",
+    "src/iPhoto/io/cursor_fetcher.py"
+   ],
+   "base": {
+    "changed_executable_lines": 250,
+    "executed": 168,
+    "share": 0.672
+   },
+   "head": {
+    "changed_executable_lines": 395,
+    "executed": 310,
+    "share": 0.785
+   },
+   "output_digest_base": "7cfdf59e0e3231f603bc91e3ef23a36d10e2693ec5b9cb08b84c9bd9ae1aec2a",
+   "output_digest_head": "e21d83b56918c4763f709b58c32b75929528f43ec4e79bc18f653e0579f533b7",
+   "output_equal": false,
+   "coverage_gate_pass": false
+  },
+  "coverage_needed": 0.5,
+  "output_equal": false,
+  "pass": true,
+  "reasons": []
+ },
+ "harness_pass": true,
+ "audit": {
+  "mentions_github_pull": false,
+  "used_gh_cli": false,
+  "read_git_history": false
+ },
+ "changed_code_lines": {
+  "py": 1478
+ },
+ "python_share_of_code_change": 1.0
+}

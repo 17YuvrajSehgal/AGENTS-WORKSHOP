@@ -1,0 +1,32 @@
+{
+ "base_exit_ok": true,
+ "base_last_line": "e11dd139291d34509de00f82a9319d84b977e381dcd927add76bbff47dd15f17",
+ "head_exit_ok": true,
+ "head_last_line": "c35538ebe83a7c79f0c3df0bc32948f276332d875368bd6771ac6c6a00ca93b2",
+ "base_time_s": 1.957,
+ "head_time_s": 2.374,
+ "no_network_ok": true,
+ "coverage": {
+  "changed_files": [
+   "cli/nao_core/version.py"
+  ],
+  "base": {
+   "changed_executable_lines": 11,
+   "executed": 11,
+   "share": 1.0
+  },
+  "head": {
+   "changed_executable_lines": 23,
+   "executed": 20,
+   "share": 0.87
+  },
+  "output_digest_base": "e11dd139291d34509de00f82a9319d84b977e381dcd927add76bbff47dd15f17",
+  "output_digest_head": "c35538ebe83a7c79f0c3df0bc32948f276332d875368bd6771ac6c6a00ca93b2",
+  "output_equal": false,
+  "coverage_gate_pass": true
+ },
+ "coverage_needed": 0.8,
+ "output_equal": false,
+ "pass": true,
+ "reasons": []
+}

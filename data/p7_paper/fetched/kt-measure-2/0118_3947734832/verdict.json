@@ -1,0 +1,92 @@
+{
+ "job": {
+  "order": 118,
+  "id": 3947734832,
+  "agent": "Claude_Code",
+  "repo": "shotgun-sh/shotgun",
+  "number": 461,
+  "api_base_sha": "2ee02137bf54a74012e04997380d081b5524f237",
+  "head_sha": "16c58addb9c78a89203545996516e081e32c327b",
+  "created": "2026-02-16",
+  "changed_files": [
+   "src/shotgun/agents/context_analyzer/analyzer.py",
+   "src/shotgun/agents/conversation/history/compaction.py",
+   "src/shotgun/agents/conversation/history/history_processors.py",
+   "src/shotgun/agents/conversation/history/token_estimation.py",
+   "test/unit/test_compaction.py",
+   "test/unit/test_history_processors.py"
+  ],
+  "n_files": 6,
+  "final_diff_files": [
+   "src/shotgun/agents/context_analyzer/analyzer.py",
+   "src/shotgun/agents/conversation/history/compaction.py",
+   "src/shotgun/agents/conversation/history/history_processors.py",
+   "src/shotgun/agents/conversation/history/token_estimation.py",
+   "test/unit/test_compaction.py",
+   "test/unit/test_history_processors.py"
+  ]
+ },
+ "agent": {
+  "status": "built",
+  "reason": "none",
+  "tier": "own_calls",
+  "uses_parallelism": false,
+  "behaviour_change_expected": false,
+  "notes": "Runs apply_persistent_compaction, token_limit_compactor (no-summary path, which uses estimate_tokens_hybrid in head) and ContextAnalyzer._allocate_tokens_from_usage on synthetic conversations, with and without usage data and with and without a trailing request. Uses an OpenAI ModelConfig counted locally with tiktoken and a very high token limit, so no LLM calls are made. Coverage of changed lines: 8/8 base, 33/34 head. Run time: 6.4 s base, 4.9 s head. Outputs are identical."
+ },
+ "agent_is_error": false,
+ "timed_out": false,
+ "models": [
+  "claude-opus-5-5"
+ ],
+ "list_usd": 0.31876920000000003,
+ "num_turns": 10,
+ "setup_ok": true,
+ "setup_s": 5,
+ "agent_s": 114,
+ "check": {
+  "base_exit_ok": true,
+  "base_last_line": "f924c6d0e007dd10920871f099ec0b7618f4898581427d24de77a060a2d53030",
+  "head_exit_ok": true,
+  "head_last_line": "f924c6d0e007dd10920871f099ec0b7618f4898581427d24de77a060a2d53030",
+  "base_time_s": 3.811,
+  "head_time_s": 3.255,
+  "no_network_ok": true,
+  "coverage": {
+   "changed_files": [
+    "src/shotgun/agents/context_analyzer/analyzer.py",
+    "src/shotgun/agents/conversation/history/compaction.py",
+    "src/shotgun/agents/conversation/history/history_processors.py",
+    "src/shotgun/agents/conversation/history/token_estimation.py"
+   ],
+   "base": {
+    "changed_executable_lines": 8,
+    "executed": 8,
+    "share": 1.0
+   },
+   "head": {
+    "changed_executable_lines": 34,
+    "executed": 33,
+    "share": 0.971
+   },
+   "output_digest_base": "f924c6d0e007dd10920871f099ec0b7618f4898581427d24de77a060a2d53030",
+   "output_digest_head": "f924c6d0e007dd10920871f099ec0b7618f4898581427d24de77a060a2d53030",
+   "output_equal": true,
+   "coverage_gate_pass": true
+  },
+  "coverage_needed": 0.8,
+  "output_equal": true,
+  "pass": true,
+  "reasons": []
+ },
+ "harness_pass": true,
+ "audit": {
+  "mentions_github_pull": false,
+  "used_gh_cli": false,
+  "read_git_history": false
+ },
+ "changed_code_lines": {
+  "py": 337
+ },
+ "python_share_of_code_change": 1.0
+}

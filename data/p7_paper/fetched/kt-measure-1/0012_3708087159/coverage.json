@@ -1,0 +1,19 @@
+{
+ "changed_files": [
+  "src/iPhoto/gui/ui/models/proxy_filter.py"
+ ],
+ "base": {
+  "changed_executable_lines": 15,
+  "executed": 15,
+  "share": 1.0
+ },
+ "head": {
+  "changed_executable_lines": 9,
+  "executed": 9,
+  "share": 1.0
+ },
+ "output_digest_base": "3a39269b2b3bfa01f20f33053a2ce0b3bdfb3041cfe0a4b26927d832386b6c74",
+ "output_digest_head": "3a39269b2b3bfa01f20f33053a2ce0b3bdfb3041cfe0a4b26927d832386b6c74",
+ "output_equal": true,
+ "coverage_gate_pass": true
+}

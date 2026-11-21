@@ -1,0 +1,32 @@
+{
+ "base_exit_ok": true,
+ "base_last_line": "b3b24b03139843f03de7da09838cf00a53637874ec8009de87180770cd335403",
+ "head_exit_ok": true,
+ "head_last_line": "92dd8cd0dd14690c0f3d4693031337a1ef5aec47b16bfb6e0959a7937672de82",
+ "base_time_s": 3.397,
+ "head_time_s": 3.237,
+ "no_network_ok": true,
+ "coverage": {
+  "changed_files": [
+   "mlx_vlm/turboquant.py"
+  ],
+  "base": {
+   "changed_executable_lines": 34,
+   "executed": 30,
+   "share": 0.882
+  },
+  "head": {
+   "changed_executable_lines": 201,
+   "executed": 140,
+   "share": 0.697
+  },
+  "output_digest_base": "b3b24b03139843f03de7da09838cf00a53637874ec8009de87180770cd335403",
+  "output_digest_head": "92dd8cd0dd14690c0f3d4693031337a1ef5aec47b16bfb6e0959a7937672de82",
+  "output_equal": false,
+  "coverage_gate_pass": false
+ },
+ "coverage_needed": 0.5,
+ "output_equal": false,
+ "pass": true,
+ "reasons": []
+}

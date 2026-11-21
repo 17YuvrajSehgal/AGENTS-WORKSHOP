@@ -1,0 +1,94 @@
+{
+ "job": {
+  "order": 39,
+  "id": 3518852481,
+  "agent": "Claude_Code",
+  "repo": "biopython/biopython",
+  "number": 5085,
+  "api_base_sha": "5216add5459ff29db18f9ee0ac5207159b5c66b7",
+  "head_sha": "1085d47467f72c65edfc4af7818267a3dab0be92",
+  "created": "2025-10-15",
+  "changed_files": [
+   "Bio/SeqUtils/MeltingTemp.py",
+   "Bio/SeqUtils/_meltingtemp_complete.c",
+   "Bio/SeqUtils/_meltingtemp_exact.c",
+   "Bio/SeqUtils/_meltingtemp_exact.pyi",
+   "Bio/SeqUtils/_thermodynamic_tables.h",
+   "Tests/test_MeltingTemp_C.py",
+   "setup.py"
+  ],
+  "n_files": 7,
+  "final_diff_files": [
+   "Bio/SeqUtils/MeltingTemp.py",
+   "Bio/SeqUtils/_meltingtemp_complete.c",
+   "Bio/SeqUtils/_meltingtemp_exact.c",
+   "Bio/SeqUtils/_meltingtemp_exact.pyi",
+   "Bio/SeqUtils/_thermodynamic_tables.h",
+   "Tests/test_MeltingTemp_C.py",
+   "setup.py"
+  ]
+ },
+ "agent": {
+  "status": "built",
+  "reason": "none",
+  "tier": "own_calls",
+  "uses_parallelism": false,
+  "behaviour_change_expected": false,
+  "notes": "Calls Bio.SeqUtils.MeltingTemp.Tm_NN 48k times on seeded random ACGT sequences (15-60 nt) across saltcorr 0-7 and varied salt concentrations, using str, lowercase str and Seq inputs. On head this goes through the new C extension _meltingtemp_exact. Every tenth call passes a float saltcorr, which the C function rejects, so head runs the new fallback-to-Python branch. Head coverage is 12/14 changed lines; the missed lines are the ImportError branch, which can't run while the extension is present. Outputs are equal (rounded to 6 decimals). Base 3.0 s, head 1.2 s. The C code segfaults on sequences over 10,000 nt and on '' passed directly to the C function, and gives a different Tm than Python for sequences containing N; the workload avoids these inputs."
+ },
+ "agent_is_error": false,
+ "timed_out": false,
+ "models": [
+  "claude-opus-5-5"
+ ],
+ "list_usd": 0.23221799999999998,
+ "num_turns": 11,
+ "setup_ok": true,
+ "setup_s": 35,
+ "agent_s": 222,
+ "check": {
+  "base_exit_ok": true,
+  "base_last_line": "8fee580c08dfa35ee27fa6c41e67078a3bb0177ff5883be77cd0e7dc7b1f195a",
+  "head_exit_ok": true,
+  "head_last_line": "8fee580c08dfa35ee27fa6c41e67078a3bb0177ff5883be77cd0e7dc7b1f195a",
+  "base_time_s": 1.627,
+  "head_time_s": 0.732,
+  "no_network_ok": true,
+  "coverage": {
+   "changed_files": [
+    "Bio/SeqUtils/MeltingTemp.py",
+    "setup.py"
+   ],
+   "base": {
+    "changed_executable_lines": 0,
+    "executed": 0,
+    "share": null
+   },
+   "head": {
+    "changed_executable_lines": 14,
+    "executed": 12,
+    "share": 0.857
+   },
+   "output_digest_base": "8fee580c08dfa35ee27fa6c41e67078a3bb0177ff5883be77cd0e7dc7b1f195a",
+   "output_digest_head": "8fee580c08dfa35ee27fa6c41e67078a3bb0177ff5883be77cd0e7dc7b1f195a",
+   "output_equal": true,
+   "coverage_gate_pass": true
+  },
+  "coverage_needed": 0.8,
+  "output_equal": true,
+  "pass": true,
+  "reasons": []
+ },
+ "harness_pass": true,
+ "audit": {
+  "mentions_github_pull": false,
+  "used_gh_cli": false,
+  "read_git_history": false
+ },
+ "changed_code_lines": {
+  "py": 238,
+  "c": 1106,
+  "h": 436
+ },
+ "python_share_of_code_change": 0.134
+}

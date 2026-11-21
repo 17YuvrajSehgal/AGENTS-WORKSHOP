@@ -1,0 +1,35 @@
+{
+ "changed_files": [
+  "datasette/app.py",
+  "datasette/cli.py",
+  "datasette/default_actions.py",
+  "datasette/default_menu_links.py",
+  "datasette/default_permissions.py",
+  "datasette/filters.py",
+  "datasette/hookspecs.py",
+  "datasette/permissions.py",
+  "datasette/plugins.py",
+  "datasette/resources.py",
+  "datasette/utils/actions_sql.py",
+  "datasette/utils/permissions.py",
+  "datasette/views/database.py",
+  "datasette/views/index.py",
+  "datasette/views/row.py",
+  "datasette/views/special.py",
+  "datasette/views/table.py"
+ ],
+ "base": {
+  "changed_executable_lines": 259,
+  "executed": 131,
+  "share": 0.506
+ },
+ "head": {
+  "changed_executable_lines": 467,
+  "executed": 327,
+  "share": 0.7
+ },
+ "output_digest_base": "4e36ae41041cb9b9cb77115d43e58c43c284168159b744df0060f4b1756070d4",
+ "output_digest_head": "22f161c89fabb5d1037f7253825730f1e37474bcd32eb93a43102380a855ea4a",
+ "output_equal": false,
+ "coverage_gate_pass": false
+}

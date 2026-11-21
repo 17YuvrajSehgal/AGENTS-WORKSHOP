@@ -1,0 +1,88 @@
+{
+ "job": {
+  "order": 3,
+  "id": 3716935262,
+  "agent": "Claude_Code",
+  "repo": "nexi-lab/nexus",
+  "number": 624,
+  "api_base_sha": "ce25cbdca44b7179012c7a296c8d709e4de31ffe",
+  "head_sha": "ddf53b67f5aa9b2937f8e8057ec5a3e1fcfcd4c6",
+  "created": "2025-12-10",
+  "changed_files": [
+   "docker/nexus-runtime.Dockerfile",
+   "src/nexus/core/nexus_fs_search.py",
+   "src/nexus/fuse/operations.py",
+   "tests/unit/core/test_list_connector_sizes.py",
+   "tests/unit/fuse/test_fuse_operations.py"
+  ],
+  "n_files": 5,
+  "final_diff_files": [
+   "docker/nexus-runtime.Dockerfile",
+   "src/nexus/core/nexus_fs_search.py",
+   "src/nexus/fuse/operations.py",
+   "tests/unit/core/test_list_connector_sizes.py",
+   "tests/unit/fuse/test_fuse_operations.py"
+  ]
+ },
+ "agent": {
+  "status": "built",
+  "reason": "none",
+  "tier": "own_calls",
+  "uses_parallelism": false,
+  "behaviour_change_expected": true,
+  "notes": "Rebuilt both envs with Python 3.13 (package requires >=3.13) and installed fusepy in both. Workload lists a mocked user-scoped connector mount on a real NexusFS/SQLite with file_paths sizes (head returns real sizes, base returns 0), and runs NexusFUSEOperations._get_metadata/getattr against a stand-in remote FS client (head MetadataObj has size; base falls back to reading content). Covers all changed lines on both sides; digests differ as expected."
+ },
+ "agent_is_error": false,
+ "timed_out": false,
+ "models": [
+  "claude-opus-5-5"
+ ],
+ "list_usd": 0.32549819999999996,
+ "num_turns": 11,
+ "setup_ok": false,
+ "setup_s": 7,
+ "agent_s": 138,
+ "check": {
+  "base_exit_ok": true,
+  "base_last_line": "b1bbce754ddd4954c81bb5b17142b269066e0a1aa53588dfb61824e6b4d8b25f",
+  "head_exit_ok": true,
+  "head_last_line": "6d9c98e1805533cc14cd7ac98629ae60fa0ee1325aac7cf3b5fc76561e0ea3dd",
+  "base_time_s": 3.529,
+  "head_time_s": 5.347,
+  "no_network_ok": true,
+  "coverage": {
+   "changed_files": [
+    "src/nexus/core/nexus_fs_search.py",
+    "src/nexus/fuse/operations.py"
+   ],
+   "base": {
+    "changed_executable_lines": 1,
+    "executed": 1,
+    "share": 1.0
+   },
+   "head": {
+    "changed_executable_lines": 7,
+    "executed": 7,
+    "share": 1.0
+   },
+   "output_digest_base": "b1bbce754ddd4954c81bb5b17142b269066e0a1aa53588dfb61824e6b4d8b25f",
+   "output_digest_head": "6d9c98e1805533cc14cd7ac98629ae60fa0ee1325aac7cf3b5fc76561e0ea3dd",
+   "output_equal": false,
+   "coverage_gate_pass": true
+  },
+  "coverage_needed": 0.8,
+  "output_equal": false,
+  "pass": true,
+  "reasons": []
+ },
+ "harness_pass": true,
+ "audit": {
+  "mentions_github_pull": false,
+  "used_gh_cli": false,
+  "read_git_history": false
+ },
+ "changed_code_lines": {
+  "py": 462
+ },
+ "python_share_of_code_change": 1.0
+}

@@ -1,0 +1,97 @@
+{
+ "job": {
+  "order": 134,
+  "id": 4160998324,
+  "agent": "Claude_Code",
+  "repo": "HKUDS/LightRAG",
+  "number": 2853,
+  "api_base_sha": "16a2d74ca37bb6dae8d3f309226e0efa66c1c6e2",
+  "head_sha": "3bd56e550eca33a7143233b91086a6887c6d90b6",
+  "created": "2026-03-28",
+  "changed_files": [
+   "lightrag/base.py",
+   "lightrag/kg/json_doc_status_impl.py",
+   "lightrag/kg/mongo_impl.py",
+   "lightrag/kg/opensearch_impl.py",
+   "lightrag/kg/postgres_impl.py",
+   "lightrag/kg/redis_impl.py",
+   "lightrag/lightrag.py"
+  ],
+  "n_files": 7,
+  "final_diff_files": [
+   "lightrag/base.py",
+   "lightrag/kg/json_doc_status_impl.py",
+   "lightrag/kg/mongo_impl.py",
+   "lightrag/kg/opensearch_impl.py",
+   "lightrag/kg/postgres_impl.py",
+   "lightrag/kg/redis_impl.py",
+   "lightrag/lightrag.py"
+  ]
+ },
+ "agent": {
+  "status": "built",
+  "reason": "none",
+  "tier": "own_calls",
+  "uses_parallelism": false,
+  "behaviour_change_expected": false,
+  "notes": "Exercises the JsonDocStatusStorage.get_docs_by_status/get_docs_by_statuses change (20k seeded docs, all statuses) and both changed fetch sites in LightRAG.apipeline_process_enqueue_documents: empty-queue runs plus 3 concurrent ainsert calls with stub LLM/embedding to trigger request_pending. Postgres/Mongo/Redis/OpenSearch changes need external DB servers and are not covered. Error branches are uncovered because the trigger input crashes base. Coverage 0.875 base / 0.833 head; base and head outputs are equal."
+ },
+ "agent_is_error": false,
+ "timed_out": false,
+ "models": [
+  "claude-opus-5-5"
+ ],
+ "list_usd": 0.3957284,
+ "num_turns": 16,
+ "setup_ok": true,
+ "setup_s": 5,
+ "agent_s": 239,
+ "check": {
+  "base_exit_ok": true,
+  "base_last_line": "6db9e7b5bddee49db07f47b7dc979d053e350b279af94f65eb11fd970c11e100",
+  "head_exit_ok": true,
+  "head_last_line": "6db9e7b5bddee49db07f47b7dc979d053e350b279af94f65eb11fd970c11e100",
+  "base_time_s": 2.753,
+  "head_time_s": 2.714,
+  "no_network_ok": true,
+  "coverage": {
+   "changed_files": [
+    "lightrag/base.py",
+    "lightrag/kg/json_doc_status_impl.py",
+    "lightrag/kg/mongo_impl.py",
+    "lightrag/kg/opensearch_impl.py",
+    "lightrag/kg/postgres_impl.py",
+    "lightrag/kg/redis_impl.py",
+    "lightrag/lightrag.py"
+   ],
+   "base": {
+    "changed_executable_lines": 24,
+    "executed": 21,
+    "share": 0.875
+   },
+   "head": {
+    "changed_executable_lines": 24,
+    "executed": 20,
+    "share": 0.833
+   },
+   "output_digest_base": "6db9e7b5bddee49db07f47b7dc979d053e350b279af94f65eb11fd970c11e100",
+   "output_digest_head": "6db9e7b5bddee49db07f47b7dc979d053e350b279af94f65eb11fd970c11e100",
+   "output_equal": true,
+   "coverage_gate_pass": true
+  },
+  "coverage_needed": 0.8,
+  "output_equal": true,
+  "pass": true,
+  "reasons": []
+ },
+ "harness_pass": true,
+ "audit": {
+  "mentions_github_pull": false,
+  "used_gh_cli": false,
+  "read_git_history": false
+ },
+ "changed_code_lines": {
+  "py": 600
+ },
+ "python_share_of_code_change": 1.0
+}

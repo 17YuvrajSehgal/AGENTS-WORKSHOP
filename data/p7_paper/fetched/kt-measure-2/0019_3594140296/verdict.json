@@ -1,0 +1,93 @@
+{
+ "job": {
+  "order": 19,
+  "id": 3594140296,
+  "agent": "Claude_Code",
+  "repo": "nexi-lab/nexus",
+  "number": 412,
+  "api_base_sha": "1706a84afbc3a605b4533ae6c8e34ac83b82f732",
+  "head_sha": "68c341966d253aef44de7da40aff5e33d9cdaf21",
+  "created": "2025-11-06",
+  "changed_files": [
+   "Dockerfile",
+   "docker-entrypoint.sh",
+   "src/nexus/core/nexus_fs.py",
+   "src/nexus/core/sandbox_docker_provider.py",
+   "src/nexus/core/sandbox_manager.py",
+   "src/nexus/server/protocol.py"
+  ],
+  "n_files": 6,
+  "final_diff_files": [
+   "Dockerfile",
+   "docker-entrypoint.sh",
+   "src/nexus/core/nexus_fs.py",
+   "src/nexus/core/sandbox_docker_provider.py",
+   "src/nexus/core/sandbox_manager.py",
+   "src/nexus/server/protocol.py"
+  ]
+ },
+ "agent": {
+  "status": "built",
+  "reason": "none",
+  "tier": "own_calls",
+  "uses_parallelism": false,
+  "behaviour_change_expected": true,
+  "notes": "Installed docker==7.1.0 in both venvs. Workload drives NexusFS.sandbox_create/sandbox_list -> SandboxManager -> DockerSandboxProvider (real) with an in-memory stand-in Docker client and SQLite metadata. Head passes sanitized container names to containers.run (base passes none), so digests differ by design. Status-filter body uncovered because base lacks the status param."
+ },
+ "agent_is_error": false,
+ "timed_out": false,
+ "models": [
+  "claude-opus-5-5"
+ ],
+ "list_usd": 0.321345,
+ "num_turns": 11,
+ "setup_ok": true,
+ "setup_s": 8,
+ "agent_s": 193,
+ "check": {
+  "base_exit_ok": true,
+  "base_last_line": "31ad728c755f310f10ca3993a10a91a3f5e1fcf0bad6033c03710e94d4e2dd7a",
+  "head_exit_ok": true,
+  "head_last_line": "f644a6778e600bb5286ef19c2efcf08d6105afa4e1c2d2a2f798266aee46cf19",
+  "base_time_s": 5.393,
+  "head_time_s": 5.303,
+  "no_network_ok": true,
+  "coverage": {
+   "changed_files": [
+    "src/nexus/core/nexus_fs.py",
+    "src/nexus/core/sandbox_docker_provider.py",
+    "src/nexus/core/sandbox_manager.py",
+    "src/nexus/server/protocol.py"
+   ],
+   "base": {
+    "changed_executable_lines": 1,
+    "executed": 1,
+    "share": 1.0
+   },
+   "head": {
+    "changed_executable_lines": 13,
+    "executed": 12,
+    "share": 0.923
+   },
+   "output_digest_base": "31ad728c755f310f10ca3993a10a91a3f5e1fcf0bad6033c03710e94d4e2dd7a",
+   "output_digest_head": "f644a6778e600bb5286ef19c2efcf08d6105afa4e1c2d2a2f798266aee46cf19",
+   "output_equal": false,
+   "coverage_gate_pass": true
+  },
+  "coverage_needed": 0.8,
+  "output_equal": false,
+  "pass": true,
+  "reasons": []
+ },
+ "harness_pass": true,
+ "audit": {
+  "mentions_github_pull": false,
+  "used_gh_cli": false,
+  "read_git_history": false
+ },
+ "changed_code_lines": {
+  "sh": 20,
+  "py": 30
+ },
+ "python_share_of_code_change": 0.6
+}

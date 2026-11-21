@@ -1,0 +1,106 @@
+{
+ "job": {
+  "order": 30,
+  "id": 3821234300,
+  "agent": "Claude_Code",
+  "repo": "Kocoro-lab/Shannon",
+  "number": 125,
+  "api_base_sha": "2f89247b5622562aed1eac985d5bf4c7a2efa230",
+  "head_sha": "1ff45865796ca044f9a6eb4b5dae8ad431ee9bc2",
+  "created": "2026-01-16",
+  "changed_files": [
+   "config/templates/synthesis/_base.tmpl",
+   "go/orchestrator/internal/activities/citation_agent.go",
+   "go/orchestrator/internal/activities/synthesis.go",
+   "go/orchestrator/internal/workflows/strategies/dag.go",
+   "go/orchestrator/internal/workflows/strategies/research.go",
+   "go/orchestrator/internal/workflows/supervisor_workflow.go",
+   "python/llm-service/llm_service/api/agent.py",
+   "python/llm-service/llm_service/roles/presets.py",
+   "python/llm-service/llm_service/tools/builtin/web_crawl.py",
+   "python/llm-service/llm_service/tools/builtin/web_fetch.py",
+   "python/llm-service/llm_service/tools/builtin/web_subpage_fetch.py",
+   "python/llm-service/tests/test_web_subpage_fetch.py"
+  ],
+  "n_files": 12,
+  "final_diff_files": [
+   "config/templates/synthesis/_base.tmpl",
+   "go/orchestrator/internal/activities/citation_agent.go",
+   "go/orchestrator/internal/activities/synthesis.go",
+   "go/orchestrator/internal/workflows/strategies/dag.go",
+   "go/orchestrator/internal/workflows/strategies/research.go",
+   "go/orchestrator/internal/workflows/supervisor_workflow.go",
+   "python/llm-service/llm_service/api/agent.py",
+   "python/llm-service/llm_service/roles/presets.py",
+   "python/llm-service/llm_service/tools/builtin/web_crawl.py",
+   "python/llm-service/llm_service/tools/builtin/web_fetch.py",
+   "python/llm-service/llm_service/tools/builtin/web_subpage_fetch.py",
+   "python/llm-service/tests/test_web_subpage_fetch.py"
+  ]
+ },
+ "agent": {
+  "status": "built",
+  "reason": "none",
+  "tier": "own_calls",
+  "uses_parallelism": false,
+  "behaviour_change_expected": true,
+  "notes": "llm-service has no pyproject, so I installed requirements.txt into both venvs (exclude-newer 2026-01-16); the workload puts each side's src/python/llm-service on sys.path. It replaces only aiohttp.ClientSession with an in-process fake Firecrawl API (map/scrape/crawl), then runs WebCrawlTool, WebSubpageFetchTool and FirecrawlFetchProvider and feeds their outputs to agent.aggregate_tool_results, generate_tool_digest and build_interpretation_messages. Coverage of changed lines: base 87%, head 90%. Outputs differ as expected: head adds markdown noise cleaning, new scoring and URL selection, crawl/failure handling in aggregation and digest, and raises the truncation limits. The Go and template changes are not covered."
+ },
+ "agent_is_error": false,
+ "timed_out": false,
+ "models": [
+  "claude-opus-5-5"
+ ],
+ "list_usd": 0.8906492,
+ "num_turns": 23,
+ "setup_ok": false,
+ "setup_s": 3,
+ "agent_s": 139,
+ "check": {
+  "base_exit_ok": true,
+  "base_last_line": "31392904d82a3484c66312356faeaed27b09e8b300250c2558185fc94eb0b8ea",
+  "head_exit_ok": true,
+  "head_last_line": "19b259438e80462ab549850999e3601a8f040e3d387f90a8fda99b5ef59887c3",
+  "base_time_s": 1.746,
+  "head_time_s": 1.658,
+  "no_network_ok": true,
+  "coverage": {
+   "changed_files": [
+    "python/llm-service/llm_service/api/agent.py",
+    "python/llm-service/llm_service/roles/presets.py",
+    "python/llm-service/llm_service/tools/builtin/web_crawl.py",
+    "python/llm-service/llm_service/tools/builtin/web_fetch.py",
+    "python/llm-service/llm_service/tools/builtin/web_subpage_fetch.py"
+   ],
+   "base": {
+    "changed_executable_lines": 76,
+    "executed": 66,
+    "share": 0.868
+   },
+   "head": {
+    "changed_executable_lines": 300,
+    "executed": 269,
+    "share": 0.897
+   },
+   "output_digest_base": "9b808f5ae66ab84d92fa3f25ff0eb97bcf8beb173f0ca8bcca4f1e96f218744c",
+   "output_digest_head": "d64af1fbd4981d9cabb40100c429c04effc104f81c959de57e3fe24c4b9350dc",
+   "output_equal": false,
+   "coverage_gate_pass": true
+  },
+  "coverage_needed": 0.5,
+  "output_equal": false,
+  "pass": true,
+  "reasons": []
+ },
+ "harness_pass": true,
+ "audit": {
+  "mentions_github_pull": false,
+  "used_gh_cli": false,
+  "read_git_history": false
+ },
+ "changed_code_lines": {
+  "go": 1703,
+  "py": 1155
+ },
+ "python_share_of_code_change": 0.404
+}

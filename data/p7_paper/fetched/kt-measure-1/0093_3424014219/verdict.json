@@ -1,0 +1,82 @@
+{
+ "job": {
+  "order": 93,
+  "id": 3424014219,
+  "agent": "OpenAI_Codex",
+  "repo": "jannikmi/timezonefinder",
+  "number": 343,
+  "api_base_sha": "e38148952f598e0b584e7ffcc7a6c63d3f32e657",
+  "head_sha": "708864589e4a601dd206876c9ca93238dcbce1e0",
+  "created": "2025-09-16",
+  "changed_files": [
+   "scripts/hex_utils.py",
+   "scripts/shortcuts.py"
+  ],
+  "n_files": 2,
+  "final_diff_files": [
+   "scripts/hex_utils.py",
+   "scripts/shortcuts.py"
+  ]
+ },
+ "agent": {
+  "status": "built",
+  "reason": "none",
+  "tier": "own_calls",
+  "uses_parallelism": false,
+  "behaviour_change_expected": true,
+  "notes": "Installed pydantic and h3 into both venvs (missing deps of scripts/; numba not installed, so the pure-Python fallback runs on both). The workload imports scripts/ from <side>/src, builds a synthetic fixed-seed GeoJSON with 400 zones, runs compile_h3_map over all res 0 and 1 h3 cells, makes 8000 optimise_shortcut_ordering calls and re-reads poly_candidates on every cached cell. Coverage of changed lines: base 19/19, head 31/32. Base 2.35 s, head 1.19 s. Digests differ: the new optimise_shortcut_ordering breaks ties between zones with equal total size by first-appearance order, while the old one used Python set iteration order; the sample inspected showed only tied pairs swapped within the same polygon lists."
+ },
+ "agent_is_error": false,
+ "timed_out": false,
+ "models": [
+  "claude-opus-5-5"
+ ],
+ "list_usd": 0.37733939999999994,
+ "num_turns": 15,
+ "setup_ok": true,
+ "setup_s": 9,
+ "agent_s": 106,
+ "check": {
+  "base_exit_ok": true,
+  "base_last_line": "d327cdaccca1e210d2f35dd2dae5e5854f5fdf8297fbba621d118954c4d6c9d8",
+  "head_exit_ok": true,
+  "head_last_line": "5877c5455a49471cb10340b4a686cc383facef8f13e78b3c47497de94d820891",
+  "base_time_s": 2.728,
+  "head_time_s": 1.997,
+  "no_network_ok": true,
+  "coverage": {
+   "changed_files": [
+    "scripts/hex_utils.py",
+    "scripts/shortcuts.py"
+   ],
+   "base": {
+    "changed_executable_lines": 19,
+    "executed": 19,
+    "share": 1.0
+   },
+   "head": {
+    "changed_executable_lines": 32,
+    "executed": 31,
+    "share": 0.969
+   },
+   "output_digest_base": "d327cdaccca1e210d2f35dd2dae5e5854f5fdf8297fbba621d118954c4d6c9d8",
+   "output_digest_head": "5877c5455a49471cb10340b4a686cc383facef8f13e78b3c47497de94d820891",
+   "output_equal": false,
+   "coverage_gate_pass": true
+  },
+  "coverage_needed": 0.8,
+  "output_equal": false,
+  "pass": true,
+  "reasons": []
+ },
+ "harness_pass": true,
+ "audit": {
+  "mentions_github_pull": false,
+  "used_gh_cli": false,
+  "read_git_history": false
+ },
+ "changed_code_lines": {
+  "py": 70
+ },
+ "python_share_of_code_change": 1.0
+}

@@ -1,0 +1,82 @@
+{
+ "job": {
+  "order": 50,
+  "id": 3089612967,
+  "agent": "OpenAI_Codex",
+  "repo": "addok/addok",
+  "number": 892,
+  "api_base_sha": "f05564c9fc00916a88a180272fc96f62f1677863",
+  "head_sha": "9a12f0da48ad6a26550fed8c069736201466faf7",
+  "created": "2025-05-25",
+  "changed_files": [
+   "addok/config/default.py",
+   "addok/helpers/index.py"
+  ],
+  "n_files": 2,
+  "final_diff_files": [
+   "addok/config/default.py",
+   "addok/helpers/index.py"
+  ]
+ },
+ "agent": {
+  "status": "built",
+  "reason": "none",
+  "tier": "own_calls",
+  "uses_parallelism": false,
+  "behaviour_change_expected": false,
+  "notes": "Calls addok.helpers.index.preprocess (unbounded dict cache in base vs lru_cache(10000) in head) and extract_tokens on 15k seeded unique address strings plus repeated single words, over 6 rounds. Config is loaded with TESTING=True and no Redis is needed. Outputs are identical. Head is about 4x slower because 15k unique keys replayed in the same order exceed the 10k LRU cap, so nearly every lookup misses."
+ },
+ "agent_is_error": false,
+ "timed_out": false,
+ "models": [
+  "claude-opus-5-5"
+ ],
+ "list_usd": 0.14316459999999998,
+ "num_turns": 9,
+ "setup_ok": true,
+ "setup_s": 5,
+ "agent_s": 98,
+ "check": {
+  "base_exit_ok": true,
+  "base_last_line": "30517455dd64c46ef385dec5a930345936dacdf97790366e8665501206199ba2",
+  "head_exit_ok": true,
+  "head_last_line": "30517455dd64c46ef385dec5a930345936dacdf97790366e8665501206199ba2",
+  "base_time_s": 1.387,
+  "head_time_s": 8.006,
+  "no_network_ok": true,
+  "coverage": {
+   "changed_files": [
+    "addok/config/default.py",
+    "addok/helpers/index.py"
+   ],
+   "base": {
+    "changed_executable_lines": 4,
+    "executed": 4,
+    "share": 1.0
+   },
+   "head": {
+    "changed_executable_lines": 4,
+    "executed": 4,
+    "share": 1.0
+   },
+   "output_digest_base": "30517455dd64c46ef385dec5a930345936dacdf97790366e8665501206199ba2",
+   "output_digest_head": "30517455dd64c46ef385dec5a930345936dacdf97790366e8665501206199ba2",
+   "output_equal": true,
+   "coverage_gate_pass": true
+  },
+  "coverage_needed": 0.8,
+  "output_equal": true,
+  "pass": true,
+  "reasons": []
+ },
+ "harness_pass": true,
+ "audit": {
+  "mentions_github_pull": false,
+  "used_gh_cli": false,
+  "read_git_history": false
+ },
+ "changed_code_lines": {
+  "py": 12
+ },
+ "python_share_of_code_change": 1.0
+}

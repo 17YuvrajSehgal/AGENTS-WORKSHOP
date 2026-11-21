@@ -1,0 +1,22 @@
+{
+ "changed_files": [
+  "src/iPhoto/app.py",
+  "src/iPhoto/gui/ui/tasks/rescan_worker.py",
+  "src/iPhoto/gui/ui/tasks/scanner_worker.py",
+  "src/iPhoto/io/scanner.py"
+ ],
+ "base": {
+  "changed_executable_lines": 51,
+  "executed": 43,
+  "share": 0.843
+ },
+ "head": {
+  "changed_executable_lines": 150,
+  "executed": 124,
+  "share": 0.827
+ },
+ "output_digest_base": "a5cec0dd65aa123d5b24f7298abdc6b040cc6c85f301a458db9ce4cd14e49a69",
+ "output_digest_head": "a5cec0dd65aa123d5b24f7298abdc6b040cc6c85f301a458db9ce4cd14e49a69",
+ "output_equal": true,
+ "coverage_gate_pass": true
+}

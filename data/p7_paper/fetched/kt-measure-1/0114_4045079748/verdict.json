@@ -1,0 +1,87 @@
+{
+ "job": {
+  "order": 114,
+  "id": 4045079748,
+  "agent": "Claude_Code",
+  "repo": "lyogavin/airllm",
+  "number": 268,
+  "api_base_sha": "90d7eb6b2d8ef09de6da4e62e7bcfe6f30f118dc",
+  "head_sha": "1a991a6b634b9825a8ec96bf4f07230c28383d58",
+  "created": "2026-03-09",
+  "changed_files": [
+   "FIXES.md",
+   "README.md",
+   "air_llm/airllm/airllm_base.py",
+   "requirements.txt"
+  ],
+  "n_files": 4,
+  "final_diff_files": [
+   "FIXES.md",
+   "README.md",
+   "air_llm/airllm/airllm_base.py",
+   "requirements.txt"
+  ]
+ },
+ "agent": {
+  "status": "built",
+  "reason": "none",
+  "tier": "own_calls",
+  "uses_parallelism": true,
+  "behaviour_change_expected": false,
+  "notes": "check.py does not pass: head coverage is 0.578 (107/185 changed lines) against the 0.8 threshold. Output digests match, the no-network run passes, base takes about 9.3 s. Neither venv imported with the frozen transformers 5.3 (base needs optimum.bettertransformer, which optimum 2.1 dropped; head lacked sentencepiece), and base's forward is incompatible with transformers 5.x. So transformers==4.46.3, optimum==1.23.3 and sentencepiece were installed into both venvs; the measurement runs on 4.46, not the 5.3 the PR targets. The workload builds a small random Llama (8 layers, sharded safetensors under /tmp/kt_268) and runs three CPU forwards through AirLLMLlama2 with different prefetching/profiling settings; the prefetching runs use the library's ThreadPoolExecutor. It uses one model instance per forward because on head under 4.46 a second forward on the same instance fails (the new cleanup moves per-attention rotary buffers to meta). Lines not reached: bitsandbytes quantized loading and CUDA memory sizing (need a GPU), the past_key_values and use_cache branches (forced off when cache_utils is installed), _init_model_fast (never called), and the default init branch (needs a model class without BetterTransformer; a small Mistral model was tried and its forward fails on both versions with a meta-device error)."
+ },
+ "agent_is_error": false,
+ "timed_out": false,
+ "models": [
+  "claude-opus-5-5"
+ ],
+ "list_usd": 0.6110148,
+ "num_turns": 19,
+ "setup_ok": true,
+ "setup_s": 6,
+ "agent_s": 581,
+ "check": {
+  "base_exit_ok": true,
+  "base_last_line": "24288307c1dd3cc4decc6c91c80fd4a112900331569c9c117913f73b8a2184f3",
+  "head_exit_ok": true,
+  "head_last_line": "24288307c1dd3cc4decc6c91c80fd4a112900331569c9c117913f73b8a2184f3",
+  "base_time_s": 9.452,
+  "head_time_s": 6.675,
+  "no_network_ok": true,
+  "coverage": {
+   "changed_files": [
+    "air_llm/airllm/airllm_base.py"
+   ],
+   "base": {
+    "changed_executable_lines": 87,
+    "executed": 56,
+    "share": 0.644
+   },
+   "head": {
+    "changed_executable_lines": 185,
+    "executed": 107,
+    "share": 0.578
+   },
+   "output_digest_base": "24288307c1dd3cc4decc6c91c80fd4a112900331569c9c117913f73b8a2184f3",
+   "output_digest_head": "24288307c1dd3cc4decc6c91c80fd4a112900331569c9c117913f73b8a2184f3",
+   "output_equal": true,
+   "coverage_gate_pass": false
+  },
+  "coverage_needed": 0.8,
+  "output_equal": true,
+  "pass": false,
+  "reasons": [
+   "head coverage 0.578 < 0.8"
+  ]
+ },
+ "harness_pass": false,
+ "audit": {
+  "mentions_github_pull": false,
+  "used_gh_cli": false,
+  "read_git_history": false
+ },
+ "changed_code_lines": {
+  "py": 379
+ },
+ "python_share_of_code_change": 1.0
+}

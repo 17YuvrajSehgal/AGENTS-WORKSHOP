@@ -1,0 +1,55 @@
+{
+ "pop_prs": 361296,
+ "candidates": 108708,
+ "template_share": 0.005,
+ "template_lines_per_agent": {
+  "Claude_Code": 102,
+  "Copilot": 195,
+  "Cursor": 215,
+  "Devin": 203,
+  "Google_Jules": 58,
+  "OpenAI_Codex": 113
+ },
+ "candidates_body_or_commit_only": 90131,
+ "candidates_title_match": 18577,
+ "per_group_any": {
+  "perf_word": 26462,
+  "speed": 23305,
+  "latency_throughput": 5300,
+  "optimize": 19263,
+  "efficiency": 8632,
+  "memory": 5726,
+  "allocation": 5903,
+  "cache": 28307,
+  "complexity": 9982,
+  "benchmark_profile": 17229,
+  "batch_lazy": 17311,
+  "redundant_work": 20178,
+  "parallel": 13246,
+  "cpu_io": 1517
+ },
+ "per_group_title": {
+  "perf_word": 4152,
+  "speed": 1090,
+  "latency_throughput": 229,
+  "optimize": 4004,
+  "efficiency": 238,
+  "memory": 823,
+  "allocation": 488,
+  "cache": 4085,
+  "complexity": 490,
+  "benchmark_profile": 2557,
+  "batch_lazy": 1946,
+  "redundant_work": 996,
+  "parallel": 1210,
+  "cpu_io": 109
+ },
+ "candidates_by_agent": {
+  "Claude_Code": 56395,
+  "Copilot": 29226,
+  "OpenAI_Codex": 16436,
+  "Cursor": 3000,
+  "Devin": 2671,
+  "Google_Jules": 980
+ }
+}

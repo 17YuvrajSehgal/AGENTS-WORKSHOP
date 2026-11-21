@@ -1,0 +1,37 @@
+{
+ "base_exit_ok": true,
+ "base_last_line": "d5e1a26ce0868c901c7b4be8298a41ef616c4e4c1a3261aa18a212d99a928156",
+ "head_exit_ok": true,
+ "head_last_line": "d5e1a26ce0868c901c7b4be8298a41ef616c4e4c1a3261aa18a212d99a928156",
+ "base_time_s": 3.001,
+ "head_time_s": 2.987,
+ "no_network_ok": true,
+ "coverage": {
+  "changed_files": [
+   "sdk/python/feast/feature_view.py",
+   "sdk/python/feast/on_demand_feature_view.py",
+   "sdk/python/feast/proto_utils.py",
+   "sdk/python/feast/stream_feature_view.py",
+   "sdk/python/feast/type_map.py",
+   "sdk/python/feast/utils.py"
+  ],
+  "base": {
+   "changed_executable_lines": 129,
+   "executed": 114,
+   "share": 0.884
+  },
+  "head": {
+   "changed_executable_lines": 141,
+   "executed": 125,
+   "share": 0.887
+  },
+  "output_digest_base": "d5e1a26ce0868c901c7b4be8298a41ef616c4e4c1a3261aa18a212d99a928156",
+  "output_digest_head": "d5e1a26ce0868c901c7b4be8298a41ef616c4e4c1a3261aa18a212d99a928156",
+  "output_equal": true,
+  "coverage_gate_pass": true
+ },
+ "coverage_needed": 0.8,
+ "output_equal": true,
+ "pass": true,
+ "reasons": []
+}

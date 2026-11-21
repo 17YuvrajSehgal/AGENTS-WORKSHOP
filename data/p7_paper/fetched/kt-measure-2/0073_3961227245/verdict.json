@@ -1,0 +1,141 @@
+{
+ "job": {
+  "order": 73,
+  "id": 3961227245,
+  "agent": "Devin",
+  "repo": "airbytehq/airbyte",
+  "number": 73654,
+  "api_base_sha": "d6b9350a938b0d7428302f9345a1e75ca6f3eb35",
+  "head_sha": "401645117de292d461059b47e1ccfedb7f26fcc2",
+  "created": "2026-02-19",
+  "changed_files": [
+   ".github/pr-welcome-community.md",
+   ".github/pr-welcome-internal.md",
+   ".github/workflows/ai-review-command.yml",
+   ".github/workflows/bump-bulk-cdk-version-command.yml",
+   ".github/workflows/connector-ci-checks.yml",
+   ".github/workflows/internal-airbyte-ci-tests.yml",
+   ".github/workflows/java-cdk-tests.yml",
+   ".github/workflows/metadata_service_deploy_orchestrator_dagger.yml",
+   ".github/workflows/slash-commands.yml",
+   "airbyte-cdk/bulk/README.md",
+   "airbyte-cdk/bulk/build.gradle",
+   "airbyte-cdk/bulk/changelog.md",
+   "airbyte-cdk/bulk/core/base/build.gradle.kts",
+   "airbyte-cdk/bulk/core/base/changelog.md",
+   "airbyte-cdk/bulk/core/base/version.properties",
+   "airbyte-cdk/bulk/core/extract/build.gradle",
+   "airbyte-cdk/bulk/core/extract/changelog.md",
+   "airbyte-cdk/bulk/core/extract/version.properties",
+   "airbyte-cdk/bulk/core/load/build.gradle",
+   "airbyte-cdk/bulk/core/load/changelog.md",
+   "airbyte-cdk/bulk/core/load/version.properties",
+   "airbyte-cdk/bulk/version.properties",
+   "airbyte-ci/connectors/metadata_service/README.md",
+   "airbyte-ci/connectors/metadata_service/lib/metadata_service/sentry.py",
+   "airbyte-ci/connectors/metadata_service/orchestrator/.env.template",
+   "airbyte-ci/connectors/metadata_service/orchestrator/README.md",
+   "airbyte-ci/connectors/metadata_service/orchestrator/dagster_cloud.yaml",
+   "airbyte-ci/connectors/metadata_service/orchestrator/orchestrator/__init__.py",
+   "airbyte-ci/connectors/metadata_service/orchestrator/orchestrator/assets/connector_metrics.py",
+   "airbyte-ci/connectors/metadata_service/orchestrator/orchestrator/assets/github.py",
+   "airbyte-ci/connectors/metadata_service/orchestrator/orchestrator/assets/metadata.py",
+   "airbyte-ci/connectors/metadata_service/orchestrator/orchestrator/assets/registry.py",
+   "airbyte-ci/connectors/metadata_service/orchestrator/orchestrator/assets/registry_entry.py",
+   "airbyte-ci/connectors/metadata_service/orchestrator/orchestrator/assets/registry_entry.py.orig",
+   "airbyte-ci/connectors/metadata_service/orchestrator/orchestrator/assets/registry_report.py",
+   "airbyte-ci/connectors/metadata_service/orchestrator/orchestrator/assets/slack.py",
+   "airbyte-ci/connectors/metadata_service/orchestrator/orchestrator/assets/specs_secrets_mask.py",
+   "airbyte-ci/connectors/metadata_service/orchestrator/orchestrator/config.py",
+   "airbyte-ci/connectors/metadata_service/orchestrator/orchestrator/fetcher/connector_cdk_version.py",
+   "airbyte-ci/connectors/metadata_service/orchestrator/orchestrator/hacks.py",
+   "airbyte-ci/connectors/metadata_service/orchestrator/orchestrator/jobs/registry.py",
+   "airbyte-ci/connectors/metadata_service/orchestrator/orchestrator/logging/publish_connector_lifecycle.py",
+   "airbyte-ci/connectors/metadata_service/orchestrator/orchestrator/logging/sentry.py",
+   "airbyte-ci/connectors/metadata_service/orchestrator/orchestrator/models/ci_report.py",
+   "airbyte-ci/connectors/metadata_service/orchestrator/orchestrator/models/metadata.py",
+   "airbyte-ci/connectors/metadata_service/orchestrator/orchestrator/ops/slack.py",
+   "airbyte-ci/connectors/metadata_service/orchestrator/orchestrator/resources/file_managers/local_file_manager.py",
+   "airbyte-ci/connectors/metadata_service/orchestrator/orchestrator/resources/gcp.py",
+   "airbyte-ci/connectors/metadata_service/orchestrator/orchestrator/resources/github.py",
+   "airbyte-ci/connectors/metadata_service/orchestrator/orchestrator/resources/local.py",
+   "airbyte-ci/connectors/metadata_service/orchestrator/orchestrator/sensors/gcs.py",
+   "airbyte-ci/connectors/metadata_service/orchestrator/orchestrator/sensors/github.py",
+   "airbyte-ci/connectors/metadata_service/orchestrator/orchestrator/sensors/registry.py",
+   "airbyte-ci/connectors/metadata_service/orchestrator/orchestrator/templates/base.html",
+   "airbyte-ci/connectors/metadata_service/orchestrator/orchestrator/templates/connector_registry_locations.html",
+   "airbyte-ci/connectors/metadata_service/orchestrator/orchestrator/templates/render.py",
+   "airbyte-ci/connectors/metadata_service/orchestrator/orchestrator/utils/blob_helpers.py",
+   "airbyte-ci/connectors/metadata_service/orchestrator/orchestrator/utils/dagster_helpers.py",
+   "airbyte-ci/connectors/metadata_service/orchestrator/orchestrator/utils/object_helpers.py",
+   "airbyte-ci/connectors/metadata_service/orchestrator/poetry.lock"
+  ],
+  "n_files": 601,
+  "final_diff_files": [
+   "airbyte-integrations/connectors/source-bing-ads/components.py",
+   "airbyte-integrations/connectors/source-bing-ads/metadata.yaml",
+   "airbyte-integrations/connectors/source-bing-ads/unit_tests/test_components.py",
+   "docs/integrations/sources/bing-ads.md"
+  ]
+ },
+ "agent": {
+  "status": "built",
+  "reason": "none",
+  "tier": "own_calls",
+  "uses_parallelism": false,
+  "behaviour_change_expected": false,
+  "notes": "Connector isn't a package; installed airbyte-cdk==6.57.1 (from unit_tests poetry.lock), requests, coverage into both venvs. Workload loads source-bing-ads/components.py from each side's src and runs BingAdsGzipCsvDecoder.decode on gzipped/plain CSVs (various sizes, BOM, empty, corrupt gzip) via requests.Response with BytesIO raw. Outputs equal; coverage 92% head / 95% base."
+ },
+ "agent_is_error": false,
+ "timed_out": false,
+ "models": [
+  "claude-opus-5-5"
+ ],
+ "list_usd": 0.24061239999999998,
+ "num_turns": 11,
+ "setup_ok": false,
+ "setup_s": 43,
+ "agent_s": 91,
+ "check": {
+  "base_exit_ok": true,
+  "base_last_line": "1088157e9e40094328d8b8fe9120574951e02ec46cd1b918b9ab239c09fe1806",
+  "head_exit_ok": true,
+  "head_last_line": "1088157e9e40094328d8b8fe9120574951e02ec46cd1b918b9ab239c09fe1806",
+  "base_time_s": 2.336,
+  "head_time_s": 2.361,
+  "no_network_ok": true,
+  "coverage": {
+   "changed_files": [
+    "airbyte-integrations/connectors/source-bing-ads/components.py"
+   ],
+   "base": {
+    "changed_executable_lines": 19,
+    "executed": 18,
+    "share": 0.947
+   },
+   "head": {
+    "changed_executable_lines": 52,
+    "executed": 48,
+    "share": 0.923
+   },
+   "output_digest_base": "1088157e9e40094328d8b8fe9120574951e02ec46cd1b918b9ab239c09fe1806",
+   "output_digest_head": "1088157e9e40094328d8b8fe9120574951e02ec46cd1b918b9ab239c09fe1806",
+   "output_equal": true,
+   "coverage_gate_pass": true
+  },
+  "coverage_needed": 0.8,
+  "output_equal": true,
+  "pass": true,
+  "reasons": []
+ },
+ "harness_pass": true,
+ "audit": {
+  "mentions_github_pull": true,
+  "used_gh_cli": false,
+  "read_git_history": false
+ },
+ "changed_code_lines": {
+  "py": 251
+ },
+ "python_share_of_code_change": 1.0
+}

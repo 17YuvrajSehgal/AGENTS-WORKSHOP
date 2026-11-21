@@ -1,0 +1,184 @@
+diff --git a/CHANGELOG.md b/CHANGELOG.md
+index 7e82e09d6..7453e8b7d 100644
+--- a/CHANGELOG.md
++++ b/CHANGELOG.md
+@@ -80,8 +80,11 @@ The minimum requirement is now Python 3.9.
+ - Kho Khon alphabet issue in `tltk` transliteration (#1187)
+ - Suppress Gensim duplicate-word warnings when loading word2vec
+   binary files (#1316)
+-- `db.json` is no longer created on import; it is created lazily only
++- `db.json` is no longer created on import; created lazily only
+   when a corpus is first downloaded (#1317)
++- Fix exponential-time explosion in "newmm" tokenization
++  engine when tokenizing text with many ambiguous
++  breaking points (#1319)
+ 
+ ## [5.2.0] - 2025-12-20
+ 
+diff --git a/pythainlp/tokenize/newmm.py b/pythainlp/tokenize/newmm.py
+index 76d6d3479..b7db9acb0 100644
+--- a/pythainlp/tokenize/newmm.py
++++ b/pythainlp/tokenize/newmm.py
+@@ -63,13 +63,17 @@
+ def _bfs_paths_graph(
+     graph: defaultdict, start: int, goal: int
+ ) -> Generator[list[int], None, None]:
++    # visited set prevents re-exploring nodes already reached via a shorter
++    # path, converting worst-case BFS from exponential to O(V + E).
++    visited: set[int] = {start}
+     queue = [(start, [start])]
+     while queue:
+         (vertex, path) = queue.pop(0)
+         for pos in graph[vertex]:
+             if pos == goal:
+                 yield path + [pos]
+-            else:
++            elif pos not in visited:
++                visited.add(pos)
+                 queue.append((pos, path + [pos]))
+ 
+ 
+@@ -89,7 +93,7 @@ def _onecut(text: str, custom_dict: Trie) -> Generator[str, None, None]:
+     end_pos = 0
+     while pos_list[0] < len_text:
+         begin_pos = heappop(pos_list)
+-        for word in custom_dict.prefixes(text[begin_pos:]):
++        for word in custom_dict.prefixes(text, begin_pos):
+             end_pos_candidate = begin_pos + len(word)
+             if end_pos_candidate in valid_poss:
+                 graph[begin_pos].append(end_pos_candidate)
+@@ -107,20 +111,20 @@ def _onecut(text: str, custom_dict: Trie) -> Generator[str, None, None]:
+                 _bfs_paths_graph(graph, end_pos, pos_list[0])
+             )
+             graph_size = 0
++            graph.clear()
+             for pos in end_pos_candidates[1:]:
+                 yield text[end_pos:pos]
+                 end_pos = pos
+         elif len_pos_list == 0:  # no candidate, deal with non-dictionary word
+-            m = _PAT_NONTHAI.match(text[begin_pos:])
++            m = _PAT_NONTHAI.match(text, begin_pos)
+             if m:  # non-Thai token, skip to the end
+-                end_pos = begin_pos + m.end()
++                end_pos = m.end()
+             else:  # Thai token, find minimum skip
+                 for pos in range(begin_pos + 1, len_text):
+                     if pos in valid_poss:
+-                        prefix = text[pos:]
+                         words = [
+                             word
+-                            for word in custom_dict.prefixes(prefix)
++                            for word in custom_dict.prefixes(text, pos)
+                             if (
+                                 (pos + len(word) in valid_poss)
+                                 and not _PAT_THAI_TWOCHARS.match(word)
+@@ -131,14 +135,14 @@ def _onecut(text: str, custom_dict: Trie) -> Generator[str, None, None]:
+                             break
+ 
+                         # is a non-Thai token
+-                        if _PAT_NONTHAI.match(prefix):
++                        if _PAT_NONTHAI.match(text, pos):
+                             end_pos = pos
+                             break
+                 else:
+                     end_pos = len_text
+ 
+-            graph[begin_pos].append(end_pos)
+-            graph_size = graph_size + 1
++            graph_size = 0
++            graph.clear()
+             yield text[begin_pos:end_pos]
+             heappush(pos_list, end_pos)
+ 
+@@ -155,13 +159,17 @@ def segment(
+ 
+     A custom dictionary can be supplied.
+ 
++    For very long texts (hundreds of kilobytes or more), consider using
++    ``safe_mode=True`` to enable chunk-based processing and reduce memory use.
++
+     :param text: text to be tokenized
+     :type text: str
+     :param custom_dict: tokenization dictionary,\
+         defaults to word_dict_trie()
+     :type custom_dict: Trie, optional
+-    :param safe_mode: reduce chance for long processing time for long text\
+-        with many ambiguous breaking points, defaults to False
++    :param safe_mode: use chunk-based processing to reduce memory use and
++        processing time for long text with many ambiguous breaking points,
++        defaults to False
+     :type safe_mode: bool, optional
+     :return: list of tokens
+     :rtype: list[str]
+diff --git a/pythainlp/util/trie.py b/pythainlp/util/trie.py
+index 07f2ddfc8..8a4982708 100644
+--- a/pythainlp/util/trie.py
++++ b/pythainlp/util/trie.py
+@@ -105,22 +105,26 @@ def remove(self, word: str) -> None:
+                 break
+             del parent.children[ch]  # remove from parent dict
+ 
+-    def prefixes(self, text: str) -> list[str]:
++    def prefixes(self, text: str, start: int = 0) -> list[str]:
+         """List all possible words from first sequence of characters in a word.
+ 
+-        :param str text: a word
+-        :return: a list of possible words
+-        :rtype: List[str]
++        :param str text: text to search for prefixes
++        :param int start: starting position in text, defaults to 0
++        :return: a list of possible words starting at ``start``
++        :rtype: list[str]
+         """
+         res = []
+         cur = self.root
+-        for i, ch in enumerate(text):
+-            node = cur.children.get(ch)
++        i = start
++        n = len(text)
++        while i < n:
++            node = cur.children.get(text[i])
+             if not node:
+                 break
+             if node.end:
+-                res.append(text[: i + 1])
++                res.append(text[start : i + 1])
+             cur = node
++            i += 1
+         return res
+ 
+     def __contains__(self, key: str) -> bool:
+diff --git a/tests/core/test_tokenize.py b/tests/core/test_tokenize.py
+index 35ea68889..a48617340 100644
+--- a/tests/core/test_tokenize.py
++++ b/tests/core/test_tokenize.py
+@@ -2,6 +2,7 @@
+ # SPDX-FileType: SOURCE
+ # SPDX-License-Identifier: Apache-2.0
+ 
++import time
+ import unittest
+ 
+ from pythainlp.tokenize import (
+@@ -583,6 +584,21 @@ def test_newmm_dangertext(self):
+             word_tokenize(DANGER_TEXT_3, engine="newmm-safe"), list
+         )
+ 
++    def test_newmm_ambiguous_performance(self):
++        # Regression test for issue #893: newmm BFS path explosion.
++        # Repeated ambiguous words (e.g. "ด้านหน้า" which can split as
++        # "ด้าน"+"หน้า" or stay whole) used to cause exponential BFS blowup.
++        # This test verifies that tokenizing 1,000 repetitions completes
++        # quickly (well under 1 second).
++        text = "ด้านหน้า" * 1000
++        t = time.perf_counter()
++        result = word_tokenize(text, engine="newmm")
++        elapsed = time.perf_counter() - t
++        self.assertIsInstance(result, list)
++        self.assertGreater(len(result), 0)
++        # Should complete in well under 1 second after the BFS fix.
++        self.assertLess(elapsed, 5.0)
++
+     def test_tcc(self):
+         assert_segment_handles_none_and_empty(self, tcc.segment)
+         self.assertEqual(

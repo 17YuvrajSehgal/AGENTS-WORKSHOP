@@ -1,0 +1,35 @@
+{
+ "base_exit_ok": true,
+ "base_last_line": "7370a11d5587cacb778b541f9bef170eaa7df36f1a96c533f48031930a51f0b4",
+ "head_exit_ok": true,
+ "head_last_line": "71c038e25390c5dcc5ff2f9ff0a6a29a4451cb4a023caa1bb2819aea8008577c",
+ "base_time_s": 10.365,
+ "head_time_s": 10.018,
+ "no_network_ok": true,
+ "coverage": {
+  "changed_files": [
+   "src/iPhoto/gui/ui/controllers/edit_controller.py",
+   "src/iPhoto/gui/ui/controllers/edit_preview_manager.py",
+   "src/iPhoto/gui/ui/tasks/edit_sidebar_preview_worker.py",
+   "src/iPhoto/gui/ui/widgets/gl_image_viewer.py"
+  ],
+  "base": {
+   "changed_executable_lines": 7,
+   "executed": 7,
+   "share": 1.0
+  },
+  "head": {
+   "changed_executable_lines": 143,
+   "executed": 115,
+   "share": 0.804
+  },
+  "output_digest_base": "7370a11d5587cacb778b541f9bef170eaa7df36f1a96c533f48031930a51f0b4",
+  "output_digest_head": "71c038e25390c5dcc5ff2f9ff0a6a29a4451cb4a023caa1bb2819aea8008577c",
+  "output_equal": false,
+  "coverage_gate_pass": true
+ },
+ "coverage_needed": 0.8,
+ "output_equal": false,
+ "pass": true,
+ "reasons": []
+}

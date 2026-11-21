@@ -1,0 +1,67 @@
+{
+ "job": {
+  "order": 138,
+  "id": 3151748196,
+  "agent": "Cursor",
+  "repo": "Mai-with-u/MaiBot",
+  "number": 1045,
+  "api_base_sha": "918aa57b012fcf7e9fccaccfdabb8a05ad00e31b",
+  "head_sha": "45172e9dca2126f627b7dc2a8edf466bd8ba8fee",
+  "created": "2025-06-17",
+  "changed_files": [
+   "src/chat/focus_chat/expressors/default_expressor.py",
+   "src/chat/focus_chat/heartFC_chat.py",
+   "src/chat/focus_chat/planners/planner.py",
+   "src/chat/focus_chat/working_memory/working_memory.py",
+   "src/chat/heart_flow/subheartflow_manager.py",
+   "tests/test_private_chat.py"
+  ],
+  "n_files": 6,
+  "final_diff_files": [
+   "src/chat/focus_chat/expressors/default_expressor.py",
+   "src/chat/focus_chat/heartFC_chat.py",
+   "src/chat/focus_chat/planners/planner.py",
+   "src/chat/focus_chat/working_memory/working_memory.py",
+   "src/chat/heart_flow/subheartflow_manager.py",
+   "tests/test_private_chat.py"
+  ]
+ },
+ "agent": {
+  "status": "unbuildable",
+  "reason": "other",
+  "tier": "none",
+  "uses_parallelism": false,
+  "behaviour_change_expected": true,
+  "notes": "Head can't be imported: the changed planner.py imports ChattingInfo from src.chat.focus_chat.info.chat_info and the module src.chat.focus_chat.info.message_recv, and neither exists in head. So planner.py, heartFC_chat.py, sub_heartflow.py and subheartflow_manager.py all fail with ImportError on head. Only working_memory.py (whose head version is also broken: add_memory and shutdown use attributes it no longer creates) and a prompt string in default_expressor.py still import, which isn't enough to measure. Fixing it would mean patching the code under test. Environment work: installed requirements.txt into both venvs (pinned to 2025-06-17, without dotenv and customtkinter); base runs fine. Deleted the config/logs/data files that test runs left inside base/src and head/src. A draft workload.py remains; it runs on base in about 8.8 s, fails on head, and check.py was not run."
+ },
+ "agent_is_error": false,
+ "timed_out": false,
+ "models": [
+  "claude-opus-5-5"
+ ],
+ "list_usd": 0.7662356000000001,
+ "num_turns": 30,
+ "setup_ok": true,
+ "setup_s": 8,
+ "agent_s": 168,
+ "check": {
+  "base_exit_ok": true,
+  "base_last_line": "50209d7f3f714c277dab2569fb5b0c8b43c2664de1f979d019452d8555399852",
+  "head_exit_ok": false,
+  "head_last_line": "SIMPLE_OUTPUT: True",
+  "pass": false,
+  "reasons": [
+   "head workload failed: c.chat.focus_chat.info.message_recv import MessageRecv          \u2502\n\u2502    22                                                                        \u2502\n\u2570\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u256f\nImportError: cannot import name 'ChattingInfo' from \n'src.chat.focus_chat.info.chat_info' \n(/home/17yuv/prs/0138_3151748196/head/src/src/chat/focus_chat/info/chat_info.py)\n"
+  ]
+ },
+ "harness_pass": false,
+ "audit": {
+  "mentions_github_pull": false,
+  "used_gh_cli": false,
+  "read_git_history": false
+ },
+ "changed_code_lines": {
+  "py": 623
+ },
+ "python_share_of_code_change": 1.0
+}

@@ -1,0 +1,21 @@
+{
+ "changed_files": [
+  "litellm/llms/custom_httpx/llm_http_handler.py",
+  "litellm/llms/openai_like/chat/handler.py",
+  "litellm/llms/openai_like/chat/transformation.py"
+ ],
+ "base": {
+  "changed_executable_lines": 4,
+  "executed": 4,
+  "share": 1.0
+ },
+ "head": {
+  "changed_executable_lines": 21,
+  "executed": 21,
+  "share": 1.0
+ },
+ "output_digest_base": "28e56ae82d596214001c8e07285bc402ff8a9b978380508d5ebea8509590b1a8",
+ "output_digest_head": "fd605f8a92d67296f4c5ec916deb33ed904332b87687c392c49872604beade5b",
+ "output_equal": false,
+ "coverage_gate_pass": true
+}

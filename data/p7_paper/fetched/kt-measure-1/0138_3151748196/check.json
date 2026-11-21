@@ -1,0 +1,10 @@
+{
+ "base_exit_ok": true,
+ "base_last_line": "50209d7f3f714c277dab2569fb5b0c8b43c2664de1f979d019452d8555399852",
+ "head_exit_ok": false,
+ "head_last_line": "SIMPLE_OUTPUT: True",
+ "pass": false,
+ "reasons": [
+  "head workload failed: c.chat.focus_chat.info.message_recv import MessageRecv          \u2502\n\u2502    22                                                                        \u2502\n\u2570\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u256f\nImportError: cannot import name 'ChattingInfo' from \n'src.chat.focus_chat.info.chat_info' \n(/home/17yuv/prs/0138_3151748196/head/src/src/chat/focus_chat/info/chat_info.py)\n"
+ ]
+}

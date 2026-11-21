@@ -1,0 +1,22 @@
+{
+ "changed_files": [
+  "browser_use/agent/service.py",
+  "browser_use/agent/views.py",
+  "browser_use/controller/service.py",
+  "browser_use/filesystem/memory_file_system.py"
+ ],
+ "base": {
+  "changed_executable_lines": 14,
+  "executed": 11,
+  "share": 0.786
+ },
+ "head": {
+  "changed_executable_lines": 161,
+  "executed": 134,
+  "share": 0.832
+ },
+ "output_digest_base": "09642ae1f6833f1d2f45512032eb6ace0fd4a525e978d9cf3430c6a2dc2b9b81",
+ "output_digest_head": "0c90fdbd620c20f80481911e9ced8ff751532f819007b129f17aee59146f660a",
+ "output_equal": false,
+ "coverage_gate_pass": true
+}

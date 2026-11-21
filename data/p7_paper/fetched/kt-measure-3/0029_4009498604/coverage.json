@@ -1,0 +1,21 @@
+{
+ "changed_files": [
+  "app/api/domains/cho.py",
+  "app/api/domains/osu.py",
+  "app/objects/player.py"
+ ],
+ "base": {
+  "changed_executable_lines": 6,
+  "executed": 4,
+  "share": 0.667
+ },
+ "head": {
+  "changed_executable_lines": 30,
+  "executed": 26,
+  "share": 0.867
+ },
+ "output_digest_base": "4aff1fcd98c8d5203c4eb6531cda39cc5121cc3fe7d9cc856fa5d7f7ec31b750",
+ "output_digest_head": "b8a84942296615218956d64d6f350efc1cc2bb038790b7ad301a589a8b8e9d55",
+ "output_equal": false,
+ "coverage_gate_pass": true
+}

@@ -1,0 +1,84 @@
+{
+ "job": {
+  "order": 86,
+  "id": 4111954395,
+  "agent": "Claude_Code",
+  "repo": "lee101/stock-prediction",
+  "number": 46,
+  "api_base_sha": "667dbe51fbcdfd0e98123ae5ecc536274524906a",
+  "head_sha": "e464b129e71a76da22ff2aaf8fcff1e898654bf6",
+  "created": "2026-03-21",
+  "changed_files": [
+   "binanceneural/data.py",
+   "binanceneural/trainer.py"
+  ],
+  "n_files": 2,
+  "final_diff_files": [
+   "binanceneural/data.py",
+   "binanceneural/trainer.py"
+  ]
+ },
+ "agent": {
+  "status": "unbuildable",
+  "reason": "needs_gpu",
+  "tier": "none",
+  "uses_parallelism": false,
+  "behaviour_change_expected": false,
+  "notes": "Both installs had failed (the build needed numpy first). Fixed by installing only CPU torch 2.10, numpy<2, pandas, loguru and coverage into both venvs; imports now work on both sides. workload.py trains BinanceHourlyTrainer on CPU with real BinanceHourly/MultiSymbol datasets and dataloaders built from synthetic data. check.py does not pass: base coverage 15/15, head coverage 26/57 (0.456 < 0.8). Base ~5.4 s, head ~5.3 s, outputs equal, no-network run ok. The uncovered head lines are GPUCachedDataset, the two gpu_cached_dataloader methods and the trainer branch that uses them, which only runs when the device is CUDA. Reaching it on CPU would need patching the code under test. On CPU the change is only a refactor (_make_dataloader, persistent_workers=False, non_blocking=False)."
+ },
+ "agent_is_error": false,
+ "timed_out": false,
+ "models": [
+  "claude-opus-5-5"
+ ],
+ "list_usd": 0.5703268,
+ "num_turns": 15,
+ "setup_ok": false,
+ "setup_s": 18,
+ "agent_s": 152,
+ "check": {
+  "base_exit_ok": true,
+  "base_last_line": "2e6850728ed3c2402a5d96d6a0e2ad6dec613f61faedab95c8e50f41899a2633",
+  "head_exit_ok": true,
+  "head_last_line": "2e6850728ed3c2402a5d96d6a0e2ad6dec613f61faedab95c8e50f41899a2633",
+  "base_time_s": 5.547,
+  "head_time_s": 5.109,
+  "no_network_ok": true,
+  "coverage": {
+   "changed_files": [
+    "binanceneural/data.py",
+    "binanceneural/trainer.py"
+   ],
+   "base": {
+    "changed_executable_lines": 15,
+    "executed": 15,
+    "share": 1.0
+   },
+   "head": {
+    "changed_executable_lines": 57,
+    "executed": 26,
+    "share": 0.456
+   },
+   "output_digest_base": "2e6850728ed3c2402a5d96d6a0e2ad6dec613f61faedab95c8e50f41899a2633",
+   "output_digest_head": "2e6850728ed3c2402a5d96d6a0e2ad6dec613f61faedab95c8e50f41899a2633",
+   "output_equal": true,
+   "coverage_gate_pass": false
+  },
+  "coverage_needed": 0.8,
+  "output_equal": true,
+  "pass": false,
+  "reasons": [
+   "head coverage 0.456 < 0.8"
+  ]
+ },
+ "harness_pass": false,
+ "audit": {
+  "mentions_github_pull": false,
+  "used_gh_cli": false,
+  "read_git_history": false
+ },
+ "changed_code_lines": {
+  "py": 142
+ },
+ "python_share_of_code_change": 1.0
+}

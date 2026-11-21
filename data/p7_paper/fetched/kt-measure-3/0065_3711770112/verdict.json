@@ -1,0 +1,90 @@
+{
+ "job": {
+  "order": 65,
+  "id": 3711770112,
+  "agent": "Google_Jules",
+  "repo": "OliverZhaohaibin/iPhotron-LocalPhotoAlbumManager",
+  "number": 381,
+  "api_base_sha": "5ec666acdd07e2497d1664e507f94d2b35cd5b0c",
+  "head_sha": "6f58981675a794f7f67285ca30a6852431a60d13",
+  "created": "2025-12-09",
+  "changed_files": [
+   "src/iPhoto/app.py",
+   "src/iPhoto/gui/ui/tasks/rescan_worker.py",
+   "src/iPhoto/gui/ui/tasks/scanner_worker.py",
+   "src/iPhoto/io/scanner.py",
+   "tests/io/test_scanner_parallel.py"
+  ],
+  "n_files": 5,
+  "final_diff_files": [
+   "src/iPhoto/app.py",
+   "src/iPhoto/gui/ui/tasks/rescan_worker.py",
+   "src/iPhoto/gui/ui/tasks/scanner_worker.py",
+   "src/iPhoto/io/scanner.py",
+   "tests/io/test_scanner_parallel.py"
+  ]
+ },
+ "agent": {
+  "status": "built",
+  "reason": "none",
+  "tier": "own_calls",
+  "uses_parallelism": true,
+  "behaviour_change_expected": false,
+  "notes": "Installed exiftool system package (libimage-exiftool-perl) so metadata extraction runs for real. Workload builds a 300-JPEG album plus a corrupt-file album in /tmp/kt_381 and runs scan_album (full, early-closed), process_media_paths, app.rescan, and ScannerWorker/RescanWorker.run() directly. Head uses a background FileDiscoverer thread; rows are sorted before hashing. Digests are identical. Coverage: head 0.83, base 0.84."
+ },
+ "agent_is_error": false,
+ "timed_out": false,
+ "models": [
+  "claude-opus-5-5"
+ ],
+ "list_usd": 0.3479998,
+ "num_turns": 14,
+ "setup_ok": true,
+ "setup_s": 6,
+ "agent_s": 229,
+ "check": {
+  "base_exit_ok": true,
+  "base_last_line": "a5cec0dd65aa123d5b24f7298abdc6b040cc6c85f301a458db9ce4cd14e49a69",
+  "head_exit_ok": true,
+  "head_last_line": "a5cec0dd65aa123d5b24f7298abdc6b040cc6c85f301a458db9ce4cd14e49a69",
+  "base_time_s": 6.378,
+  "head_time_s": 10.289,
+  "no_network_ok": true,
+  "coverage": {
+   "changed_files": [
+    "src/iPhoto/app.py",
+    "src/iPhoto/gui/ui/tasks/rescan_worker.py",
+    "src/iPhoto/gui/ui/tasks/scanner_worker.py",
+    "src/iPhoto/io/scanner.py"
+   ],
+   "base": {
+    "changed_executable_lines": 51,
+    "executed": 43,
+    "share": 0.843
+   },
+   "head": {
+    "changed_executable_lines": 150,
+    "executed": 124,
+    "share": 0.827
+   },
+   "output_digest_base": "a5cec0dd65aa123d5b24f7298abdc6b040cc6c85f301a458db9ce4cd14e49a69",
+   "output_digest_head": "a5cec0dd65aa123d5b24f7298abdc6b040cc6c85f301a458db9ce4cd14e49a69",
+   "output_equal": true,
+   "coverage_gate_pass": true
+  },
+  "coverage_needed": 0.8,
+  "output_equal": true,
+  "pass": true,
+  "reasons": []
+ },
+ "harness_pass": true,
+ "audit": {
+  "mentions_github_pull": false,
+  "used_gh_cli": false,
+  "read_git_history": false
+ },
+ "changed_code_lines": {
+  "py": 527
+ },
+ "python_share_of_code_change": 1.0
+}

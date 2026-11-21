@@ -1,0 +1,50 @@
+{
+ "job": {
+  "order": 27,
+  "id": 4071208978,
+  "agent": "Copilot",
+  "repo": "LetsFG/LetsFG",
+  "number": 61,
+  "api_base_sha": "20b8dad77b40d1a0bf350dd6f374e6367468cbf8",
+  "head_sha": "165698cc2d71d40f5d6fb3e974bbbc99973022dc",
+  "created": "2026-03-13",
+  "changed_files": [
+   "connectors/scoot.py",
+   "sdk/python/boostedtravel/connectors/scoot.py"
+  ],
+  "n_files": 2,
+  "final_diff_files": [
+   "connectors/scoot.py",
+   "sdk/python/boostedtravel/connectors/scoot.py"
+  ]
+ },
+ "agent": {
+  "status": "unbuildable",
+  "reason": "needs_external_service",
+  "tier": "none",
+  "uses_parallelism": false,
+  "behaviour_change_expected": false,
+  "notes": "The PR adds a curl_cffi direct-HTTP path (_ensure_token and _search_via_api, which call booking.flyscoot.com) to the Scoot scraper and renames the existing CDP-Chrome path to _search_via_browser as a fallback. Every changed line is network or browser I/O against the live Scoot site; the response parsing is unchanged. With the I/O replaced by stand-ins there would be nothing meaningful left to measure, and the base path needs real Chrome and the live website."
+ },
+ "agent_is_error": false,
+ "timed_out": false,
+ "models": [
+  "claude-opus-5-5"
+ ],
+ "list_usd": 0.106139,
+ "num_turns": 4,
+ "setup_ok": true,
+ "setup_s": 4,
+ "agent_s": 15,
+ "check": null,
+ "harness_pass": false,
+ "audit": {
+  "mentions_github_pull": false,
+  "used_gh_cli": false,
+  "read_git_history": false
+ },
+ "changed_code_lines": {
+  "py": 384
+ },
+ "python_share_of_code_change": 1.0
+}

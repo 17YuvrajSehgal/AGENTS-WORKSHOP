@@ -1,0 +1,13 @@
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+pull_request.parquet         rows=    361,296 sha256_ok=True
+repository.parquet           rows=     25,402 sha256_ok=True
+pr_commits.parquet           rows=  1,718,829 sha256_ok=True
+pr_commit_details.parquet    rows= 12,116,310 sha256_ok=True
+pr_timeline.parquet          rows=  6,515,552 sha256_ok=True
+pr_reviews.parquet           rows=    541,831 sha256_ok=True
+pr_review_comments.parquet   rows=    291,248 sha256_ok=True
+pr_comments.parquet          rows=    676,098 sha256_ok=True
+issue.parquet                rows=     72,664 sha256_ok=True
+related_issue.parquet        rows=    100,050 sha256_ok=True
+all_repository.parquet       rows=    957,209 sha256_ok=True
+all_user.parquet             rows=    399,962 sha256_ok=True

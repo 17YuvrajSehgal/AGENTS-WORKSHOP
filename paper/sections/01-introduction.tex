@@ -1,0 +1,32 @@
+\section{Introduction}
+\label{sec:intro}
+
+Coding agents now open pull requests (PRs) at scale: the AIDev dataset
+alone records \nAllPRs agent-authored PRs from six agents~\cite{li2026aidev}.
+Many of these PRs claim to make software faster or lighter. Studies of such
+performance PRs read their text~\cite{opu2025bertopic,peng2025optimization,
+dovhoshliubnyi2026mutation,peng2026validation} or, at most, re-execute a
+few dozen of them~\cite{qi2026merged}. They find that agents rely more on
+static reasoning and less on benchmarks than humans
+do~\cite{peng2026validation}, and that re-executed claims often do not
+hold~\cite{qi2026merged}.
+
+A stopwatch answers whether a change is faster, not \emph{why}. Yet a
+performance PR usually claims a mechanism: \emph{cache the result},
+\emph{read the file once}, \emph{stream in 1\,MB chunks}, \emph{remove the
+lock}. Each mechanism leaves a footprint in the operating system: fewer
+\texttt{read} calls, fewer page faults, less time waiting on a futex. If
+the footprint is absent, the claim is wrong even when the code is faster;
+if it is present but the code is not faster, the mechanism was not the
+bottleneck. Neither case is visible to a stopwatch.
+
+We present \sys, a method and pipeline that checks agents' performance
+claims at the kernel level. It (i)~finds performance PRs and extracts the
+mechanism each one claims, (ii)~maps each mechanism to the kernel and
+hardware signals that must move if the claim is true, (iii)~uses a
+\emph{blind} build agent to rebuild the code before and after each PR and
+write a workload that runs the changed code, and (iv)~measures both
+versions with untraced timing, hardware counters and full LTTng kernel
+traces~\cite{desnoyers2006lttng}. This short paper reports the method, its
+validation, a characterization of \nClaims agent performance claims, and
+first measurement results.

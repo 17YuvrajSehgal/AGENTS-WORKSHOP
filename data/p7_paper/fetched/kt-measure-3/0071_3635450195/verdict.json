@@ -1,0 +1,113 @@
+{
+ "job": {
+  "order": 71,
+  "id": 3635450195,
+  "agent": "Copilot",
+  "repo": "aditbajaj/fibrumpdf",
+  "number": 3,
+  "api_base_sha": "9b5fec68dc6041c89c2ae758691c7d30a5d834c0",
+  "head_sha": "d9ae15be3ae76dc07d0f1148ba12865f8b366338",
+  "created": "2025-11-17",
+  "changed_files": [
+   ".gitignore",
+   "README.md",
+   "_codeql_build_dir/Makefile",
+   "_codeql_build_dir/cmake_install.cmake",
+   "_codeql_build_dir/lib/libtomd.so",
+   "_codeql_detected_source_root",
+   "pymupdf4llm_c/__init__.py",
+   "pymupdf4llm_c/_lib.py",
+   "pymupdf4llm_c/api.py",
+   "pymupdf4llm_c/config.py",
+   "pymupdf4llm_c/logging_config.py",
+   "pymupdf4llm_c/main.py",
+   "ruff.toml",
+   "src/page_extractor.c",
+   "src/to_md.c",
+   "tests/test_api_enhancements.py"
+  ],
+  "n_files": 16,
+  "final_diff_files": [
+   ".gitignore",
+   "README.md",
+   "pymupdf4llm_c/__init__.py",
+   "pymupdf4llm_c/_lib.py",
+   "pymupdf4llm_c/api.py",
+   "pymupdf4llm_c/config.py",
+   "pymupdf4llm_c/logging_config.py",
+   "pymupdf4llm_c/main.py",
+   "ruff.toml",
+   "src/page_extractor.c",
+   "src/to_md.c",
+   "tests/test_api_enhancements.py"
+  ]
+ },
+ "agent": {
+  "status": "built",
+  "reason": "none",
+  "tier": "own_calls",
+  "uses_parallelism": false,
+  "behaviour_change_expected": false,
+  "notes": "check.py does NOT pass: head coverage is 0.234, below the 0.8 required. The low figure comes from head-only new APIs (get_metadata, batch_convert, _extract_page_range/pages=, get_pdf_metadata, progress_callback/verbose), which the workload can't call because it may only use APIs present in both versions. Base coverage 0.846, outputs equal, base time 3.1s, no-network run OK. The shared changed code is exercised: lru_cache on _load_library (the perf change), the non-pages to_json path, and the main.py CLI stdout/stderr writes. The C library libtomd.so had never been built: installed cmake, libmupdf-dev and its dependency dev packages with apt, and built each side's library in /tmp/kt_3/build_{base,head} with extra link libraries (mujs, gumbo, jbig2dec, libmupdf-third.a); nothing under src was edited. The workload creates 4 PDFs with PyMuPDF, runs to_json 250 times alternating collect=True/False with lib_path pointing at each side's own library, and calls the CLI error paths. extract_page_json crashes on both sides (it frees a Python bytes object), so it is not called."
+ },
+ "agent_is_error": false,
+ "timed_out": false,
+ "models": [
+  "claude-opus-5-5"
+ ],
+ "list_usd": 0.49496780000000007,
+ "num_turns": 21,
+ "setup_ok": true,
+ "setup_s": 4,
+ "agent_s": 142,
+ "check": {
+  "base_exit_ok": true,
+  "base_last_line": "41537edd1f3b150f922ff4bb64b111fdb281c87d36f130044b95dc137438c46b",
+  "head_exit_ok": true,
+  "head_last_line": "41537edd1f3b150f922ff4bb64b111fdb281c87d36f130044b95dc137438c46b",
+  "base_time_s": 3.297,
+  "head_time_s": 3.945,
+  "no_network_ok": true,
+  "coverage": {
+   "changed_files": [
+    "pymupdf4llm_c/__init__.py",
+    "pymupdf4llm_c/_lib.py",
+    "pymupdf4llm_c/api.py",
+    "pymupdf4llm_c/config.py",
+    "pymupdf4llm_c/logging_config.py",
+    "pymupdf4llm_c/main.py"
+   ],
+   "base": {
+    "changed_executable_lines": 13,
+    "executed": 11,
+    "share": 0.846
+   },
+   "head": {
+    "changed_executable_lines": 94,
+    "executed": 22,
+    "share": 0.234
+   },
+   "output_digest_base": "41537edd1f3b150f922ff4bb64b111fdb281c87d36f130044b95dc137438c46b",
+   "output_digest_head": "41537edd1f3b150f922ff4bb64b111fdb281c87d36f130044b95dc137438c46b",
+   "output_equal": true,
+   "coverage_gate_pass": false
+  },
+  "coverage_needed": 0.8,
+  "output_equal": true,
+  "pass": false,
+  "reasons": [
+   "head coverage 0.234 < 0.8"
+  ]
+ },
+ "harness_pass": false,
+ "audit": {
+  "mentions_github_pull": false,
+  "used_gh_cli": false,
+  "read_git_history": false
+ },
+ "changed_code_lines": {
+  "py": 399,
+  "c": 43
+ },
+ "python_share_of_code_change": 0.903
+}

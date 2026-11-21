@@ -1,0 +1,84 @@
+{
+ "job": {
+  "order": 63,
+  "id": 3790607299,
+  "agent": "Google_Jules",
+  "repo": "ryan112358/mbi",
+  "number": 76,
+  "api_base_sha": "509dc8c2745a7cdc7832c61be281fdb5f76a533f",
+  "head_sha": "1c000065cf52504ea8c05635cb567a73fae2f26b",
+  "created": "2026-01-07",
+  "changed_files": [
+   "benchmarks/benchmark_synthetic_data.py",
+   "src/mbi/markov_random_field.py",
+   "test/test_markov_random_field.py"
+  ],
+  "n_files": 3,
+  "final_diff_files": [
+   "benchmarks/benchmark_synthetic_data.py",
+   "src/mbi/markov_random_field.py",
+   "test/test_markov_random_field.py"
+  ]
+ },
+ "agent": {
+  "status": "built",
+  "reason": "none",
+  "tier": "own_calls",
+  "uses_parallelism": false,
+  "behaviour_change_expected": true,
+  "notes": "Workload calls MarkovRandomField.synthetic_data (round and sample methods, N up to 100k) on a 20-attribute tree model whose marginals are built in numpy. message_passing_stable fails in both envs (chex Numeric isinstance check rejects JAX tracers), so the repo benchmark could not be used. Coverage: head 22/23 changed lines, base 10/10. Digests differ because the new algorithm consumes random numbers differently."
+ },
+ "agent_is_error": false,
+ "timed_out": false,
+ "models": [
+  "claude-opus-5-5"
+ ],
+ "list_usd": 0.2883552,
+ "num_turns": 12,
+ "setup_ok": true,
+ "setup_s": 20,
+ "agent_s": 131,
+ "check": {
+  "base_exit_ok": true,
+  "base_last_line": "60c46f7a958b4ef0aba53f70ba3ba4e3ef21924639cdc5a4c0b3882ae284eab0",
+  "head_exit_ok": true,
+  "head_last_line": "696f9041c862bb3e8f2ffa92a88746f6b68bfa059d4f04f37790bd854bdf68b7",
+  "base_time_s": 6.785,
+  "head_time_s": 4.771,
+  "no_network_ok": true,
+  "coverage": {
+   "changed_files": [
+    "benchmarks/benchmark_synthetic_data.py",
+    "src/mbi/markov_random_field.py"
+   ],
+   "base": {
+    "changed_executable_lines": 10,
+    "executed": 10,
+    "share": 1.0
+   },
+   "head": {
+    "changed_executable_lines": 23,
+    "executed": 22,
+    "share": 0.957
+   },
+   "output_digest_base": "60c46f7a958b4ef0aba53f70ba3ba4e3ef21924639cdc5a4c0b3882ae284eab0",
+   "output_digest_head": "696f9041c862bb3e8f2ffa92a88746f6b68bfa059d4f04f37790bd854bdf68b7",
+   "output_equal": false,
+   "coverage_gate_pass": true
+  },
+  "coverage_needed": 0.8,
+  "output_equal": false,
+  "pass": true,
+  "reasons": []
+ },
+ "harness_pass": true,
+ "audit": {
+  "mentions_github_pull": false,
+  "used_gh_cli": false,
+  "read_git_history": false
+ },
+ "changed_code_lines": {
+  "py": 119
+ },
+ "python_share_of_code_change": 1.0
+}

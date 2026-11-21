@@ -1,0 +1,88 @@
+{
+ "job": {
+  "order": 20,
+  "id": 3385970784,
+  "agent": "Cursor",
+  "repo": "browser-use/browser-use",
+  "number": 2960,
+  "api_base_sha": "0bdd873fc781e65e5ea5b79c14b12805500c39d1",
+  "head_sha": "d89cb3dddedb7a058ffa6071f77be6e666dc93f8",
+  "created": "2025-09-05",
+  "changed_files": [
+   "browser_use/browser/events.py",
+   "browser_use/dom/serializer/serializer.py",
+   "browser_use/dom/service.py",
+   "browser_use/dom/views.py"
+  ],
+  "n_files": 4,
+  "final_diff_files": [
+   "browser_use/browser/events.py",
+   "browser_use/dom/serializer/serializer.py",
+   "browser_use/dom/service.py",
+   "browser_use/dom/views.py"
+  ]
+ },
+ "agent": {
+  "status": "built",
+  "reason": "none",
+  "tier": "own_calls",
+  "uses_parallelism": false,
+  "behaviour_change_expected": true,
+  "notes": "The browser CDP client and session were replaced with an in-process stand-in that returns synthetic DOM, snapshot, AX tree and layout data, and that respects the requested computed styles and paint-order options. DomService.get_serialized_dom_tree and DOMTreeSerializer run unpatched on 608-, 1,808- and 5,208-element pages; the largest one triggers head's large-page branch (more than 5000 elements). Outputs differ on purpose: on the large page head skips the AX tree, uses the simplified bounds-only visibility check and asks for fewer styles, so it lists 1,951 interactive elements where base lists 15. Coverage of changed lines: 25/30 head, 6/7 base; the missed lines are probably the retry and exception branches. Run time: 3.5 s base, 2.5 s head."
+ },
+ "agent_is_error": false,
+ "timed_out": false,
+ "models": [
+  "claude-opus-5-5"
+ ],
+ "list_usd": 0.473269,
+ "num_turns": 12,
+ "setup_ok": true,
+ "setup_s": 3,
+ "agent_s": 115,
+ "check": {
+  "base_exit_ok": true,
+  "base_last_line": "6c39e4b4f93d256d774fa7f05be2a60c198f2681cf426aac2260cedf5e03e46d",
+  "head_exit_ok": true,
+  "head_last_line": "7ee09aad97235a2131811693c8fdb68586f78554b74482868961d2e32a7ae4ef",
+  "base_time_s": 2.002,
+  "head_time_s": 2.186,
+  "no_network_ok": true,
+  "coverage": {
+   "changed_files": [
+    "browser_use/browser/events.py",
+    "browser_use/dom/serializer/serializer.py",
+    "browser_use/dom/service.py",
+    "browser_use/dom/views.py"
+   ],
+   "base": {
+    "changed_executable_lines": 7,
+    "executed": 6,
+    "share": 0.857
+   },
+   "head": {
+    "changed_executable_lines": 30,
+    "executed": 25,
+    "share": 0.833
+   },
+   "output_digest_base": "6c39e4b4f93d256d774fa7f05be2a60c198f2681cf426aac2260cedf5e03e46d",
+   "output_digest_head": "7ee09aad97235a2131811693c8fdb68586f78554b74482868961d2e32a7ae4ef",
+   "output_equal": false,
+   "coverage_gate_pass": true
+  },
+  "coverage_needed": 0.8,
+  "output_equal": false,
+  "pass": true,
+  "reasons": []
+ },
+ "harness_pass": true,
+ "audit": {
+  "mentions_github_pull": false,
+  "used_gh_cli": false,
+  "read_git_history": false
+ },
+ "changed_code_lines": {
+  "py": 93
+ },
+ "python_share_of_code_change": 1.0
+}

@@ -1,0 +1,80 @@
+{
+ "job": {
+  "order": 47,
+  "id": 3852433979,
+  "agent": "Copilot",
+  "repo": "groxaxo/Qwen3-TTS-Openai-Fastapi",
+  "number": 4,
+  "api_base_sha": "b1ac0cdfc770b74dca7ea377d28a1ea1df1cccf0",
+  "head_sha": "62e70c8551f2ae0cdab988b1b4d8808b3e6f5187",
+  "created": "2026-01-25",
+  "changed_files": [
+   "Dockerfile",
+   "README.md",
+   "api/backends/__init__.py",
+   "api/backends/base.py",
+   "api/backends/factory.py",
+   "api/backends/official_qwen3_tts.py",
+   "api/backends/vllm_omni_qwen3_tts.py",
+   "api/main.py",
+   "api/routers/openai_compatible.py",
+   "api/static/index.html",
+   "docker-compose.yml",
+   "docs/vllm-backend.md",
+   "pyproject.toml",
+   "pytest.ini",
+   "tests/__init__.py",
+   "tests/test_api.py",
+   "tests/test_backends.py"
+  ],
+  "n_files": 17,
+  "final_diff_files": [
+   "Dockerfile",
+   "README.md",
+   "api/backends/__init__.py",
+   "api/backends/base.py",
+   "api/backends/factory.py",
+   "api/backends/official_qwen3_tts.py",
+   "api/backends/vllm_omni_qwen3_tts.py",
+   "api/main.py",
+   "api/routers/openai_compatible.py",
+   "api/static/index.html",
+   "docker-compose.yml",
+   "docs/vllm-backend.md",
+   "pyproject.toml",
+   "pytest.ini",
+   "tests/__init__.py",
+   "tests/test_api.py",
+   "tests/test_backends.py"
+  ]
+ },
+ "agent": {
+  "status": "unbuildable",
+  "reason": "needs_external_service",
+  "tier": "none",
+  "uses_parallelism": false,
+  "behaviour_change_expected": false,
+  "notes": "The PR moves Qwen3-TTS model loading and inference behind a backend abstraction (official and vLLM-Omni). Every meaningful changed path needs the 1.7B Qwen3-TTS-CustomVoice weights downloaded from Hugging Face, and they aren't cached locally. Even with the weights, CPU inference would be far too slow, and the vLLM backend needs vLLM and a GPU. Without the model, only the error/fallback paths can run, which isn't a meaningful measurement. Both environments install and import fine."
+ },
+ "agent_is_error": false,
+ "timed_out": false,
+ "models": [
+  "claude-opus-5-5"
+ ],
+ "list_usd": 0.14882779999999998,
+ "num_turns": 5,
+ "setup_ok": true,
+ "setup_s": 4,
+ "agent_s": 29,
+ "check": null,
+ "harness_pass": false,
+ "audit": {
+  "mentions_github_pull": false,
+  "used_gh_cli": false,
+  "read_git_history": false
+ },
+ "changed_code_lines": {
+  "py": 1216
+ },
+ "python_share_of_code_change": 1.0
+}

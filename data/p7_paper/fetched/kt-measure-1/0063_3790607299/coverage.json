@@ -1,0 +1,20 @@
+{
+ "changed_files": [
+  "benchmarks/benchmark_synthetic_data.py",
+  "src/mbi/markov_random_field.py"
+ ],
+ "base": {
+  "changed_executable_lines": 10,
+  "executed": 10,
+  "share": 1.0
+ },
+ "head": {
+  "changed_executable_lines": 23,
+  "executed": 22,
+  "share": 0.957
+ },
+ "output_digest_base": "60c46f7a958b4ef0aba53f70ba3ba4e3ef21924639cdc5a4c0b3882ae284eab0",
+ "output_digest_head": "696f9041c862bb3e8f2ffa92a88746f6b68bfa059d4f04f37790bd854bdf68b7",
+ "output_equal": false,
+ "coverage_gate_pass": true
+}

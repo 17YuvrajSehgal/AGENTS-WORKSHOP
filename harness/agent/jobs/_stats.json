@@ -1,0 +1,10 @@
+{
+ "population": 1030,
+ "fetched": 1011,
+ "github_error": 19,
+ "per_vm": {
+  "kt-measure-1": 335,
+  "kt-measure-2": 335,
+  "kt-measure-3": 341
+ }
+}

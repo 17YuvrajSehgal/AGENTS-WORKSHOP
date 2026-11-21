@@ -1,0 +1,120 @@
+{
+ "job": {
+  "order": 68,
+  "id": 3945657455,
+  "agent": "Claude_Code",
+  "repo": "nexi-lab/nexus",
+  "number": 1622,
+  "api_base_sha": "5218b9d46626d8000754e63f35a3b15120221cee",
+  "head_sha": "00672f6f6147ee3d7e51aefce80268650ee89d8e",
+  "created": "2026-02-16",
+  "changed_files": [
+   "src/nexus/cli/commands/skills.py",
+   "src/nexus/raft/commands_pb2_grpc.py",
+   "src/nexus/search/async_search.py",
+   "src/nexus/search/daemon.py",
+   "src/nexus/server/auth/oauth_crypto.py",
+   "src/nexus/server/auth/token_manager.py",
+   "src/nexus/services/oauth_service.py",
+   "src/nexus/services/permissions/rebac_manager.py",
+   "src/nexus/services/search_semantic.py",
+   "tests/unit/core/test_nexus_fs_oauth_mixin.py",
+   "tests/unit/core/test_permission_enforcer.py",
+   "tests/unit/core/test_permissions_security.py",
+   "tests/unit/core/test_rebac_security.py",
+   "tests/unit/search/test_async_search.py",
+   "tests/unit/search/test_search_daemon.py",
+   "tests/unit/server/test_oauth_crypto.py",
+   "tests/unit/server/test_token_manager.py",
+   "tests/unit/services/test_oauth_service.py"
+  ],
+  "n_files": 18,
+  "final_diff_files": [
+   "src/nexus/cli/commands/skills.py",
+   "src/nexus/raft/commands_pb2_grpc.py",
+   "src/nexus/search/async_search.py",
+   "src/nexus/search/daemon.py",
+   "src/nexus/server/auth/oauth_crypto.py",
+   "src/nexus/server/auth/token_manager.py",
+   "src/nexus/services/oauth_service.py",
+   "src/nexus/services/permissions/rebac_manager.py",
+   "src/nexus/services/search_semantic.py",
+   "tests/unit/core/test_nexus_fs_oauth_mixin.py",
+   "tests/unit/core/test_permission_enforcer.py",
+   "tests/unit/core/test_permissions_security.py",
+   "tests/unit/core/test_rebac_security.py",
+   "tests/unit/search/test_async_search.py",
+   "tests/unit/search/test_search_daemon.py",
+   "tests/unit/server/test_oauth_crypto.py",
+   "tests/unit/server/test_token_manager.py",
+   "tests/unit/services/test_oauth_service.py"
+  ]
+ },
+ "agent": {
+  "status": "built",
+  "reason": "none",
+  "tier": "own_calls",
+  "uses_parallelism": false,
+  "behaviour_change_expected": false,
+  "notes": "Own calls on SQLite: OAuthCrypto(db_url) key loading, TokenManager(session_factory+db_url) -> OAuthCrypto, and the OAuthService PKCE/non-PKCE auth-url plus exchange flow (stand-ins only for the OAuth provider and its factory, which are network clients). Also AsyncSemanticSearch construct/close, SearchDaemon DB pool + FTS/semantic queries + shutdown (embedding provider is a stand-in; the PostgreSQL SQL fails on SQLite, the daemon catches the error and returns empty results, so the changed session lines run but no real query does), and ReBACManager construction. Coverage: base 100%, head 84%. Digests are equal; random values (state tokens, ciphertext, credential IDs) are left out of the digest."
+ },
+ "agent_is_error": false,
+ "timed_out": false,
+ "models": [
+  "claude-opus-5-5"
+ ],
+ "list_usd": 0.6513930000000001,
+ "num_turns": 21,
+ "setup_ok": true,
+ "setup_s": 11,
+ "agent_s": 177,
+ "check": {
+  "base_exit_ok": true,
+  "base_last_line": "72164946addefcba8f153a4391ffc1295e90ace7f76b05265fb487bdb5a2f10d",
+  "head_exit_ok": true,
+  "head_last_line": "72164946addefcba8f153a4391ffc1295e90ace7f76b05265fb487bdb5a2f10d",
+  "base_time_s": 3.947,
+  "head_time_s": 3.868,
+  "no_network_ok": true,
+  "coverage": {
+   "changed_files": [
+    "src/nexus/cli/commands/skills.py",
+    "src/nexus/search/async_search.py",
+    "src/nexus/search/daemon.py",
+    "src/nexus/server/auth/oauth_crypto.py",
+    "src/nexus/server/auth/token_manager.py",
+    "src/nexus/services/oauth_service.py",
+    "src/nexus/services/permissions/rebac_manager.py",
+    "src/nexus/services/search_semantic.py"
+   ],
+   "base": {
+    "changed_executable_lines": 41,
+    "executed": 41,
+    "share": 1.0
+   },
+   "head": {
+    "changed_executable_lines": 90,
+    "executed": 76,
+    "share": 0.844
+   },
+   "output_digest_base": "72164946addefcba8f153a4391ffc1295e90ace7f76b05265fb487bdb5a2f10d",
+   "output_digest_head": "72164946addefcba8f153a4391ffc1295e90ace7f76b05265fb487bdb5a2f10d",
+   "output_equal": true,
+   "coverage_gate_pass": true
+  },
+  "coverage_needed": 0.8,
+  "output_equal": true,
+  "pass": true,
+  "reasons": []
+ },
+ "harness_pass": true,
+ "audit": {
+  "mentions_github_pull": false,
+  "used_gh_cli": false,
+  "read_git_history": false
+ },
+ "changed_code_lines": {
+  "py": 692
+ },
+ "python_share_of_code_change": 1.0
+}

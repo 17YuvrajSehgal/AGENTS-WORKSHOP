@@ -1,0 +1,84 @@
+{
+ "job": {
+  "order": 23,
+  "id": 4035652675,
+  "agent": "Claude_Code",
+  "repo": "getzep/graphiti",
+  "number": 1303,
+  "api_base_sha": "334c8faa6387d1b24d78553e76bbe13439c491f8",
+  "head_sha": "f77538e321044ca0c5bafd604ae39635a2122f77",
+  "created": "2026-03-06",
+  "changed_files": [
+   "graphiti_core/edges.py",
+   "graphiti_core/utils/maintenance/edge_operations.py",
+   "pyproject.toml"
+  ],
+  "n_files": 3,
+  "final_diff_files": [
+   "graphiti_core/edges.py",
+   "graphiti_core/utils/maintenance/edge_operations.py",
+   "pyproject.toml"
+  ]
+ },
+ "agent": {
+  "status": "built",
+  "reason": "none",
+  "tier": "own_calls",
+  "uses_parallelism": true,
+  "behaviour_change_expected": true,
+  "notes": "Installed kuzu 0.11.3 (optional project extra) into both venvs. Workload builds an in-memory Kuzu graph, creates FTS indices via get_fulltext_indices, and calls resolve_extracted_edges (which calls get_between_nodes on base and get_between_nodes_bidirectional on head) with deterministic stand-ins for LLM/embedder/cross-encoder. Half of extracted edges are reversed, so head (bidirectional lookup) finds more candidates: digests differ as expected. Kuzu AsyncConnection executes queries on its own worker threads."
+ },
+ "agent_is_error": false,
+ "timed_out": false,
+ "models": [
+  "claude-opus-5-5"
+ ],
+ "list_usd": 0.4269802,
+ "num_turns": 17,
+ "setup_ok": true,
+ "setup_s": 3,
+ "agent_s": 140,
+ "check": {
+  "base_exit_ok": true,
+  "base_last_line": "fa0d7411ce39b911ce6c50f284e5cf2d4c0d8c9d2757921212ea76f2f8aadd3d",
+  "head_exit_ok": true,
+  "head_last_line": "fa4146e784d313d573d1b9bd6ce23ec8b4580080459af8385e2e91f25b811de5",
+  "base_time_s": 5.626,
+  "head_time_s": 5.67,
+  "no_network_ok": true,
+  "coverage": {
+   "changed_files": [
+    "graphiti_core/edges.py",
+    "graphiti_core/utils/maintenance/edge_operations.py"
+   ],
+   "base": {
+    "changed_executable_lines": 0,
+    "executed": 0,
+    "share": null
+   },
+   "head": {
+    "changed_executable_lines": 8,
+    "executed": 8,
+    "share": 1.0
+   },
+   "output_digest_base": "2d1d48fa57d6c73a7f0f071a38b07efab9d3bf4b97c0f1a79b7e6a485c93a9fa",
+   "output_digest_head": "0814c9b08026b947fb896b1d68012ba40320f5206516fceafa51f9f588360258",
+   "output_equal": false,
+   "coverage_gate_pass": true
+  },
+  "coverage_needed": 0.8,
+  "output_equal": false,
+  "pass": true,
+  "reasons": []
+ },
+ "harness_pass": true,
+ "audit": {
+  "mentions_github_pull": false,
+  "used_gh_cli": false,
+  "read_git_history": false
+ },
+ "changed_code_lines": {
+  "py": 33
+ },
+ "python_share_of_code_change": 1.0
+}

@@ -1,0 +1,41 @@
+{
+ "base_exit_ok": true,
+ "base_last_line": "a27464115e15cc372bb07bf234dd9eafafea53e5622547686e92c951ff55fd9a",
+ "head_exit_ok": true,
+ "head_last_line": "a27464115e15cc372bb07bf234dd9eafafea53e5622547686e92c951ff55fd9a",
+ "base_time_s": 3.563,
+ "head_time_s": 2.464,
+ "no_network_ok": true,
+ "coverage": {
+  "changed_files": [
+   "vesuvius/src/vesuvius/models/augmentation/pipelines/training_transforms.py",
+   "vesuvius/src/vesuvius/models/augmentation/transforms/utils/skeleton_transform.py",
+   "vesuvius/src/vesuvius/models/configuration/config_manager.py",
+   "vesuvius/src/vesuvius/models/datasets/zarr_dataset.py",
+   "vesuvius/src/vesuvius/models/training/cli.py",
+   "vesuvius/src/vesuvius/models/training/numa.py",
+   "vesuvius/src/vesuvius/models/training/save_checkpoint.py",
+   "vesuvius/src/vesuvius/models/training/train.py",
+   "vesuvius/src/vesuvius/models/utilities/cli_utils.py",
+   "vesuvius/src/vesuvius/utils/plotting.py"
+  ],
+  "base": {
+   "changed_executable_lines": 25,
+   "executed": 24,
+   "share": 0.96
+  },
+  "head": {
+   "changed_executable_lines": 109,
+   "executed": 104,
+   "share": 0.954
+  },
+  "output_digest_base": "a27464115e15cc372bb07bf234dd9eafafea53e5622547686e92c951ff55fd9a",
+  "output_digest_head": "a27464115e15cc372bb07bf234dd9eafafea53e5622547686e92c951ff55fd9a",
+  "output_equal": true,
+  "coverage_gate_pass": true
+ },
+ "coverage_needed": 0.8,
+ "output_equal": true,
+ "pass": true,
+ "reasons": []
+}

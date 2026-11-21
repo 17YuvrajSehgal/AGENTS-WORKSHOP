@@ -1,0 +1,32 @@
+{
+ "base_exit_ok": true,
+ "base_last_line": "054bc5d34159c5dcf7e84fef38bf73df93f8111e6f13172e64c9d9573e8ccf25",
+ "head_exit_ok": true,
+ "head_last_line": "f057644f2414c4c531ce8753cc9943ed9df20f3648f02eded8de5c405e2512a3",
+ "base_time_s": 6.085,
+ "head_time_s": 5.763,
+ "no_network_ok": true,
+ "coverage": {
+  "changed_files": [
+   "src/prefect/server/api/concurrency_limits_v2.py"
+  ],
+  "base": {
+   "changed_executable_lines": 2,
+   "executed": 2,
+   "share": 1.0
+  },
+  "head": {
+   "changed_executable_lines": 9,
+   "executed": 9,
+   "share": 1.0
+  },
+  "output_digest_base": "054bc5d34159c5dcf7e84fef38bf73df93f8111e6f13172e64c9d9573e8ccf25",
+  "output_digest_head": "f057644f2414c4c531ce8753cc9943ed9df20f3648f02eded8de5c405e2512a3",
+  "output_equal": false,
+  "coverage_gate_pass": true
+ },
+ "coverage_needed": 0.8,
+ "output_equal": false,
+ "pass": true,
+ "reasons": []
+}

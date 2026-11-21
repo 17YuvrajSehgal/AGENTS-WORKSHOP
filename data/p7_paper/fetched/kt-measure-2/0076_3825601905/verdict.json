@@ -1,0 +1,67 @@
+{
+ "job": {
+  "order": 76,
+  "id": 3825601905,
+  "agent": "Copilot",
+  "repo": "acados/acados",
+  "number": 1758,
+  "api_base_sha": "dcdecc88c6d581e9a82445b20bfbab75897e64c9",
+  "head_sha": "41fead9e63f539cd647a4d93ec634cf4cfdadb78",
+  "created": "2026-01-17",
+  "changed_files": [
+   "docs/Makefile",
+   "docs/PERFORMANCE_OPTIMIZATIONS.md",
+   "docs/PERFORMANCE_SUMMARY.md",
+   "docs/README.md",
+   "docs/_headers",
+   "docs/_static/cache-config.txt",
+   "docs/_static/custom.css",
+   "docs/_static/custom.js",
+   "docs/conf.py",
+   "docs/optimize_build.py"
+  ],
+  "n_files": 10,
+  "final_diff_files": [
+   "docs/Makefile",
+   "docs/PERFORMANCE_OPTIMIZATIONS.md",
+   "docs/PERFORMANCE_SUMMARY.md",
+   "docs/README.md",
+   "docs/_headers",
+   "docs/_static/cache-config.txt",
+   "docs/_static/custom.css",
+   "docs/_static/custom.js",
+   "docs/conf.py",
+   "docs/optimize_build.py"
+  ]
+ },
+ "agent": {
+  "status": "unbuildable",
+  "reason": "new_code_only",
+  "tier": "none",
+  "uses_parallelism": false,
+  "behaviour_change_expected": false,
+  "notes": "PR only touches the docs build: Makefile, Markdown, CSS/JS and header files, plus three new Sphinx config values in docs/conf.py and a new post-build script, docs/optimize_build.py. The script doesn't exist in base, and none of the installed package code changed, so nothing changed can run on both sides."
+ },
+ "agent_is_error": false,
+ "timed_out": false,
+ "models": [
+  "claude-opus-5-5"
+ ],
+ "list_usd": 0.1048214,
+ "num_turns": 4,
+ "setup_ok": false,
+ "setup_s": 4,
+ "agent_s": 11,
+ "check": null,
+ "harness_pass": false,
+ "audit": {
+  "mentions_github_pull": false,
+  "used_gh_cli": false,
+  "read_git_history": false
+ },
+ "changed_code_lines": {
+  "js": 45,
+  "py": 122
+ },
+ "python_share_of_code_change": 0.731
+}

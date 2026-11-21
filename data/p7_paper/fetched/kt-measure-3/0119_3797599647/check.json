@@ -1,0 +1,33 @@
+{
+ "base_exit_ok": true,
+ "base_last_line": "02fe84e0258f55bf9a4324e8fb24445a59c09d96250e9c5e7212150f49e837cb",
+ "head_exit_ok": true,
+ "head_last_line": "2956906c47920601686c9937082961c6fb53cc4568d5bada7c81cc5e559ac35a",
+ "base_time_s": 1.969,
+ "head_time_s": 2.258,
+ "no_network_ok": true,
+ "coverage": {
+  "changed_files": [
+   "src/iPhoto/gui/ui/controllers/navigation_controller.py",
+   "src/iPhoto/library/manager.py"
+  ],
+  "base": {
+   "changed_executable_lines": 0,
+   "executed": 0,
+   "share": null
+  },
+  "head": {
+   "changed_executable_lines": 59,
+   "executed": 51,
+   "share": 0.864
+  },
+  "output_digest_base": "02fe84e0258f55bf9a4324e8fb24445a59c09d96250e9c5e7212150f49e837cb",
+  "output_digest_head": "2956906c47920601686c9937082961c6fb53cc4568d5bada7c81cc5e559ac35a",
+  "output_equal": false,
+  "coverage_gate_pass": true
+ },
+ "coverage_needed": 0.8,
+ "output_equal": false,
+ "pass": true,
+ "reasons": []
+}

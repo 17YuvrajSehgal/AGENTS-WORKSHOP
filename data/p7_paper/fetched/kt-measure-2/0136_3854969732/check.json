@@ -1,0 +1,33 @@
+{
+ "base_exit_ok": true,
+ "base_last_line": "7b4ec47ac9f12028166e9ae8e41785f3e2e5e6db3a4362fe1645db5b7b06ba25",
+ "head_exit_ok": true,
+ "head_last_line": "7b4ec47ac9f12028166e9ae8e41785f3e2e5e6db3a4362fe1645db5b7b06ba25",
+ "base_time_s": 4.831,
+ "head_time_s": 6.838,
+ "no_network_ok": true,
+ "coverage": {
+  "changed_files": [
+   "src/notebooklm_mcp/api_client.py",
+   "src/notebooklm_mcp/server.py"
+  ],
+  "base": {
+   "changed_executable_lines": 270,
+   "executed": 230,
+   "share": 0.852
+  },
+  "head": {
+   "changed_executable_lines": 424,
+   "executed": 255,
+   "share": 0.601
+  },
+  "output_digest_base": "7b4ec47ac9f12028166e9ae8e41785f3e2e5e6db3a4362fe1645db5b7b06ba25",
+  "output_digest_head": "7b4ec47ac9f12028166e9ae8e41785f3e2e5e6db3a4362fe1645db5b7b06ba25",
+  "output_equal": true,
+  "coverage_gate_pass": false
+ },
+ "coverage_needed": 0.5,
+ "output_equal": true,
+ "pass": true,
+ "reasons": []
+}

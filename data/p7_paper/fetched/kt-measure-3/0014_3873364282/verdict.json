@@ -1,0 +1,97 @@
+{
+ "job": {
+  "order": 14,
+  "id": 3873364282,
+  "agent": "Copilot",
+  "repo": "PyThaiNLP/pythainlp",
+  "number": 1237,
+  "api_base_sha": "03b92ab064b3735165c91531bb0e012017db1037",
+  "head_sha": "b29d9650d033eb07f45502b8fa1a6feb3e25b2fc",
+  "created": "2026-01-30",
+  "changed_files": [
+   "pythainlp/benchmarks/word_tokenization.py",
+   "pythainlp/corpus/core.py",
+   "pythainlp/soundex/prayut_and_somchaip.py",
+   "pythainlp/spell/words_spelling_correction.py",
+   "pythainlp/tokenize/thaisumcut.py",
+   "pythainlp/ulmfit/preprocess.py",
+   "pythainlp/util/date.py",
+   "pythainlp/util/emojiconv.py",
+   "pythainlp/util/normalize.py"
+  ],
+  "n_files": 9,
+  "final_diff_files": [
+   "pythainlp/soundex/prayut_and_somchaip.py",
+   "pythainlp/spell/words_spelling_correction.py",
+   "pythainlp/tokenize/thaisumcut.py",
+   "pythainlp/ulmfit/preprocess.py",
+   "pythainlp/util/date.py",
+   "pythainlp/util/normalize.py"
+  ]
+ },
+ "agent": {
+  "status": "built",
+  "reason": "none",
+  "tier": "own_calls",
+  "uses_parallelism": false,
+  "behaviour_change_expected": false,
+  "notes": "Installed numpy, torch (CPU) and emoji into both venvs, which pythainlp.ulmfit needs. The ulmfit corpus files were fetched once and copied to /tmp/kt_1237/pythainlp-data; the workload sets PYTHAINLP_DATA_DIR to it, so it runs offline. The workload calls prayut_and_somchaip, expand_maiyamok, the ulmfit preprocess functions, and ThaiSentenceSegmentor/middle_cut. Coverage is 9 of 10 changed lines on base and 7 of 8 on head; the spelling-correction model loader is not run because it needs a model. Base and head outputs are equal."
+ },
+ "agent_is_error": false,
+ "timed_out": false,
+ "models": [
+  "claude-opus-5-5"
+ ],
+ "list_usd": 0.24831240000000002,
+ "num_turns": 10,
+ "setup_ok": true,
+ "setup_s": 7,
+ "agent_s": 136,
+ "check": {
+  "base_exit_ok": true,
+  "base_last_line": "b3441f541f32f4b247b518ae9b47a90c8ce7412167e5e5d24d4309658242c661",
+  "head_exit_ok": true,
+  "head_last_line": "b3441f541f32f4b247b518ae9b47a90c8ce7412167e5e5d24d4309658242c661",
+  "base_time_s": 2.439,
+  "head_time_s": 2.052,
+  "no_network_ok": true,
+  "coverage": {
+   "changed_files": [
+    "pythainlp/soundex/prayut_and_somchaip.py",
+    "pythainlp/spell/words_spelling_correction.py",
+    "pythainlp/tokenize/thaisumcut.py",
+    "pythainlp/ulmfit/preprocess.py",
+    "pythainlp/util/date.py",
+    "pythainlp/util/normalize.py"
+   ],
+   "base": {
+    "changed_executable_lines": 10,
+    "executed": 9,
+    "share": 0.9
+   },
+   "head": {
+    "changed_executable_lines": 8,
+    "executed": 7,
+    "share": 0.875
+   },
+   "output_digest_base": "b3441f541f32f4b247b518ae9b47a90c8ce7412167e5e5d24d4309658242c661",
+   "output_digest_head": "b3441f541f32f4b247b518ae9b47a90c8ce7412167e5e5d24d4309658242c661",
+   "output_equal": true,
+   "coverage_gate_pass": true
+  },
+  "coverage_needed": 0.8,
+  "output_equal": true,
+  "pass": true,
+  "reasons": []
+ },
+ "harness_pass": true,
+ "audit": {
+  "mentions_github_pull": false,
+  "used_gh_cli": false,
+  "read_git_history": false
+ },
+ "changed_code_lines": {
+  "py": 20
+ },
+ "python_share_of_code_change": 1.0
+}

@@ -1,0 +1,19 @@
+{
+ "changed_files": [
+  "src/io_scene_vrm/editor/spring_bone1/handler.py"
+ ],
+ "base": {
+  "changed_executable_lines": 8,
+  "executed": 7,
+  "share": 0.875
+ },
+ "head": {
+  "changed_executable_lines": 10,
+  "executed": 10,
+  "share": 1.0
+ },
+ "output_digest_base": "16b48f966e1760c608400681de2235b9dd64b9abe308eb545f66b99c886555e7",
+ "output_digest_head": "16b48f966e1760c608400681de2235b9dd64b9abe308eb545f66b99c886555e7",
+ "output_equal": true,
+ "coverage_gate_pass": true
+}

@@ -1,0 +1,51 @@
+{
+ "changed_files": [
+  "experiments/ferries/canary_ferry.py",
+  "lib/fray/src/fray/v2/iris_backend.py",
+  "lib/iris/scripts/benchmark_log_store.py",
+  "lib/iris/src/iris/cli/job.py",
+  "lib/iris/src/iris/cluster/config.py",
+  "lib/iris/src/iris/cluster/controller/__init__.py",
+  "lib/iris/src/iris/cluster/controller/controller.py",
+  "lib/iris/src/iris/cluster/controller/dashboard.py",
+  "lib/iris/src/iris/cluster/controller/main.py",
+  "lib/iris/src/iris/cluster/controller/migrations/0011_direct_provider.py",
+  "lib/iris/src/iris/cluster/controller/provider.py",
+  "lib/iris/src/iris/cluster/controller/scheduler.py",
+  "lib/iris/src/iris/cluster/controller/service.py",
+  "lib/iris/src/iris/cluster/controller/transitions.py",
+  "lib/iris/src/iris/cluster/controller/worker_provider.py",
+  "lib/iris/src/iris/cluster/k8s/bundle_fetch.py",
+  "lib/iris/src/iris/cluster/k8s/constants.py",
+  "lib/iris/src/iris/cluster/k8s/provider.py",
+  "lib/iris/src/iris/cluster/local_cluster.py",
+  "lib/iris/src/iris/cluster/log_store.py",
+  "lib/iris/src/iris/cluster/platform/coreweave.py",
+  "lib/iris/src/iris/cluster/runtime/__init__.py",
+  "lib/iris/src/iris/cluster/runtime/docker.py",
+  "lib/iris/src/iris/cluster/runtime/env.py",
+  "lib/iris/src/iris/cluster/runtime/process.py",
+  "lib/iris/src/iris/cluster/types.py",
+  "lib/iris/src/iris/cluster/worker/env_probe.py",
+  "lib/iris/src/iris/cluster/worker/main.py",
+  "lib/iris/src/iris/cluster/worker/task_attempt.py",
+  "lib/iris/src/iris/runtime/jax_init.py",
+  "lib/levanter/src/levanter/distributed.py",
+  "scripts/canary/coreweave_multihost.py",
+  "scripts/migrations/migrate_bundle_store.py"
+ ],
+ "base": {
+  "changed_executable_lines": 34,
+  "executed": 34,
+  "share": 1.0
+ },
+ "head": {
+  "changed_executable_lines": 93,
+  "executed": 88,
+  "share": 0.946
+ },
+ "output_digest_base": "af843efada57d7cf732559a67981558f9fe5bff90f4f06d111e6e3ca9c849e9d",
+ "output_digest_head": "af843efada57d7cf732559a67981558f9fe5bff90f4f06d111e6e3ca9c849e9d",
+ "output_equal": true,
+ "coverage_gate_pass": true
+}

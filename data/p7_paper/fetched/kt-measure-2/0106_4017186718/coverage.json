@@ -1,0 +1,19 @@
+{
+ "changed_files": [
+  "scripts/kanban_update.py"
+ ],
+ "base": {
+  "changed_executable_lines": 10,
+  "executed": 10,
+  "share": 1.0
+ },
+ "head": {
+  "changed_executable_lines": 9,
+  "executed": 9,
+  "share": 1.0
+ },
+ "output_digest_base": "4bce9bf617c71c7289e1480849d7e379735ddc571df71a5918ee61d9646765de",
+ "output_digest_head": "4bce9bf617c71c7289e1480849d7e379735ddc571df71a5918ee61d9646765de",
+ "output_equal": true,
+ "coverage_gate_pass": true
+}

@@ -1,0 +1,33 @@
+{
+ "base_exit_ok": true,
+ "base_last_line": "b1bbce754ddd4954c81bb5b17142b269066e0a1aa53588dfb61824e6b4d8b25f",
+ "head_exit_ok": true,
+ "head_last_line": "6d9c98e1805533cc14cd7ac98629ae60fa0ee1325aac7cf3b5fc76561e0ea3dd",
+ "base_time_s": 3.529,
+ "head_time_s": 5.347,
+ "no_network_ok": true,
+ "coverage": {
+  "changed_files": [
+   "src/nexus/core/nexus_fs_search.py",
+   "src/nexus/fuse/operations.py"
+  ],
+  "base": {
+   "changed_executable_lines": 1,
+   "executed": 1,
+   "share": 1.0
+  },
+  "head": {
+   "changed_executable_lines": 7,
+   "executed": 7,
+   "share": 1.0
+  },
+  "output_digest_base": "b1bbce754ddd4954c81bb5b17142b269066e0a1aa53588dfb61824e6b4d8b25f",
+  "output_digest_head": "6d9c98e1805533cc14cd7ac98629ae60fa0ee1325aac7cf3b5fc76561e0ea3dd",
+  "output_equal": false,
+  "coverage_gate_pass": true
+ },
+ "coverage_needed": 0.8,
+ "output_equal": false,
+ "pass": true,
+ "reasons": []
+}

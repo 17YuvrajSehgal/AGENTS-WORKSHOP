@@ -1,0 +1,61 @@
+{
+ "job": {
+  "order": 51,
+  "id": 3134639058,
+  "agent": "Claude_Code",
+  "repo": "jxnl/kura",
+  "number": 97,
+  "api_base_sha": "900d0f9e6cff360533754db91eadbf3cfe197b66",
+  "head_sha": "00a9065ccb0a71518ca78fc461d49179a68f53d8",
+  "created": "2025-06-10",
+  "changed_files": [
+   "docs/core-concepts/clustering.md",
+   "docs/getting-started/quickstart.md",
+   "kura/__init__.py",
+   "kura/cluster.py",
+   "kura/hdbscan.py",
+   "kura/k_means.py",
+   "scripts/tutorial_procedural_api.py",
+   "test_minibatch_kmeans.py"
+  ],
+  "n_files": 8,
+  "final_diff_files": [
+   "docs/core-concepts/clustering.md",
+   "docs/getting-started/quickstart.md",
+   "kura/__init__.py",
+   "kura/hdbscan.py",
+   "kura/k_means.py",
+   "scripts/tutorial_procedural_api.py",
+   "test_minibatch_kmeans.py"
+  ]
+ },
+ "agent": {
+  "status": "unbuildable",
+  "reason": "new_code_only",
+  "tier": "none",
+  "uses_parallelism": false,
+  "behaviour_change_expected": false,
+  "notes": "The PR adds a new MiniBatchKmeansClusteringMethod class that is absent from base. The other Python changes run only at import time: an extra sklearn import, an export in __init__, and a type-hint change (int -> int | None) in the HDBSCAN signature. Existing clustering logic is unchanged, so no shared runtime path changes."
+ },
+ "agent_is_error": false,
+ "timed_out": false,
+ "models": [
+  "claude-opus-5-5"
+ ],
+ "list_usd": 0.1202304,
+ "num_turns": 4,
+ "setup_ok": false,
+ "setup_s": 10,
+ "agent_s": 14,
+ "check": null,
+ "harness_pass": false,
+ "audit": {
+  "mentions_github_pull": false,
+  "used_gh_cli": false,
+  "read_git_history": false
+ },
+ "changed_code_lines": {
+  "py": 383
+ },
+ "python_share_of_code_change": 1.0
+}

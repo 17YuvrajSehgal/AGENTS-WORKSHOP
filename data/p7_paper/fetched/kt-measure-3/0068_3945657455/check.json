@@ -1,0 +1,39 @@
+{
+ "base_exit_ok": true,
+ "base_last_line": "72164946addefcba8f153a4391ffc1295e90ace7f76b05265fb487bdb5a2f10d",
+ "head_exit_ok": true,
+ "head_last_line": "72164946addefcba8f153a4391ffc1295e90ace7f76b05265fb487bdb5a2f10d",
+ "base_time_s": 3.947,
+ "head_time_s": 3.868,
+ "no_network_ok": true,
+ "coverage": {
+  "changed_files": [
+   "src/nexus/cli/commands/skills.py",
+   "src/nexus/search/async_search.py",
+   "src/nexus/search/daemon.py",
+   "src/nexus/server/auth/oauth_crypto.py",
+   "src/nexus/server/auth/token_manager.py",
+   "src/nexus/services/oauth_service.py",
+   "src/nexus/services/permissions/rebac_manager.py",
+   "src/nexus/services/search_semantic.py"
+  ],
+  "base": {
+   "changed_executable_lines": 41,
+   "executed": 41,
+   "share": 1.0
+  },
+  "head": {
+   "changed_executable_lines": 90,
+   "executed": 76,
+   "share": 0.844
+  },
+  "output_digest_base": "72164946addefcba8f153a4391ffc1295e90ace7f76b05265fb487bdb5a2f10d",
+  "output_digest_head": "72164946addefcba8f153a4391ffc1295e90ace7f76b05265fb487bdb5a2f10d",
+  "output_equal": true,
+  "coverage_gate_pass": true
+ },
+ "coverage_needed": 0.8,
+ "output_equal": true,
+ "pass": true,
+ "reasons": []
+}

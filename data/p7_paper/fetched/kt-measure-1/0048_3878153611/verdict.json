@@ -1,0 +1,54 @@
+{
+ "job": {
+  "order": 48,
+  "id": 3878153611,
+  "agent": "Claude_Code",
+  "repo": "Significant-Gravitas/AutoGPT",
+  "number": 11916,
+  "api_base_sha": "cc4839bedb625be44465972655e973e031835db3",
+  "head_sha": "7b839b22a8a56dda8171e0a0433835309cb209eb",
+  "created": "2026-01-31",
+  "changed_files": [
+   "autogpt_platform/backend/backend/api/features/chat/tools/agent_search.py",
+   "autogpt_platform/backend/backend/api/features/chat/tools/models.py",
+   "autogpt_platform/backend/backend/api/features/chat/tools/run_agent.py",
+   "autogpt_platform/backend/backend/api/features/chat/tools/run_agent_test.py"
+  ],
+  "n_files": 4,
+  "final_diff_files": [
+   "autogpt_platform/backend/backend/api/features/chat/tools/agent_search.py",
+   "autogpt_platform/backend/backend/api/features/chat/tools/models.py",
+   "autogpt_platform/backend/backend/api/features/chat/tools/run_agent.py",
+   "autogpt_platform/backend/backend/api/features/chat/tools/run_agent_test.py"
+  ]
+ },
+ "agent": {
+  "status": "unbuildable",
+  "reason": "needs_external_service",
+  "tier": "none",
+  "uses_parallelism": false,
+  "behaviour_change_expected": true,
+  "notes": "Both installs failed: Poetry's editable build says no package folder was found. Every changed line in agent_search.search_agents and RunAgentTool._execute runs only after Prisma/Postgres calls (get_store_agents, list_library_agents, get_graph, fetch_graph_from_store_slug, match_user_credentials_to_graph). The PR mainly adds parallel graph fetches from the database. No Postgres is available and the Prisma client can't be generated offline. Stubbing the project's own data-layer functions would mean patching the code under test, which isn't allowed."
+ },
+ "agent_is_error": false,
+ "timed_out": false,
+ "models": [
+  "claude-opus-5-5"
+ ],
+ "list_usd": 0.1557368,
+ "num_turns": 5,
+ "setup_ok": false,
+ "setup_s": 26,
+ "agent_s": 23,
+ "check": null,
+ "harness_pass": false,
+ "audit": {
+  "mentions_github_pull": false,
+  "used_gh_cli": false,
+  "read_git_history": false
+ },
+ "changed_code_lines": {
+  "py": 132
+ },
+ "python_share_of_code_change": 1.0
+}

@@ -1,0 +1,25 @@
+{
+ "changed_files": [
+  "lightrag/base.py",
+  "lightrag/kg/json_doc_status_impl.py",
+  "lightrag/kg/mongo_impl.py",
+  "lightrag/kg/opensearch_impl.py",
+  "lightrag/kg/postgres_impl.py",
+  "lightrag/kg/redis_impl.py",
+  "lightrag/lightrag.py"
+ ],
+ "base": {
+  "changed_executable_lines": 24,
+  "executed": 21,
+  "share": 0.875
+ },
+ "head": {
+  "changed_executable_lines": 24,
+  "executed": 20,
+  "share": 0.833
+ },
+ "output_digest_base": "6db9e7b5bddee49db07f47b7dc979d053e350b279af94f65eb11fd970c11e100",
+ "output_digest_head": "6db9e7b5bddee49db07f47b7dc979d053e350b279af94f65eb11fd970c11e100",
+ "output_equal": true,
+ "coverage_gate_pass": true
+}

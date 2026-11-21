@@ -1,0 +1,87 @@
+{
+ "job": {
+  "order": 4,
+  "id": 3728179568,
+  "agent": "Google_Jules",
+  "repo": "OliverZhaohaibin/iPhotron-LocalPhotoAlbumManager",
+  "number": 445,
+  "api_base_sha": "9f8bcccb13b819a65e1a8f8dd94362dcbfab7d31",
+  "head_sha": "ea43dd994ed05b1f9f9ec6c973a7c2020233a943",
+  "created": "2025-12-14",
+  "changed_files": [
+   "src/iPhoto/gui/ui/models/asset_list_model.py",
+   "src/iPhoto/gui/ui/models/asset_state_manager.py",
+   "src/iPhoto/gui/ui/tasks/asset_loader_worker.py",
+   "src/iPhoto/tests/gui/ui/models/test_backpressure.py"
+  ],
+  "n_files": 4,
+  "final_diff_files": [
+   "src/iPhoto/gui/ui/models/asset_list_model.py",
+   "src/iPhoto/gui/ui/models/asset_state_manager.py",
+   "src/iPhoto/gui/ui/tasks/asset_loader_worker.py",
+   "src/iPhoto/tests/gui/ui/models/test_backpressure.py"
+  ]
+ },
+ "agent": {
+  "status": "built",
+  "reason": "none",
+  "tier": "own_calls",
+  "uses_parallelism": true,
+  "behaviour_change_expected": true,
+  "notes": "Offscreen Qt workload: real AssetListModel prepare_for_album/start_load over a real SQLite IndexStore (only stand-in: facade.library_manager returning in-memory live items), with the event loop running until load finishes (QThreadPool workers; LiveIngestWorker on head). Also calls AssetLoaderWorker.run directly, the model's chunk dedup, flush, finish, error and ignore paths, and AssetListStateManager append_chunk/rebuild_lookup with str and Path rels. Digests differ base vs head as expected: base lets duplicates through the pending buffer (6022 vs 6000 rows). Head is slower (msleep in workers, timer-driven 100-row flush batches). Added a .coveragerc in the PR dir (core=sysmon) so coverage can see code running on Qt pool threads; without it head coverage is 0.72, with it 0.90."
+ },
+ "agent_is_error": false,
+ "timed_out": false,
+ "models": [
+  "claude-opus-5-5"
+ ],
+ "list_usd": 0.7521889999999999,
+ "num_turns": 20,
+ "setup_ok": true,
+ "setup_s": 8,
+ "agent_s": 216,
+ "check": {
+  "base_exit_ok": true,
+  "base_last_line": "23220850c22d0ef2503110f857883589cccca24acfd17f15342539ec624289ed",
+  "head_exit_ok": true,
+  "head_last_line": "4b8d57f35c9e730bf0a442666058ab9fcd9d5a45819e12170fd92709c950f405",
+  "base_time_s": 1.692,
+  "head_time_s": 5.49,
+  "no_network_ok": true,
+  "coverage": {
+   "changed_files": [
+    "src/iPhoto/gui/ui/models/asset_list_model.py",
+    "src/iPhoto/gui/ui/models/asset_state_manager.py",
+    "src/iPhoto/gui/ui/tasks/asset_loader_worker.py"
+   ],
+   "base": {
+    "changed_executable_lines": 16,
+    "executed": 14,
+    "share": 0.875
+   },
+   "head": {
+    "changed_executable_lines": 120,
+    "executed": 108,
+    "share": 0.9
+   },
+   "output_digest_base": "23220850c22d0ef2503110f857883589cccca24acfd17f15342539ec624289ed",
+   "output_digest_head": "4b8d57f35c9e730bf0a442666058ab9fcd9d5a45819e12170fd92709c950f405",
+   "output_equal": false,
+   "coverage_gate_pass": true
+  },
+  "coverage_needed": 0.8,
+  "output_equal": false,
+  "pass": true,
+  "reasons": []
+ },
+ "harness_pass": true,
+ "audit": {
+  "mentions_github_pull": false,
+  "used_gh_cli": false,
+  "read_git_history": false
+ },
+ "changed_code_lines": {
+  "py": 410
+ },
+ "python_share_of_code_change": 1.0
+}

@@ -1,0 +1,79 @@
+{
+ "job": {
+  "order": 75,
+  "id": 3740869189,
+  "agent": "Google_Jules",
+  "repo": "OliverZhaohaibin/iPhotron-LocalPhotoAlbumManager",
+  "number": 466,
+  "api_base_sha": "935a02e388859d847624c022cfcb4213ce04a3dd",
+  "head_sha": "78116996a991df5ed1bc06534b81c6af7e8e5b87",
+  "created": "2025-12-17",
+  "changed_files": [
+   "src/iPhoto/io/scanner.py"
+  ],
+  "n_files": 1,
+  "final_diff_files": [
+   "src/iPhoto/io/scanner.py"
+  ]
+ },
+ "agent": {
+  "status": "built",
+  "reason": "none",
+  "tier": "own_calls",
+  "uses_parallelism": false,
+  "behaviour_change_expected": true,
+  "notes": "Installed exiftool via apt (libimage-exiftool-perl). Workload calls scanner._process_path_stream on 60 generated images with NFC and NFD filenames in three modes: with exiftool, without exiftool on PATH (empty payloads, so the fallback string lookups run), and an incremental scan whose existing index uses the other Unicode normalization (cache fallback). Digests differ because head now gets cache hits on the NFC/NFD-swapped keys. Coverage: head 18/20, base 1/1. Base runtime about 2.4 s."
+ },
+ "agent_is_error": false,
+ "timed_out": false,
+ "models": [
+  "claude-opus-5-5"
+ ],
+ "list_usd": 0.23788220000000002,
+ "num_turns": 8,
+ "setup_ok": true,
+ "setup_s": 8,
+ "agent_s": 75,
+ "check": {
+  "base_exit_ok": true,
+  "base_last_line": "c581a4d936890acf681e07f13b26865b4f1c07231bcd06c184c1de890d3a6ffa",
+  "head_exit_ok": true,
+  "head_last_line": "7da27291087bfa7055c425ae1622a4d7d5dd8765ce0ff30cdbf783412037bbf0",
+  "base_time_s": 2.105,
+  "head_time_s": 1.798,
+  "no_network_ok": true,
+  "coverage": {
+   "changed_files": [
+    "src/iPhoto/io/scanner.py"
+   ],
+   "base": {
+    "changed_executable_lines": 1,
+    "executed": 1,
+    "share": 1.0
+   },
+   "head": {
+    "changed_executable_lines": 20,
+    "executed": 18,
+    "share": 0.9
+   },
+   "output_digest_base": "c581a4d936890acf681e07f13b26865b4f1c07231bcd06c184c1de890d3a6ffa",
+   "output_digest_head": "7da27291087bfa7055c425ae1622a4d7d5dd8765ce0ff30cdbf783412037bbf0",
+   "output_equal": false,
+   "coverage_gate_pass": true
+  },
+  "coverage_needed": 0.8,
+  "output_equal": false,
+  "pass": true,
+  "reasons": []
+ },
+ "harness_pass": true,
+ "audit": {
+  "mentions_github_pull": false,
+  "used_gh_cli": false,
+  "read_git_history": false
+ },
+ "changed_code_lines": {
+  "py": 30
+ },
+ "python_share_of_code_change": 1.0
+}

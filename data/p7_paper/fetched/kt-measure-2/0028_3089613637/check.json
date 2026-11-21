@@ -1,0 +1,33 @@
+{
+ "base_exit_ok": true,
+ "base_last_line": "3208fd2cd83c91474e3ecf30cb4e7743b5eb68665a03c7e19498a29dbdb8eccf",
+ "head_exit_ok": true,
+ "head_last_line": "3208fd2cd83c91474e3ecf30cb4e7743b5eb68665a03c7e19498a29dbdb8eccf",
+ "base_time_s": 1.662,
+ "head_time_s": 0.861,
+ "no_network_ok": true,
+ "coverage": {
+  "changed_files": [
+   "addok/helpers/collectors.py",
+   "benchmarks/benchmark_onetomany.py"
+  ],
+  "base": {
+   "changed_executable_lines": 1,
+   "executed": 1,
+   "share": 1.0
+  },
+  "head": {
+   "changed_executable_lines": 2,
+   "executed": 2,
+   "share": 1.0
+  },
+  "output_digest_base": "3208fd2cd83c91474e3ecf30cb4e7743b5eb68665a03c7e19498a29dbdb8eccf",
+  "output_digest_head": "3208fd2cd83c91474e3ecf30cb4e7743b5eb68665a03c7e19498a29dbdb8eccf",
+  "output_equal": true,
+  "coverage_gate_pass": true
+ },
+ "coverage_needed": 0.8,
+ "output_equal": true,
+ "pass": true,
+ "reasons": []
+}

@@ -1,0 +1,22 @@
+{
+ "changed_files": [
+  "src/shotgun/agents/context_analyzer/analyzer.py",
+  "src/shotgun/agents/conversation/history/compaction.py",
+  "src/shotgun/agents/conversation/history/history_processors.py",
+  "src/shotgun/agents/conversation/history/token_estimation.py"
+ ],
+ "base": {
+  "changed_executable_lines": 8,
+  "executed": 8,
+  "share": 1.0
+ },
+ "head": {
+  "changed_executable_lines": 34,
+  "executed": 33,
+  "share": 0.971
+ },
+ "output_digest_base": "f924c6d0e007dd10920871f099ec0b7618f4898581427d24de77a060a2d53030",
+ "output_digest_head": "f924c6d0e007dd10920871f099ec0b7618f4898581427d24de77a060a2d53030",
+ "output_equal": true,
+ "coverage_gate_pass": true
+}

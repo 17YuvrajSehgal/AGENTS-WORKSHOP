@@ -1,0 +1,81 @@
+{
+ "job": {
+  "order": 156,
+  "id": 4025060586,
+  "agent": "Devin",
+  "repo": "PrefectHQ/prefect",
+  "number": 20972,
+  "api_base_sha": "7d651d210aa6128a440e9964081f8c0ba0a8b06e",
+  "head_sha": "dab133ae7ab9b6ec888536e9cc0bf5101e132982",
+  "created": "2026-03-05",
+  "changed_files": [
+   "src/prefect/task_runners.py",
+   "tests/test_task_runners.py"
+  ],
+  "n_files": 2,
+  "final_diff_files": [
+   "src/prefect/task_runners.py",
+   "tests/test_task_runners.py"
+  ]
+ },
+ "agent": {
+  "status": "built",
+  "reason": "none",
+  "tier": "own_calls",
+  "uses_parallelism": true,
+  "behaviour_change_expected": false,
+  "notes": "Starts a local Prefect SubprocessASGIServer (SQLite) and runs two ProcessPoolTaskRunner start/stop cycles (4 workers, 20 task submits each, then cancel_all). Covers 100% of changed lines on both sides (3/3 base, 10/10 head). Outputs are equal and the no-network run passes. Base takes about 17 s (over the 1-10 s target, under the 30 s hard limit). Most of that is starting the server and worker processes, so the change being measured (caching serialize_context and env per runner) is small next to it."
+ },
+ "agent_is_error": false,
+ "timed_out": false,
+ "models": [
+  "claude-opus-5-5"
+ ],
+ "list_usd": 0.25059600000000004,
+ "num_turns": 10,
+ "setup_ok": true,
+ "setup_s": 12,
+ "agent_s": 421,
+ "check": {
+  "base_exit_ok": true,
+  "base_last_line": "97571a492cd1008708d19b89c90ea0575b6d628f37dabc83f722721821123df5",
+  "head_exit_ok": true,
+  "head_last_line": "97571a492cd1008708d19b89c90ea0575b6d628f37dabc83f722721821123df5",
+  "base_time_s": 15.832,
+  "head_time_s": 16.271,
+  "no_network_ok": true,
+  "coverage": {
+   "changed_files": [
+    "src/prefect/task_runners.py"
+   ],
+   "base": {
+    "changed_executable_lines": 3,
+    "executed": 3,
+    "share": 1.0
+   },
+   "head": {
+    "changed_executable_lines": 10,
+    "executed": 10,
+    "share": 1.0
+   },
+   "output_digest_base": "97571a492cd1008708d19b89c90ea0575b6d628f37dabc83f722721821123df5",
+   "output_digest_head": "97571a492cd1008708d19b89c90ea0575b6d628f37dabc83f722721821123df5",
+   "output_equal": true,
+   "coverage_gate_pass": true
+  },
+  "coverage_needed": 0.8,
+  "output_equal": true,
+  "pass": true,
+  "reasons": []
+ },
+ "harness_pass": true,
+ "audit": {
+  "mentions_github_pull": false,
+  "used_gh_cli": false,
+  "read_git_history": false
+ },
+ "changed_code_lines": {
+  "py": 80
+ },
+ "python_share_of_code_change": 1.0
+}

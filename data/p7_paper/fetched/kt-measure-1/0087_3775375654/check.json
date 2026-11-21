@@ -1,0 +1,32 @@
+{
+ "base_exit_ok": true,
+ "base_last_line": "656a7ed52ed7360634c26a9820d3b7766b6bd85fe58776aa5e96c902797cd7f2",
+ "head_exit_ok": true,
+ "head_last_line": "656a7ed52ed7360634c26a9820d3b7766b6bd85fe58776aa5e96c902797cd7f2",
+ "base_time_s": 2.145,
+ "head_time_s": 2.302,
+ "no_network_ok": true,
+ "coverage": {
+  "changed_files": [
+   "server/python/rpc_reader.py"
+  ],
+  "base": {
+   "changed_executable_lines": 9,
+   "executed": 9,
+   "share": 1.0
+  },
+  "head": {
+   "changed_executable_lines": 21,
+   "executed": 18,
+   "share": 0.857
+  },
+  "output_digest_base": "656a7ed52ed7360634c26a9820d3b7766b6bd85fe58776aa5e96c902797cd7f2",
+  "output_digest_head": "656a7ed52ed7360634c26a9820d3b7766b6bd85fe58776aa5e96c902797cd7f2",
+  "output_equal": true,
+  "coverage_gate_pass": true
+ },
+ "coverage_needed": 0.8,
+ "output_equal": true,
+ "pass": true,
+ "reasons": []
+}

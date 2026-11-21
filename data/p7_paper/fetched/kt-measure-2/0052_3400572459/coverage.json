@@ -1,0 +1,19 @@
+{
+ "changed_files": [
+  "src/crewai/tools/structured_tool.py"
+ ],
+ "base": {
+  "changed_executable_lines": 9,
+  "executed": 9,
+  "share": 1.0
+ },
+ "head": {
+  "changed_executable_lines": 7,
+  "executed": 7,
+  "share": 1.0
+ },
+ "output_digest_base": "0b26e69817a7e9805e391ad57cea2ac2b4d3b94fb627f8a627819f1ba67a26ea",
+ "output_digest_head": "9472fc94411d7252b91a99182232217c34a51913920985b04b8c6664383d37e7",
+ "output_equal": false,
+ "coverage_gate_pass": true
+}

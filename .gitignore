@@ -1,0 +1,30 @@
+# raw AIDev parquet files (public, re-downloadable with analysis/p1_download.py)
+data/aidev-v5/
+.venv/
+data/p1_classify/cc_raw/
+data/p2_classify/cc_raw/
+data/p2_classify/inputs.jsonl
+data/p4_full/
+
+# derived from AIDev, 413 MB (over GitHub's 100 MB limit); rebuild with analysis/p1_keyword_filter.py
+data/p1_candidates.parquet
+
+# Python and LaTeX build files
+__pycache__/
+paper/*.aux
+paper/*.bbl
+paper/*.blg
+paper/*.fdb_latexmk
+paper/*.fls
+paper/*.log
+paper/*.out
+paper/*.synctex.gz
+paper/figures/.$*.bkp
+
+# third-party papers: copyrighted PDFs and text extracted from them stay local.
+# The notes, README and lookup record are ours and are tracked.
+related-papers/*.pdf
+related-papers/_txt/
+
+# answer key for the blinded human labelling: labellers must not see it before they finish
+labels/human/key.csv

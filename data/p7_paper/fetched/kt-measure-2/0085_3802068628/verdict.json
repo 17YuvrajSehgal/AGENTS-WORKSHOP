@@ -1,0 +1,124 @@
+{
+ "job": {
+  "order": 85,
+  "id": 3802068628,
+  "agent": "Claude_Code",
+  "repo": "AndrewAltimit/template-repo",
+  "number": 202,
+  "api_base_sha": "a57e8aae8bf2fcdd8422687937811627ec5cf789",
+  "head_sha": "eb1718d31c971a507da7ffc3ffbb8699f5fda0c7",
+  "created": "2026-01-11",
+  "changed_files": [
+   ".claudeignore",
+   ".github/actions/board-agent-work/action.yml",
+   ".github/actions/board-agent-work/tests/test_action_shell.sh",
+   ".gitignore",
+   "AGENTS.md",
+   "CLAUDE.md",
+   "README.md",
+   "docs/QUICKSTART.md",
+   "docs/agents/README.md",
+   "docs/agents/board-workflow.md",
+   "docs/agents/claude-code-setup.md",
+   "docs/agents/project-context.md",
+   "docs/mcp/README.md",
+   "docs/mcp/servers.md",
+   "packages/github_agents/src/github_agents/board/cli.py",
+   "packages/github_agents/src/github_agents/board/manager.py",
+   "packages/github_agents/tests/integration/test_board_workflow_diagnostic.py",
+   "packages/github_agents/tests/unit/test_ai_review_consolidation.py",
+   "packages/github_agents/tests/unit/test_board_cli.py",
+   "packages/github_agents/tests/unit/test_board_manager.py",
+   "packages/github_agents/tests/unit/test_monitor_board_integration.py",
+   "packages/github_agents/tests/unit/test_security.py"
+  ],
+  "n_files": 22,
+  "final_diff_files": [
+   ".github/actions/board-agent-work/action.yml",
+   ".github/actions/board-agent-work/tests/test_action_shell.sh",
+   ".gitignore",
+   "AGENTS.md",
+   "CLAUDE.md",
+   "README.md",
+   "docs/QUICKSTART.md",
+   "docs/agents/README.md",
+   "docs/agents/board-workflow.md",
+   "docs/agents/claude-code-setup.md",
+   "docs/agents/project-context.md",
+   "docs/mcp/README.md",
+   "docs/mcp/servers.md",
+   "packages/github_agents/src/github_agents/board/cli.py",
+   "packages/github_agents/src/github_agents/board/manager.py",
+   "packages/github_agents/tests/integration/test_board_workflow_diagnostic.py",
+   "packages/github_agents/tests/unit/test_ai_review_consolidation.py",
+   "packages/github_agents/tests/unit/test_board_cli.py",
+   "packages/github_agents/tests/unit/test_board_manager.py",
+   "packages/github_agents/tests/unit/test_monitor_board_integration.py",
+   "packages/github_agents/tests/unit/test_security.py"
+  ]
+ },
+ "agent": {
+  "status": "unbuildable",
+  "reason": "new_code_only",
+  "tier": "none",
+  "uses_parallelism": false,
+  "behaviour_change_expected": true,
+  "notes": "Installed the missing httpx into both venvs. workload.py (deterministic, passes with no network, base ~3.3 s) uses a local stand-in GraphQL server and runs board-cli ready/claim/release via main(), cmd_ready with the new filter options, get_ready_work, is_issue_approved and _check_approval_trigger. Base coverage is 1.0 (7/7 lines). Head coverage is 0.331 (54/163) because most head changed lines are in new CLI commands absent from base: cmd_check_approval, cmd_add_to_board, and cmd_find_approved, which calls a hardcoded https://api.github.com URL. Running these on both sides isn't possible (base exits with an argparse error), so the 0.8 gate can't be met legitimately. Outputs differ as expected: unassigned issues are now included, approvals require the [Action][Agent] pattern, and ready --json adds labels."
+ },
+ "agent_is_error": false,
+ "timed_out": false,
+ "models": [
+  "claude-opus-5-5"
+ ],
+ "list_usd": 0.9389107999999998,
+ "num_turns": 24,
+ "setup_ok": true,
+ "setup_s": 6,
+ "agent_s": 500,
+ "check": {
+  "base_exit_ok": true,
+  "base_last_line": "1fbe90f9136e41f1ca2e929c24b255fdf3d3010bb2cb2af5487a216ab74bbbf4",
+  "head_exit_ok": true,
+  "head_last_line": "24c1acc2fbacdc529a3e5cd2ae3f45334679e3790e1ed4ebeee831ff0bbb0432",
+  "base_time_s": 3.844,
+  "head_time_s": 5.024,
+  "no_network_ok": true,
+  "coverage": {
+   "changed_files": [
+    "packages/github_agents/src/github_agents/board/cli.py",
+    "packages/github_agents/src/github_agents/board/manager.py"
+   ],
+   "base": {
+    "changed_executable_lines": 7,
+    "executed": 7,
+    "share": 1.0
+   },
+   "head": {
+    "changed_executable_lines": 163,
+    "executed": 54,
+    "share": 0.331
+   },
+   "output_digest_base": "1fbe90f9136e41f1ca2e929c24b255fdf3d3010bb2cb2af5487a216ab74bbbf4",
+   "output_digest_head": "24c1acc2fbacdc529a3e5cd2ae3f45334679e3790e1ed4ebeee831ff0bbb0432",
+   "output_equal": false,
+   "coverage_gate_pass": false
+  },
+  "coverage_needed": 0.8,
+  "output_equal": false,
+  "pass": false,
+  "reasons": [
+   "head coverage 0.331 < 0.8"
+  ]
+ },
+ "harness_pass": false,
+ "audit": {
+  "mentions_github_pull": true,
+  "used_gh_cli": false,
+  "read_git_history": false
+ },
+ "changed_code_lines": {
+  "sh": 404,
+  "py": 1714
+ },
+ "python_share_of_code_change": 0.809
+}

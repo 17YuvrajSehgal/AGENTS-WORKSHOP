@@ -1,0 +1,19 @@
+{
+ "changed_files": [
+  "src/polyagent/dashboard.py"
+ ],
+ "base": {
+  "changed_executable_lines": 27,
+  "executed": 27,
+  "share": 1.0
+ },
+ "head": {
+  "changed_executable_lines": 43,
+  "executed": 43,
+  "share": 1.0
+ },
+ "output_digest_base": "b4d60d2f7f1f0cff67f8c03238f87283c3bc270c527cc6fd78fb0b9679c9a2cf",
+ "output_digest_head": "66337a51e70ef4dd114d901c83038cc65c1c2f2d79ff0cdc5daae421b2b10362",
+ "output_equal": false,
+ "coverage_gate_pass": true
+}

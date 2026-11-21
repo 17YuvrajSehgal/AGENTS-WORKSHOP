@@ -1,0 +1,20 @@
+{
+ "changed_files": [
+  "tapnet/tapvid/evaluation_datasets.py",
+  "tapnet/training/supervised_point_prediction.py"
+ ],
+ "base": {
+  "changed_executable_lines": 12,
+  "executed": 12,
+  "share": 1.0
+ },
+ "head": {
+  "changed_executable_lines": 52,
+  "executed": 35,
+  "share": 0.673
+ },
+ "output_digest_base": "db46553058ec868f4efbd272e2dd418fbd19f1acbfe2beb146e3345c2fd83050",
+ "output_digest_head": "db46553058ec868f4efbd272e2dd418fbd19f1acbfe2beb146e3345c2fd83050",
+ "output_equal": true,
+ "coverage_gate_pass": false
+}

@@ -1,0 +1,19 @@
+{
+ "changed_files": [
+  "src/prefect/task_runners.py"
+ ],
+ "base": {
+  "changed_executable_lines": 3,
+  "executed": 3,
+  "share": 1.0
+ },
+ "head": {
+  "changed_executable_lines": 10,
+  "executed": 10,
+  "share": 1.0
+ },
+ "output_digest_base": "97571a492cd1008708d19b89c90ea0575b6d628f37dabc83f722721821123df5",
+ "output_digest_head": "97571a492cd1008708d19b89c90ea0575b6d628f37dabc83f722721821123df5",
+ "output_equal": true,
+ "coverage_gate_pass": true
+}

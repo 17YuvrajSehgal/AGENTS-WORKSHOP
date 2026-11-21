@@ -1,0 +1,33 @@
+{
+ "base_exit_ok": true,
+ "base_last_line": "d327cdaccca1e210d2f35dd2dae5e5854f5fdf8297fbba621d118954c4d6c9d8",
+ "head_exit_ok": true,
+ "head_last_line": "5877c5455a49471cb10340b4a686cc383facef8f13e78b3c47497de94d820891",
+ "base_time_s": 2.728,
+ "head_time_s": 1.997,
+ "no_network_ok": true,
+ "coverage": {
+  "changed_files": [
+   "scripts/hex_utils.py",
+   "scripts/shortcuts.py"
+  ],
+  "base": {
+   "changed_executable_lines": 19,
+   "executed": 19,
+   "share": 1.0
+  },
+  "head": {
+   "changed_executable_lines": 32,
+   "executed": 31,
+   "share": 0.969
+  },
+  "output_digest_base": "d327cdaccca1e210d2f35dd2dae5e5854f5fdf8297fbba621d118954c4d6c9d8",
+  "output_digest_head": "5877c5455a49471cb10340b4a686cc383facef8f13e78b3c47497de94d820891",
+  "output_equal": false,
+  "coverage_gate_pass": true
+ },
+ "coverage_needed": 0.8,
+ "output_equal": false,
+ "pass": true,
+ "reasons": []
+}

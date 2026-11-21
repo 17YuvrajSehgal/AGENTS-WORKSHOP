@@ -1,0 +1,161 @@
+diff --git a/smda/intel/IntelDisassembler.py b/smda/intel/IntelDisassembler.py
+index 61be043f..81c5a827 100644
+--- a/smda/intel/IntelDisassembler.py
++++ b/smda/intel/IntelDisassembler.py
+@@ -62,6 +62,8 @@ def __init__(self, config, forced_bitness=None):
+         self._tfidf = None
+         self.binary_info = None
+         self.label_providers = []
++        self.api_providers = []
++        self.symbol_providers = []
+         self._addLabelProviders()
+         self.fc_manager = None
+         self.tailcall_analyzer = None
+@@ -87,17 +89,24 @@ def getBitMask(self):
+         return 0xFFFFFFFF
+ 
+     def _addLabelProviders(self):
+-        self.label_providers.append(WinApiResolver(self.config))
+-        self.label_providers.append(ElfApiResolver(self.config))
++        self._registerLabelProvider(WinApiResolver(self.config))
++        self._registerLabelProvider(ElfApiResolver(self.config))
+         # Language-specific symbol providers (checked first for proper demangling)
+-        self.label_providers.append(RustSymbolProvider(self.config))
+-        self.label_providers.append(GoSymbolProvider(self.config))
+-        self.label_providers.append(DelphiKbSymbolProvider(self.config))
+-        self.label_providers.append(DelphiReSymProvider(self.config))
++        self._registerLabelProvider(RustSymbolProvider(self.config))
++        self._registerLabelProvider(GoSymbolProvider(self.config))
++        self._registerLabelProvider(DelphiKbSymbolProvider(self.config))
++        self._registerLabelProvider(DelphiReSymProvider(self.config))
+         # Generic binary format providers (fallback)
+-        self.label_providers.append(ElfSymbolProvider(self.config))
+-        self.label_providers.append(PeSymbolProvider(self.config))
+-        self.label_providers.append(PdbSymbolProvider(self.config))
++        self._registerLabelProvider(ElfSymbolProvider(self.config))
++        self._registerLabelProvider(PeSymbolProvider(self.config))
++        self._registerLabelProvider(PdbSymbolProvider(self.config))
++
++    def _registerLabelProvider(self, provider):
++        self.label_providers.append(provider)
++        if provider.isApiProvider():
++            self.api_providers.append(provider)
++        if provider.isSymbolProvider():
++            self.symbol_providers.append(provider)
+ 
+     def _updateLabelProviders(self, binary_info):
+         for provider in self.label_providers:
+@@ -113,9 +122,7 @@ def addPdbFile(self, binary_info, pdb_path):
+                 provider.update(pdb_info)
+ 
+     def resolveApi(self, to_address, api_address):
+-        for provider in self.label_providers:
+-            if not provider.isApiProvider():
+-                continue
++        for provider in self.api_providers:
+             dll, api = provider.getApi(to_address, api_address)
+             if dll or api:
+                 return (dll, api)
+@@ -123,9 +130,7 @@ def resolveApi(self, to_address, api_address):
+         return ("", "")
+ 
+     def resolveSymbol(self, address):
+-        for provider in self.label_providers:
+-            if not provider.isSymbolProvider():
+-                continue
++        for provider in self.symbol_providers:
+             result = provider.getSymbol(address)
+             if result:
+                 return result
+@@ -133,11 +138,9 @@ def resolveSymbol(self, address):
+ 
+     def getSymbolCandidates(self):
+         symbol_offsets = set()
+-        for provider in self.label_providers:
+-            if not provider.isSymbolProvider():
+-                continue
++        for provider in self.symbol_providers:
+             function_symbols = provider.getFunctionSymbols()
+-            symbol_offsets.update(list(function_symbols.keys()))
++            symbol_offsets.update(function_symbols)
+         return list(symbol_offsets)
+ 
+     def getReferencedAddr(self, op_str):
+diff --git a/tests/testIntelDisassembler.py b/tests/testIntelDisassembler.py
+new file mode 100644
+index 00000000..a349f4ca
+--- /dev/null
++++ b/tests/testIntelDisassembler.py
+@@ -0,0 +1,72 @@
++import unittest
++
++from smda.intel.IntelDisassembler import IntelDisassembler
++
++
++class DummyProvider:
++    def __init__(self, is_api=False, is_symbol=False, api_result=("", ""), symbols=None):
++        self._is_api = is_api
++        self._is_symbol = is_symbol
++        self._api_result = api_result
++        self._symbols = symbols or {}
++
++    def update(self, binary_info):
++        return
++
++    def isApiProvider(self):
++        return self._is_api
++
++    def isSymbolProvider(self):
++        return self._is_symbol
++
++    def getApi(self, to_address, api_address=None):
++        return self._api_result
++
++    def getSymbol(self, address):
++        return self._symbols.get(address, "")
++
++    def getFunctionSymbols(self):
++        return self._symbols
++
++
++class TestIntelDisassembler(unittest.TestCase):
++    def _create_disassembler(self):
++        disassembler = IntelDisassembler.__new__(IntelDisassembler)
++        disassembler.label_providers = []
++        disassembler.api_providers = []
++        disassembler.symbol_providers = []
++        return disassembler
++
++    def test_register_label_provider_caches_capabilities(self):
++        disassembler = self._create_disassembler()
++        api_provider = DummyProvider(is_api=True, api_result=("kernel32.dll", "CreateFileA"))
++        symbol_provider = DummyProvider(is_symbol=True, symbols={0x401000: "entry"})
++        hybrid_provider = DummyProvider(
++            is_api=True,
++            is_symbol=True,
++            api_result=("user32.dll", "MessageBoxA"),
++            symbols={0x401100: "handler"},
++        )
++
++        disassembler._registerLabelProvider(api_provider)
++        disassembler._registerLabelProvider(symbol_provider)
++        disassembler._registerLabelProvider(hybrid_provider)
++
++        self.assertEqual(disassembler.api_providers, [api_provider, hybrid_provider])
++        self.assertEqual(disassembler.symbol_providers, [symbol_provider, hybrid_provider])
++
++    def test_symbol_and_api_resolution_use_registered_provider_sets(self):
++        disassembler = self._create_disassembler()
++        disassembler._registerLabelProvider(DummyProvider(is_api=True, api_result=("kernel32.dll", "CreateFileA")))
++        disassembler._registerLabelProvider(DummyProvider(is_symbol=True, symbols={0x401000: "entry"}))
++        disassembler._registerLabelProvider(
++            DummyProvider(is_symbol=True, symbols={0x401000: "entry", 0x401100: "handler"})
++        )
++
++        self.assertEqual(disassembler.resolveApi(0x401000, 0x500000), ("kernel32.dll", "CreateFileA"))
++        self.assertEqual(disassembler.resolveSymbol(0x401100), "handler")
++        self.assertEqual(set(disassembler.getSymbolCandidates()), {0x401000, 0x401100})
++
++
++if __name__ == "__main__":
++    unittest.main()

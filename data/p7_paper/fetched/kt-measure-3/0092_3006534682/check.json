@@ -1,0 +1,32 @@
+{
+ "base_exit_ok": true,
+ "base_last_line": "Error: Not freed memory blocks: 39004, total unfreed memory 9.610786 MB",
+ "head_exit_ok": true,
+ "head_last_line": "Error: Not freed memory blocks: 39004, total unfreed memory 9.610786 MB",
+ "base_time_s": 3.224,
+ "head_time_s": 3.392,
+ "no_network_ok": true,
+ "coverage": {
+  "changed_files": [
+   "src/io_scene_vrm/editor/spring_bone1/handler.py"
+  ],
+  "base": {
+   "changed_executable_lines": 3,
+   "executed": 3,
+   "share": 1.0
+  },
+  "head": {
+   "changed_executable_lines": 18,
+   "executed": 18,
+   "share": 1.0
+  },
+  "output_digest_base": "Error: Not freed memory blocks: 39004, total unfreed memory 9.610786 MB",
+  "output_digest_head": "Error: Not freed memory blocks: 39004, total unfreed memory 9.610786 MB",
+  "output_equal": true,
+  "coverage_gate_pass": true
+ },
+ "coverage_needed": 0.8,
+ "output_equal": true,
+ "pass": true,
+ "reasons": []
+}

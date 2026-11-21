@@ -1,0 +1,39 @@
+{
+ "base_exit_ok": true,
+ "base_last_line": "aae491b3cd294316dc55a6120526d331d0d01baeb9c8176117c975008433e2d8",
+ "head_exit_ok": true,
+ "head_last_line": "aae491b3cd294316dc55a6120526d331d0d01baeb9c8176117c975008433e2d8",
+ "base_time_s": 4.18,
+ "head_time_s": 5.172,
+ "no_network_ok": true,
+ "coverage": {
+  "changed_files": [
+   "src/iPhoto/gui/ui/controllers/edit_fullscreen_manager.py",
+   "src/iPhoto/gui/ui/controllers/export_controller.py",
+   "src/iPhoto/gui/ui/controllers/player_view_controller.py",
+   "src/iPhoto/gui/ui/widgets/gl_image_viewer/widget.py",
+   "src/iPhoto/gui/ui/widgets/view_transform_controller.py",
+   "src/iPhoto/gui/ui/window_manager.py"
+  ],
+  "base": {
+   "changed_executable_lines": 15,
+   "executed": 13,
+   "share": 0.867
+  },
+  "head": {
+   "changed_executable_lines": 107,
+   "executed": 63,
+   "share": 0.589
+  },
+  "output_digest_base": "aae491b3cd294316dc55a6120526d331d0d01baeb9c8176117c975008433e2d8",
+  "output_digest_head": "aae491b3cd294316dc55a6120526d331d0d01baeb9c8176117c975008433e2d8",
+  "output_equal": true,
+  "coverage_gate_pass": false
+ },
+ "coverage_needed": 0.8,
+ "output_equal": true,
+ "pass": false,
+ "reasons": [
+  "head coverage 0.589 < 0.8"
+ ]
+}

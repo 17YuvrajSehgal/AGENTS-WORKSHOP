@@ -1,0 +1,55 @@
+# Codebook v0: what performance mechanism does this PR claim?
+
+Draft 2026-11-20, for the open-coding pilot (100 PRs). After the pilot the
+list is revised and frozen as v1 (git tag) before all PRs are labelled.
+Used by the LLM (`analysis/p5_claims.py`) and by human annotators.
+
+You read a pull request that claims to make software faster or lighter.
+Record WHAT IT SAYS it does, not what you think the code does.
+
+## Field 1: `mechanisms` (one or more)
+
+For each mechanism the PR states, give its id and the shortest exact
+quote (copied character for character) from the title, description or
+commit messages that states it. Use only these ids:
+
+| id | the PR says it ... | expected kernel/hardware signal |
+|---|---|---|
+| `avoid_repeated_io` | reads a file/resource once instead of repeatedly | fewer `openat`/`read`, fewer bytes read |
+| `cache_results` | caches or memoizes computed results (not file content) | fewer instructions; maybe fewer syscalls |
+| `batch_calls` | batches network/API/IPC calls into fewer round trips | fewer `send*`/`recv*`/`write` calls |
+| `fewer_db_queries` | issues fewer DB queries (N+1 fix, eager loading, one query instead of many) | fewer DB round trips (socket or `pread` calls), less DB-server CPU |
+| `faster_db_query` | makes a query cheaper (index, filter, SQL rewrite, less data scanned) | fewer pages read by the DB (`pread`/block I/O), less DB CPU |
+| `fewer_processes` | spawns fewer processes or subprocesses | fewer `clone`/`execve` |
+| `less_output` | logs/prints/writes less | fewer `write` calls/bytes |
+| `less_memory` | allocates less, copies less, uses smaller data, fixes a leak | fewer page faults, page allocations, lower peak RSS |
+| `algorithmic` | lowers algorithmic complexity or removes repeated computation | fewer instructions; syscalls unchanged |
+| `vectorize_locality` | vectorizes, uses better data layout or cache locality | fewer instructions and cache misses |
+| `less_locking` | removes or narrows a lock, reduces contention | less futex wait, fewer context switches |
+| `parallelize` | runs work in parallel (threads/processes) | wall down, total CPU equal or up |
+| `async_io` | makes I/O non-blocking/async or overlaps waiting | less blocked (off-CPU) time on the main path |
+| `lazy_loading` | loads/imports/initializes lazily, faster startup | fewer `openat`/bytes read at start |
+| `fewer_syscalls` | avoids repeated system calls in a loop (stat, time, etc.) | fewer calls of that syscall |
+| `io_granularity` | reads/writes in larger or streamed chunks | fewer `read`/`write` calls, same bytes |
+| `smaller_payload` | sends/receives less data (compression, fewer fields, pagination) | fewer network bytes |
+| `gpu_accelerator` | moves work to or optimizes GPU/accelerator use | (not measurable on our machines) |
+| `other` | none of the above; describe it in `other_description` | |
+
+If the PR states no mechanism at all (only "improves performance"), give
+an empty list and set `mechanism_stated` to false.
+
+## Field 2: `claimed_effect`
+
+The size of improvement the PR states, copied exactly (e.g. "3x faster",
+"120s -> 3.2s", "reduces memory by 40%"). Empty string if none.
+
+## Field 3: `evidence`
+
+What the PR offers as evidence: `benchmark` (numbers from a measurement),
+`profile` (profiler output), `test` (a test that checks speed or
+behaviour), `reasoning` (argument only), `none`.
+
+## Field 4: `targets`
+
+File paths or function names the PR says it optimizes (from the text or
+changed-file list); empty list if none named.

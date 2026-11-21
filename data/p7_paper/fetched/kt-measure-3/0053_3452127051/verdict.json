@@ -1,0 +1,87 @@
+{
+ "job": {
+  "order": 53,
+  "id": 3452127051,
+  "agent": "OpenAI_Codex",
+  "repo": "marin-community/levanter",
+  "number": 1189,
+  "api_base_sha": "775ac7c6c6f913fd9fed263b26bdb7169df349cc",
+  "head_sha": "e779059cc5807dbf8f0001780a6f667703c6ef98",
+  "created": "2025-09-25",
+  "changed_files": [
+   ".github/workflows/check_lockfile.yaml",
+   ".github/workflows/docker-base-image.yaml",
+   ".github/workflows/docker-cluster-image.yaml",
+   ".github/workflows/run_entry_tests.yaml",
+   ".github/workflows/run_pre_commit.yaml",
+   ".github/workflows/run_ray_tests.yaml",
+   ".github/workflows/run_tests.yaml",
+   "AGENTS.md",
+   "config/export/export_qwen_fake.yaml",
+   "docker/tpu/Dockerfile.base",
+   "docker/tpu/Dockerfile.cluster",
+   "docker/tpu/Dockerfile.incremental",
+   "docs/reference/Trackers.md",
+   "infra/helpers/setup-tpu-vm-tests.sh",
+   "infra/helpers/setup-tpu-vm.sh",
+   "infra/launch.py",
+   "infra/launch_on_ray.py",
+   "pyproject.toml",
+   "src/levanter/checkpoint.py",
+   "src/levanter/distributed.py",
+   "src/levanter/inference/engine.py",
+   "src/levanter/inference/openai.py",
+   "src/levanter/infra/ray_tpu.py",
+   "src/levanter/layers/attention.py",
+   "src/levanter/main/inference_repl.py",
+   "src/levanter/main/inference_worker.py",
+   "src/levanter/models/gemma.py",
+   "src/levanter/store/cache.py",
+   "src/levanter/tracker/tensorboard.py",
+   "src/levanter/tracker/tracker_fns.py",
+   "src/levanter/tracker/trackio.py",
+   "tests/inference/test_clone_pages.py",
+   "tests/inference/test_inference_server.py",
+   "tests/inference/test_paged_attention.py",
+   "tests/test_ray_tpu.py",
+   "tests/test_trackio.py",
+   "uv.lock"
+  ],
+  "n_files": 37,
+  "final_diff_files": [
+   "src/levanter/distributed.py",
+   "src/levanter/infra/ray_tpu.py",
+   "src/levanter/store/cache.py"
+  ]
+ },
+ "agent": null,
+ "agent_is_error": null,
+ "timed_out": false,
+ "models": [],
+ "list_usd": 0,
+ "num_turns": null,
+ "setup_ok": true,
+ "setup_s": 3,
+ "agent_s": 224,
+ "check": {
+  "base_exit_ok": false,
+  "base_last_line": "",
+  "head_exit_ok": false,
+  "head_last_line": "",
+  "pass": false,
+  "reasons": [
+   "base workload failed: timeout",
+   "head workload failed: timeout"
+  ]
+ },
+ "harness_pass": false,
+ "audit": {
+  "mentions_github_pull": false,
+  "used_gh_cli": false,
+  "read_git_history": false
+ },
+ "changed_code_lines": {
+  "py": 259
+ },
+ "python_share_of_code_change": 1.0
+}

@@ -1,0 +1,81 @@
+{
+ "job": {
+  "order": 80,
+  "id": 4175138068,
+  "agent": "OpenAI_Codex",
+  "repo": "huggingface/transformers",
+  "number": 45134,
+  "api_base_sha": "edaac7db98e34208209fd67d8c66781b8c2e4a53",
+  "head_sha": "6703a6d11cb3f2c400f4e74ccc06fa850e7ca3ea",
+  "created": "2026-03-31",
+  "changed_files": [
+   "src/transformers/models/parakeet/feature_extraction_parakeet.py"
+  ],
+  "n_files": 1,
+  "final_diff_files": [
+   "src/transformers/models/parakeet/feature_extraction_parakeet.py"
+  ]
+ },
+ "agent": {
+  "status": "built",
+  "reason": "none",
+  "tier": "own_calls",
+  "uses_parallelism": false,
+  "behaviour_change_expected": true,
+  "notes": "Installed torch 2.11.0 and librosa into both venvs because torch was missing. The workload calls ParakeetFeatureExtractor on seeded variable-length batches, single arrays and 2D ndarrays. check.py does NOT pass: head coverage is 0.682, below 0.8. About 17 of the 21 missed lines are inside the new @torch.compile(dynamic=True) methods. Those run as compiled graphs, so coverage can't see them. The other 4 handle plain Python list inputs, which crash base. Base takes 4.9 s with coverage 0.97. Head takes 17-20 s warm and about 48 s cold, mostly compile time. The no-network run passes. Digests differ because the compiled code produces slightly different floats."
+ },
+ "agent_is_error": false,
+ "timed_out": false,
+ "models": [
+  "claude-opus-5-5"
+ ],
+ "list_usd": 0.2510984,
+ "num_turns": 12,
+ "setup_ok": true,
+ "setup_s": 22,
+ "agent_s": 408,
+ "check": {
+  "base_exit_ok": true,
+  "base_last_line": "9458ebda627074bb694033142e316eefc1dc5505b905b86c875e7f40fbfa9227",
+  "head_exit_ok": true,
+  "head_last_line": "94a1fdb5e95df0919c885943590941c950671525db2e37e5273ef5963cea69d8",
+  "base_time_s": 4.602,
+  "head_time_s": 21.333,
+  "no_network_ok": true,
+  "coverage": {
+   "changed_files": [
+    "src/transformers/models/parakeet/feature_extraction_parakeet.py"
+   ],
+   "base": {
+    "changed_executable_lines": 34,
+    "executed": 33,
+    "share": 0.971
+   },
+   "head": {
+    "changed_executable_lines": 66,
+    "executed": 45,
+    "share": 0.682
+   },
+   "output_digest_base": "9458ebda627074bb694033142e316eefc1dc5505b905b86c875e7f40fbfa9227",
+   "output_digest_head": "94a1fdb5e95df0919c885943590941c950671525db2e37e5273ef5963cea69d8",
+   "output_equal": false,
+   "coverage_gate_pass": false
+  },
+  "coverage_needed": 0.8,
+  "output_equal": false,
+  "pass": false,
+  "reasons": [
+   "head coverage 0.682 < 0.8"
+  ]
+ },
+ "harness_pass": false,
+ "audit": {
+  "mentions_github_pull": false,
+  "used_gh_cli": false,
+  "read_git_history": false
+ },
+ "changed_code_lines": {
+  "py": 147
+ },
+ "python_share_of_code_change": 1.0
+}

@@ -1,0 +1,19 @@
+{
+ "changed_files": [
+  "src/iPhoto/io/scanner.py"
+ ],
+ "base": {
+  "changed_executable_lines": 16,
+  "executed": 15,
+  "share": 0.938
+ },
+ "head": {
+  "changed_executable_lines": 22,
+  "executed": 21,
+  "share": 0.955
+ },
+ "output_digest_base": "586a03a906e0b56299b9701fc980e200f48d2331332358a4b9e0534281fbc273",
+ "output_digest_head": "586a03a906e0b56299b9701fc980e200f48d2331332358a4b9e0534281fbc273",
+ "output_equal": true,
+ "coverage_gate_pass": true
+}

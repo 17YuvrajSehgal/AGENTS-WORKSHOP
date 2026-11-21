@@ -1,0 +1,32 @@
+{
+ "base_exit_ok": true,
+ "base_last_line": "daa0b13686927037977e7d34f10c8c2f69ee8cb1a2530be7445125445b10ac4d",
+ "head_exit_ok": true,
+ "head_last_line": "5ac1bd7ae0cc4985fc59d357715c6ebd734fa16638ad7f9f4562ca87600fdf10",
+ "base_time_s": 4.257,
+ "head_time_s": 4.273,
+ "no_network_ok": true,
+ "coverage": {
+  "changed_files": [
+   "src/copaw/app/routers/skills.py"
+  ],
+  "base": {
+   "changed_executable_lines": 8,
+   "executed": 8,
+   "share": 1.0
+  },
+  "head": {
+   "changed_executable_lines": 13,
+   "executed": 13,
+   "share": 1.0
+  },
+  "output_digest_base": "daa0b13686927037977e7d34f10c8c2f69ee8cb1a2530be7445125445b10ac4d",
+  "output_digest_head": "5ac1bd7ae0cc4985fc59d357715c6ebd734fa16638ad7f9f4562ca87600fdf10",
+  "output_equal": false,
+  "coverage_gate_pass": true
+ },
+ "coverage_needed": 0.8,
+ "output_equal": false,
+ "pass": true,
+ "reasons": []
+}

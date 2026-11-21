@@ -1,0 +1,93 @@
+{
+ "job": {
+  "order": 153,
+  "id": 3720675869,
+  "agent": "Google_Jules",
+  "repo": "OliverZhaohaibin/iPhotron-LocalPhotoAlbumManager",
+  "number": 407,
+  "api_base_sha": "ea12c2df33718bc49669551f3be483c6762a68ea",
+  "head_sha": "796b09b74ffac1f482b924d9919c6b065f23fb14",
+  "created": "2025-12-11",
+  "changed_files": [
+   "pyproject.toml",
+   "src/iPhoto/gui/ui/tasks/video_frame_grabber.py",
+   "src/iPhoto/utils/ffmpeg.py",
+   "src/iPhoto/utils/image_loader.py",
+   "tests/test_utils_ffmpeg.py",
+   "tests/test_utils_ffmpeg_pyav.py",
+   "tests/test_utils_image_loader.py"
+  ],
+  "n_files": 7,
+  "final_diff_files": [
+   "pyproject.toml",
+   "src/iPhoto/gui/ui/tasks/video_frame_grabber.py",
+   "src/iPhoto/utils/ffmpeg.py",
+   "src/iPhoto/utils/image_loader.py",
+   "tests/test_utils_ffmpeg.py",
+   "tests/test_utils_ffmpeg_pyav.py",
+   "tests/test_utils_image_loader.py"
+  ]
+ },
+ "agent": {
+  "status": "built",
+  "reason": "none",
+  "tier": "own_calls",
+  "uses_parallelism": false,
+  "behaviour_change_expected": true,
+  "notes": "Installed ffmpeg via apt (needed for base subprocess path) and av into base venv for parity. Workload generates synthetic videos with cv2 and calls grab_video_frame (base: ffmpeg subprocess; head: PyAV in-memory decode) across sizes/seek targets, plus extract_video_frame directly to cover changed ffmpeg filter strings. Digest differs since PyAV vs ffmpeg scaling yields different frame sizes/content."
+ },
+ "agent_is_error": false,
+ "timed_out": false,
+ "models": [
+  "claude-opus-5-5"
+ ],
+ "list_usd": 0.234585,
+ "num_turns": 8,
+ "setup_ok": true,
+ "setup_s": 7,
+ "agent_s": 118,
+ "check": {
+  "base_exit_ok": true,
+  "base_last_line": "a24b625af0083fe492f652e0ed9708fd375f345ea54ef0fc4a4587495c7010da",
+  "head_exit_ok": true,
+  "head_last_line": "76c7f18c180b0f46b65a75b9dc7bdc96ab55acb4193e6be21a3a71522a649303",
+  "base_time_s": 5.3,
+  "head_time_s": 3.457,
+  "no_network_ok": true,
+  "coverage": {
+   "changed_files": [
+    "src/iPhoto/gui/ui/tasks/video_frame_grabber.py",
+    "src/iPhoto/utils/ffmpeg.py",
+    "src/iPhoto/utils/image_loader.py"
+   ],
+   "base": {
+    "changed_executable_lines": 10,
+    "executed": 10,
+    "share": 1.0
+   },
+   "head": {
+    "changed_executable_lines": 53,
+    "executed": 44,
+    "share": 0.83
+   },
+   "output_digest_base": "a24b625af0083fe492f652e0ed9708fd375f345ea54ef0fc4a4587495c7010da",
+   "output_digest_head": "76c7f18c180b0f46b65a75b9dc7bdc96ab55acb4193e6be21a3a71522a649303",
+   "output_equal": false,
+   "coverage_gate_pass": true
+  },
+  "coverage_needed": 0.8,
+  "output_equal": false,
+  "pass": true,
+  "reasons": []
+ },
+ "harness_pass": true,
+ "audit": {
+  "mentions_github_pull": false,
+  "used_gh_cli": false,
+  "read_git_history": false
+ },
+ "changed_code_lines": {
+  "py": 328
+ },
+ "python_share_of_code_change": 1.0
+}

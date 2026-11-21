@@ -1,0 +1,99 @@
+{
+ "job": {
+  "order": 136,
+  "id": 3854969732,
+  "agent": "Claude_Code",
+  "repo": "jacob-bd/gemini-notebook-mcp-cli",
+  "number": 16,
+  "api_base_sha": "eeace2efca0aaa4eacc9a20ad8a336b168de6311",
+  "head_sha": "3dcda0b95163c25e9e35c9abbdabea628e35f82a",
+  "created": "2026-01-26",
+  "changed_files": [
+   "docs/ASYNC_REFACTOR_PLAN.md",
+   "docs/HTTP_CONCURRENCY_ANALYSIS.md",
+   "docs/STREAMING_PLAN.md",
+   "src/notebooklm_mcp/api_client.py",
+   "src/notebooklm_mcp/server.py",
+   "tests/debug_mcp_http.py",
+   "tests/mcp_client.py",
+   "tests/test_api_client.py",
+   "tests/test_concurrent_http.py",
+   "tests/test_streaming_query.py",
+   "uv.lock"
+  ],
+  "n_files": 11,
+  "final_diff_files": [
+   "docs/ASYNC_REFACTOR_PLAN.md",
+   "docs/STREAMING_PLAN.md",
+   "src/notebooklm_mcp/api_client.py",
+   "src/notebooklm_mcp/server.py",
+   "tests/debug_mcp_http.py",
+   "tests/mcp_client.py",
+   "tests/test_api_client.py",
+   "tests/test_concurrent_http.py",
+   "tests/test_streaming_query.py",
+   "uv.lock"
+  ]
+ },
+ "agent": {
+  "status": "built",
+  "reason": "none",
+  "tier": "own_calls",
+  "uses_parallelism": false,
+  "behaviour_change_expected": false,
+  "notes": "Sync->async refactor of NotebookLMClient and the MCP tool handlers. The workload points the client's BASE_URL and BATCHEXECUTE_URL at a fake NotebookLM server on localhost (background thread, stand-in for external I/O only) and awaits any coroutine a call returns, so one script runs on both versions. It runs 250 rounds of client calls (list/get/create/rename, summaries, source text, query plus follow-up, conversation history) and 20 rounds of about 35 server tool calls via FastMCP .fn with server._client set. Digests match. Base 4.8 s, head 6.3 s; coverage 85% base, 60% head. Most uncovered head lines are the new query_stream / notebook_query_stream code, which doesn't exist in base. A few tools return handled errors because the fake server gives generic responses; they are the same on both versions. Head's async client makes one request at a time here, nothing runs concurrently."
+ },
+ "agent_is_error": false,
+ "timed_out": false,
+ "models": [
+  "claude-opus-5-5"
+ ],
+ "list_usd": 0.7071936,
+ "num_turns": 20,
+ "setup_ok": true,
+ "setup_s": 3,
+ "agent_s": 266,
+ "check": {
+  "base_exit_ok": true,
+  "base_last_line": "7b4ec47ac9f12028166e9ae8e41785f3e2e5e6db3a4362fe1645db5b7b06ba25",
+  "head_exit_ok": true,
+  "head_last_line": "7b4ec47ac9f12028166e9ae8e41785f3e2e5e6db3a4362fe1645db5b7b06ba25",
+  "base_time_s": 4.831,
+  "head_time_s": 6.838,
+  "no_network_ok": true,
+  "coverage": {
+   "changed_files": [
+    "src/notebooklm_mcp/api_client.py",
+    "src/notebooklm_mcp/server.py"
+   ],
+   "base": {
+    "changed_executable_lines": 270,
+    "executed": 230,
+    "share": 0.852
+   },
+   "head": {
+    "changed_executable_lines": 424,
+    "executed": 255,
+    "share": 0.601
+   },
+   "output_digest_base": "7b4ec47ac9f12028166e9ae8e41785f3e2e5e6db3a4362fe1645db5b7b06ba25",
+   "output_digest_head": "7b4ec47ac9f12028166e9ae8e41785f3e2e5e6db3a4362fe1645db5b7b06ba25",
+   "output_equal": true,
+   "coverage_gate_pass": false
+  },
+  "coverage_needed": 0.5,
+  "output_equal": true,
+  "pass": true,
+  "reasons": []
+ },
+ "harness_pass": true,
+ "audit": {
+  "mentions_github_pull": false,
+  "used_gh_cli": false,
+  "read_git_history": false
+ },
+ "changed_code_lines": {
+  "py": 3010
+ },
+ "python_share_of_code_change": 1.0
+}

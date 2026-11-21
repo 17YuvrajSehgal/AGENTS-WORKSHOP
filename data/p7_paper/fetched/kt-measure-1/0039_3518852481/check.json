@@ -1,0 +1,33 @@
+{
+ "base_exit_ok": true,
+ "base_last_line": "8fee580c08dfa35ee27fa6c41e67078a3bb0177ff5883be77cd0e7dc7b1f195a",
+ "head_exit_ok": true,
+ "head_last_line": "8fee580c08dfa35ee27fa6c41e67078a3bb0177ff5883be77cd0e7dc7b1f195a",
+ "base_time_s": 1.627,
+ "head_time_s": 0.732,
+ "no_network_ok": true,
+ "coverage": {
+  "changed_files": [
+   "Bio/SeqUtils/MeltingTemp.py",
+   "setup.py"
+  ],
+  "base": {
+   "changed_executable_lines": 0,
+   "executed": 0,
+   "share": null
+  },
+  "head": {
+   "changed_executable_lines": 14,
+   "executed": 12,
+   "share": 0.857
+  },
+  "output_digest_base": "8fee580c08dfa35ee27fa6c41e67078a3bb0177ff5883be77cd0e7dc7b1f195a",
+  "output_digest_head": "8fee580c08dfa35ee27fa6c41e67078a3bb0177ff5883be77cd0e7dc7b1f195a",
+  "output_equal": true,
+  "coverage_gate_pass": true
+ },
+ "coverage_needed": 0.8,
+ "output_equal": true,
+ "pass": true,
+ "reasons": []
+}

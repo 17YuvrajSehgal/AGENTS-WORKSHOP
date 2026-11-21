@@ -1,0 +1,24 @@
+{
+ "changed_files": [
+  "backend/create_audit_report.py",
+  "backend/integrations/atom_communication_ingestion_pipeline.py",
+  "backend/integrations/atom_ingestion_pipeline.py",
+  "backend/integrations/atom_telegram_integration.py",
+  "backend/integrations/google_chat_enhanced_service.py",
+  "backend/integrations/universal_integration_service.py"
+ ],
+ "base": {
+  "changed_executable_lines": 7,
+  "executed": 5,
+  "share": 0.714
+ },
+ "head": {
+  "changed_executable_lines": 21,
+  "executed": 18,
+  "share": 0.857
+ },
+ "output_digest_base": "6a6ad5ca43b121d75bb5982e92d52186a86df69edc01d95ea48ba0f50b227d43",
+ "output_digest_head": "e05711866841342bdaa29332de0a1ab62ee38547ec78f035e3eb3fcf65b42002",
+ "output_equal": false,
+ "coverage_gate_pass": true
+}

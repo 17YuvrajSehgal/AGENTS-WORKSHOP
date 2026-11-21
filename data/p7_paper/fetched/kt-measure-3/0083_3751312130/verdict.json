@@ -1,0 +1,79 @@
+{
+ "job": {
+  "order": 83,
+  "id": 3751312130,
+  "agent": "Google_Jules",
+  "repo": "OliverZhaohaibin/iPhotron-LocalPhotoAlbumManager",
+  "number": 475,
+  "api_base_sha": "cea2b6e20b9ef934ae0d2e63fd7dbdf6bcbfef85",
+  "head_sha": "42f0987616690317a7fe95da1c26f3c8a3b485b3",
+  "created": "2025-12-21",
+  "changed_files": [
+   "src/iPhoto/io/scanner.py"
+  ],
+  "n_files": 1,
+  "final_diff_files": [
+   "src/iPhoto/io/scanner.py"
+  ]
+ },
+ "agent": {
+  "status": "built",
+  "reason": "none",
+  "tier": "own_calls",
+  "uses_parallelism": true,
+  "behaviour_change_expected": false,
+  "notes": "Synthetic album tree in /tmp/kt_475 (with .iPhoto/exported dirs to prune and excluded globs); calls gather_media_paths and runs FileDiscoverer thread with a bounded queue, 4 reps; sorted results hashed. Outputs equal; coverage ~85-89%."
+ },
+ "agent_is_error": false,
+ "timed_out": false,
+ "models": [
+  "claude-opus-5-5"
+ ],
+ "list_usd": 0.1376682,
+ "num_turns": 6,
+ "setup_ok": true,
+ "setup_s": 7,
+ "agent_s": 82,
+ "check": {
+  "base_exit_ok": true,
+  "base_last_line": "8e2aa0e1ac2fd4b136b20a357232a0b68e371802dbfbbe4456bbd6e3674cd358",
+  "head_exit_ok": true,
+  "head_last_line": "8e2aa0e1ac2fd4b136b20a357232a0b68e371802dbfbbe4456bbd6e3674cd358",
+  "base_time_s": 3.745,
+  "head_time_s": 3.482,
+  "no_network_ok": true,
+  "coverage": {
+   "changed_files": [
+    "src/iPhoto/io/scanner.py"
+   ],
+   "base": {
+    "changed_executable_lines": 36,
+    "executed": 32,
+    "share": 0.889
+   },
+   "head": {
+    "changed_executable_lines": 34,
+    "executed": 29,
+    "share": 0.853
+   },
+   "output_digest_base": "8e2aa0e1ac2fd4b136b20a357232a0b68e371802dbfbbe4456bbd6e3674cd358",
+   "output_digest_head": "8e2aa0e1ac2fd4b136b20a357232a0b68e371802dbfbbe4456bbd6e3674cd358",
+   "output_equal": true,
+   "coverage_gate_pass": true
+  },
+  "coverage_needed": 0.8,
+  "output_equal": true,
+  "pass": true,
+  "reasons": []
+ },
+ "harness_pass": true,
+ "audit": {
+  "mentions_github_pull": false,
+  "used_gh_cli": false,
+  "read_git_history": false
+ },
+ "changed_code_lines": {
+  "py": 85
+ },
+ "python_share_of_code_change": 1.0
+}

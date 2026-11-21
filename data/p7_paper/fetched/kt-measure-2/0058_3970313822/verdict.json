@@ -1,0 +1,82 @@
+{
+ "job": {
+  "order": 58,
+  "id": 3970313822,
+  "agent": "Claude_Code",
+  "repo": "marin-community/marin",
+  "number": 2934,
+  "api_base_sha": "726abe4908c3c1d7702891248fe22e0faf0a3d19",
+  "head_sha": "fa60a9d5843519f16ae38c977a2f1d5250ef0db7",
+  "created": "2026-02-20",
+  "changed_files": [
+   "experiments/pretraining_datasets/nemotron.py",
+   "lib/marin/src/marin/processing/tokenize/tokenize.py"
+  ],
+  "n_files": 2,
+  "final_diff_files": [
+   "experiments/pretraining_datasets/nemotron.py",
+   "lib/marin/src/marin/processing/tokenize/tokenize.py"
+  ]
+ },
+ "agent": {
+  "status": "built",
+  "reason": "none",
+  "tier": "own_calls",
+  "uses_parallelism": true,
+  "behaviour_change_expected": false,
+  "notes": "Both envs rebuilt with Python 3.12, installing resiliparse 0.17.2 from the wheel URL in uv.lock (its own index has no upload dates, so the date cutoff dropped it); chex added to both. The workload runs marin tokenize() end to end (TokenizeConfig with train and validation splits of local gz jsonl files, a locally trained BPE tokenizer, small window_size_bytes) through Zephyr's local backend, then hashes the levanter cache contents. Zephyr scratch storage is kept local by setting MARIN_PREFIX to a local dir and http_proxy to a dead local port so the GCP metadata region lookup fails. Coverage: head 29/31 changed lines, base 12/14. Outputs are equal on both sides and the no-network run passes. Base run time is about 16s, over the 10s target but under the 30s hard limit; about 6.4s of that is imports and most of the rest is fixed pipeline startup."
+ },
+ "agent_is_error": false,
+ "timed_out": false,
+ "models": [
+  "claude-opus-5-5"
+ ],
+ "list_usd": 0.5620404000000001,
+ "num_turns": 23,
+ "setup_ok": false,
+ "setup_s": 15,
+ "agent_s": 671,
+ "check": {
+  "base_exit_ok": true,
+  "base_last_line": "a06cff5b59697ebd94ef3df4ff5841217abf83766151cccfe04d53f3361bedeb",
+  "head_exit_ok": true,
+  "head_last_line": "a06cff5b59697ebd94ef3df4ff5841217abf83766151cccfe04d53f3361bedeb",
+  "base_time_s": 12.56,
+  "head_time_s": 12.862,
+  "no_network_ok": true,
+  "coverage": {
+   "changed_files": [
+    "experiments/pretraining_datasets/nemotron.py",
+    "lib/marin/src/marin/processing/tokenize/tokenize.py"
+   ],
+   "base": {
+    "changed_executable_lines": 14,
+    "executed": 12,
+    "share": 0.857
+   },
+   "head": {
+    "changed_executable_lines": 31,
+    "executed": 29,
+    "share": 0.935
+   },
+   "output_digest_base": "a06cff5b59697ebd94ef3df4ff5841217abf83766151cccfe04d53f3361bedeb",
+   "output_digest_head": "a06cff5b59697ebd94ef3df4ff5841217abf83766151cccfe04d53f3361bedeb",
+   "output_equal": true,
+   "coverage_gate_pass": true
+  },
+  "coverage_needed": 0.8,
+  "output_equal": true,
+  "pass": true,
+  "reasons": []
+ },
+ "harness_pass": true,
+ "audit": {
+  "mentions_github_pull": false,
+  "used_gh_cli": false,
+  "read_git_history": false
+ },
+ "changed_code_lines": {
+  "py": 101
+ },
+ "python_share_of_code_change": 1.0
+}

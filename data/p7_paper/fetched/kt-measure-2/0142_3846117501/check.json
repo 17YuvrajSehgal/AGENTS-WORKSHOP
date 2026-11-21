@@ -1,0 +1,37 @@
+{
+ "base_exit_ok": true,
+ "base_last_line": "fe4e46e8f7ef2fbc32f333e0efff48fb232b41a13913c0a0f5b41d6c72765b01",
+ "head_exit_ok": true,
+ "head_last_line": "cd38c74f80420ce93a28b61b8702dd92d2abcc30bb5759af50529dc9cb2b6c78",
+ "base_time_s": 5.6,
+ "head_time_s": 5.253,
+ "no_network_ok": true,
+ "coverage": {
+  "changed_files": [
+   "modules/acfun_uploader.py",
+   "modules/subtitle_translator.py",
+   "modules/task_manager.py",
+   "modules/youtube_handler.py"
+  ],
+  "base": {
+   "changed_executable_lines": 24,
+   "executed": 16,
+   "share": 0.667
+  },
+  "head": {
+   "changed_executable_lines": 168,
+   "executed": 76,
+   "share": 0.452
+  },
+  "output_digest_base": "fe4e46e8f7ef2fbc32f333e0efff48fb232b41a13913c0a0f5b41d6c72765b01",
+  "output_digest_head": "cd38c74f80420ce93a28b61b8702dd92d2abcc30bb5759af50529dc9cb2b6c78",
+  "output_equal": false,
+  "coverage_gate_pass": false
+ },
+ "coverage_needed": 0.8,
+ "output_equal": false,
+ "pass": false,
+ "reasons": [
+  "head coverage 0.452 < 0.8"
+ ]
+}

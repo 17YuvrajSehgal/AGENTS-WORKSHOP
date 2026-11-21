@@ -1,0 +1,48 @@
+{
+ "job": {
+  "order": 126,
+  "id": 3529565304,
+  "agent": "Copilot",
+  "repo": "chaiNNer-org/chaiNNer",
+  "number": 3139,
+  "api_base_sha": "ce30560b636d30e4d9d9be9902f45b047b9b11ad",
+  "head_sha": "93f435d40d50b481e97916c7faaecf9efb7dbac9",
+  "created": "2025-10-19",
+  "changed_files": [
+   "backend/src/nodes/impl/onnx/session.py"
+  ],
+  "n_files": 1,
+  "final_diff_files": [
+   "backend/src/nodes/impl/onnx/session.py"
+  ]
+ },
+ "agent": {
+  "status": "unbuildable",
+  "reason": "needs_gpu",
+  "tier": "none",
+  "uses_parallelism": false,
+  "behaviour_change_expected": false,
+  "notes": "The PR only adds TensorRT settings (trt_dump_subgraphs, trt_timing_cache_enable, trt_timing_cache_path) to create_inference_session. They take effect only with TensorrtExecutionProvider, which needs an NVIDIA GPU and TensorRT. A CPU-only run would just time building a dict. Both venv installs also failed (pyproject.toml has no project.name), so the venvs are empty. No workload.py was written and check.py was not run."
+ },
+ "agent_is_error": false,
+ "timed_out": false,
+ "models": [
+  "claude-opus-5-5"
+ ],
+ "list_usd": 0.089611,
+ "num_turns": 5,
+ "setup_ok": false,
+ "setup_s": 5,
+ "agent_s": 16,
+ "check": null,
+ "harness_pass": false,
+ "audit": {
+  "mentions_github_pull": false,
+  "used_gh_cli": false,
+  "read_git_history": false
+ },
+ "changed_code_lines": {
+  "py": 3
+ },
+ "python_share_of_code_change": 1.0
+}

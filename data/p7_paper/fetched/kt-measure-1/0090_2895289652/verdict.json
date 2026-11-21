@@ -1,0 +1,81 @@
+{
+ "job": {
+  "order": 90,
+  "id": 2895289652,
+  "agent": "Devin",
+  "repo": "crewAIInc/crewAI",
+  "number": 2281,
+  "api_base_sha": "00eede0d5d7b9ea591d939689e8e05f89f9d975d",
+  "head_sha": "e14bcd59f39459d5453b32d085ab27e5c403f26b",
+  "created": "2025-03-04",
+  "changed_files": [
+   "src/crewai/telemetry/telemetry.py",
+   "tests/telemetry/test_telemetry_singleton.py"
+  ],
+  "n_files": 2,
+  "final_diff_files": [
+   "src/crewai/telemetry/telemetry.py",
+   "tests/telemetry/test_telemetry_singleton.py"
+  ]
+ },
+ "agent": {
+  "status": "built",
+  "reason": "none",
+  "tier": "own_calls",
+  "uses_parallelism": true,
+  "behaviour_change_expected": true,
+  "notes": "Workload constructs Telemetry() 500 times (300 sequential, 200 from 10 threads), then shuts down each distinct instance (head via the new __del__, base via provider.shutdown()). Base creates a TracerProvider/BatchSpanProcessor thread per call; head returns the singleton. Digests differ legitimately: on head the singleton is the event listener's instance, which already set the tracer (trace_set True). The OTLP exporter (network client) is replaced by a subclass of the real one whose first shutdown raises ConnectionError, to cover __del__'s except branch. No spans are emitted, so there is no network. Head coverage 0.82. The OTEL_SDK_DISABLED branch and the init exception branch are not reachable in-process."
+ },
+ "agent_is_error": false,
+ "timed_out": false,
+ "models": [
+  "claude-opus-5-5"
+ ],
+ "list_usd": 0.36957500000000004,
+ "num_turns": 14,
+ "setup_ok": true,
+ "setup_s": 32,
+ "agent_s": 277,
+ "check": {
+  "base_exit_ok": true,
+  "base_last_line": "41892097186b49e27a8c52a82d9c0c32ab68ccd43525d198c5854a03463dc1fa",
+  "head_exit_ok": true,
+  "head_last_line": "9c168b702c32306e7fee45409c36a8543767751c5ff5946112b5bfededae7ca3",
+  "base_time_s": 2.731,
+  "head_time_s": 2.166,
+  "no_network_ok": true,
+  "coverage": {
+   "changed_files": [
+    "src/crewai/telemetry/telemetry.py"
+   ],
+   "base": {
+    "changed_executable_lines": 17,
+    "executed": 12,
+    "share": 0.706
+   },
+   "head": {
+    "changed_executable_lines": 39,
+    "executed": 32,
+    "share": 0.821
+   },
+   "output_digest_base": "41892097186b49e27a8c52a82d9c0c32ab68ccd43525d198c5854a03463dc1fa",
+   "output_digest_head": "9c168b702c32306e7fee45409c36a8543767751c5ff5946112b5bfededae7ca3",
+   "output_equal": false,
+   "coverage_gate_pass": true
+  },
+  "coverage_needed": 0.8,
+  "output_equal": false,
+  "pass": true,
+  "reasons": []
+ },
+ "harness_pass": true,
+ "audit": {
+  "mentions_github_pull": false,
+  "used_gh_cli": false,
+  "read_git_history": false
+ },
+ "changed_code_lines": {
+  "py": 138
+ },
+ "python_share_of_code_change": 1.0
+}

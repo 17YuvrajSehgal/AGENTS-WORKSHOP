@@ -1,0 +1,98 @@
+{
+ "job": {
+  "order": 111,
+  "id": 3894815824,
+  "agent": "Claude_Code",
+  "repo": "geoparquet/geoparquet-io",
+  "number": 233,
+  "api_base_sha": "09682eb54c5f08294e58bbdec403a57ed95c96fc",
+  "head_sha": "6b98b4d354e0415158d975d5151e781a4ff5c9ab",
+  "created": "2026-02-04",
+  "changed_files": [
+   "context/shared/documentation/geometry-metadata-handling.md",
+   "context/shared/documentation/platform-specific-issues.md",
+   "docs/guide/add.md",
+   "docs/troubleshooting.md",
+   "geoparquet_io/cli/main.py",
+   "geoparquet_io/core/add_admin_divisions_multi.py",
+   "geoparquet_io/core/admin_datasets.py",
+   "geoparquet_io/core/common.py",
+   "geoparquet_io/core/duckdb_metadata.py",
+   "tests/test_admin_datasets.py",
+   "tests/test_dry_run.py",
+   "tests/test_duckdb_metadata.py",
+   "tests/test_metadata_performance.py"
+  ],
+  "n_files": 13,
+  "final_diff_files": [
+   "context/shared/documentation/geometry-metadata-handling.md",
+   "context/shared/documentation/platform-specific-issues.md",
+   "docs/troubleshooting.md",
+   "geoparquet_io/core/common.py",
+   "geoparquet_io/core/duckdb_metadata.py",
+   "tests/test_duckdb_metadata.py",
+   "tests/test_metadata_performance.py"
+  ]
+ },
+ "agent": {
+  "status": "built",
+  "reason": "none",
+  "tier": "own_calls",
+  "uses_parallelism": false,
+  "behaviour_change_expected": true,
+  "notes": "Workload calls duckdb_metadata get_kv/geo/file/schema functions and detect_geoparquet_file_type on repo test parquet files, a partition dir, synthetic GeoArrow-extension files (with/without geoarrow.pyarrow imported), an invalid file, and with an explicit DuckDB connection. DuckDB spatial extension is copied to /tmp/kt_233 and HOME is set there so the base runs without network. Digests differ because head uses PyArrow for local files (schema_info output format changes) and adds file-type caching. Base 8.6s, head 1.0s; head coverage 82%, base 89%."
+ },
+ "agent_is_error": false,
+ "timed_out": false,
+ "models": [
+  "claude-opus-5-5"
+ ],
+ "list_usd": 0.5222952,
+ "num_turns": 19,
+ "setup_ok": true,
+ "setup_s": 6,
+ "agent_s": 487,
+ "check": {
+  "base_exit_ok": true,
+  "base_last_line": "c99749e21dc4b10e44adcdc843ba2314f024def95e62ceec47ac70bca7376e2a",
+  "head_exit_ok": true,
+  "head_last_line": "15f49457efd93719b1cacebb772a4fbfb9b49cb99ba4cecb14a039dbe7e1fd9e",
+  "base_time_s": 7.709,
+  "head_time_s": 0.493,
+  "no_network_ok": true,
+  "coverage": {
+   "changed_files": [
+    "geoparquet_io/core/common.py",
+    "geoparquet_io/core/duckdb_metadata.py"
+   ],
+   "base": {
+    "changed_executable_lines": 9,
+    "executed": 8,
+    "share": 0.889
+   },
+   "head": {
+    "changed_executable_lines": 185,
+    "executed": 152,
+    "share": 0.822
+   },
+   "output_digest_base": "c99749e21dc4b10e44adcdc843ba2314f024def95e62ceec47ac70bca7376e2a",
+   "output_digest_head": "15f49457efd93719b1cacebb772a4fbfb9b49cb99ba4cecb14a039dbe7e1fd9e",
+   "output_equal": false,
+   "coverage_gate_pass": true
+  },
+  "coverage_needed": 0.8,
+  "output_equal": false,
+  "pass": true,
+  "reasons": []
+ },
+ "harness_pass": true,
+ "audit": {
+  "mentions_github_pull": false,
+  "used_gh_cli": false,
+  "read_git_history": false
+ },
+ "changed_code_lines": {
+  "py": 828
+ },
+ "python_share_of_code_change": 1.0
+}

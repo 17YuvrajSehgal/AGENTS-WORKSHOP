@@ -1,0 +1,36 @@
+{
+ "base_exit_ok": true,
+ "base_last_line": "d347873daa8e397782d67fa2767bfd189f51959e10a2bdab2e971b63a4ea6df9",
+ "head_exit_ok": true,
+ "head_last_line": "d347873daa8e397782d67fa2767bfd189f51959e10a2bdab2e971b63a4ea6df9",
+ "base_time_s": 7.123,
+ "head_time_s": 8.01,
+ "no_network_ok": true,
+ "coverage": {
+  "changed_files": [
+   "eth_defi/hyperliquid/api.py",
+   "eth_defi/hyperliquid/evm_escrow.py",
+   "eth_defi/hyperliquid/trader_stats.py"
+  ],
+  "base": {
+   "changed_executable_lines": 2,
+   "executed": 2,
+   "share": 1.0
+  },
+  "head": {
+   "changed_executable_lines": 60,
+   "executed": 34,
+   "share": 0.567
+  },
+  "output_digest_base": "d347873daa8e397782d67fa2767bfd189f51959e10a2bdab2e971b63a4ea6df9",
+  "output_digest_head": "d347873daa8e397782d67fa2767bfd189f51959e10a2bdab2e971b63a4ea6df9",
+  "output_equal": true,
+  "coverage_gate_pass": false
+ },
+ "coverage_needed": 0.8,
+ "output_equal": true,
+ "pass": false,
+ "reasons": [
+  "head coverage 0.567 < 0.8"
+ ]
+}

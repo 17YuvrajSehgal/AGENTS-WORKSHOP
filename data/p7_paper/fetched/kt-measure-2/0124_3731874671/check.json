@@ -1,0 +1,52 @@
+{
+ "base_exit_ok": true,
+ "base_last_line": "813dbfb6abd8b5f026e1ad381d676d04ce3483cf7a37ebdafb6e4fc0c5218949",
+ "head_exit_ok": true,
+ "head_last_line": "19e6c18eba2cdbe7bb3548646641bc63e34a62c3c4380d2abc1a97b8e3c86e96",
+ "base_time_s": 6.419,
+ "head_time_s": 6.419,
+ "no_network_ok": true,
+ "coverage": {
+  "changed_files": [
+   "fast_llm/data/preparator/gpt_memmap/config.py",
+   "fast_llm/data/preparator/gpt_memmap/prepare.py",
+   "fast_llm/data/preprocessing/tokenizer.py",
+   "fast_llm/models/gpt/conversion/apriel2.py",
+   "fast_llm/models/gpt/conversion/qwen2.py",
+   "fast_llm/models/multimodal/conversion/apriel2.py",
+   "fast_llm_external_models/apriel2/cache.py",
+   "fast_llm_external_models/apriel2/conversion/__init__.py",
+   "fast_llm_external_models/apriel2/conversion/config.py",
+   "fast_llm_external_models/apriel2/conversion/converters.py",
+   "fast_llm_external_models/apriel2/conversion/executor.py",
+   "fast_llm_external_models/apriel2/conversion/expr.py",
+   "fast_llm_external_models/apriel2/conversion/io.py",
+   "fast_llm_external_models/apriel2/conversion/llava/plan.py",
+   "fast_llm_external_models/apriel2/conversion/qwen2/__init__.py",
+   "fast_llm_external_models/apriel2/conversion/qwen2/config.py",
+   "fast_llm_external_models/apriel2/conversion/qwen2/plan.py",
+   "fast_llm_external_models/apriel2/conversion/render.py",
+   "fast_llm_external_models/apriel2/convert.py",
+   "fast_llm_external_models/apriel2/modeling_apriel2.py",
+   "setup.py"
+  ],
+  "base": {
+   "changed_executable_lines": 183,
+   "executed": 144,
+   "share": 0.787
+  },
+  "head": {
+   "changed_executable_lines": 274,
+   "executed": 173,
+   "share": 0.631
+  },
+  "output_digest_base": "813dbfb6abd8b5f026e1ad381d676d04ce3483cf7a37ebdafb6e4fc0c5218949",
+  "output_digest_head": "19e6c18eba2cdbe7bb3548646641bc63e34a62c3c4380d2abc1a97b8e3c86e96",
+  "output_equal": false,
+  "coverage_gate_pass": false
+ },
+ "coverage_needed": 0.5,
+ "output_equal": false,
+ "pass": true,
+ "reasons": []
+}

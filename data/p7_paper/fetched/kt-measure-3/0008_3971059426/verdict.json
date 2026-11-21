@@ -1,0 +1,130 @@
+{
+ "job": {
+  "order": 8,
+  "id": 3971059426,
+  "agent": "Claude_Code",
+  "repo": "feast-dev/feast",
+  "number": 5998,
+  "api_base_sha": "6f5203ac50284c4fc5884740cbc3bbca7fd1c7d0",
+  "head_sha": "f1e82fc0191cb36d135af509a5c930620ab1d8fa",
+  "created": "2026-02-21",
+  "changed_files": [
+   "docs/getting-started/faq.md",
+   "infra/website/docs/blog/entity-less-historical-features-retrieval.md",
+   "pyproject.toml",
+   "sdk/python/feast/feature_server.py",
+   "sdk/python/feast/feature_view.py",
+   "sdk/python/feast/on_demand_feature_view.py",
+   "sdk/python/feast/proto_conversion/__init__.py",
+   "sdk/python/feast/proto_conversion/compat.py",
+   "sdk/python/feast/proto_conversion/converter.py",
+   "sdk/python/feast/proto_conversion/converters/__init__.py",
+   "sdk/python/feast/proto_conversion/converters/dataframe_converter.py",
+   "sdk/python/feast/proto_conversion/converters/entity_converter.py",
+   "sdk/python/feast/proto_conversion/converters/feature_service_converter.py",
+   "sdk/python/feast/proto_conversion/converters/feature_view_converter.py",
+   "sdk/python/feast/proto_conversion/converters/value_converter.py",
+   "sdk/python/feast/proto_conversion/errors.py",
+   "sdk/python/feast/proto_conversion/registration.py",
+   "sdk/python/feast/proto_conversion/registry.py",
+   "sdk/python/feast/proto_conversion/serializable.py",
+   "sdk/python/feast/proto_utils.py",
+   "sdk/python/feast/stream_feature_view.py",
+   "sdk/python/feast/type_map.py",
+   "sdk/python/feast/utils.py",
+   "sdk/python/requirements/py3.10-ci-requirements.txt",
+   "sdk/python/requirements/py3.10-minimal-requirements.txt",
+   "sdk/python/requirements/py3.10-minimal-sdist-requirements-build.txt",
+   "sdk/python/requirements/py3.10-minimal-sdist-requirements.txt",
+   "sdk/python/requirements/py3.10-requirements.txt",
+   "sdk/python/requirements/py3.11-ci-requirements.txt",
+   "sdk/python/requirements/py3.11-minimal-requirements.txt",
+   "sdk/python/requirements/py3.11-minimal-sdist-requirements-build.txt",
+   "sdk/python/requirements/py3.11-minimal-sdist-requirements.txt",
+   "sdk/python/requirements/py3.11-requirements.txt",
+   "sdk/python/requirements/py3.12-ci-requirements.txt",
+   "sdk/python/requirements/py3.12-minimal-requirements.txt",
+   "sdk/python/requirements/py3.12-minimal-sdist-requirements-build.txt",
+   "sdk/python/requirements/py3.12-minimal-sdist-requirements.txt",
+   "sdk/python/requirements/py3.12-requirements.txt",
+   "sdk/python/tests/integration/registration/rest_api/conftest.py",
+   "sdk/python/tests/unit/test_on_demand_python_transformation.py",
+   "sdk/python/tests/unit/test_proto_conversion.py"
+  ],
+  "n_files": 41,
+  "final_diff_files": [
+   "sdk/python/feast/feature_view.py",
+   "sdk/python/feast/on_demand_feature_view.py",
+   "sdk/python/feast/proto_utils.py",
+   "sdk/python/feast/stream_feature_view.py",
+   "sdk/python/feast/type_map.py",
+   "sdk/python/feast/utils.py",
+   "sdk/python/tests/unit/test_on_demand_python_transformation.py"
+  ]
+ },
+ "agent": {
+  "status": "built",
+  "reason": "none",
+  "tier": "own_calls",
+  "uses_parallelism": false,
+  "behaviour_change_expected": false,
+  "notes": "Both venvs were rebuilt from the repo root (KT_PKGDIR=., Python 3.12, SETUPTOOLS_SCM_PRETEND_VERSION=0.60.0) because pkgdir sdk/python had no dependency list. The workload calls python_values_to_proto_values on scalar, list, set and map types, plus error cases; to_proto on FeatureView, StreamFeatureView and on-demand feature views (python and pandas mode); and _convert_arrow_to_proto for a feature view and an on-demand view, including the missing-feature and missing-join-key paths. For the digest, messages are serialized deterministically, sets are sorted, metadata timestamps are removed and repeated feature fields are sorted by name. The checker passes: about 88% of changed lines covered, outputs equal, 3.7 s on base."
+ },
+ "agent_is_error": false,
+ "timed_out": false,
+ "models": [
+  "claude-opus-5-5"
+ ],
+ "list_usd": 1.0138706,
+ "num_turns": 43,
+ "setup_ok": true,
+ "setup_s": 11,
+ "agent_s": 466,
+ "check": {
+  "base_exit_ok": true,
+  "base_last_line": "d5e1a26ce0868c901c7b4be8298a41ef616c4e4c1a3261aa18a212d99a928156",
+  "head_exit_ok": true,
+  "head_last_line": "d5e1a26ce0868c901c7b4be8298a41ef616c4e4c1a3261aa18a212d99a928156",
+  "base_time_s": 3.001,
+  "head_time_s": 2.987,
+  "no_network_ok": true,
+  "coverage": {
+   "changed_files": [
+    "sdk/python/feast/feature_view.py",
+    "sdk/python/feast/on_demand_feature_view.py",
+    "sdk/python/feast/proto_utils.py",
+    "sdk/python/feast/stream_feature_view.py",
+    "sdk/python/feast/type_map.py",
+    "sdk/python/feast/utils.py"
+   ],
+   "base": {
+    "changed_executable_lines": 129,
+    "executed": 114,
+    "share": 0.884
+   },
+   "head": {
+    "changed_executable_lines": 141,
+    "executed": 125,
+    "share": 0.887
+   },
+   "output_digest_base": "d5e1a26ce0868c901c7b4be8298a41ef616c4e4c1a3261aa18a212d99a928156",
+   "output_digest_head": "d5e1a26ce0868c901c7b4be8298a41ef616c4e4c1a3261aa18a212d99a928156",
+   "output_equal": true,
+   "coverage_gate_pass": true
+  },
+  "coverage_needed": 0.8,
+  "output_equal": true,
+  "pass": true,
+  "reasons": []
+ },
+ "harness_pass": true,
+ "audit": {
+  "mentions_github_pull": false,
+  "used_gh_cli": false,
+  "read_git_history": false
+ },
+ "changed_code_lines": {
+  "py": 1330
+ },
+ "python_share_of_code_change": 1.0
+}

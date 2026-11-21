@@ -1,0 +1,20 @@
+{
+ "changed_files": [
+  "mlx_lm/models/cache.py",
+  "mlx_lm/server.py"
+ ],
+ "base": {
+  "changed_executable_lines": 21,
+  "executed": 21,
+  "share": 1.0
+ },
+ "head": {
+  "changed_executable_lines": 170,
+  "executed": 128,
+  "share": 0.753
+ },
+ "output_digest_base": "b24fc4cb0766c83231a7eb99e32ce483819f0263acfbbd5187425b5f9da0e8a9",
+ "output_digest_head": "dd298283247ed55427648385877f7ff0bf43c3f8d4c4d466dd4edc91890dade0",
+ "output_equal": false,
+ "coverage_gate_pass": false
+}

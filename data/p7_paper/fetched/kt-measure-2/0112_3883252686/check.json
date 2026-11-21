@@ -1,0 +1,35 @@
+{
+ "base_exit_ok": true,
+ "base_last_line": "a6e07cf6aa783956657a4ce10f064b363771094657b081e35416d70776955346",
+ "head_exit_ok": true,
+ "head_last_line": "d0caf399f230583aa0cfad83cd57f0d9ede2059b71b16ec5f67228f9f5c53cbd",
+ "base_time_s": 2.981,
+ "head_time_s": 3.891,
+ "no_network_ok": true,
+ "coverage": {
+  "changed_files": [
+   "api/backends/factory.py",
+   "api/backends/openvino_backend.py",
+   "api/backends/pytorch_backend.py",
+   "api/config.py"
+  ],
+  "base": {
+   "changed_executable_lines": 1,
+   "executed": 1,
+   "share": 1.0
+  },
+  "head": {
+   "changed_executable_lines": 280,
+   "executed": 147,
+   "share": 0.525
+  },
+  "output_digest_base": "a6e07cf6aa783956657a4ce10f064b363771094657b081e35416d70776955346",
+  "output_digest_head": "d0caf399f230583aa0cfad83cd57f0d9ede2059b71b16ec5f67228f9f5c53cbd",
+  "output_equal": false,
+  "coverage_gate_pass": false
+ },
+ "coverage_needed": 0.5,
+ "output_equal": false,
+ "pass": true,
+ "reasons": []
+}

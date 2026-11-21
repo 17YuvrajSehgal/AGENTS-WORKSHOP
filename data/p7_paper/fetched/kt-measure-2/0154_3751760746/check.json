@@ -1,0 +1,40 @@
+{
+ "base_exit_ok": true,
+ "base_last_line": "4ba34631bf2c6f2542d8fbe71bf38e3575e260481967a7a2f4b01e9b26ad79b2",
+ "head_exit_ok": true,
+ "head_last_line": "4ba34631bf2c6f2542d8fbe71bf38e3575e260481967a7a2f4b01e9b26ad79b2",
+ "base_time_s": 2.288,
+ "head_time_s": 3.998,
+ "no_network_ok": true,
+ "coverage": {
+  "changed_files": [
+   "jellyfin_apiclient_python/__init__.py",
+   "jellyfin_apiclient_python/api.py",
+   "jellyfin_apiclient_python/async_api.py",
+   "jellyfin_apiclient_python/async_http.py",
+   "jellyfin_apiclient_python/async_runner.py",
+   "jellyfin_apiclient_python/client.py",
+   "jellyfin_apiclient_python/connection_manager.py",
+   "jellyfin_apiclient_python/http.py",
+   "jellyfin_apiclient_python/httpx_compat.py"
+  ],
+  "base": {
+   "changed_executable_lines": 172,
+   "executed": 106,
+   "share": 0.616
+  },
+  "head": {
+   "changed_executable_lines": 521,
+   "executed": 284,
+   "share": 0.545
+  },
+  "output_digest_base": "4ba34631bf2c6f2542d8fbe71bf38e3575e260481967a7a2f4b01e9b26ad79b2",
+  "output_digest_head": "4ba34631bf2c6f2542d8fbe71bf38e3575e260481967a7a2f4b01e9b26ad79b2",
+  "output_equal": true,
+  "coverage_gate_pass": false
+ },
+ "coverage_needed": 0.5,
+ "output_equal": true,
+ "pass": true,
+ "reasons": []
+}

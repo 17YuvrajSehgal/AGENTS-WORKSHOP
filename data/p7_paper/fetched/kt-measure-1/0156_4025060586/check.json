@@ -1,0 +1,32 @@
+{
+ "base_exit_ok": true,
+ "base_last_line": "97571a492cd1008708d19b89c90ea0575b6d628f37dabc83f722721821123df5",
+ "head_exit_ok": true,
+ "head_last_line": "97571a492cd1008708d19b89c90ea0575b6d628f37dabc83f722721821123df5",
+ "base_time_s": 15.832,
+ "head_time_s": 16.271,
+ "no_network_ok": true,
+ "coverage": {
+  "changed_files": [
+   "src/prefect/task_runners.py"
+  ],
+  "base": {
+   "changed_executable_lines": 3,
+   "executed": 3,
+   "share": 1.0
+  },
+  "head": {
+   "changed_executable_lines": 10,
+   "executed": 10,
+   "share": 1.0
+  },
+  "output_digest_base": "97571a492cd1008708d19b89c90ea0575b6d628f37dabc83f722721821123df5",
+  "output_digest_head": "97571a492cd1008708d19b89c90ea0575b6d628f37dabc83f722721821123df5",
+  "output_equal": true,
+  "coverage_gate_pass": true
+ },
+ "coverage_needed": 0.8,
+ "output_equal": true,
+ "pass": true,
+ "reasons": []
+}

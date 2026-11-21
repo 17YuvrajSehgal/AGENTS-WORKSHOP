@@ -1,0 +1,48 @@
+{
+ "job": {
+  "order": 15,
+  "id": 3726005574,
+  "agent": "Copilot",
+  "repo": "athphane/userbot",
+  "number": 119,
+  "api_base_sha": "2acfa6037f255d5e24ad7c5b0de1db4481e70c5c",
+  "head_sha": "fd4a5a3b6b7d5a21a0877708311d2a8171d3694a",
+  "created": "2025-12-13",
+  "changed_files": [
+   "userbot/plugins/video_dl.py"
+  ],
+  "n_files": 1,
+  "final_diff_files": [
+   "userbot/plugins/video_dl.py"
+  ]
+ },
+ "agent": {
+  "status": "unbuildable",
+  "reason": "needs_external_service",
+  "tier": "none",
+  "uses_parallelism": false,
+  "behaviour_change_expected": false,
+  "notes": "The change adds a cached bot.get_me() call and a 'skip saved messages' check to a Telegram userbot message handler. Install failed on both sides because the repo has no pyproject.toml or setup.py. Importing the userbot package needs a config file with MongoDB settings and builds a Telegram client. The handler also makes HTTP calls, sends Telegram messages and runs yt-dlp. Nothing meaningful is left to measure without faking the Telegram client and the network."
+ },
+ "agent_is_error": false,
+ "timed_out": false,
+ "models": [
+  "claude-opus-5-5"
+ ],
+ "list_usd": 0.11142840000000001,
+ "num_turns": 4,
+ "setup_ok": false,
+ "setup_s": 2,
+ "agent_s": 13,
+ "check": null,
+ "harness_pass": false,
+ "audit": {
+  "mentions_github_pull": false,
+  "used_gh_cli": false,
+  "read_git_history": false
+ },
+ "changed_code_lines": {
+  "py": 13
+ },
+ "python_share_of_code_change": 1.0
+}

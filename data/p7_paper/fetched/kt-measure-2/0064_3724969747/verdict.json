@@ -1,0 +1,86 @@
+{
+ "job": {
+  "order": 64,
+  "id": 3724969747,
+  "agent": "Claude_Code",
+  "repo": "tinygrad/tinygrad",
+  "number": 13664,
+  "api_base_sha": "27845353a06b5924a8d9f09edc0a79fca9f4ae3e",
+  "head_sha": "24ffb7c2c3bba22b85a19e2e0ff463021f5a49a9",
+  "created": "2025-12-12",
+  "changed_files": [
+   "CLAUDE.md",
+   "test/unit/test_schedule_cache.py",
+   "tinygrad/engine/schedule.py",
+   "tinygrad/uop/spec.py"
+  ],
+  "n_files": 4,
+  "final_diff_files": [
+   "CLAUDE.md",
+   "test/unit/test_schedule_cache.py",
+   "tinygrad/engine/schedule.py",
+   "tinygrad/uop/spec.py"
+  ]
+ },
+ "agent": {
+  "status": "built",
+  "reason": "none",
+  "tier": "own_calls",
+  "uses_parallelism": false,
+  "behaviour_change_expected": false,
+  "notes": "Installed clang via apt (tinygrad CPU backend needs it). Workload repeatedly schedules/realizes tensors with Variables bound to varying values (based on new test_schedule_cache tests) plus schedule_with_vars var_vals checks; CACHEDB redirected to /tmp/kt_13664. Full coverage of changed lines on both sides, identical digests; head hits schedule cache for different bind values (base 1.7s, head 0.9s)."
+ },
+ "agent_is_error": false,
+ "timed_out": false,
+ "models": [
+  "claude-opus-5-5"
+ ],
+ "list_usd": 0.2048498,
+ "num_turns": 8,
+ "setup_ok": true,
+ "setup_s": 7,
+ "agent_s": 106,
+ "check": {
+  "base_exit_ok": true,
+  "base_last_line": "4af3bf1c060c1cb51cfa0d38407b2b55ac8946770bd0e8ecf2588d777d29f45c",
+  "head_exit_ok": true,
+  "head_last_line": "4af3bf1c060c1cb51cfa0d38407b2b55ac8946770bd0e8ecf2588d777d29f45c",
+  "base_time_s": 1.597,
+  "head_time_s": 0.838,
+  "no_network_ok": true,
+  "coverage": {
+   "changed_files": [
+    "tinygrad/engine/schedule.py",
+    "tinygrad/uop/spec.py"
+   ],
+   "base": {
+    "changed_executable_lines": 12,
+    "executed": 12,
+    "share": 1.0
+   },
+   "head": {
+    "changed_executable_lines": 13,
+    "executed": 13,
+    "share": 1.0
+   },
+   "output_digest_base": "4af3bf1c060c1cb51cfa0d38407b2b55ac8946770bd0e8ecf2588d777d29f45c",
+   "output_digest_head": "4af3bf1c060c1cb51cfa0d38407b2b55ac8946770bd0e8ecf2588d777d29f45c",
+   "output_equal": true,
+   "coverage_gate_pass": true
+  },
+  "coverage_needed": 0.8,
+  "output_equal": true,
+  "pass": true,
+  "reasons": []
+ },
+ "harness_pass": true,
+ "audit": {
+  "mentions_github_pull": false,
+  "used_gh_cli": false,
+  "read_git_history": false
+ },
+ "changed_code_lines": {
+  "py": 61
+ },
+ "python_share_of_code_change": 1.0
+}

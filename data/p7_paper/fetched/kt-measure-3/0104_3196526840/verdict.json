@@ -1,0 +1,126 @@
+{
+ "job": {
+  "order": 104,
+  "id": 3196526840,
+  "agent": "Cursor",
+  "repo": "567-labs/instructor",
+  "number": 1645,
+  "api_base_sha": "a54cccd522507f34dbb5ab8be484d68f60a012d9",
+  "head_sha": "5d01623afd04df83debad15035965e94067d0f28",
+  "created": "2025-07-02",
+  "changed_files": [
+   "CLAUDE.md",
+   "docs/blog/posts/caching.md",
+   "docs/blog/posts/native_caching.md",
+   "docs/concepts/caching.md",
+   "docs/integrations/index.md",
+   "examples/caching_prototype/README.md",
+   "examples/caching_prototype/context_manager_example.py",
+   "examples/caching_prototype/debug_kwargs.py",
+   "examples/caching_prototype/global_cache_example.py",
+   "examples/caching_prototype/kwargs_example.py",
+   "examples/caching_prototype/monkey_patch_example.py",
+   "examples/caching_prototype/run.py",
+   "examples/caching_prototype/run_real.py",
+   "examples/caching_prototype/test_anthropic.py",
+   "examples/caching_prototype/test_defensive.py",
+   "examples/caching_prototype/test_mock.py",
+   "examples/caching_prototype/test_simple.py",
+   "instructor/auto_client.py",
+   "instructor/cache/__init__.py",
+   "instructor/patch.py",
+   "pyproject.toml",
+   "pyrightconfig.json",
+   "tests/test_cache_auto_client.py",
+   "tests/test_cache_integration.py",
+   "tests/test_cache_key.py",
+   "uv.lock"
+  ],
+  "n_files": 26,
+  "final_diff_files": [
+   "CLAUDE.md",
+   "docs/blog/posts/caching.md",
+   "docs/blog/posts/native_caching.md",
+   "docs/concepts/caching.md",
+   "examples/caching_prototype/README.md",
+   "examples/caching_prototype/run.py",
+   "examples/caching_prototype/run_real.py",
+   "examples/caching_prototype/test_anthropic.py",
+   "examples/caching_prototype/test_simple.py",
+   "instructor/auto_client.py",
+   "instructor/cache/__init__.py",
+   "instructor/patch.py",
+   "pyproject.toml",
+   "pyrightconfig.json",
+   "tests/test_cache_integration.py",
+   "tests/test_cache_key.py",
+   "uv.lock"
+  ]
+ },
+ "agent": {
+  "status": "built",
+  "reason": "none",
+  "tier": "own_calls",
+  "uses_parallelism": false,
+  "behaviour_change_expected": false,
+  "notes": "check.py did not pass: head coverage is 0.673 against a 0.8 threshold. Outputs are equal, the no-network run is OK, and base takes about 5.0 s. The workload uses instructor.patch (sync and async) on a local stand-in create function returning prebuilt ChatCompletion objects with tool calls. It makes calls without a cache (the extra per-call work head adds) and with a dict-based get/set object passed as cache= and cache_ttl= (head's new cache key/load/store path; base passes these through to the stand-in and ignores them). It also builds openai and azure_openai clients with from_provider and runs its error paths. The uncovered changed lines are mostly head-only new code (AutoCache, DiskCache), except-ModuleNotFoundError branches that cannot be reached, fallbacks for non-pydantic raw responses, and providers whose packages are not installed. 0.8 cannot be reached using only APIs present in both versions, so this is a judgment call: the harness may count it as a fail or new_code_only."
+ },
+ "agent_is_error": false,
+ "timed_out": false,
+ "models": [
+  "claude-opus-5-5"
+ ],
+ "list_usd": 0.48176740000000007,
+ "num_turns": 17,
+ "setup_ok": true,
+ "setup_s": 5,
+ "agent_s": 487,
+ "check": {
+  "base_exit_ok": true,
+  "base_last_line": "708bd88dc01f0e3688e96ec3db9992977fec13d3ba20a82c1bc2b62aead75c32",
+  "head_exit_ok": true,
+  "head_last_line": "708bd88dc01f0e3688e96ec3db9992977fec13d3ba20a82c1bc2b62aead75c32",
+  "base_time_s": 5.216,
+  "head_time_s": 6.837,
+  "no_network_ok": true,
+  "coverage": {
+   "changed_files": [
+    "examples/caching_prototype/run.py",
+    "examples/caching_prototype/run_real.py",
+    "instructor/auto_client.py",
+    "instructor/cache/__init__.py",
+    "instructor/patch.py"
+   ],
+   "base": {
+    "changed_executable_lines": 10,
+    "executed": 6,
+    "share": 0.6
+   },
+   "head": {
+    "changed_executable_lines": 153,
+    "executed": 103,
+    "share": 0.673
+   },
+   "output_digest_base": "708bd88dc01f0e3688e96ec3db9992977fec13d3ba20a82c1bc2b62aead75c32",
+   "output_digest_head": "708bd88dc01f0e3688e96ec3db9992977fec13d3ba20a82c1bc2b62aead75c32",
+   "output_equal": true,
+   "coverage_gate_pass": false
+  },
+  "coverage_needed": 0.8,
+  "output_equal": true,
+  "pass": false,
+  "reasons": [
+   "head coverage 0.673 < 0.8"
+  ]
+ },
+ "harness_pass": false,
+ "audit": {
+  "mentions_github_pull": false,
+  "used_gh_cli": false,
+  "read_git_history": false
+ },
+ "changed_code_lines": {
+  "py": 1413
+ },
+ "python_share_of_code_change": 1.0
+}

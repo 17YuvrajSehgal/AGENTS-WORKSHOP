@@ -1,0 +1,37 @@
+\section{Discussion, threats and related work}
+\label{sec:discussion}
+
+\textbf{What this means for agent builders and reviewers.} A performance
+PR whose mechanism leaves no kernel footprint, or whose speed-up comes with
+a changed output, should not be merged on its description. Kernel signals
+are cheap to collect once a workload exists; asking agents to attach the
+trace evidence for the mechanism they claim would turn many unverifiable
+claims into checkable ones.
+
+\textbf{Threats to validity.} The measured sample is small and early
+(\nAnalysed PRs, up to \maxPerRepo from one repository), so the shares in
+Table~\ref{tab:quadrant} are preliminary. Workloads are written by an
+agent: although it never sees the claim and an independent check enforces
+coverage of the changed lines, a workload may not reflect real use.
+Classification and claim extraction are done by LLMs; a human check of a
+stratified sample of 300 PRs is prepared but not yet done. Kernel signals are evidence for a
+mechanism, not proof; the control programs show that each signal responds
+as expected. Each PR is measured once on one machine; repeated measurements on a
+second machine may be added later.
+
+\textbf{Related work.} Studies of agent performance PRs
+characterize topics~\cite{opu2025bertopic}, optimization
+patterns~\cite{peng2025optimization}, mutation
+patterns~\cite{dovhoshliubnyi2026mutation} and how agents report
+validation~\cite{peng2026validation}, all from text and code. Qi et
+al.\ re-execute 53 fixes from AIDev~\cite{qi2026merged}. Benchmarks
+such as SWE-fficiency~\cite{ma2025swefficiency} and
+FormulaCode~\cite{sehgal2026formulacode} measure whether agents can make
+given workloads faster, and their reliability has been
+questioned~\cite{chen2026benchmarks}. We instead check, with kernel traces, the
+mechanism that agent PRs claim.
+
+\textbf{Conclusion.} Agents' performance claims are mostly unmeasured, and
+a stopwatch cannot tell whether they are true for the stated reason. Our
+pipeline checks the claimed mechanism in the kernel; the full study is
+under way on \nJobs PRs.

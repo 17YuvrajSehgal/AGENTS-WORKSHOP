@@ -1,0 +1,15 @@
+{
+  "_note": "Written before any measurement (2026-11-20). For each control, variant b fixes what variant a does wrong. 'down' = b must be lower than a with full separation of runs and median ratio b/a < 0.8. 'not_down' = median ratio b/a >= 0.9. cpus: CPUs the workload is pinned to.",
+  "file_reads":   {"lang": "py", "cpus": "2",   "oracle_row": "avoid repeated file reads", "expect": {"sc:openat": "down", "sc:read": "down", "bytes_read": "down"}},
+  "batch_net":    {"lang": "py", "cpus": "2,3", "oracle_row": "batch network calls",       "expect": {"sc:sendto": "down"}},
+  "spawn":        {"lang": "py", "cpus": "2",   "oracle_row": "fewer process spawns",      "expect": {"forks": "down", "sc:execve": "down"}},
+  "logging":      {"lang": "py", "cpus": "2",   "oracle_row": "less logging / output",     "expect": {"sc:write": "down"}},
+  "alloc":        {"lang": "py", "cpus": "2",   "oracle_row": "fewer allocations",         "expect": {"minor-faults": "down", "sc:mmap": "down"}},
+  "algorithmic":  {"lang": "py", "cpus": "2",   "oracle_row": "algorithmic",               "expect": {"instructions": "down", "task-clock": "down"}},
+  "locality":     {"lang": "c",  "cpus": "2",   "oracle_row": "data locality",             "expect": {"L1-dcache-load-misses": "down", "l2_rqsts.miss": "down"}},
+  "lock":         {"lang": "c",  "cpus": "2,3", "oracle_row": "remove a lock",             "expect": {"sc:futex": "down", "context-switches": "down"}},
+  "parallel":     {"lang": "py", "cpus": "2,3", "oracle_row": "add parallelism",           "expect": {"wall_s": "down", "task-clock": "not_down"}},
+  "async_io":     {"lang": "py", "cpus": "2,3", "oracle_row": "async / non-blocking I/O",  "expect": {"wall_s": "down", "offcpu_ns_main": "down"}},
+  "lazy_import":  {"lang": "py", "cpus": "2",   "oracle_row": "lazy loading / startup",    "expect": {"sc:openat": "down", "bytes_read": "down"}},
+  "stat_loop":    {"lang": "py", "cpus": "2",   "oracle_row": "fewer syscalls in a hot loop", "expect": {"sc:stat_any": "down"}}
+}

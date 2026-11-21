@@ -1,0 +1,79 @@
+{
+ "job": {
+  "order": 149,
+  "id": 3162346531,
+  "agent": "Devin",
+  "repo": "digitaldemocracy2030/kouchou-ai",
+  "number": 609,
+  "api_base_sha": "70f2aaf4bfc6154f8e51584ba7417838f5a48b61",
+  "head_sha": "d3203560a6a50a3b70a604816faac2d8901de1d5",
+  "created": "2025-06-20",
+  "changed_files": [
+   "server/broadlistening/pipeline/steps/hierarchical_merge_labelling.py"
+  ],
+  "n_files": 1,
+  "final_diff_files": [
+   "server/broadlistening/pipeline/steps/hierarchical_merge_labelling.py"
+  ]
+ },
+ "agent": {
+  "status": "built",
+  "reason": "none",
+  "tier": "own_calls",
+  "uses_parallelism": true,
+  "behaviour_change_expected": true,
+  "notes": "Installed missing fpsample==0.3.3 into both venvs. Workload calls merge_labelling (ThreadPoolExecutor, 1 worker) and process_merge_labelling repeatedly on synthetic clustered data; only the external LLM call request_to_chat_ai is replaced by a deterministic hash-based stand-in. Covers the FPS path, the no-x/y fallback and the FPS-failure fallback (non-numeric x). Digests differ because head uses farthest point sampling instead of random sampling."
+ },
+ "agent_is_error": false,
+ "timed_out": false,
+ "models": [
+  "claude-opus-5-5"
+ ],
+ "list_usd": 0.2923182,
+ "num_turns": 14,
+ "setup_ok": true,
+ "setup_s": 4,
+ "agent_s": 179,
+ "check": {
+  "base_exit_ok": true,
+  "base_last_line": "3a5fc92a109b8bee38568370e322b17e5ca6396aab25252b26300de8e7a2727a",
+  "head_exit_ok": true,
+  "head_last_line": "9ee25f3e77878786e5bbab565d9183ff96d7d1110b899576b76b6f72cacdbd89",
+  "base_time_s": 3.326,
+  "head_time_s": 3.527,
+  "no_network_ok": true,
+  "coverage": {
+   "changed_files": [
+    "server/broadlistening/pipeline/steps/hierarchical_merge_labelling.py"
+   ],
+   "base": {
+    "changed_executable_lines": 1,
+    "executed": 1,
+    "share": 1.0
+   },
+   "head": {
+    "changed_executable_lines": 12,
+    "executed": 12,
+    "share": 1.0
+   },
+   "output_digest_base": "3a5fc92a109b8bee38568370e322b17e5ca6396aab25252b26300de8e7a2727a",
+   "output_digest_head": "9ee25f3e77878786e5bbab565d9183ff96d7d1110b899576b76b6f72cacdbd89",
+   "output_equal": false,
+   "coverage_gate_pass": true
+  },
+  "coverage_needed": 0.8,
+  "output_equal": false,
+  "pass": true,
+  "reasons": []
+ },
+ "harness_pass": true,
+ "audit": {
+  "mentions_github_pull": false,
+  "used_gh_cli": false,
+  "read_git_history": false
+ },
+ "changed_code_lines": {
+  "py": 15
+ },
+ "python_share_of_code_change": 1.0
+}

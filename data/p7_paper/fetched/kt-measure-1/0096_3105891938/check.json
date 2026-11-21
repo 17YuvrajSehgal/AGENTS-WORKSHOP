@@ -1,0 +1,35 @@
+{
+ "base_exit_ok": true,
+ "base_last_line": "0b3cf3ec64e2cd18d435ab9f6365084c8709b3ab8717f37ef59fb52433d2bd33",
+ "head_exit_ok": true,
+ "head_last_line": "0b3cf3ec64e2cd18d435ab9f6365084c8709b3ab8717f37ef59fb52433d2bd33",
+ "base_time_s": 2.47,
+ "head_time_s": 2.728,
+ "no_network_ok": true,
+ "coverage": {
+  "changed_files": [
+   "ocode_python/tools/data_tools.py",
+   "ocode_python/tools/find_tool.py",
+   "ocode_python/tools/head_tail_tool.py",
+   "ocode_python/tools/notebook_tools.py"
+  ],
+  "base": {
+   "changed_executable_lines": 153,
+   "executed": 111,
+   "share": 0.725
+  },
+  "head": {
+   "changed_executable_lines": 262,
+   "executed": 184,
+   "share": 0.702
+  },
+  "output_digest_base": "0b3cf3ec64e2cd18d435ab9f6365084c8709b3ab8717f37ef59fb52433d2bd33",
+  "output_digest_head": "0b3cf3ec64e2cd18d435ab9f6365084c8709b3ab8717f37ef59fb52433d2bd33",
+  "output_equal": true,
+  "coverage_gate_pass": false
+ },
+ "coverage_needed": 0.5,
+ "output_equal": true,
+ "pass": true,
+ "reasons": []
+}

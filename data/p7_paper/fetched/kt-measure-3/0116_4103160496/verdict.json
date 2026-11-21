@@ -1,0 +1,79 @@
+{
+ "job": {
+  "order": 116,
+  "id": 4103160496,
+  "agent": "Cursor",
+  "repo": "getnao/nao",
+  "number": 488,
+  "api_base_sha": "4d9a94c6c3f315b26399bc1ca8ddb6ebece7b9e6",
+  "head_sha": "7f45ba139fc964c8096d532a5168053a620862be",
+  "created": "2026-03-19",
+  "changed_files": [
+   "cli/nao_core/version.py"
+  ],
+  "n_files": 1,
+  "final_diff_files": [
+   "cli/nao_core/version.py"
+  ]
+ },
+ "agent": {
+  "status": "built",
+  "reason": "none",
+  "tier": "own_calls",
+  "uses_parallelism": true,
+  "behaviour_change_expected": true,
+  "notes": "Replaced urllib.request.urlopen with an in-process fake PyPI response; the fake raises an error on one call in seven. Cache file is in /tmp/kt_488 and UI console output goes to an in-memory buffer. 4000 rounds of clear cache, check_for_updates on a miss, then on a hit, then get_latest_version. On head, the miss starts a background fetch thread and the workload joins it via _background_thread if that attribute exists. Digests differ as expected: base warns on cache miss too, and base's get_latest_version raises on fetch failure where head's returns None. Coverage of changed lines: base 100%, head 87%."
+ },
+ "agent_is_error": false,
+ "timed_out": false,
+ "models": [
+  "claude-opus-5-5"
+ ],
+ "list_usd": 0.1431906,
+ "num_turns": 8,
+ "setup_ok": true,
+ "setup_s": 5,
+ "agent_s": 59,
+ "check": {
+  "base_exit_ok": true,
+  "base_last_line": "e11dd139291d34509de00f82a9319d84b977e381dcd927add76bbff47dd15f17",
+  "head_exit_ok": true,
+  "head_last_line": "c35538ebe83a7c79f0c3df0bc32948f276332d875368bd6771ac6c6a00ca93b2",
+  "base_time_s": 1.957,
+  "head_time_s": 2.374,
+  "no_network_ok": true,
+  "coverage": {
+   "changed_files": [
+    "cli/nao_core/version.py"
+   ],
+   "base": {
+    "changed_executable_lines": 11,
+    "executed": 11,
+    "share": 1.0
+   },
+   "head": {
+    "changed_executable_lines": 23,
+    "executed": 20,
+    "share": 0.87
+   },
+   "output_digest_base": "e11dd139291d34509de00f82a9319d84b977e381dcd927add76bbff47dd15f17",
+   "output_digest_head": "c35538ebe83a7c79f0c3df0bc32948f276332d875368bd6771ac6c6a00ca93b2",
+   "output_equal": false,
+   "coverage_gate_pass": true
+  },
+  "coverage_needed": 0.8,
+  "output_equal": false,
+  "pass": true,
+  "reasons": []
+ },
+ "harness_pass": true,
+ "audit": {
+  "mentions_github_pull": false,
+  "used_gh_cli": false,
+  "read_git_history": false
+ },
+ "changed_code_lines": {
+  "py": 44
+ },
+ "python_share_of_code_change": 1.0
+}

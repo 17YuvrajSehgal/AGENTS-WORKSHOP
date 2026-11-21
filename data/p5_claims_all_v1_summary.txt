@@ -1,0 +1,226 @@
+PRs: 1343 | ok: 1343 | no mechanism stated: 189 | with claimed effect: 422
+evidence: {'reasoning': 500, 'test': 347, 'none': 269, 'benchmark': 221, 'profile': 6}
+mechanisms (share of PRs):
+   skip_unneeded_work    277  20.6%
+   less_memory           223  16.6%
+   cache_results         206  15.3%
+   other                 163  12.1%
+   algorithmic           127  9.5%
+   parallelize            93  6.9%
+   async_io               74  5.5%
+   precompute             73  5.4%
+   faster_library         57  4.2%
+   concurrency_tuning     57  4.2%
+   fewer_external_calls   56  4.2%
+   lazy_loading           55  4.1%
+   reuse_resources        53  3.9%
+   faster_db_query        50  3.7%
+   fewer_db_queries       48  3.6%
+   vectorize_locality     44  3.3%
+   gpu_accelerator        37  2.8%
+   smaller_payload        36  2.7%
+   batch_calls            36  2.7%
+   avoid_repeated_io      35  2.6%
+   ui_rendering           28  2.1%
+   polling_sleep          28  2.1%
+   less_locking           23  1.7%
+   less_output            20  1.5%
+   streaming_output       15  1.1%
+   io_granularity         12  0.9%
+   fewer_syscalls          3  0.2%
+   fewer_processes         3  0.2%
+quotes not verbatim: 101 | not even after whitespace: 46 of 2087
+
+'other' descriptions (192):
+   - Lazy query evaluation via Polars LazyFrame, claimed to give better performance; no existing id covers deferred
+   - Claims faster interview processing by handling interviews in chunks; no listed id covers chunked batch process
+   - Claims faster error handling paths; no specific mechanism is described and no listed id covers it.
+   - Uses a smaller SAM2 model variant (vit_b) as the default so CPU inference is cheaper. This is a model-size cho
+   - Switches the LLM model used for app name and commit message generation to a faster model (gemini-flash-lite). 
+   - Simplifies SSE event parsing by using json.loads with object_hook. The PR does not state a speed or resource g
+   - Disables autograd graph tracking during model inference (torch.no_grad), which the PR implies reduces compute 
+   - Longest-first task ordering to improve scheduling for concurrent execution. The PR states no speedup measureme
+   - Reduces on-disk storage footprint by deduplicating intermediate records (stored once and referenced via an ind
+   - Claims lower latency by calling the DeepSeek API directly instead of routing through the OpenRouter proxy (rem
+   - Claims load balancing across agents for performance; no codebook id covers load balancing.
+   - Claims priority-based task scheduling for performance; no codebook id covers scheduling priority.
+   - Claims a speed/resource gain from optimized token counting; no listed mechanism id covers token-counting optim
+   - Claims speed gains from routing each file type to a chosen extraction backend (hybrid backend routing).
+   - Claims smaller on-disk cache file size from switching the serialization format (pickle to JSON). Not covered b
+   - Generic claim to optimize loops in page_table.py without naming a specific mechanism (no algorithmic, vectoriz
+   - DDP overhead reduction by disabling unused-parameter detection and enabling static_graph for a fixed graph
+   - pinned host memory to speed up host-to-GPU transfers
+   - Loads text windows through a DataLoader for throughput; the PR does not state a specific speed mechanism beyon
+   - Configurable trade-off of memory use for throughput; no codebook id covers a memory-for-speed knob.
+   - Removes a per-request agent registry lookup by embedding the agent directly in ADKAgent; no existing id covers
+   - Claims faster cold start by removing the scipy.cluster.vq dependency; a startup-time mechanism from dependency
+   - Adds cleanup and shutdown logic to the rate limiter so leftover tasks are not kept alive. The PR frames this a
+   - Speeds up sanitize_path_for_filename by replacing multiple string operations with a single str.translate() cal
+   - Replacing range(len()) loops with enumerate() is claimed to improve iteration performance. No single id covers
+   - Replacing wildcard imports with explicit imports is claimed to speed up module import time. No single id cover
+   - Switches the agent to a faster LLM model and inference provider (flash mode, Groq Llama 4). Not a code-level s
+   - Compiles the memory module to a Cython C extension (cdef class Buffer, C-level field access, size_t annotation
+   - Removes the _MembersNeededForFinalize helper and weakref.finalize finalizer machinery in favour of a direct __
+   - Claims a speed gain from removing lazy (runtime) imports, which the PR says yields 'Better Performance'. No li
+   - Claims faster generation by passing stop tokens as direct token IDs, so the hot path avoids string matching on
+   - Avoids writing temporary ZIP-extraction files to the filesystem by processing the archive in memory (io.BytesI
+   - Claims smaller on-disk storage footprint from storing JSON data instead of generated HTML pages; no listed id 
+   - Claims removing separate HEAD requests during job creation speeds up job creation; no existing id covers avoid
+   - Signals all tracked SSH processes at once and polls them collectively during cleanup, instead of terminating t
+   - Shows a poster still frame immediately to reduce perceived video-preview latency. No listed id covers displayi
+   - Removes Ray Core streaming-generator backpressure on the download partition actor so its output is not throttl
+   - Stated speed claim that per-call thread creation is removed: sync_send_to_stream no longer spawns a ThreadPool
+   - Claims lower Python interpreter overhead by compiling the histogram loop with Cython; no codebook id covers re
+   - Replaces per-line JSON parsing with schema inference from a few lines, then direct value extraction from later
+   - Smaller installed package size from dropping multi-version API code (package size/install footprint); no codeb
+   - Claims faster string formatting via f-strings in update_team_context and update_text_action; no specific speed
+   - Moves hot paths from mixed Python/Cython into fully compiled Cython to remove Python object overhead; no speci
+   - States memory-mapped database access as a performance mechanism; no id in the codebook covers mmap-based DB ac
+   - Generic optimization of the image filter pixel loop; the PR does not state the specific technique.
+   - Generic optimization of edit preview rendering; the specific technique is not stated.
+   - Build-profile tuning (LTO, panic=abort) stated as a speed gain; no existing id covers compiler/build-profile o
+   - Speed-up from optimizing string operations; the mechanism is not specified beyond that, so no existing id fits
+   - Routes requests by estimated complexity to a cheaper model (Haiku 4.5) instead of Sonnet 4.5 to cut API cost. 
+   - Lowers end-of-turn detection latency by predicting end-of-turn from audio frames so it no longer waits for the
+   - Batches string edits and applies them in one pass at the end instead of mutating the string per AST node.
+   - Bounds the size of DB queries by chunking file IDs during stat calculation to avoid overloading the database; 
+   - Reorders the per-entry checks so the most common case (regular files) is tested before directories. This is a 
+   - Avoids host-to-device tensor transfers by allocating tensors directly on the target device at creation; no lis
+   - Speed claim from replacing manual for-loop append patterns with list comprehensions or .extend() calls (an int
+   - Prioritizes loading of visible thumbnails via a LIFO pending queue so on-screen images load first.
+   - Priority inheritance on the image-table mutex (PTHREAD_PRIO_INHERIT) to prevent priority inversion against the
+   - Moves scaling and cropping off the CPU render path (pixmap.scaled) onto QPainter.drawPixmap with computed sour
+   - Claims to remove Qt model-index and data() call overhead from the filter and sort hot paths by reading raw int
+   - Direct data access: the proxy reads the source model's raw Python dict rows via get_internal_row, skipping Qt 
+   - Replaces dict.get() with direct key indexing in hot paths; a micro-optimization not covered by the listed ids.
+   - Micro-optimization: replaces dict.get() calls with direct [] indexing to remove function-call overhead on guar
+   - Renders the timeline structure (headers and placeholders) from an index structure query before asset metadata 
+   - Filters videos by comparing an integer media_type column instead of the existing check. No listed id covers th
+   - Replaces a temporary-file disk write and read round trip with capturing FFmpeg output from stdout (pipe:1). Th
+   - Reduces serialization overhead in cache key generation by replacing two pickle.dumps calls (args and kwargs) w
+   - Avoids per-row Path object allocation in the descendant row-merge loop by using string concatenation with a pr
+   - Claims faster, smoother gallery rendering by moving from a QListView to a hardware-accelerated QML grid. No co
+   - Removes a redundant conversion step from the parser's list output to the flattened MultiDict that ParsedFile b
+   - Defers Live Photo pairing off the album-open path to a background task (deferred work, not I/O or compute redu
+   - Speeds up cache key generation by serializing args and kwargs in one pickle.dumps call instead of two, and by 
+   - Splits large markdown output into multiple linked page files so each page is smaller to render. The PR gives n
+   - Faster thumbnail encoding by choosing a fast PNG compression level when writing the cache file (write-side spe
+   - Regex-level micro-optimization: rewrites the COMMENT pattern with Friedl's 'unrolling the loop' technique to s
+   - Regex-level optimization: uses the inline case-insensitive flag (?i:...) instead of explicit character classes
+   - Regex-level optimization: fewer non-capturing groups in the FLOAT pattern (4 to 3 groups, 59 to 55 bytes), sta
+   - Speeds up cache key generation by using a faster pickle protocol and serializing args and kwargs in one call, 
+   - Yields CPU to the UI thread by lowering background worker thread priority and sleeping periodically; the state
+   - Reduces the number of pickle.dumps calls per cache key (2 to 1) by serializing args and kwargs together. This 
+   - Claims faster cache key serialization by switching the pickle protocol to HIGHEST_PROTOCOL. This is a serializ
+   - Synchronous load of small cached datasets to remove an empty-view flash and the double-load UI artifact; a UI-
+   - Uses a cheaper resampling filter (LANCZOS to BICUBIC) for 16x16 thumbnails; no listed id covers choosing a fas
+   - Batches small scan chunks into larger payloads to reduce per-chunk processing overhead; no matching id in the 
+   - HTTP ETag conditional GET: the server answers 304 with no body when the client's cached copy is current, avoid
+   - SQLite engine pragma tuning (cache size, synchronous mode, mmap I/O, temp store) stated to make database opera
+   - Tunes software pipelining depth (stage count) per GPU architecture; no id in the codebook covers pipeline-dept
+   - Claims faster script startup and a smaller footprint by removing a heavy third-party import (numpy) and replac
+   - Replaces grep-based text search with LSP semantic reference lookup for code navigation (900x faster reference 
+   - Commit-message claim that moving a helper from an inline function to a class method avoids recreating a functi
+   - Claims faster variation-of-information computation by using a custom array-based implementation instead of skl
+   - Claims smaller on-disk file sizes from switching the storage format to Parquet. No id covers reduced file size
+   - Replaces finite-difference Jacobian estimation with exact autodiff Jacobians, which the PR presents as a speed
+   - Mode switching uses the processed slot (nextSlotToSend, including skipped slots) for the gap calculation, so t
+   - Removes requestAnimationFrame throttling from Timer widget dragging to reduce input lag (responsiveness). No l
+   - Claims a resource benefit from fewer default partitions: fewer small files and less metadata bloat ("Decreases
+   - Defers non-critical render-blocking JS (script defer) so the page does not wait on FontAwesome, Bootstrap and 
+   - Sets HTTP Cache-Control lifetimes so browsers reuse static assets (1 year) and revalidate HTML (1 hour). Not f
+   - Uses font-display: swap so text renders with a fallback font while web fonts load.
+   - Reserves image aspect ratio to prevent layout shifts (CLS) during rendering.
+   - Replaces a filesystem scan with a read from the database index to speed up gallery loading.
+   - Continuous batching (BatchGenerator scheduling of MLLM requests) claimed as a throughput mechanism; no listed 
+   - Cheaper model tier for domain prefetch to cut monetary cost per workflow; a cost claim, not a speed or resourc
+   - Cooperative CPU yielding: inserts asyncio.sleep(0) every 100 comparisons in CPU-bound O(n^2) entity-resolution
+   - Claims that squashing a repository's commit history (via super_squash_history) improves upload performance whe
+   - Claims faster attribute access from adding __slots__ to classes; no codebook id covers attribute access speed.
+   - Kernel fusion of RMSNorm on AITER (ROCm) backend, cited as an upstream vLLM 0.14.0 ROCm speedup; no id covers 
+   - Removes the async-in-sync wrapper (the internal concurrency/loop-thread dispatch) by using direct synchronous 
+   - Groups tensors by dtype and shape so that foreach_copy_ calls are more efficient. The PR does not name a fitti
+   - Avoids gzip compression CPU time when packaging checkpoints by writing an uncompressed tar archive. No existin
+   - Replaces Python-level list comprehensions with map()/filter() that call built-in C callables directly, avoidin
+   - Removes per-user polling and mark-read POST requests to cut server load; this is a request-count reduction wit
+   - Applies settings changes live without a full app restart, claimed as part of the 'instant settings' speed work
+   - Switches the default to a smaller Whisper model for faster transcription; no id covers choosing a smaller mode
+   - Claims MCP mode is faster than skills mode because it auto-detects the Databricks CLI binary. No speed-mechani
+   - Compiler codegen efficiency: AMDGPU address-space annotations are said to let the compiler avoid unnecessary f
+   - States a performance reason for switching the stream converter to std::sync::Mutex; no lock-contention or lock
+   - Switches pure-read DB methods to read-only transactions (begin_readonly_session / postgresql_readonly=True) to
+   - Avoids per-step dtype conversion overhead by keeping LoRA adapters in the base model's dtype (autocast_adapter
+   - Shortens the persistence delay for hot apps by triggering the batch-compute timer early and flushing the delay
+   - Reduces GPU/host synchronization points (sync removal), a speed mechanism not covered by the listed ids.
+   - Speeds up patchification (patch embedding step) via an unspecified faster implementation; no listed id covers 
+   - Claims faster LoRA load/unload by avoiding object graph traversal (state_dict backup instead of deepcopy); no 
+   - Routes simple messages to a smaller, faster model (Haiku) instead of the default model, to cut latency.
+   - Lowers the default candle limit per Binance futures fetchOHLCV request to stay in cheaper API weight tiers, re
+   - Replaces isinstance type checks with capability-flag attribute checks (is_passthrough, has_root_path), claimed
+   - Speculative decoding via multi-token prediction (MTP) heads. Speculative decoding is a speed mechanism, but no
+   - Claims faster image loading by switching raw <img> tags to the Next.js Image component (image optimization). T
+   - Compile-time loop unrolling via constexpr MAX_REGION_H/MAX_REGION_W loop bounds derived from the scale factors
+   - Adding timeouts to network calls is claimed to bound hung requests so trading cycles finish faster (cycle-time
+   - Reduces ThreadPool scheduling jitter by running cache clearing synchronously instead of via continuations or T
+   - Skips parallel bloom computation for small receipt counts to avoid ThreadPool scheduling overhead. Not covered
+   - Removes ThreadPool scheduling jitter by making NoGCRegion start synchronous instead of via Task.Run. Stability
+   - Larger processing batch window (ds.window 64 to 1024) for tokenization throughput; no listed id covers work-ba
+   - Low-latency NATS pub/sub hot path for message delivery, alongside the existing filesystem cold path, to cut de
+   - Removes the Font Awesome CDN request from every page load (one fewer external HTTP request). No listed id cove
+   - Caches provider UI state so the settings tab renders instantly without a flash on open; this is UI-state cachi
+   - Enabling RequireStaticShapes lets the CoreML compiler optimize the graph at compile time instead of handling d
+   - Reduces JS bundle size (widget.js minification via esbuild --minify); bundle size is not a runtime or network-
+   - Reduces JS bundle size by switching lodash to lodash-es so bundlers can tree-shake unused functions.
+   - Removes GPU-to-CPU synchronization points (torch.unique and variable-size boolean mask gathers) from the SWA m
+   - Kernel block-size tuning for fused cross-entropy on TPU v4 (tuned tile sizes for large batches). No listed id 
+   - Build-time compiler and packaging flags (no_site, LTO, clang) claimed to reduce Nuitka startup overhead.
+   - Tuned TPU block sizes (tiling) for large-vocab fused cross-entropy kernels to improve backward throughput. The
+   - Claims that authenticating through an in-platform service binding to enter's verify endpoint adds no network l
+   - Reduces the number of thread-pool offloads (asyncio.to_thread calls) by merging several synchronous operations
+   - Separates ODF traffic onto dedicated VLAN interfaces (public and cluster networks via VLAN-mode NNCP and NADs)
+   - Stated speed optimization of timer pacing; the mechanism is not specified (could be read as polling_sleep, but
+   - Offloads HTTP transport work from the Python GIL to a separate Rust process.
+   - Reduces Python GIL contention (lock held by the interpreter) on hot paths; no listed id covers GIL reduction s
+   - Tunes the default prefill step size (2048 to 1024) to reduce time-to-first-token; no id in the codebook covers
+   - Multi-layer GPU batching: loads several layers onto the GPU together, computes them back-to-back, and runs mem
+   - Claims the in-process Rust transport removes the localhost hop that the sidecar approach incurs, a speed mecha
+   - Avoids pausing the profiled target process during py-spy sampling (non-blocking mode) to prevent jitter in pro
+   - Jump threading in the assembler: rewrites jumps that pass through a JUMP-only trampoline to target the final d
+   - Shares one revert(0,0) trampoline across call sites to reduce code duplication (code-size reduction; no listed
+   - Separates traffic onto dedicated VLAN interfaces (public and cluster networks via multus NADs) as an alternati
+   - Autotunes the choice between two FP4 activation-quantize kernel backends (TRTLLM CUDA vs FlashInfer) by profil
+   - Restores TCP_NODELAY on accepted HTTP sockets by passing pre-bound TCP sockets to uvicorn with the correct add
+   - Reduces installed dependency footprint (download/disk size) by dropping torch from the [onnx] extra. This is a
+   - Progressive disclosure of tools to cut the context/token cost of tool discovery. Not covered by any listed id;
+   - Lower per-call wrapper overhead by calling np.concatenate directly instead of np.vstack, which routes through 
+   - Cheaper grouping keys: dtype.name or id(dtype) replace hashing the dtype object, since ExtensionDtype.__hash__
+   - Kernel fusion: one pass computes scales and casts to FP8, avoiding a second read of the input tensor and a sep
+   - Kernel fusion: quantizes two tensors in one launch instead of two sequential launches, halving kernel launches
+   - Tuned Triton block configuration (BLOCK_SIZE, BLOCK_SIZE_ITER, num_warps) to reduce register pressure and impr
+   - Avoids a device-to-host synchronization (group_sizes.tolist()) that breaks torch.compile by disabling token gr
+   - Replaces Triton autotuning with one fixed config, removing per-shape autotune host synchronizations (hipDevice
+   - Fuses cat, FP8 quantization and scatter into one kernel and adds a dedicated gather kernel, to cut kernel laun
+   - Cheaper integer arithmetic in the gather/scatter kernels (64-bit divmod replaced by precomputed strides and po
+   - Folds a downstream scale multiplication into the FP8 quantization kernel, removing a separate scaling step.
+   - Accelerates transformer pretraining (fewer training steps to reach baseline eval loss) by adding nonlinear low
+   - Micro-optimization: defers attribute lookups of _maxes and _load to rare split/merge paths, plus __class__ is 
+   - Training-speed changes (fused AdamW, DDP bucket_cap_mb=50, cosine scheduler with warmup). Not an inference mec
+   - Removes the legacy DotcmsEventsService stack so the app no longer holds a second, duplicate WebSocket connecti
+   - Reduces host-device GPU synchronization points (.item() calls) by batching them into bulk transfers.
+   - Folds many per-tensor aten.copy_ epilogue nodes from one foreach result list into a single aten._foreach_copy_
+   - Removes the TeamCreate/heartbeat/SendMessage multi-agent coordination layer (async message-passing overhead be
+   - Stated speed mechanism: store scalar summary-stat cells natively in parquet to avoid a JSON encode/decode roun
+   - Performance tuning by selecting chunk-size defaults from a TPU parameter sweep. No codebook id covers chunk-si
+   - Replaces a generator-based sum(1 for ...) count with set intersection len() calls to avoid iterator overhead a
+   - Prefers GeoJSON response format over GML for faster parsing; a format-selection choice that no listed id cover
+   - Bounds unbounded growth of the append-only set_ingested_history table by deleting fully ingested rows (a resou
+   - Switches the default cloud GPU provider to Modal, which the PR says has faster cold starts. The speed claim co
+   - Avoids full iloc column indexing and temporary Series creation by calling _get_column_array in format_col.
+   - Writes output straight to stdout to avoid a disk write and re-read round trip; no existing mechanism id covers
+   - Request coalescing: identical in-flight queries share one execution. The PR says normalizing the key lets more
+   - Avoids overly large SQLite queries over full historical data during merge (query size limiting). The PR does n
+   - Removes an over-restrictive, never-recovering rate-limit throttle (MovingWindowCallRatePolicy at 1 req/60s) th
+   - Claims a more efficient complex-number magnitude computation in the feature extractor; no listed id covers thi
+   - CPU/NUMA affinity pinning for DDP ranks and inherited dataloader worker affinity
+   - Relocates run outputs and local W&B data to /ephemeral storage to address slow artifact I/O; storage-location 
+   - Shrinks the Docker image and dist/ by moving static assets to a CDN (disk/image size reduction, not a runtime 

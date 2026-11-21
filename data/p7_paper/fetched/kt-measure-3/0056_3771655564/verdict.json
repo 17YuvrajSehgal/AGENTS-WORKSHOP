@@ -1,0 +1,98 @@
+{
+ "job": {
+  "order": 56,
+  "id": 3771655564,
+  "agent": "Google_Jules",
+  "repo": "rush86999/atom",
+  "number": 469,
+  "api_base_sha": "e28c256efe5845d2b5e5c6e3f9ca0b2cdcf816ac",
+  "head_sha": "28a90553cac3514d9c6ed4298e03d3483fd33cdc",
+  "created": "2025-12-31",
+  "changed_files": [
+   "backend/create_audit_report.py",
+   "backend/integration_audit_report.json",
+   "backend/integration_registry.json",
+   "backend/integrations/atom_communication_ingestion_pipeline.py",
+   "backend/integrations/atom_ingestion_pipeline.py",
+   "backend/integrations/atom_telegram_integration.py",
+   "backend/integrations/google_chat_enhanced_service.py",
+   "backend/integrations/universal_integration_service.py"
+  ],
+  "n_files": 8,
+  "final_diff_files": [
+   "backend/create_audit_report.py",
+   "backend/integration_audit_report.json",
+   "backend/integration_registry.json",
+   "backend/integrations/atom_communication_ingestion_pipeline.py",
+   "backend/integrations/atom_ingestion_pipeline.py",
+   "backend/integrations/atom_telegram_integration.py",
+   "backend/integrations/google_chat_enhanced_service.py",
+   "backend/integrations/universal_integration_service.py"
+  ]
+ },
+ "agent": {
+  "status": "built",
+  "reason": "none",
+  "tier": "own_calls",
+  "uses_parallelism": true,
+  "behaviour_change_expected": true,
+  "notes": "Backend isn't an installable package; installed lancedb/pandas/pyarrow/fastapi/openai/cryptography etc. into both venvs. Workload ingests messages/records into a local LanceDB (/tmp) via CommunicationIngestionPipeline.ingest_message and AtomIngestionPipeline.ingest_record (sync in base, async + run_in_executor default thread pool in head; awaited when a coroutine is returned). Knowledge extraction is disabled in memory to avoid LLM calls. Also imports atom_telegram_integration: NameError in base, imports in head, so the digests differ. Stored data is otherwise identical. Not exercised: the universal_integration_service routing (heavy imports in head) and the google_chat dataclass reorder (base can't define the class). Coverage: head 86%, base 71%."
+ },
+ "agent_is_error": false,
+ "timed_out": false,
+ "models": [
+  "claude-opus-5-5"
+ ],
+ "list_usd": 0.7702126,
+ "num_turns": 29,
+ "setup_ok": false,
+ "setup_s": 19,
+ "agent_s": 373,
+ "check": {
+  "base_exit_ok": true,
+  "base_last_line": "6a6ad5ca43b121d75bb5982e92d52186a86df69edc01d95ea48ba0f50b227d43",
+  "head_exit_ok": true,
+  "head_last_line": "e05711866841342bdaa29332de0a1ab62ee38547ec78f035e3eb3fcf65b42002",
+  "base_time_s": 5.014,
+  "head_time_s": 5.054,
+  "no_network_ok": true,
+  "coverage": {
+   "changed_files": [
+    "backend/create_audit_report.py",
+    "backend/integrations/atom_communication_ingestion_pipeline.py",
+    "backend/integrations/atom_ingestion_pipeline.py",
+    "backend/integrations/atom_telegram_integration.py",
+    "backend/integrations/google_chat_enhanced_service.py",
+    "backend/integrations/universal_integration_service.py"
+   ],
+   "base": {
+    "changed_executable_lines": 7,
+    "executed": 5,
+    "share": 0.714
+   },
+   "head": {
+    "changed_executable_lines": 21,
+    "executed": 18,
+    "share": 0.857
+   },
+   "output_digest_base": "6a6ad5ca43b121d75bb5982e92d52186a86df69edc01d95ea48ba0f50b227d43",
+   "output_digest_head": "e05711866841342bdaa29332de0a1ab62ee38547ec78f035e3eb3fcf65b42002",
+   "output_equal": false,
+   "coverage_gate_pass": true
+  },
+  "coverage_needed": 0.8,
+  "output_equal": false,
+  "pass": true,
+  "reasons": []
+ },
+ "harness_pass": true,
+ "audit": {
+  "mentions_github_pull": false,
+  "used_gh_cli": false,
+  "read_git_history": false
+ },
+ "changed_code_lines": {
+  "py": 305
+ },
+ "python_share_of_code_change": 1.0
+}

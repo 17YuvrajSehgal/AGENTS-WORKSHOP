@@ -1,0 +1,25 @@
+{
+ "changed_files": [
+  "app.py",
+  "blueprints/historify.py",
+  "broker/upstox/api/expired_data.py",
+  "database/historify_db.py",
+  "services/expired_fno_service.py",
+  "services/historify_service.py",
+  "utils/plugin_loader.py"
+ ],
+ "base": {
+  "changed_executable_lines": 0,
+  "executed": 0,
+  "share": null
+ },
+ "head": {
+  "changed_executable_lines": 200,
+  "executed": 22,
+  "share": 0.11
+ },
+ "output_digest_base": "b6ae9b3722480166fab7b79872afce6b66b0ee9dc06bcfc4518f3a2b12fda98c",
+ "output_digest_head": "26cf0d435cf4f42ee14dd04c1fcdc26de2fc5eb5b3355f0e596647a425ec4fc8",
+ "output_equal": false,
+ "coverage_gate_pass": false
+}

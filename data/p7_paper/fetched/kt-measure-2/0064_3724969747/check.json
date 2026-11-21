@@ -1,0 +1,33 @@
+{
+ "base_exit_ok": true,
+ "base_last_line": "4af3bf1c060c1cb51cfa0d38407b2b55ac8946770bd0e8ecf2588d777d29f45c",
+ "head_exit_ok": true,
+ "head_last_line": "4af3bf1c060c1cb51cfa0d38407b2b55ac8946770bd0e8ecf2588d777d29f45c",
+ "base_time_s": 1.597,
+ "head_time_s": 0.838,
+ "no_network_ok": true,
+ "coverage": {
+  "changed_files": [
+   "tinygrad/engine/schedule.py",
+   "tinygrad/uop/spec.py"
+  ],
+  "base": {
+   "changed_executable_lines": 12,
+   "executed": 12,
+   "share": 1.0
+  },
+  "head": {
+   "changed_executable_lines": 13,
+   "executed": 13,
+   "share": 1.0
+  },
+  "output_digest_base": "4af3bf1c060c1cb51cfa0d38407b2b55ac8946770bd0e8ecf2588d777d29f45c",
+  "output_digest_head": "4af3bf1c060c1cb51cfa0d38407b2b55ac8946770bd0e8ecf2588d777d29f45c",
+  "output_equal": true,
+  "coverage_gate_pass": true
+ },
+ "coverage_needed": 0.8,
+ "output_equal": true,
+ "pass": true,
+ "reasons": []
+}

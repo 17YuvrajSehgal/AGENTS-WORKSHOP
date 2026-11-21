@@ -1,0 +1,26 @@
+{
+ "changed_files": [
+  "pipelex/builder/operations/inputs_ops.py",
+  "pipelex/core/pipes/pipe_factory.py",
+  "pipelex/libraries/library_crate.py",
+  "pipelex/libraries/library_crate_factory.py",
+  "pipelex/libraries/library_manager.py",
+  "pipelex/libraries/library_manager_abstract.py",
+  "pipelex/pipe_run/dry_run_pipeline.py",
+  "pipelex/pipeline/pipeline_run_setup.py"
+ ],
+ "base": {
+  "changed_executable_lines": 27,
+  "executed": 21,
+  "share": 0.778
+ },
+ "head": {
+  "changed_executable_lines": 129,
+  "executed": 104,
+  "share": 0.806
+ },
+ "output_digest_base": "cbefc84a5ac36634c722a253431cc7b3cf908896d59ed0c1cf9d1b08559c3b67",
+ "output_digest_head": "cbefc84a5ac36634c722a253431cc7b3cf908896d59ed0c1cf9d1b08559c3b67",
+ "output_equal": true,
+ "coverage_gate_pass": true
+}

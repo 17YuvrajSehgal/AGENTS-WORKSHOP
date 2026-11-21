@@ -1,0 +1,36 @@
+{
+ "base_exit_ok": true,
+ "base_last_line": "e1a4b9965ec2706327a1ce3d792e84a721aa73896fe6c3387b89274b77733923",
+ "head_exit_ok": true,
+ "head_last_line": "720ea9ed09e685bf6e249fedc4a27f5ee0198f766182bb0ffac3745e92557e6b",
+ "base_time_s": 10.113,
+ "head_time_s": 11.745,
+ "no_network_ok": true,
+ "coverage": {
+  "changed_files": [
+   "src/python/piper_train/__main__.py",
+   "src/python/piper_train/vits/attentions.py",
+   "src/python/piper_train/vits/config.py",
+   "src/python/piper_train/vits/lightning.py",
+   "src/python/piper_train/vits/models.py"
+  ],
+  "base": {
+   "changed_executable_lines": 16,
+   "executed": 14,
+   "share": 0.875
+  },
+  "head": {
+   "changed_executable_lines": 157,
+   "executed": 144,
+   "share": 0.917
+  },
+  "output_digest_base": "e1a4b9965ec2706327a1ce3d792e84a721aa73896fe6c3387b89274b77733923",
+  "output_digest_head": "720ea9ed09e685bf6e249fedc4a27f5ee0198f766182bb0ffac3745e92557e6b",
+  "output_equal": false,
+  "coverage_gate_pass": true
+ },
+ "coverage_needed": 0.8,
+ "output_equal": false,
+ "pass": true,
+ "reasons": []
+}

@@ -1,0 +1,36 @@
+{
+ "base_exit_ok": true,
+ "base_last_line": "f45b2abfe3cf98f2565c428e97df9d0976e021d8731b5ea98660ea279d454b25",
+ "head_exit_ok": true,
+ "head_last_line": "cca8b7a55db01386a576f7fdd2950a313d7ca535ed4525670ba62a53698ee697",
+ "base_time_s": 7.079,
+ "head_time_s": 6.338,
+ "no_network_ok": true,
+ "coverage": {
+  "changed_files": [
+   "src/iPhoto/gui/facade.py",
+   "src/iPhoto/gui/ui/models/asset_list/controller.py",
+   "src/iPhoto/gui/ui/models/asset_list/model.py"
+  ],
+  "base": {
+   "changed_executable_lines": 6,
+   "executed": 5,
+   "share": 0.833
+  },
+  "head": {
+   "changed_executable_lines": 38,
+   "executed": 22,
+   "share": 0.579
+  },
+  "output_digest_base": "f45b2abfe3cf98f2565c428e97df9d0976e021d8731b5ea98660ea279d454b25",
+  "output_digest_head": "cca8b7a55db01386a576f7fdd2950a313d7ca535ed4525670ba62a53698ee697",
+  "output_equal": false,
+  "coverage_gate_pass": false
+ },
+ "coverage_needed": 0.8,
+ "output_equal": false,
+ "pass": false,
+ "reasons": [
+  "head coverage 0.579 < 0.8"
+ ]
+}

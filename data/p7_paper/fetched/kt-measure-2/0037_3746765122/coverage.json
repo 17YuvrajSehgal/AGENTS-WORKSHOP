@@ -1,0 +1,19 @@
+{
+ "changed_files": [
+  "mlflow/server/handlers.py"
+ ],
+ "base": {
+  "changed_executable_lines": 6,
+  "executed": 6,
+  "share": 1.0
+ },
+ "head": {
+  "changed_executable_lines": 4,
+  "executed": 4,
+  "share": 1.0
+ },
+ "output_digest_base": "c380b42d7adc561adabaa0ef704e7ef20dcc3608ecc31624f527d01fd7efb0d6",
+ "output_digest_head": "c380b42d7adc561adabaa0ef704e7ef20dcc3608ecc31624f527d01fd7efb0d6",
+ "output_equal": true,
+ "coverage_gate_pass": true
+}

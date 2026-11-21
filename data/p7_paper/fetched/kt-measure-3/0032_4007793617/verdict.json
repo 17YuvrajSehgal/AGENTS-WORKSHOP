@@ -1,0 +1,79 @@
+{
+ "job": {
+  "order": 32,
+  "id": 4007793617,
+  "agent": "OpenAI_Codex",
+  "repo": "agentscope-ai/QwenPaw",
+  "number": 249,
+  "api_base_sha": "06a1f6c8d1b5c592037f5251950fd262a5023b60",
+  "head_sha": "8c5a8f0e3574e2cc71eec1f8bbe0f84cd3d44306",
+  "created": "2026-03-01",
+  "changed_files": [
+   "src/copaw/app/routers/skills.py"
+  ],
+  "n_files": 1,
+  "final_diff_files": [
+   "src/copaw/app/routers/skills.py"
+  ]
+ },
+ "agent": {
+  "status": "built",
+  "reason": "none",
+  "tier": "own_calls",
+  "uses_parallelism": false,
+  "behaviour_change_expected": true,
+  "notes": "Calls the list_skills and get_available_skills route handlers directly, with 40 generated skills under a temporary COPAW_WORKING_DIR and HOME. Outputs differ: by default head drops the references/scripts trees, and head's list_skills raises AttributeError when any skill is active, because it calls .name on the strings returned by list_available_skills(). The error is recorded in the digest. Coverage of changed lines is 100% on both sides; base takes about 4.2 s."
+ },
+ "agent_is_error": false,
+ "timed_out": false,
+ "models": [
+  "claude-opus-5-5"
+ ],
+ "list_usd": 0.19140459999999998,
+ "num_turns": 9,
+ "setup_ok": true,
+ "setup_s": 12,
+ "agent_s": 184,
+ "check": {
+  "base_exit_ok": true,
+  "base_last_line": "daa0b13686927037977e7d34f10c8c2f69ee8cb1a2530be7445125445b10ac4d",
+  "head_exit_ok": true,
+  "head_last_line": "5ac1bd7ae0cc4985fc59d357715c6ebd734fa16638ad7f9f4562ca87600fdf10",
+  "base_time_s": 4.257,
+  "head_time_s": 4.273,
+  "no_network_ok": true,
+  "coverage": {
+   "changed_files": [
+    "src/copaw/app/routers/skills.py"
+   ],
+   "base": {
+    "changed_executable_lines": 8,
+    "executed": 8,
+    "share": 1.0
+   },
+   "head": {
+    "changed_executable_lines": 13,
+    "executed": 13,
+    "share": 1.0
+   },
+   "output_digest_base": "daa0b13686927037977e7d34f10c8c2f69ee8cb1a2530be7445125445b10ac4d",
+   "output_digest_head": "5ac1bd7ae0cc4985fc59d357715c6ebd734fa16638ad7f9f4562ca87600fdf10",
+   "output_equal": false,
+   "coverage_gate_pass": true
+  },
+  "coverage_needed": 0.8,
+  "output_equal": false,
+  "pass": true,
+  "reasons": []
+ },
+ "harness_pass": true,
+ "audit": {
+  "mentions_github_pull": false,
+  "used_gh_cli": false,
+  "read_git_history": false
+ },
+ "changed_code_lines": {
+  "py": 45
+ },
+ "python_share_of_code_change": 1.0
+}

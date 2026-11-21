@@ -1,0 +1,101 @@
+{
+ "job": {
+  "order": 174,
+  "id": 3802823248,
+  "agent": "Cursor",
+  "repo": "Phylliade/ikpy",
+  "number": 171,
+  "api_base_sha": "64239045c08196d96911deca5430881f644614b9",
+  "head_sha": "5a1be5716d36492721f03c75e12ce0d91406a4d3",
+  "created": "2026-01-12",
+  "changed_files": [
+   "README.md",
+   "setup.cfg",
+   "src/ikpy/__init__.py",
+   "src/ikpy/chain.py",
+   "src/ikpy/inverse_kinematics.py",
+   "src/ikpy/jax_backend.py",
+   "src/ikpy/utils/jax_geometry.py",
+   "tests/profile_jax_overhead.py",
+   "tests/test_jax_backend.py"
+  ],
+  "n_files": 9,
+  "final_diff_files": [
+   "README.md",
+   "setup.cfg",
+   "src/ikpy/__init__.py",
+   "src/ikpy/chain.py",
+   "src/ikpy/inverse_kinematics.py",
+   "src/ikpy/jax_backend.py",
+   "src/ikpy/utils/jax_geometry.py",
+   "tests/profile_jax_overhead.py",
+   "tests/test_jax_backend.py"
+  ]
+ },
+ "agent": {
+  "status": "unbuildable",
+  "reason": "new_code_only",
+  "tier": "none",
+  "uses_parallelism": false,
+  "behaviour_change_expected": false,
+  "notes": "Almost all of this PR is a new optional JAX backend: the new files jax_backend.py and utils/jax_geometry.py, plus the backend=\"jax\" branches in chain.py. You can only reach that code through a `backend` keyword argument, which base does not accept. The only changes to the existing numpy path are trivial: the length check in forward_kinematics moves earlier, and a `backend` keyword argument is passed through. I wrote a workload that runs numpy IK and FK on the poppy_torso arm. Every check passed except head coverage: base coverage was 0.9, outputs were equal, base ran in about 3 s and the no-network run passed. Head coverage was 0.115 without jax and 0.238 with jax installed in both venvs, both below the 0.5 threshold. I removed jax again, so both venvs are back to their original state."
+ },
+ "agent_is_error": false,
+ "timed_out": false,
+ "models": [
+  "claude-opus-5-5"
+ ],
+ "list_usd": 0.222658,
+ "num_turns": 9,
+ "setup_ok": true,
+ "setup_s": 5,
+ "agent_s": 104,
+ "check": {
+  "base_exit_ok": true,
+  "base_last_line": "2fec38ee0095880be1d9eb47ace734d1b1dfb18e27de02e5583a6ab3c2f06ef4",
+  "head_exit_ok": true,
+  "head_last_line": "2fec38ee0095880be1d9eb47ace734d1b1dfb18e27de02e5583a6ab3c2f06ef4",
+  "base_time_s": 2.762,
+  "head_time_s": 2.813,
+  "no_network_ok": true,
+  "coverage": {
+   "changed_files": [
+    "src/ikpy/__init__.py",
+    "src/ikpy/chain.py",
+    "src/ikpy/inverse_kinematics.py",
+    "src/ikpy/jax_backend.py",
+    "src/ikpy/utils/jax_geometry.py"
+   ],
+   "base": {
+    "changed_executable_lines": 10,
+    "executed": 9,
+    "share": 0.9
+   },
+   "head": {
+    "changed_executable_lines": 244,
+    "executed": 28,
+    "share": 0.115
+   },
+   "output_digest_base": "2fec38ee0095880be1d9eb47ace734d1b1dfb18e27de02e5583a6ab3c2f06ef4",
+   "output_digest_head": "2fec38ee0095880be1d9eb47ace734d1b1dfb18e27de02e5583a6ab3c2f06ef4",
+   "output_equal": true,
+   "coverage_gate_pass": false
+  },
+  "coverage_needed": 0.5,
+  "output_equal": true,
+  "pass": false,
+  "reasons": [
+   "head coverage 0.115 < 0.5"
+  ]
+ },
+ "harness_pass": false,
+ "audit": {
+  "mentions_github_pull": false,
+  "used_gh_cli": false,
+  "read_git_history": false
+ },
+ "changed_code_lines": {
+  "py": 2658
+ },
+ "python_share_of_code_change": 1.0
+}

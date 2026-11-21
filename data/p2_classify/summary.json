@@ -1,0 +1,144 @@
+{
+ "classified": 5900,
+ "status": {
+  "ok": 5899,
+  "fallback": 1
+ },
+ "labeller": {
+  "claude-haiku-5-5": 4769,
+  "claude-opus-5-5": 1130,
+  "claude-opus-4-8,claude-opus-5-5": 1
+ },
+ "runtime_perf_total": 1343,
+ "by_agent": [
+  {
+   "agent": "Claude_Code",
+   "classified": 1850,
+   "runtime_perf": 472,
+   "rate": 0.2551,
+   "stratum_size": 13098
+  },
+  {
+   "agent": "Copilot",
+   "classified": 1192,
+   "runtime_perf": 254,
+   "rate": 0.2131,
+   "stratum_size": 3779
+  },
+  {
+   "agent": "Cursor",
+   "classified": 457,
+   "runtime_perf": 118,
+   "rate": 0.2582,
+   "stratum_size": 457
+  },
+  {
+   "agent": "Devin",
+   "classified": 620,
+   "runtime_perf": 121,
+   "rate": 0.1952,
+   "stratum_size": 620
+  },
+  {
+   "agent": "Google_Jules",
+   "classified": 217,
+   "runtime_perf": 127,
+   "rate": 0.5853,
+   "stratum_size": 218
+  },
+  {
+   "agent": "OpenAI_Codex",
+   "classified": 1563,
+   "runtime_perf": 251,
+   "rate": 0.1606,
+   "stratum_size": 2236
+  }
+ ],
+ "by_agent_and_labeller": [
+  {
+   "agent": "Claude_Code",
+   "labeller": "claude-haiku-5-5",
+   "n": 1470,
+   "runtime_perf": 363
+  },
+  {
+   "agent": "Claude_Code",
+   "labeller": "claude-opus-5-5",
+   "n": 380,
+   "runtime_perf": 109
+  },
+  {
+   "agent": "Copilot",
+   "labeller": "claude-haiku-5-5",
+   "n": 974,
+   "runtime_perf": 202
+  },
+  {
+   "agent": "Copilot",
+   "labeller": "claude-opus-5-5",
+   "n": 218,
+   "runtime_perf": 52
+  },
+  {
+   "agent": "Cursor",
+   "labeller": "claude-haiku-5-5",
+   "n": 328,
+   "runtime_perf": 87
+  },
+  {
+   "agent": "Cursor",
+   "labeller": "claude-opus-5-5",
+   "n": 129,
+   "runtime_perf": 31
+  },
+  {
+   "agent": "Devin",
+   "labeller": "claude-haiku-5-5",
+   "n": 491,
+   "runtime_perf": 89
+  },
+  {
+   "agent": "Devin",
+   "labeller": "claude-opus-5-5",
+   "n": 129,
+   "runtime_perf": 32
+  },
+  {
+   "agent": "Google_Jules",
+   "labeller": "claude-haiku-5-5",
+   "n": 96,
+   "runtime_perf": 56
+  },
+  {
+   "agent": "Google_Jules",
+   "labeller": "claude-opus-5-5",
+   "n": 121,
+   "runtime_perf": 71
+  },
+  {
+   "agent": "OpenAI_Codex",
+   "labeller": "claude-haiku-5-5",
+   "n": 1410,
+   "runtime_perf": 224
+  },
+  {
+   "agent": "OpenAI_Codex",
+   "labeller": "claude-opus-5-5",
+   "n": 153,
+   "runtime_perf": 27
+  }
+ ],
+ "role": {
+  "none": 4119,
+  "secondary": 827,
+  "primary": 745,
+  "measurement_only": 208
+ },
+ "quote_not_verbatim": 23,
+ "quote_not_found_even_ws_normalised": 4,
+ "list_usd_by_labeller": {
+  "claude-haiku-5-5": 8.07,
+  "claude-opus-4-8,claude-opus-5-5": 0.18,
+  "claude-opus-5-5": 70.11
+ }
+}

@@ -1,0 +1,32 @@
+{
+ "base_exit_ok": true,
+ "base_last_line": "3a5fc92a109b8bee38568370e322b17e5ca6396aab25252b26300de8e7a2727a",
+ "head_exit_ok": true,
+ "head_last_line": "9ee25f3e77878786e5bbab565d9183ff96d7d1110b899576b76b6f72cacdbd89",
+ "base_time_s": 3.326,
+ "head_time_s": 3.527,
+ "no_network_ok": true,
+ "coverage": {
+  "changed_files": [
+   "server/broadlistening/pipeline/steps/hierarchical_merge_labelling.py"
+  ],
+  "base": {
+   "changed_executable_lines": 1,
+   "executed": 1,
+   "share": 1.0
+  },
+  "head": {
+   "changed_executable_lines": 12,
+   "executed": 12,
+   "share": 1.0
+  },
+  "output_digest_base": "3a5fc92a109b8bee38568370e322b17e5ca6396aab25252b26300de8e7a2727a",
+  "output_digest_head": "9ee25f3e77878786e5bbab565d9183ff96d7d1110b899576b76b6f72cacdbd89",
+  "output_equal": false,
+  "coverage_gate_pass": true
+ },
+ "coverage_needed": 0.8,
+ "output_equal": false,
+ "pass": true,
+ "reasons": []
+}

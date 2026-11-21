@@ -1,0 +1,32 @@
+{
+ "base_exit_ok": true,
+ "base_last_line": "b2d9af94eed5dcd0bd98a1a6804a4afc47237b1754dd265694c78b461a934cc5",
+ "head_exit_ok": true,
+ "head_last_line": "b2d9af94eed5dcd0bd98a1a6804a4afc47237b1754dd265694c78b461a934cc5",
+ "base_time_s": 1.988,
+ "head_time_s": 6.739,
+ "no_network_ok": true,
+ "coverage": {
+  "changed_files": [
+   "src/io_scene_vrm/exporter/vrm0_exporter.py"
+  ],
+  "base": {
+   "changed_executable_lines": 35,
+   "executed": 26,
+   "share": 0.743
+  },
+  "head": {
+   "changed_executable_lines": 36,
+   "executed": 31,
+   "share": 0.861
+  },
+  "output_digest_base": "b2d9af94eed5dcd0bd98a1a6804a4afc47237b1754dd265694c78b461a934cc5",
+  "output_digest_head": "b2d9af94eed5dcd0bd98a1a6804a4afc47237b1754dd265694c78b461a934cc5",
+  "output_equal": true,
+  "coverage_gate_pass": true
+ },
+ "coverage_needed": 0.8,
+ "output_equal": true,
+ "pass": true,
+ "reasons": []
+}

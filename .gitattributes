@@ -1,0 +1,6 @@
+# keep LF everywhere: the harness scripts run on Linux VMs, where CRLF breaks bash
+* text=auto eol=lf
+*.pdf binary
+*.png binary
+*.xlsx binary
+*.parquet binary

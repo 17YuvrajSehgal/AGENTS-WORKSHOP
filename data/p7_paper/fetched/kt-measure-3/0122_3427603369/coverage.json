@@ -1,0 +1,19 @@
+{
+ "changed_files": [
+  "bolna/synthesizer/azure_synthesizer.py"
+ ],
+ "base": {
+  "changed_executable_lines": 53,
+  "executed": 49,
+  "share": 0.925
+ },
+ "head": {
+  "changed_executable_lines": 84,
+  "executed": 74,
+  "share": 0.881
+ },
+ "output_digest_base": "4ede6b3b34c7a35d6f612b468df80d99d527bd6036fa8e9b0e7d764abe270569",
+ "output_digest_head": "4ede6b3b34c7a35d6f612b468df80d99d527bd6036fa8e9b0e7d764abe270569",
+ "output_equal": true,
+ "coverage_gate_pass": true
+}

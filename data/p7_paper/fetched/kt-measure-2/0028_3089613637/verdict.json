@@ -1,0 +1,84 @@
+{
+ "job": {
+  "order": 28,
+  "id": 3089613637,
+  "agent": "OpenAI_Codex",
+  "repo": "addok/addok",
+  "number": 893,
+  "api_base_sha": "f05564c9fc00916a88a180272fc96f62f1677863",
+  "head_sha": "375c7e81ee715d17ff0eff669c0aa9d35cd6e6eb",
+  "created": "2025-05-25",
+  "changed_files": [
+   "addok/helpers/collectors.py",
+   "benchmarks/benchmark_onetomany.py",
+   "tests/test_collectors.py"
+  ],
+  "n_files": 3,
+  "final_diff_files": [
+   "addok/helpers/collectors.py",
+   "benchmarks/benchmark_onetomany.py",
+   "tests/test_collectors.py"
+  ]
+ },
+ "agent": {
+  "status": "built",
+  "reason": "none",
+  "tier": "own_calls",
+  "uses_parallelism": false,
+  "behaviour_change_expected": false,
+  "notes": "Installed redis-server via apt; workload launches a local redis-server on a unix socket (no TCP, no persistence), seeds pair sets deterministically, and calls _compute_onetomany_relations / _extract_manytomany_relations on 300 seeded token queries. Full coverage of changed lines on both sides; identical digests. PR's own benchmark not used (head-only, replaces DB with a fake)."
+ },
+ "agent_is_error": false,
+ "timed_out": false,
+ "models": [
+  "claude-opus-5-5"
+ ],
+ "list_usd": 0.1684146,
+ "num_turns": 9,
+ "setup_ok": true,
+ "setup_s": 5,
+ "agent_s": 56,
+ "check": {
+  "base_exit_ok": true,
+  "base_last_line": "3208fd2cd83c91474e3ecf30cb4e7743b5eb68665a03c7e19498a29dbdb8eccf",
+  "head_exit_ok": true,
+  "head_last_line": "3208fd2cd83c91474e3ecf30cb4e7743b5eb68665a03c7e19498a29dbdb8eccf",
+  "base_time_s": 1.662,
+  "head_time_s": 0.861,
+  "no_network_ok": true,
+  "coverage": {
+   "changed_files": [
+    "addok/helpers/collectors.py",
+    "benchmarks/benchmark_onetomany.py"
+   ],
+   "base": {
+    "changed_executable_lines": 1,
+    "executed": 1,
+    "share": 1.0
+   },
+   "head": {
+    "changed_executable_lines": 2,
+    "executed": 2,
+    "share": 1.0
+   },
+   "output_digest_base": "3208fd2cd83c91474e3ecf30cb4e7743b5eb68665a03c7e19498a29dbdb8eccf",
+   "output_digest_head": "3208fd2cd83c91474e3ecf30cb4e7743b5eb68665a03c7e19498a29dbdb8eccf",
+   "output_equal": true,
+   "coverage_gate_pass": true
+  },
+  "coverage_needed": 0.8,
+  "output_equal": true,
+  "pass": true,
+  "reasons": []
+ },
+ "harness_pass": true,
+ "audit": {
+  "mentions_github_pull": false,
+  "used_gh_cli": false,
+  "read_git_history": false
+ },
+ "changed_code_lines": {
+  "py": 62
+ },
+ "python_share_of_code_change": 1.0
+}

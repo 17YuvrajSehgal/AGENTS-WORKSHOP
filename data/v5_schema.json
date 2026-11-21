@@ -1,0 +1,185 @@
+{
+ "all_pull_request.parquet": {
+  "rows": 7685281,
+  "cols": [
+   "id:int64",
+   "number:int64",
+   "title:string",
+   "body:string",
+   "agent:string",
+   "user_id:int64",
+   "user:string",
+   "state:string",
+   "created_at:string",
+   "closed_at:string",
+   "merged_at:string",
+   "repo_id:double",
+   "repo_url:string",
+   "html_url:string"
+  ]
+ },
+ "all_repository.parquet": {
+  "rows": 957209,
+  "cols": [
+   "id:int64",
+   "url:string",
+   "license:string",
+   "full_name:string",
+   "is_forked:bool",
+   "language:string",
+   "forks:double",
+   "stars:double"
+  ]
+ },
+ "all_user.parquet": {
+  "rows": 399962,
+  "cols": [
+   "id:double",
+   "login:string",
+   "followers:double",
+   "following:double",
+   "created_at:string"
+  ]
+ },
+ "issue.parquet": {
+  "rows": 72664,
+  "cols": [
+   "id:int64",
+   "number:int64",
+   "title:string",
+   "body:string",
+   "user:string",
+   "state:string",
+   "created_at:string",
+   "closed_at:string",
+   "html_url:string"
+  ]
+ },
+ "pr_comments.parquet": {
+  "rows": 676098,
+  "cols": [
+   "id:int64",
+   "pr_id:int64",
+   "user:string",
+   "user_id:int64",
+   "user_type:string",
+   "created_at:string",
+   "body:string"
+  ]
+ },
+ "pr_commit_details.parquet": {
+  "rows": 12116310,
+  "cols": [
+   "sha:string",
+   "pr_id:int64",
+   "author:string",
+   "committer:string",
+   "message:string",
+   "commit_stats_total:int64",
+   "commit_stats_additions:int64",
+   "commit_stats_deletions:int64",
+   "filename:string",
+   "status:string",
+   "additions:double",
+   "deletions:double",
+   "changes:double",
+   "patch:string"
+  ]
+ },
+ "pr_commits.parquet": {
+  "rows": 1718829,
+  "cols": [
+   "sha:string",
+   "pr_id:int64",
+   "author:string",
+   "committer:string",
+   "message:string"
+  ]
+ },
+ "pr_review_comments.parquet": {
+  "rows": 291248,
+  "cols": [
+   "id:int64",
+   "pull_request_review_id:int64",
+   "user:string",
+   "user_type:string",
+   "diff_hunk:string",
+   "path:string",
+   "position:int64",
+   "original_position:int64",
+   "commit_id:string",
+   "original_commit_id:string",
+   "body:string",
+   "pull_request_url:string",
+   "created_at:string",
+   "updated_at:string",
+   "in_reply_to_id:double"
+  ]
+ },
+ "pr_reviews.parquet": {
+  "rows": 541831,
+  "cols": [
+   "id:int64",
+   "pr_id:int64",
+   "pull_request_review_id:int64",
+   "user:string",
+   "user_type:string",
+   "state:string",
+   "submitted_at:string",
+   "body:string"
+  ]
+ },
+ "pr_timeline.parquet": {
+  "rows": 6515552,
+  "cols": [
+   "pr_id:int64",
+   "event:string",
+   "commit_id:string",
+   "created_at:string",
+   "actor:string",
+   "assignee:string",
+   "label:string",
+   "message:string"
+  ]
+ },
+ "pull_request.parquet": {
+  "rows": 361296,
+  "cols": [
+   "id:int64",
+   "number:int64",
+   "title:string",
+   "body:string",
+   "agent:string",
+   "user_id:int64",
+   "user:string",
+   "state:string",
+   "created_at:string",
+   "closed_at:string",
+   "merged_at:string",
+   "repo_id:int64",
+   "repo_url:string",
+   "html_url:string"
+  ]
+ },
+ "related_issue.parquet": {
+  "rows": 100050,
+  "cols": [
+   "pr_id:int64",
+   "issue_id:int64",
+   "source:string"
+  ]
+ },
+ "repository.parquet": {
+  "rows": 25402,
+  "cols": [
+   "id:int64",
+   "url:string",
+   "license:string",
+   "full_name:string",
+   "is_forked:bool",
+   "language:string",
+   "forks:int64",
+   "stars:int64"
+  ]
+ }
+}

@@ -1,0 +1,141 @@
+{
+ "revision": "b37f9fd1613cfec55886105bb76721918d015dc7",
+ "all_pr_ids_distinct": 7685281,
+ "agent_values": {
+  "OpenAI_Codex": 3844602,
+  "Copilot": 1581924,
+  "Claude_Code": 1567100,
+  "Cursor": 317453,
+  "Google_Jules": 296411,
+  "Devin": 77791
+ },
+ "quick_look_measured": {
+  "Claude_Code": {
+   "prs": 1567100,
+   "pct_open": 4.2,
+   "pct_closed": 7.8,
+   "pct_merged": 88.0,
+   "distinct_user": 114516,
+   "repos": 173325
+  },
+  "Copilot": {
+   "prs": 1581924,
+   "pct_open": 14.2,
+   "pct_closed": 15.8,
+   "pct_merged": 69.9,
+   "distinct_user": 8463,
+   "repos": 346224
+  },
+  "Cursor": {
+   "prs": 317453,
+   "pct_open": 28.3,
+   "pct_closed": 14.3,
+   "pct_merged": 57.4,
+   "distinct_user": 62246,
+   "repos": 81786
+  },
+  "Devin": {
+   "prs": 77791,
+   "pct_open": 17.0,
+   "pct_closed": 23.3,
+   "pct_merged": 59.6,
+   "distinct_user": 1,
+   "repos": 10259
+  },
+  "Google_Jules": {
+   "prs": 296411,
+   "pct_open": 21.0,
+   "pct_closed": 15.6,
+   "pct_merged": 63.4,
+   "distinct_user": 18,
+   "repos": 41105
+  },
+  "OpenAI_Codex": {
+   "prs": 3844602,
+   "pct_open": 7.3,
+   "pct_closed": 6.5,
+   "pct_merged": 86.2,
+   "distinct_user": 237223,
+   "repos": 354337
+  },
+  "Total": {
+   "prs": 7685281,
+   "pct_open": 9.6,
+   "pct_closed": 9.5,
+   "pct_merged": 80.9,
+   "distinct_user": 399963,
+   "repos": 957209
+  }
+ },
+ "all_repository_rows": 957209,
+ "all_repository_distinct_id": 957209,
+ "pr_repo_ids_missing_from_all_repository": 1,
+ "all_repository_ids_without_prs": 0,
+ "all_user_rows": 399962,
+ "all_user_distinct_login": 399962,
+ "pop_top_users_per_bot_agent": {
+  "Copilot": {
+   "Copilot": 98384
+  },
+  "Devin": {
+   "devin-ai-integration[bot]": 11219
+  },
+  "Google_Jules": {
+   "google-labs-jules[bot]": 3457
+  }
+ },
+ "pop_distinct_users_per_agent": {
+  "Claude_Code": 22472,
+  "Copilot": 1,
+  "Cursor": 1628,
+  "Devin": 1,
+  "Google_Jules": 1,
+  "OpenAI_Codex": 6478
+ },
+ "all_top_users_copilot": {
+  "Copilot": 1561101,
+  "lunamidori5": 1012,
+  "henrylkirk": 942,
+  "github-actions[bot]": 435,
+  "FuzzysTodd": 385
+ },
+ "pr_repo_id_null": 44547,
+ "pop_prs": 361296,
+ "pop_pr_ids_distinct": 361296,
+ "pop_repos_rows": 25402,
+ "pop_repos_with_prs": 25402,
+ "pop_pr_repo_ids_missing_from_repository": 0,
+ "pop_repo_stars_min": 101,
+ "pop_repos_with_stars_le_100": 0,
+ "pop_prs_not_in_all_pull_request": 0,
+ "pop_by_agent": {
+  "Claude_Code": 172597,
+  "Copilot": 98384,
+  "OpenAI_Codex": 62731,
+  "Cursor": 12908,
+  "Devin": 11219,
+  "Google_Jules": 3457
+ },
+ "pop_outcomes_pct_open_closed_merged": [
+  8.0,
+  23.7,
+  68.3
+ ],
+ "pop_language_top15": {
+  "TypeScript": 4994,
+  "Python": 4941,
+  "Go": 2180,
+  "JavaScript": 1669,
+  "Rust": 1568,
+  "C++": 1096,
+  "C#": 1093,
+  "Java": 909,
+  "PHP": 693,
+  "C": 603,
+  "Shell": 543,
+  "Swift": 478,
+  "Kotlin": 450,
+  "Ruby": 411,
+  "HTML": 408
+ }
+}

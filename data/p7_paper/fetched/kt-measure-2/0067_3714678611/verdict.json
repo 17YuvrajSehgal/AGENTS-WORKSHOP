@@ -1,0 +1,94 @@
+{
+ "job": {
+  "order": 67,
+  "id": 3714678611,
+  "agent": "Claude_Code",
+  "repo": "nexi-lab/nexus",
+  "number": 623,
+  "api_base_sha": "06a083f13d9e2982cdefe92291eae23c8c10a239",
+  "head_sha": "fdf08ce5acb5c45a21d8a85b517c278a46bcdf4d",
+  "created": "2025-12-10",
+  "changed_files": [
+   "src/nexus/backends/base_blob_connector.py",
+   "src/nexus/backends/cache_mixin.py",
+   "src/nexus/backends/gmail_connector.py",
+   "src/nexus/backends/hn_connector.py",
+   "src/nexus/core/nexus_fs_mounts.py",
+   "src/nexus/fuse/operations.py"
+  ],
+  "n_files": 6,
+  "final_diff_files": [
+   "src/nexus/backends/base_blob_connector.py",
+   "src/nexus/backends/cache_mixin.py",
+   "src/nexus/backends/gmail_connector.py",
+   "src/nexus/backends/hn_connector.py",
+   "src/nexus/core/nexus_fs_mounts.py",
+   "src/nexus/fuse/operations.py"
+  ]
+ },
+ "agent": {
+  "status": "built",
+  "reason": "none",
+  "tier": "own_calls",
+  "uses_parallelism": false,
+  "behaviour_change_expected": true,
+  "notes": "Both venvs rebuilt with Python 3.13 (the project needs 3.13+); installed fusepy in both and the libfuse2t64 system library. The workload runs on SQLite (no pooling, like the project; files on /dev/shm with disk sync off). It covers single and batch cache writes, which on head also update file_paths sizes. It calls get_content_size on the HN connector, on the S3 connector (in-memory stand-in for the AWS client) and on the Gmail connector (all entries cached). It runs NexusFS.sync_mount on an S3 connector mount (single files, then the whole mount) and FUSE getattr over an in-memory filesystem. The digest differs by design: head returns sizes from the cache, base returns a 10 KB estimate for HN and reads file content in FUSE getattr. In head, the size lookup in sync_mount imports the non-existent nexus.core.operation_context; the error is caught, so sizes stay 0 there. With the default connection pool, head's unclosed sessions exhaust it and the run hangs. check.py passes: head coverage 0.81, base 6.6 s, head 9.1 s, no network."
+ },
+ "agent_is_error": false,
+ "timed_out": false,
+ "models": [
+  "claude-opus-5-5"
+ ],
+ "list_usd": 1.411614,
+ "num_turns": 50,
+ "setup_ok": false,
+ "setup_s": 7,
+ "agent_s": 964,
+ "check": {
+  "base_exit_ok": true,
+  "base_last_line": "d10705c118cca0e01795bc321e739c252a28c1bf13c5e7d900d1c87ba204d8c1",
+  "head_exit_ok": true,
+  "head_last_line": "e6ef4db820bec2e86553e82fb3fa7e560c5fb02c3c0591c329f37476c7c794e4",
+  "base_time_s": 7.764,
+  "head_time_s": 8.588,
+  "no_network_ok": true,
+  "coverage": {
+   "changed_files": [
+    "src/nexus/backends/base_blob_connector.py",
+    "src/nexus/backends/cache_mixin.py",
+    "src/nexus/backends/gmail_connector.py",
+    "src/nexus/backends/hn_connector.py",
+    "src/nexus/core/nexus_fs_mounts.py",
+    "src/nexus/fuse/operations.py"
+   ],
+   "base": {
+    "changed_executable_lines": 1,
+    "executed": 1,
+    "share": 1.0
+   },
+   "head": {
+    "changed_executable_lines": 79,
+    "executed": 64,
+    "share": 0.81
+   },
+   "output_digest_base": "d10705c118cca0e01795bc321e739c252a28c1bf13c5e7d900d1c87ba204d8c1",
+   "output_digest_head": "e6ef4db820bec2e86553e82fb3fa7e560c5fb02c3c0591c329f37476c7c794e4",
+   "output_equal": false,
+   "coverage_gate_pass": true
+  },
+  "coverage_needed": 0.8,
+  "output_equal": false,
+  "pass": true,
+  "reasons": []
+ },
+ "harness_pass": true,
+ "audit": {
+  "mentions_github_pull": false,
+  "used_gh_cli": false,
+  "read_git_history": false
+ },
+ "changed_code_lines": {
+  "py": 192
+ },
+ "python_share_of_code_change": 1.0
+}

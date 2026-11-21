@@ -1,0 +1,39 @@
+{
+ "base_exit_ok": true,
+ "base_last_line": "41537edd1f3b150f922ff4bb64b111fdb281c87d36f130044b95dc137438c46b",
+ "head_exit_ok": true,
+ "head_last_line": "41537edd1f3b150f922ff4bb64b111fdb281c87d36f130044b95dc137438c46b",
+ "base_time_s": 3.297,
+ "head_time_s": 3.945,
+ "no_network_ok": true,
+ "coverage": {
+  "changed_files": [
+   "pymupdf4llm_c/__init__.py",
+   "pymupdf4llm_c/_lib.py",
+   "pymupdf4llm_c/api.py",
+   "pymupdf4llm_c/config.py",
+   "pymupdf4llm_c/logging_config.py",
+   "pymupdf4llm_c/main.py"
+  ],
+  "base": {
+   "changed_executable_lines": 13,
+   "executed": 11,
+   "share": 0.846
+  },
+  "head": {
+   "changed_executable_lines": 94,
+   "executed": 22,
+   "share": 0.234
+  },
+  "output_digest_base": "41537edd1f3b150f922ff4bb64b111fdb281c87d36f130044b95dc137438c46b",
+  "output_digest_head": "41537edd1f3b150f922ff4bb64b111fdb281c87d36f130044b95dc137438c46b",
+  "output_equal": true,
+  "coverage_gate_pass": false
+ },
+ "coverage_needed": 0.8,
+ "output_equal": true,
+ "pass": false,
+ "reasons": [
+  "head coverage 0.234 < 0.8"
+ ]
+}

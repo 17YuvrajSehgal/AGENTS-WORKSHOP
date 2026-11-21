@@ -1,0 +1,81 @@
+{
+ "job": {
+  "order": 94,
+  "id": 3467378370,
+  "agent": "OpenAI_Codex",
+  "repo": "crestalnetwork/intentkit",
+  "number": 835,
+  "api_base_sha": "6019a89cd998bc51a367b0e691054b297c38bc91",
+  "head_sha": "d6e6d6c779cc5f8edb5bc747b0220a4b0fac4107",
+  "created": "2025-09-30",
+  "changed_files": [
+   "app/services/twitter/oauth2_refresh.py",
+   "tests/services/twitter/test_oauth2_refresh.py"
+  ],
+  "n_files": 2,
+  "final_diff_files": [
+   "app/services/twitter/oauth2_refresh.py",
+   "tests/services/twitter/test_oauth2_refresh.py"
+  ]
+ },
+ "agent": {
+  "status": "built",
+  "reason": "none",
+  "tier": "own_calls",
+  "uses_parallelism": true,
+  "behaviour_change_expected": false,
+  "notes": "Both venvs rebuilt with Python 3.12, installing the intentkit subpackage in editable mode (KT_PKGDIR=intentkit) plus requests-oauthlib, tweepy[async] and psycopg[binary]; the workspace root has no package to build. The workload adds the matching side's src to sys.path and uses the project's own in-memory SQLite DB fallback (init_db). The X token endpoint (network) is replaced by a requests adapter mounted on oauth2_user_handler that returns token JSON after a 4 ms simulated delay. It runs refresh_expiring_tokens over 24 agents (some refresh tokens are rejected, so the error path runs), direct refresh_token calls, and the empty early-return path. Head uses asyncio.to_thread and gather (worker threads). Coverage 100% on both sides, outputs equal."
+ },
+ "agent_is_error": false,
+ "timed_out": false,
+ "models": [
+  "claude-opus-5-5"
+ ],
+ "list_usd": 0.3872372,
+ "num_turns": 16,
+ "setup_ok": false,
+ "setup_s": 9,
+ "agent_s": 291,
+ "check": {
+  "base_exit_ok": true,
+  "base_last_line": "f607b0e13a12f486c3ea2055bd5e68c314a30f20b08ef4c6af60df2d6b014c42",
+  "head_exit_ok": true,
+  "head_last_line": "f607b0e13a12f486c3ea2055bd5e68c314a30f20b08ef4c6af60df2d6b014c42",
+  "base_time_s": 5.491,
+  "head_time_s": 4.797,
+  "no_network_ok": true,
+  "coverage": {
+   "changed_files": [
+    "app/services/twitter/oauth2_refresh.py"
+   ],
+   "base": {
+    "changed_executable_lines": 3,
+    "executed": 3,
+    "share": 1.0
+   },
+   "head": {
+    "changed_executable_lines": 5,
+    "executed": 5,
+    "share": 1.0
+   },
+   "output_digest_base": "f607b0e13a12f486c3ea2055bd5e68c314a30f20b08ef4c6af60df2d6b014c42",
+   "output_digest_head": "f607b0e13a12f486c3ea2055bd5e68c314a30f20b08ef4c6af60df2d6b014c42",
+   "output_equal": true,
+   "coverage_gate_pass": true
+  },
+  "coverage_needed": 0.8,
+  "output_equal": true,
+  "pass": true,
+  "reasons": []
+ },
+ "harness_pass": true,
+ "audit": {
+  "mentions_github_pull": false,
+  "used_gh_cli": false,
+  "read_git_history": false
+ },
+ "changed_code_lines": {
+  "py": 105
+ },
+ "python_share_of_code_change": 1.0
+}

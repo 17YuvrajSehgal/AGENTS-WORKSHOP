@@ -1,0 +1,111 @@
+{
+ "job": {
+  "order": 88,
+  "id": 3929571507,
+  "agent": "Copilot",
+  "repo": "Z3Prover/z3",
+  "number": 8594,
+  "api_base_sha": "3c1a82f80ccf3f8d8a37e4a2fd8d5370b00e7d19",
+  "head_sha": "671d64f9804bd4181ca5fdb56f414dd4446221ba",
+  "created": "2026-02-12",
+  "changed_files": [
+   ".github/workflows/a3-python-v2.lock.yml",
+   ".github/workflows/a3-python-v2.md",
+   ".github/workflows/docs.yml",
+   ".github/workflows/nightly-validation.yml",
+   ".github/workflows/nightly.yml",
+   ".github/workflows/nuget-build.yml",
+   ".github/workflows/release.yml",
+   "MODULE.bazel",
+   "RELEASE_NOTES.md",
+   "scripts/VERSION.txt",
+   "src/ackermannization/lackr_model_constructor.cpp",
+   "src/api/python/test_critical_fixes.py",
+   "src/api/python/z3/z3.py",
+   "src/api/python/z3/z3num.py",
+   "src/muz/spacer/spacer_antiunify.cpp",
+   "src/nlsat/nlsat_solver.cpp",
+   "src/sat/smt/arith_diagnostics.cpp",
+   "src/sat/smt/pb_solver.cpp",
+   "src/sat/smt/q_mbi.cpp",
+   "src/sat/smt/recfun_solver.cpp",
+   "src/smt/dyn_ack.cpp",
+   "src/smt/smt_parallel.cpp",
+   "src/smt/theory_recfun.cpp",
+   "src/smt/theory_seq.cpp",
+   "src/test/lp/argument_parser.h",
+   "src/test/lp/lp.cpp"
+  ],
+  "n_files": 26,
+  "final_diff_files": [
+   ".github/workflows/a3-python-v2.lock.yml",
+   ".github/workflows/a3-python-v2.md",
+   ".github/workflows/docs.yml",
+   ".github/workflows/nightly-validation.yml",
+   ".github/workflows/nightly.yml",
+   ".github/workflows/nuget-build.yml",
+   ".github/workflows/release.yml",
+   "MODULE.bazel",
+   "RELEASE_NOTES.md",
+   "scripts/VERSION.txt",
+   "src/ackermannization/lackr_model_constructor.cpp",
+   "src/api/python/z3/z3.py",
+   "src/api/python/z3/z3num.py",
+   "src/muz/spacer/spacer_antiunify.cpp",
+   "src/nlsat/nlsat_solver.cpp",
+   "src/sat/smt/arith_diagnostics.cpp",
+   "src/sat/smt/pb_solver.cpp",
+   "src/sat/smt/q_mbi.cpp",
+   "src/sat/smt/recfun_solver.cpp",
+   "src/smt/dyn_ack.cpp",
+   "src/smt/smt_parallel.cpp",
+   "src/smt/theory_recfun.cpp",
+   "src/smt/theory_seq.cpp",
+   "src/test/lp/argument_parser.h",
+   "src/test/lp/lp.cpp"
+  ]
+ },
+ "agent": {
+  "status": "unbuildable",
+  "reason": "other",
+  "tier": "own_calls",
+  "uses_parallelism": false,
+  "behaviour_change_expected": false,
+  "notes": "Not finished: check.py has not passed in this session. Both venvs were editable installs that could not import z3 because the generated z3core.py and libz3 were missing. I started a normal (compiled C++) rebuild with Python 3.12: base was still linking libz3 when I was told to stop, and head had not started. I have not run check.py on these builds. An earlier check.json from a previous normal build shows the old workload ran on both sides with the same digest (about 1.37 s, no-network run OK), but it failed overall because the coverage run crashed. Since then I added error-path calls to workload.py, and these have not been run yet. workload.py uses its own calls to the changed Python code: RatVal; Goal, AstVector, ModelRef and ApplyResult indexing; the UserPropagateBase add_* methods, including re-registering a callback (caught as AssertionError on base, Z3Exception on head); and Numeral numerator, denominator, as_fraction and as_long, including the error cases. It only uses non-negative indices, so head's new negative-index branches are not run. The changed C++ files are not exercised on purpose. Next step: wait for /tmp/kt_8594_rebuild.out to report 'head rebuilt', then run python3 ~/agent/check.py . workload.py."
+ },
+ "agent_is_error": false,
+ "timed_out": true,
+ "models": [
+  "claude-opus-5-5"
+ ],
+ "list_usd": 0.5825691999999999,
+ "num_turns": 5,
+ "setup_ok": true,
+ "setup_s": 11,
+ "agent_s": 2700,
+ "check": {
+  "base_exit_ok": true,
+  "base_last_line": "10571443db499099cf993b9db4d8891d9015782b61d3b9744b0e3efe1738fbe0",
+  "head_exit_ok": true,
+  "head_last_line": "10571443db499099cf993b9db4d8891d9015782b61d3b9744b0e3efe1738fbe0",
+  "base_time_s": 1.458,
+  "head_time_s": 1.374,
+  "no_network_ok": true,
+  "pass": false,
+  "reasons": [
+   "coverage run failed: base workload failed:\n\n"
+  ]
+ },
+ "harness_pass": false,
+ "audit": {
+  "mentions_github_pull": false,
+  "used_gh_cli": false,
+  "read_git_history": false
+ },
+ "changed_code_lines": {
+  "cpp": 33,
+  "py": 77,
+  "h": 25
+ },
+ "python_share_of_code_change": 0.57
+}

@@ -1,0 +1,91 @@
+{
+ "job": {
+  "order": 107,
+  "id": 4076776311,
+  "agent": "Claude_Code",
+  "repo": "tradingstrategy-ai/web3-ethereum-defi",
+  "number": 842,
+  "api_base_sha": "1465598f136352a79227df1fb3710f4d57950a37",
+  "head_sha": "e2b5e32d0800ebab32b0ff31cba990343be7ab17",
+  "created": "2026-03-14",
+  "changed_files": [
+   "CHANGELOG.md",
+   "eth_defi/hyperliquid/api.py",
+   "eth_defi/hyperliquid/evm_escrow.py",
+   "eth_defi/hyperliquid/trader_stats.py",
+   "scripts/hyperliquid/analyse-hft-traders.ipynb"
+  ],
+  "n_files": 5,
+  "final_diff_files": [
+   "CHANGELOG.md",
+   "eth_defi/hyperliquid/api.py",
+   "eth_defi/hyperliquid/evm_escrow.py",
+   "eth_defi/hyperliquid/trader_stats.py",
+   "scripts/hyperliquid/analyse-hft-traders.ipynb"
+  ]
+ },
+ "agent": {
+  "status": "built",
+  "reason": "none",
+  "tier": "own_calls",
+  "uses_parallelism": false,
+  "behaviour_change_expected": false,
+  "notes": "Installed duckdb 1.5.0 into both venvs (missing; import failed). The workload builds a seeded synthetic trade-history DuckDB in /tmp/kt_842 (150 traders with varied trading schedules), pre-fills the daily_pnl cache table with bulk SQL (refresh_daily_pnl is unchanged by the PR and very slow), then runs the real TraderStatsDatabase.compute_metrics() 10 times and get_metrics(). This covers the PR's migration ALTERs, the hour/day-of-week query, the explicit-column INSERT and nearly all of _classify_trading_time. check.py does NOT pass: head coverage is 0.567 (< 0.8). The uncovered lines are mostly the new api.wait_for_vault_deposit_confirmation, which is head-only and polls the live network API, plus the 'unknown' returns, which compute_metrics cannot reach. Base coverage is 1.0. The digest covers the metric columns both versions share and is identical. Head also adds a trading_time column (new feature), which is printed only on head and left out of the digest. Base 7.3 s, head 8.0 s, no-network run OK."
+ },
+ "agent_is_error": false,
+ "timed_out": false,
+ "models": [
+  "claude-opus-5-5"
+ ],
+ "list_usd": 0.6518037999999999,
+ "num_turns": 19,
+ "setup_ok": true,
+ "setup_s": 22,
+ "agent_s": 647,
+ "check": {
+  "base_exit_ok": true,
+  "base_last_line": "d347873daa8e397782d67fa2767bfd189f51959e10a2bdab2e971b63a4ea6df9",
+  "head_exit_ok": true,
+  "head_last_line": "d347873daa8e397782d67fa2767bfd189f51959e10a2bdab2e971b63a4ea6df9",
+  "base_time_s": 7.123,
+  "head_time_s": 8.01,
+  "no_network_ok": true,
+  "coverage": {
+   "changed_files": [
+    "eth_defi/hyperliquid/api.py",
+    "eth_defi/hyperliquid/evm_escrow.py",
+    "eth_defi/hyperliquid/trader_stats.py"
+   ],
+   "base": {
+    "changed_executable_lines": 2,
+    "executed": 2,
+    "share": 1.0
+   },
+   "head": {
+    "changed_executable_lines": 60,
+    "executed": 34,
+    "share": 0.567
+   },
+   "output_digest_base": "d347873daa8e397782d67fa2767bfd189f51959e10a2bdab2e971b63a4ea6df9",
+   "output_digest_head": "d347873daa8e397782d67fa2767bfd189f51959e10a2bdab2e971b63a4ea6df9",
+   "output_equal": true,
+   "coverage_gate_pass": false
+  },
+  "coverage_needed": 0.8,
+  "output_equal": true,
+  "pass": false,
+  "reasons": [
+   "head coverage 0.567 < 0.8"
+  ]
+ },
+ "harness_pass": false,
+ "audit": {
+  "mentions_github_pull": false,
+  "used_gh_cli": false,
+  "read_git_history": false
+ },
+ "changed_code_lines": {
+  "py": 228
+ },
+ "python_share_of_code_change": 1.0
+}

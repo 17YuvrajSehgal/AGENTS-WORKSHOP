@@ -1,0 +1,84 @@
+{
+ "job": {
+  "order": 35,
+  "id": 3845573984,
+  "agent": "Google_Jules",
+  "repo": "Whamp/chirp-stt",
+  "number": 21,
+  "api_base_sha": "d722d9f385a3bfe4d6b47b30b5747c4328d8e8b1",
+  "head_sha": "a079467b20b1956b29d05d0bc6e64578ae587c98",
+  "created": "2026-01-23",
+  "changed_files": [
+   ".jules/bolt.md",
+   "src/chirp/audio_feedback.py",
+   "tests/test_audio_feedback.py",
+   "tests/test_audio_feedback_cache.py"
+  ],
+  "n_files": 4,
+  "final_diff_files": [
+   "src/chirp/audio_feedback.py",
+   "tests/test_audio_feedback.py",
+   "tests/test_audio_feedback_cache.py"
+  ]
+ },
+ "agent": {
+  "status": "built",
+  "reason": "none",
+  "tier": "own_calls",
+  "uses_parallelism": false,
+  "behaviour_change_expected": false,
+  "notes": "Audio hardware modules (sounddevice, winsound) are replaced by recording stand-ins because PortAudio is unavailable. The workload repeatedly plays bundled and generated WAVs through both backend paths, so base re-reads the files each time while head caches them. The digest covers what is played through sounddevice and the winsound call count. Base and head outputs are equal. Coverage is about 90% on both sides. Base runs in about 1.8 s and head in about 0.7 s."
+ },
+ "agent_is_error": false,
+ "timed_out": false,
+ "models": [
+  "claude-opus-5-5"
+ ],
+ "list_usd": 0.1822256,
+ "num_turns": 7,
+ "setup_ok": true,
+ "setup_s": 2,
+ "agent_s": 46,
+ "check": {
+  "base_exit_ok": true,
+  "base_last_line": "280d6cec80894a2d58ac93024d3a1cb294e5fec78eec3b9adab0836a0b9df9c1",
+  "head_exit_ok": true,
+  "head_last_line": "280d6cec80894a2d58ac93024d3a1cb294e5fec78eec3b9adab0836a0b9df9c1",
+  "base_time_s": 1.144,
+  "head_time_s": 0.471,
+  "no_network_ok": true,
+  "coverage": {
+   "changed_files": [
+    "src/chirp/audio_feedback.py"
+   ],
+   "base": {
+    "changed_executable_lines": 11,
+    "executed": 10,
+    "share": 0.909
+   },
+   "head": {
+    "changed_executable_lines": 30,
+    "executed": 27,
+    "share": 0.9
+   },
+   "output_digest_base": "280d6cec80894a2d58ac93024d3a1cb294e5fec78eec3b9adab0836a0b9df9c1",
+   "output_digest_head": "280d6cec80894a2d58ac93024d3a1cb294e5fec78eec3b9adab0836a0b9df9c1",
+   "output_equal": true,
+   "coverage_gate_pass": true
+  },
+  "coverage_needed": 0.8,
+  "output_equal": true,
+  "pass": true,
+  "reasons": []
+ },
+ "harness_pass": true,
+ "audit": {
+  "mentions_github_pull": false,
+  "used_gh_cli": false,
+  "read_git_history": false
+ },
+ "changed_code_lines": {
+  "py": 166
+ },
+ "python_share_of_code_change": 1.0
+}

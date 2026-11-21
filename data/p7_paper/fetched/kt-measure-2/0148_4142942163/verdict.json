@@ -1,0 +1,81 @@
+{
+ "job": {
+  "order": 148,
+  "id": 4142942163,
+  "agent": "Claude_Code",
+  "repo": "Neywa-Labs/mlx-vlm",
+  "number": 860,
+  "api_base_sha": "ea167700d667882f0b44493b4e4cdcc04d90497e",
+  "head_sha": "47bd9ea3b5b088a09c0522cb8c1fa037a3641781",
+  "created": "2026-03-26",
+  "changed_files": [
+   "mlx_vlm/tests/test_turboquant.py",
+   "mlx_vlm/turboquant.py"
+  ],
+  "n_files": 2,
+  "final_diff_files": [
+   "mlx_vlm/tests/test_turboquant.py",
+   "mlx_vlm/turboquant.py"
+  ]
+ },
+ "agent": {
+  "status": "built",
+  "reason": "none",
+  "tier": "own_calls",
+  "uses_parallelism": false,
+  "behaviour_change_expected": true,
+  "notes": "Installed mlx-cpu==0.31.1 in both venvs (libmlx.so missing on Linux). Workload exercises MSE/Prod/PolarProd codecs (quantize/dequantize/score/weighted_sum) and TurboQuantKVCache attention on CPU. Head replaces dense rotation with randomized Hadamard (different signs) and boundary-based quantization, so digests differ legitimately. Uncovered head lines are Metal-only kernels."
+ },
+ "agent_is_error": false,
+ "timed_out": false,
+ "models": [
+  "claude-opus-5-5"
+ ],
+ "list_usd": 0.3450954,
+ "num_turns": 13,
+ "setup_ok": true,
+ "setup_s": 12,
+ "agent_s": 94,
+ "check": {
+  "base_exit_ok": true,
+  "base_last_line": "b3b24b03139843f03de7da09838cf00a53637874ec8009de87180770cd335403",
+  "head_exit_ok": true,
+  "head_last_line": "92dd8cd0dd14690c0f3d4693031337a1ef5aec47b16bfb6e0959a7937672de82",
+  "base_time_s": 3.397,
+  "head_time_s": 3.237,
+  "no_network_ok": true,
+  "coverage": {
+   "changed_files": [
+    "mlx_vlm/turboquant.py"
+   ],
+   "base": {
+    "changed_executable_lines": 34,
+    "executed": 30,
+    "share": 0.882
+   },
+   "head": {
+    "changed_executable_lines": 201,
+    "executed": 140,
+    "share": 0.697
+   },
+   "output_digest_base": "b3b24b03139843f03de7da09838cf00a53637874ec8009de87180770cd335403",
+   "output_digest_head": "92dd8cd0dd14690c0f3d4693031337a1ef5aec47b16bfb6e0959a7937672de82",
+   "output_equal": false,
+   "coverage_gate_pass": false
+  },
+  "coverage_needed": 0.5,
+  "output_equal": false,
+  "pass": true,
+  "reasons": []
+ },
+ "harness_pass": true,
+ "audit": {
+  "mentions_github_pull": false,
+  "used_gh_cli": false,
+  "read_git_history": false
+ },
+ "changed_code_lines": {
+  "py": 448
+ },
+ "python_share_of_code_change": 1.0
+}

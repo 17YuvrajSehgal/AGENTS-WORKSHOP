@@ -1,0 +1,93 @@
+{
+ "job": {
+  "order": 123,
+  "id": 3778583468,
+  "agent": "Copilot",
+  "repo": "OliverZhaohaibin/iPhotron-LocalPhotoAlbumManager",
+  "number": 483,
+  "api_base_sha": "3c3f1cb07044642cca170afd6321d927ef1fd6a0",
+  "head_sha": "b0c857914729ad7de465aa72b5cda293a830454f",
+  "created": "2026-01-03",
+  "changed_files": [
+   "docs/duplicate-indexing-ui-freeze-analysis-en.md",
+   "docs/duplicate-indexing-ui-freeze-analysis.md",
+   "src/iPhoto/gui/facade.py",
+   "src/iPhoto/gui/ui/models/asset_list/controller.py",
+   "src/iPhoto/gui/ui/models/asset_list/model.py",
+   "tests/test_dual_model_switching.py"
+  ],
+  "n_files": 6,
+  "final_diff_files": [
+   "docs/duplicate-indexing-ui-freeze-analysis-en.md",
+   "docs/duplicate-indexing-ui-freeze-analysis.md",
+   "src/iPhoto/gui/facade.py",
+   "src/iPhoto/gui/ui/models/asset_list/controller.py",
+   "src/iPhoto/gui/ui/models/asset_list/model.py",
+   "tests/test_dual_model_switching.py"
+  ]
+ },
+ "agent": {
+  "status": "built",
+  "reason": "none",
+  "tier": "own_calls",
+  "uses_parallelism": true,
+  "behaviour_change_expected": true,
+  "notes": "check.py does NOT pass: head coverage of changed lines is 22/38 (0.579 < 0.8). Everything else is OK (installs fine, base ~6.9 s, no-network OK, base coverage 5/6). The missing head lines are dead code: the lightweight-switch branch only runs if getattr(model, 'is_valid', lambda: False)() is true, and no class in the project defines is_valid. So update_album_root_lightweight and prepare_for_album_lightweight can never run without patching the model. The workload builds a library of 4 sub-albums x 60 generated JPEGs indexed with the project's own rescan (template cached under /tmp/kt_483 and copied fresh each run). It binds LibraryManager and AppFacade (Qt offscreen) and runs root -> each album -> root six times, waiting for loadFinished each time. It records active model, row count and a hash of loaded paths; the last line is a SHA-256 of these. Digests differ as expected: on base sub-albums use the album model (reset and reload), on head they reuse the library model. Row counts and loaded paths are the same on both sides. Sub-albums are pre-indexed so no async rescans start; this avoids an existing deleteLater race in controller.py that made base crash intermittently. Qt thread-pool loader workers do real work."
+ },
+ "agent_is_error": false,
+ "timed_out": false,
+ "models": [
+  "claude-opus-5-5"
+ ],
+ "list_usd": 0.6098260000000001,
+ "num_turns": 25,
+ "setup_ok": true,
+ "setup_s": 19,
+ "agent_s": 326,
+ "check": {
+  "base_exit_ok": true,
+  "base_last_line": "f45b2abfe3cf98f2565c428e97df9d0976e021d8731b5ea98660ea279d454b25",
+  "head_exit_ok": true,
+  "head_last_line": "cca8b7a55db01386a576f7fdd2950a313d7ca535ed4525670ba62a53698ee697",
+  "base_time_s": 7.079,
+  "head_time_s": 6.338,
+  "no_network_ok": true,
+  "coverage": {
+   "changed_files": [
+    "src/iPhoto/gui/facade.py",
+    "src/iPhoto/gui/ui/models/asset_list/controller.py",
+    "src/iPhoto/gui/ui/models/asset_list/model.py"
+   ],
+   "base": {
+    "changed_executable_lines": 6,
+    "executed": 5,
+    "share": 0.833
+   },
+   "head": {
+    "changed_executable_lines": 38,
+    "executed": 22,
+    "share": 0.579
+   },
+   "output_digest_base": "f45b2abfe3cf98f2565c428e97df9d0976e021d8731b5ea98660ea279d454b25",
+   "output_digest_head": "cca8b7a55db01386a576f7fdd2950a313d7ca535ed4525670ba62a53698ee697",
+   "output_equal": false,
+   "coverage_gate_pass": false
+  },
+  "coverage_needed": 0.8,
+  "output_equal": false,
+  "pass": false,
+  "reasons": [
+   "head coverage 0.579 < 0.8"
+  ]
+ },
+ "harness_pass": false,
+ "audit": {
+  "mentions_github_pull": false,
+  "used_gh_cli": false,
+  "read_git_history": false
+ },
+ "changed_code_lines": {
+  "py": 136
+ },
+ "python_share_of_code_change": 1.0
+}

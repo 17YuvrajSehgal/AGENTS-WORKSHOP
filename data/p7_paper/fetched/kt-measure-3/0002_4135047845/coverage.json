@@ -1,0 +1,19 @@
+{
+ "changed_files": [
+  "airbyte-integrations/connectors/source-hubspot/components.py"
+ ],
+ "base": {
+  "changed_executable_lines": 0,
+  "executed": 0,
+  "share": null
+ },
+ "head": {
+  "changed_executable_lines": 8,
+  "executed": 8,
+  "share": 1.0
+ },
+ "output_digest_base": "85578d8e1a4ae265db9976edffeac767c7b5353b22a7e308b3c2d1f505d6c104",
+ "output_digest_head": "ed07f1882539ff3960be368d9da9eb461a79326e1cf6766453b4bf0bcc82c15c",
+ "output_equal": false,
+ "coverage_gate_pass": true
+}

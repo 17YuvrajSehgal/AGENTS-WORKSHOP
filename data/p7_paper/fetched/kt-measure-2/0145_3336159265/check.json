@@ -1,0 +1,32 @@
+{
+ "base_exit_ok": true,
+ "base_last_line": "9c53bad35dc5a9db5bd38b0c9b18166081e278a3abec3e82c53a2ac25e4b4dd6",
+ "head_exit_ok": true,
+ "head_last_line": "9c53bad35dc5a9db5bd38b0c9b18166081e278a3abec3e82c53a2ac25e4b4dd6",
+ "base_time_s": 5.64,
+ "head_time_s": 1.506,
+ "no_network_ok": true,
+ "coverage": {
+  "changed_files": [
+   "browser_use/browser/default_action_watchdog.py"
+  ],
+  "base": {
+   "changed_executable_lines": 2,
+   "executed": 2,
+   "share": 1.0
+  },
+  "head": {
+   "changed_executable_lines": 2,
+   "executed": 2,
+   "share": 1.0
+  },
+  "output_digest_base": "9c53bad35dc5a9db5bd38b0c9b18166081e278a3abec3e82c53a2ac25e4b4dd6",
+  "output_digest_head": "9c53bad35dc5a9db5bd38b0c9b18166081e278a3abec3e82c53a2ac25e4b4dd6",
+  "output_equal": true,
+  "coverage_gate_pass": true
+ },
+ "coverage_needed": 0.8,
+ "output_equal": true,
+ "pass": true,
+ "reasons": []
+}

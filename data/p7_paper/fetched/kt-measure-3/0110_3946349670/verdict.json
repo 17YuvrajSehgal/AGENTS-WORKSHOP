@@ -1,0 +1,102 @@
+{
+ "job": {
+  "order": 110,
+  "id": 3946349670,
+  "agent": "Claude_Code",
+  "repo": "AndyMik90/Aperant",
+  "number": 1852,
+  "api_base_sha": "635b53eeaf38c1c9cd2ba45ebe853070cd684349",
+  "head_sha": "d5ca83e9e69d52d5942e8dfba602a26dc34ecb9c",
+  "created": "2026-02-16",
+  "changed_files": [
+   "apps/backend/runners/github/services/followup_reviewer.py",
+   "apps/backend/runners/github/services/parallel_followup_reviewer.py",
+   "apps/backend/runners/github/services/parallel_orchestrator_reviewer.py",
+   "apps/backend/runners/github/services/pydantic_models.py",
+   "apps/backend/runners/github/services/recovery_utils.py",
+   "apps/frontend/src/main/ipc-handlers/github/pr-handlers.ts",
+   "apps/frontend/src/preload/api/modules/github-api.ts",
+   "apps/frontend/src/renderer/components/github-prs/components/FindingItem.tsx",
+   "apps/frontend/src/renderer/components/github-prs/components/FindingsSummary.tsx",
+   "apps/frontend/src/renderer/components/github-prs/components/ReviewFindings.tsx",
+   "apps/frontend/src/renderer/components/github-prs/hooks/useFindingSelection.ts",
+   "apps/frontend/src/shared/i18n/locales/en/common.json",
+   "apps/frontend/src/shared/i18n/locales/fr/common.json",
+   "tests/test_structured_output_recovery.py"
+  ],
+  "n_files": 14,
+  "final_diff_files": [
+   "apps/backend/runners/github/services/parallel_orchestrator_reviewer.py",
+   "apps/frontend/src/main/ipc-handlers/github/pr-handlers.ts",
+   "apps/frontend/src/preload/api/modules/github-api.ts",
+   "apps/frontend/src/renderer/components/github-prs/components/FindingItem.tsx",
+   "apps/frontend/src/renderer/components/github-prs/components/FindingsSummary.tsx",
+   "apps/frontend/src/renderer/components/github-prs/components/ReviewFindings.tsx",
+   "apps/frontend/src/renderer/components/github-prs/hooks/useFindingSelection.ts",
+   "apps/frontend/src/shared/i18n/locales/en/common.json",
+   "apps/frontend/src/shared/i18n/locales/fr/common.json"
+  ]
+ },
+ "agent": {
+  "status": "built",
+  "reason": "none",
+  "tier": "own_calls",
+  "uses_parallelism": false,
+  "behaviour_change_expected": true,
+  "notes": "The project install fails on both sides (setuptools rejects the flat layout), so only the needed dependencies were installed into both venvs (claude-agent-sdk, python-dotenv, pydantic, secretstorage, coverage), and the source tree is added to sys.path. The workload runs ParallelOrchestratorReviewer.review() end to end on 150 seeded PRs. Stand-ins replace only external I/O: create_client (Claude SDK, which answers through the real process_sdk_stream) and GHClient (gh CLI). Changed lines are 100% covered on both sides. Outputs differ as expected: head keeps validator-dismissed findings as 'disputed' (shown in the summary but excluded from the verdict) and keeps cross-validated findings, where base drops dismissed findings. Every run ends in the BLOCKED verdict. The concurrency is asyncio.gather inside one process (no threads or processes)."
+ },
+ "agent_is_error": false,
+ "timed_out": false,
+ "models": [
+  "claude-opus-5-5"
+ ],
+ "list_usd": 0.7178576000000001,
+ "num_turns": 25,
+ "setup_ok": false,
+ "setup_s": 6,
+ "agent_s": 153,
+ "check": {
+  "base_exit_ok": true,
+  "base_last_line": "c47a96f4f49f1842a4fa1fd06f33ebdee0a0aadb0a23290934b8ab7fdf315711",
+  "head_exit_ok": true,
+  "head_last_line": "2c1ea6f46eb852b1771738c0fb710aee4fccabca00e1aa6040903d6c6a13ca21",
+  "base_time_s": 2.645,
+  "head_time_s": 1.674,
+  "no_network_ok": true,
+  "coverage": {
+   "changed_files": [
+    "apps/backend/runners/github/services/parallel_orchestrator_reviewer.py"
+   ],
+   "base": {
+    "changed_executable_lines": 6,
+    "executed": 6,
+    "share": 1.0
+   },
+   "head": {
+    "changed_executable_lines": 36,
+    "executed": 36,
+    "share": 1.0
+   },
+   "output_digest_base": "c47a96f4f49f1842a4fa1fd06f33ebdee0a0aadb0a23290934b8ab7fdf315711",
+   "output_digest_head": "2c1ea6f46eb852b1771738c0fb710aee4fccabca00e1aa6040903d6c6a13ca21",
+   "output_equal": false,
+   "coverage_gate_pass": true
+  },
+  "coverage_needed": 0.8,
+  "output_equal": false,
+  "pass": true,
+  "reasons": []
+ },
+ "harness_pass": true,
+ "audit": {
+  "mentions_github_pull": false,
+  "used_gh_cli": false,
+  "read_git_history": false
+ },
+ "changed_code_lines": {
+  "py": 95,
+  "ts": 34,
+  "tsx": 123
+ },
+ "python_share_of_code_change": 0.377
+}

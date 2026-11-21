@@ -1,0 +1,19 @@
+{
+ "changed_files": [
+  "aws/logs_monitoring/steps/splitting.py"
+ ],
+ "base": {
+  "changed_executable_lines": 24,
+  "executed": 24,
+  "share": 1.0
+ },
+ "head": {
+  "changed_executable_lines": 24,
+  "executed": 23,
+  "share": 0.958
+ },
+ "output_digest_base": "bdf098719ab8d2f18fecfb585e5c04b4f30aaadfc9e20b4293ecf876dff1dad7",
+ "output_digest_head": "bdf098719ab8d2f18fecfb585e5c04b4f30aaadfc9e20b4293ecf876dff1dad7",
+ "output_equal": true,
+ "coverage_gate_pass": true
+}

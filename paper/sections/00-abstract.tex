@@ -1,0 +1,14 @@
+Coding agents open many pull requests that claim to make software faster.
+Prior studies read these claims or re-execute a few of them; a stopwatch shows
+whether code got faster, but not whether it got faster for the reason the
+agent gives. We check agents' performance claims at the kernel level. From
+\nRuntimePRs runtime-performance pull requests in the AIDev dataset we
+extract the mechanism each one claims, map it to the kernel and hardware
+signals that must move if the claim is true, rebuild both versions with a
+build agent that never sees the claim, and measure them with untraced
+timing, hardware counters and LTTng kernel traces. Agents rarely back their
+claims: \pctReasonNone offer only reasoning or no evidence, and
+\pctEffect state any effect size. In first measurements of \nAnalysed PRs,
+\nFaster ran faster, \nNoChange showed no clear change and \nSlower ran
+slower; the claimed mechanism left its kernel footprint in \nHeld, and
+\nBehaviour also changed their output.

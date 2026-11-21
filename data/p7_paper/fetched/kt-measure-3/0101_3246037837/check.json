@@ -1,0 +1,35 @@
+{
+ "base_exit_ok": true,
+ "base_last_line": "93618c69d6688033f9161bfd89ef5ecf4ec5d3a8fdb777c92fca4739f2147171",
+ "head_exit_ok": true,
+ "head_last_line": "e62ce674759403d6c4c419aa29715a89ffc8b11c100cf0aedc3342762629ee3b",
+ "base_time_s": 10.1,
+ "head_time_s": 9.129,
+ "no_network_ok": true,
+ "coverage": {
+  "changed_files": [
+   "src/python/piper_train/__main__.py",
+   "src/python/piper_train/vits/attentions.py",
+   "src/python/piper_train/vits/lightning.py",
+   "src/python/piper_train/vits/wavfile.py"
+  ],
+  "base": {
+   "changed_executable_lines": 7,
+   "executed": 6,
+   "share": 0.857
+  },
+  "head": {
+   "changed_executable_lines": 13,
+   "executed": 12,
+   "share": 0.923
+  },
+  "output_digest_base": "93618c69d6688033f9161bfd89ef5ecf4ec5d3a8fdb777c92fca4739f2147171",
+  "output_digest_head": "e62ce674759403d6c4c419aa29715a89ffc8b11c100cf0aedc3342762629ee3b",
+  "output_equal": false,
+  "coverage_gate_pass": true
+ },
+ "coverage_needed": 0.8,
+ "output_equal": false,
+ "pass": true,
+ "reasons": []
+}

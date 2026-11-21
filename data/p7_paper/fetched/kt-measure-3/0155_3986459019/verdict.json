@@ -1,0 +1,86 @@
+{
+ "job": {
+  "order": 155,
+  "id": 3986459019,
+  "agent": "Claude_Code",
+  "repo": "ml-explore/mlx-lm",
+  "number": 929,
+  "api_base_sha": "179da774b16b27f662edec10f1507478373b1749",
+  "head_sha": "c1c0d8efa335027ab39259a8260691b66dd7971f",
+  "created": "2026-02-25",
+  "changed_files": [
+   "mlx_lm/models/cache.py",
+   "mlx_lm/server.py",
+   "tests/test_hybrid_cache.py"
+  ],
+  "n_files": 3,
+  "final_diff_files": [
+   "mlx_lm/models/cache.py",
+   "mlx_lm/server.py",
+   "tests/test_hybrid_cache.py"
+  ]
+ },
+ "agent": {
+  "status": "built",
+  "reason": "none",
+  "tier": "own_calls",
+  "uses_parallelism": true,
+  "behaviour_change_expected": true,
+  "notes": "check.py reports pass=false only because head coverage is 0.753 (<0.8); about 33 of 170 changed head lines are ResponseGenerator._find_cache_boundaries, which head defines but never calls and base lacks, plus a few unreachable exception/branch lines. Base coverage 1.0, base ~3.2 s, no-network OK, digests deterministic per side. Installed mlx[cpu]==0.30.6 in both venvs; mx.disable_compile() is used because the MLX CPU JIT fails with this g++. Workload drives LRUPromptCache with hybrid KVCache+ArraysCache caches and ResponseGenerator (single and batched) on a tiny local llama model and tokenizer, using chats, text prompts, a no-template tokenizer, client stop and byte eviction. Sets lru.checkpoint_interval=256 (head constructor option, ignored by base). Outputs differ because head changes cache keying and adds snapshots."
+ },
+ "agent_is_error": false,
+ "timed_out": false,
+ "models": [
+  "claude-opus-5-5"
+ ],
+ "list_usd": 1.3233274000000002,
+ "num_turns": 43,
+ "setup_ok": true,
+ "setup_s": 3,
+ "agent_s": 576,
+ "check": {
+  "base_exit_ok": true,
+  "base_last_line": "b24fc4cb0766c83231a7eb99e32ce483819f0263acfbbd5187425b5f9da0e8a9",
+  "head_exit_ok": true,
+  "head_last_line": "dd298283247ed55427648385877f7ff0bf43c3f8d4c4d466dd4edc91890dade0",
+  "base_time_s": 3.165,
+  "head_time_s": 3.508,
+  "no_network_ok": true,
+  "coverage": {
+   "changed_files": [
+    "mlx_lm/models/cache.py",
+    "mlx_lm/server.py"
+   ],
+   "base": {
+    "changed_executable_lines": 21,
+    "executed": 21,
+    "share": 1.0
+   },
+   "head": {
+    "changed_executable_lines": 170,
+    "executed": 128,
+    "share": 0.753
+   },
+   "output_digest_base": "b24fc4cb0766c83231a7eb99e32ce483819f0263acfbbd5187425b5f9da0e8a9",
+   "output_digest_head": "dd298283247ed55427648385877f7ff0bf43c3f8d4c4d466dd4edc91890dade0",
+   "output_equal": false,
+   "coverage_gate_pass": false
+  },
+  "coverage_needed": 0.8,
+  "output_equal": false,
+  "pass": false,
+  "reasons": [
+   "head coverage 0.753 < 0.8"
+  ]
+ },
+ "harness_pass": false,
+ "audit": {
+  "mentions_github_pull": false,
+  "used_gh_cli": false,
+  "read_git_history": false
+ },
+ "changed_code_lines": {
+  "py": 1178
+ },
+ "python_share_of_code_change": 1.0
+}

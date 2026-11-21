@@ -1,0 +1,20 @@
+{
+ "changed_files": [
+  "pythainlp/tokenize/newmm.py",
+  "pythainlp/util/trie.py"
+ ],
+ "base": {
+  "changed_executable_lines": 11,
+  "executed": 11,
+  "share": 1.0
+ },
+ "head": {
+  "changed_executable_lines": 17,
+  "executed": 17,
+  "share": 1.0
+ },
+ "output_digest_base": "bd860a2d180721920f952c8940cb58acf4a1b68f717ab4bed431c51f7f47389e",
+ "output_digest_head": "bd860a2d180721920f952c8940cb58acf4a1b68f717ab4bed431c51f7f47389e",
+ "output_equal": true,
+ "coverage_gate_pass": true
+}

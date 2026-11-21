@@ -1,0 +1,19 @@
+{
+ "changed_files": [
+  "engine/language_client_python/python_src/baml_py/stream.py"
+ ],
+ "base": {
+  "changed_executable_lines": 7,
+  "executed": 7,
+  "share": 1.0
+ },
+ "head": {
+  "changed_executable_lines": 36,
+  "executed": 33,
+  "share": 0.917
+ },
+ "output_digest_base": "9228f45d212608e99de6e6602eebfb636ee780eaeca94118b5fb2699a09a3324",
+ "output_digest_head": "9228f45d212608e99de6e6602eebfb636ee780eaeca94118b5fb2699a09a3324",
+ "output_equal": true,
+ "coverage_gate_pass": true
+}

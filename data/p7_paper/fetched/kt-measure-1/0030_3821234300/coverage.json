@@ -1,0 +1,23 @@
+{
+ "changed_files": [
+  "python/llm-service/llm_service/api/agent.py",
+  "python/llm-service/llm_service/roles/presets.py",
+  "python/llm-service/llm_service/tools/builtin/web_crawl.py",
+  "python/llm-service/llm_service/tools/builtin/web_fetch.py",
+  "python/llm-service/llm_service/tools/builtin/web_subpage_fetch.py"
+ ],
+ "base": {
+  "changed_executable_lines": 76,
+  "executed": 66,
+  "share": 0.868
+ },
+ "head": {
+  "changed_executable_lines": 300,
+  "executed": 269,
+  "share": 0.897
+ },
+ "output_digest_base": "9b808f5ae66ab84d92fa3f25ff0eb97bcf8beb173f0ca8bcca4f1e96f218744c",
+ "output_digest_head": "d64af1fbd4981d9cabb40100c429c04effc104f81c959de57e3fe24c4b9350dc",
+ "output_equal": false,
+ "coverage_gate_pass": true
+}

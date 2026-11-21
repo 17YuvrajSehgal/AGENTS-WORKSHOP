@@ -1,0 +1,62 @@
+{
+ "job": {
+  "order": 49,
+  "id": 3502111306,
+  "agent": "Copilot",
+  "repo": "HKUSTDial/flash-sparse-attention",
+  "number": 187,
+  "api_base_sha": "291dbd5ec25c8bd7a1546ea7771f69cf61ee675e",
+  "head_sha": "54d05fc1bc43b59c59860ac3ffb327d9b665db2f",
+  "created": "2025-10-10",
+  "changed_files": [
+   "README.md",
+   "csrc/flash_dmattn/flash_api.cpp",
+   "csrc/flash_dmattn/src/block_info.h",
+   "csrc/flash_dmattn/src/flash.h",
+   "csrc/flash_dmattn/src/flash_fwd_kernel.h",
+   "docs/varlen_broadcastable_mask.md",
+   "examples/varlen_broadcastable_example.py"
+  ],
+  "n_files": 7,
+  "final_diff_files": [
+   "README.md",
+   "csrc/flash_dmattn/flash_api.cpp",
+   "csrc/flash_dmattn/src/block_info.h",
+   "csrc/flash_dmattn/src/flash.h",
+   "csrc/flash_dmattn/src/flash_fwd_kernel.h",
+   "docs/varlen_broadcastable_mask.md",
+   "examples/varlen_broadcastable_example.py"
+  ]
+ },
+ "agent": {
+  "status": "unbuildable",
+  "reason": "not_python_change",
+  "tier": "none",
+  "uses_parallelism": false,
+  "behaviour_change_expected": false,
+  "notes": "The PR only changes CUDA/C++ kernel sources (flash_api.cpp, block_info.h, flash.h, flash_fwd_kernel.h), plus docs and a new example script. The only Python file is the new example, which doesn't exist in base. Running the changed kernels would also need a GPU (Ampere or newer). So no workload can run the changed code on both sides here."
+ },
+ "agent_is_error": false,
+ "timed_out": false,
+ "models": [
+  "claude-opus-5-5"
+ ],
+ "list_usd": 0.0846726,
+ "num_turns": 3,
+ "setup_ok": false,
+ "setup_s": 22,
+ "agent_s": 7,
+ "check": null,
+ "harness_pass": false,
+ "audit": {
+  "mentions_github_pull": false,
+  "used_gh_cli": false,
+  "read_git_history": false
+ },
+ "changed_code_lines": {
+  "cpp": 472,
+  "h": 78,
+  "py": 256
+ },
+ "python_share_of_code_change": 0.318
+}

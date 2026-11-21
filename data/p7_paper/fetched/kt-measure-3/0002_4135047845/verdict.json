@@ -1,0 +1,93 @@
+{
+ "job": {
+  "order": 2,
+  "id": 4135047845,
+  "agent": "Devin",
+  "repo": "airbytehq/airbyte",
+  "number": 75452,
+  "api_base_sha": "1960be346d143ba64194430b153b1f460d66b18c",
+  "head_sha": "e47d511f359740ce617ec6e5fc299953beb34e3d",
+  "created": "2026-03-25",
+  "changed_files": [
+   "airbyte-integrations/connectors/source-hubspot/components.py",
+   "airbyte-integrations/connectors/source-hubspot/manifest.yaml",
+   "airbyte-integrations/connectors/source-hubspot/metadata.yaml",
+   "airbyte-integrations/connectors/source-hubspot/unit_tests/poetry.lock",
+   "airbyte-integrations/connectors/source-hubspot/unit_tests/test_components.py",
+   "airbyte-integrations/connectors/source-hubspot/unit_tests/test_handle_retry_token_expired.py",
+   "airbyte-integrations/connectors/source-hubspot/unit_tests/test_streams.py",
+   "docs/integrations/sources/hubspot.md"
+  ],
+  "n_files": 8,
+  "final_diff_files": [
+   "airbyte-integrations/connectors/source-hubspot/components.py",
+   "airbyte-integrations/connectors/source-hubspot/manifest.yaml",
+   "airbyte-integrations/connectors/source-hubspot/metadata.yaml",
+   "airbyte-integrations/connectors/source-hubspot/unit_tests/poetry.lock",
+   "airbyte-integrations/connectors/source-hubspot/unit_tests/test_components.py",
+   "airbyte-integrations/connectors/source-hubspot/unit_tests/test_handle_retry_token_expired.py",
+   "airbyte-integrations/connectors/source-hubspot/unit_tests/test_streams.py",
+   "docs/integrations/sources/hubspot.md"
+  ]
+ },
+ "agent": {
+  "status": "built",
+  "reason": "none",
+  "tier": "own_calls",
+  "uses_parallelism": false,
+  "behaviour_change_expected": true,
+  "notes": "Package install failed (poetry build of the unit_tests project), so airbyte-cdk==7.13.0, requests-mock and coverage were installed into both venvs. The workload builds build_associations_retriever for PAT and OAuth configs and calls the error handler's interpret_response on varied status codes. On head, a 401 now resolves to FAIL/config_error for PAT and to REFRESH_TOKEN_THEN_RETRY for OAuth, so the digests differ. Head coverage is 8/8 changed lines."
+ },
+ "agent_is_error": false,
+ "timed_out": false,
+ "models": [
+  "claude-opus-5-5"
+ ],
+ "list_usd": 0.232278,
+ "num_turns": 11,
+ "setup_ok": false,
+ "setup_s": 43,
+ "agent_s": 77,
+ "check": {
+  "base_exit_ok": true,
+  "base_last_line": "85578d8e1a4ae265db9976edffeac767c7b5353b22a7e308b3c2d1f505d6c104",
+  "head_exit_ok": true,
+  "head_last_line": "ed07f1882539ff3960be368d9da9eb461a79326e1cf6766453b4bf0bcc82c15c",
+  "base_time_s": 1.659,
+  "head_time_s": 1.669,
+  "no_network_ok": true,
+  "coverage": {
+   "changed_files": [
+    "airbyte-integrations/connectors/source-hubspot/components.py"
+   ],
+   "base": {
+    "changed_executable_lines": 0,
+    "executed": 0,
+    "share": null
+   },
+   "head": {
+    "changed_executable_lines": 8,
+    "executed": 8,
+    "share": 1.0
+   },
+   "output_digest_base": "85578d8e1a4ae265db9976edffeac767c7b5353b22a7e308b3c2d1f505d6c104",
+   "output_digest_head": "ed07f1882539ff3960be368d9da9eb461a79326e1cf6766453b4bf0bcc82c15c",
+   "output_equal": false,
+   "coverage_gate_pass": true
+  },
+  "coverage_needed": 0.8,
+  "output_equal": false,
+  "pass": true,
+  "reasons": []
+ },
+ "harness_pass": true,
+ "audit": {
+  "mentions_github_pull": false,
+  "used_gh_cli": false,
+  "read_git_history": false
+ },
+ "changed_code_lines": {
+  "py": 169
+ },
+ "python_share_of_code_change": 1.0
+}

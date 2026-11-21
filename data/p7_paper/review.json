@@ -1,0 +1,334 @@
+{
+ "3716935262": {
+  "exclude": false,
+  "why": "stand-in remote FS client only; head returns real sizes (behaviour change, flagged)"
+ },
+ "3708087159": {
+  "exclude": false,
+  "why": "MagicMock only for the facade passed to AssetListModel; sort/filter code runs unpatched"
+ },
+ "3731932011": {
+  "exclude": false,
+  "why": "1478 changed lines so coverage gate is 0.5; real SQLite; only facade and library manager faked"
+ },
+ "3821234300": {
+  "exclude": false,
+  "why": "fake HTTP server only; set aside by rule (python share 0.404)"
+ },
+ "3466077419": {
+  "exclude": false,
+  "why": "runs real seedrecover batch script; base has no removed lines"
+ },
+ "3518852481": {
+  "exclude": false,
+  "why": "real C extension; set aside by rule (python share 0.134)"
+ },
+ "3727550320": {
+  "exclude": false,
+  "why": "real images, scanner and IndexStore"
+ },
+ "3728179568": {
+  "exclude": false,
+  "why": "real model over SQLite; only library_manager stand-in"
+ },
+ "4128488052": {
+  "exclude": false,
+  "why": "offline real library load"
+ },
+ "3726478735": {
+  "exclude": false,
+  "why": "HTTP adapter stand-in; head scrapes fewer pages by design (behaviour change, flagged)"
+ },
+ "3779683491": {
+  "exclude": false,
+  "why": "real SQLite IndexStore"
+ },
+ "4135047845": {
+  "exclude": false,
+  "why": "real airbyte-cdk retriever and error handler"
+ },
+ "3814494025": {
+  "exclude": false,
+  "why": "real provider; head lists the thumbs directory on lookups; workload adds 500 noise files to that directory (stated in case study)"
+ },
+ "3971059426": {
+  "exclude": false,
+  "why": "real feast type conversion"
+ },
+ "3786238711": {
+  "exclude": false,
+  "why": "real FileDiscoverer thread on a 2000-file tree"
+ },
+ "3873364282": {
+  "exclude": false,
+  "why": "real functions, offline corpus"
+ },
+ "3006562482": {
+  "exclude": false,
+  "why": "real bpy 4.2 and repo tests (bpy 3.6 not on PyPI)"
+ },
+ "3385970784": {
+  "exclude": false,
+  "why": "CDP stand-in returns synthetic DOM; serializer runs unpatched"
+ },
+ "3928671597": {
+  "exclude": false,
+  "why": "extracted mechanisms (uv installer, thread-pool status check) concern other parts of a large PR than the covered memory-store code; kept, noted as claim/workload mismatch risk",
+  "pr": "pocketpaw/pocketpaw #31"
+ },
+ "3790607299": {
+  "exclude": false,
+  "why": "card review 2026-11-21: agent notes, gates, stand-ins limited to external services, signals plausible",
+  "pr": "ryan112358/mbi #76"
+ },
+ "3877879047": {
+  "exclude": false,
+  "why": "card review 2026-11-21: agent notes, gates, stand-ins limited to external services, signals plausible",
+  "pr": "allenai/open-instruct #1443"
+ },
+ "3740869189": {
+  "exclude": false,
+  "why": "card review 2026-11-21: agent notes, gates, stand-ins limited to external services, signals plausible",
+  "pr": "OliverZhaohaibin/iPhotron-LocalPhotoAlbumManager #466"
+ },
+ "3775375654": {
+  "exclude": false,
+  "why": "card review 2026-11-21: agent notes, gates, stand-ins limited to external services, signals plausible",
+  "pr": "koush/scrypted #1959"
+ },
+ "2895289652": {
+  "exclude": false,
+  "why": "card review 2026-11-21: agent notes, gates, stand-ins limited to external services, signals plausible",
+  "pr": "crewAIInc/crewAI #2281"
+ },
+ "3424014219": {
+  "exclude": false,
+  "why": "card review 2026-11-21: agent notes, gates, stand-ins limited to external services, signals plausible",
+  "pr": "jannikmi/timezonefinder #343"
+ },
+ "3105891938": {
+  "exclude": false,
+  "why": "card review 2026-11-21: agent notes, gates, stand-ins limited to external services, signals plausible",
+  "pr": "haasonsaas/ocode #2"
+ },
+ "4075851542": {
+  "exclude": false,
+  "why": "card review 2026-11-21: agent notes, gates, stand-ins limited to external services, signals plausible",
+  "pr": "ayutaz/piper-plus #240"
+ },
+ "3550985991": {
+  "exclude": false,
+  "why": "card review 2026-11-21: agent notes, gates, stand-ins limited to external services, signals plausible",
+  "pr": "simonw/datasette #2533"
+ },
+ "3894815824": {
+  "exclude": false,
+  "why": "card review 2026-11-21: agent notes, gates, stand-ins limited to external services, signals plausible",
+  "pr": "geoparquet/geoparquet-io #233"
+ },
+ "2889429365": {
+  "exclude": false,
+  "why": "card review 2026-11-21: agent notes, gates, stand-ins limited to external services, signals plausible",
+  "pr": "crewAIInc/crewAI-tools #230"
+ },
+ "3436791686": {
+  "exclude": false,
+  "why": "bpy 4.4 instead of pinned 3.6 (not on PyPI); same env on both sides",
+  "pr": "saturday06/VRM-Addon-for-Blender #1069"
+ },
+ "3720675869": {
+  "exclude": false,
+  "why": "card review 2026-11-21: agent notes, gates, stand-ins limited to external services, signals plausible",
+  "pr": "OliverZhaohaibin/iPhotron-LocalPhotoAlbumManager #407"
+ },
+ "3594140296": {
+  "exclude": false,
+  "why": "card review 2026-11-21: agent notes, gates, stand-ins limited to external services, signals plausible",
+  "pr": "nexi-lab/nexus #412"
+ },
+ "3206997775": {
+  "exclude": false,
+  "why": "card review 2026-11-21: agent notes, gates, stand-ins limited to external services, signals plausible",
+  "pr": "bolna-ai/bolna #221"
+ },
+ "3852338968": {
+  "exclude": false,
+  "why": "card review 2026-11-21: agent notes, gates, stand-ins limited to external services, signals plausible",
+  "pr": "Uzay-G/espial #14"
+ },
+ "3089613637": {
+  "exclude": false,
+  "why": "card review 2026-11-21: agent notes, gates, stand-ins limited to external services, signals plausible",
+  "pr": "addok/addok #893"
+ },
+ "3746765122": {
+  "exclude": false,
+  "why": "card review 2026-11-21: agent notes, gates, stand-ins limited to external services, signals plausible",
+  "pr": "mlflow/mlflow #19520"
+ },
+ "3400572459": {
+  "exclude": false,
+  "why": "card review 2026-11-21: agent notes, gates, stand-ins limited to external services, signals plausible",
+  "pr": "crewAIInc/crewAI #3490"
+ },
+ "3600115578": {
+  "exclude": false,
+  "why": "card review 2026-11-21: agent notes, gates, stand-ins limited to external services, signals plausible",
+  "pr": "OliverZhaohaibin/iPhotron-LocalPhotoAlbumManager #140"
+ },
+ "3970313822": {
+  "exclude": false,
+  "why": "A/A control 1.078: excluded by the noise rule in p7_results (not a review exclusion)",
+  "pr": "marin-community/marin #2934"
+ },
+ "3423913495": {
+  "exclude": false,
+  "why": "card review 2026-11-21: agent notes, gates, stand-ins limited to external services, signals plausible",
+  "pr": "BoundaryML/baml #2467"
+ },
+ "3724969747": {
+  "exclude": false,
+  "why": "card review 2026-11-21: agent notes, gates, stand-ins limited to external services, signals plausible",
+  "pr": "tinygrad/tinygrad #13664"
+ },
+ "3714678611": {
+  "exclude": false,
+  "why": "card review 2026-11-21: agent notes, gates, stand-ins limited to external services, signals plausible",
+  "pr": "nexi-lab/nexus #623"
+ },
+ "3866174642": {
+  "exclude": false,
+  "why": "card review 2026-11-21: agent notes, gates, stand-ins limited to external services, signals plausible",
+  "pr": "PrefectHQ/prefect #20440"
+ },
+ "3961227245": {
+  "exclude": false,
+  "why": "card review 2026-11-21: agent notes, gates, stand-ins limited to external services, signals plausible",
+  "pr": "airbytehq/airbyte #73654"
+ },
+ "4033237246": {
+  "exclude": false,
+  "why": "head coverage 0.539 passes the 0.5 gate for >200 changed lines; many stand-ins for chat platforms",
+  "pr": "AstrBotDevs/AstrBot #5798"
+ },
+ "3467378370": {
+  "exclude": false,
+  "why": "card review 2026-11-21: agent notes, gates, stand-ins limited to external services, signals plausible",
+  "pr": "crestalnetwork/intentkit #835"
+ },
+ "3782241167": {
+  "exclude": false,
+  "why": "card review 2026-11-21: agent notes, gates, stand-ins limited to external services, signals plausible",
+  "pr": "OliverZhaohaibin/iPhotron-LocalPhotoAlbumManager #494"
+ },
+ "3726274594": {
+  "exclude": false,
+  "why": "card review 2026-11-21: agent notes, gates, stand-ins limited to external services, signals plausible",
+  "pr": "OliverZhaohaibin/iPhotron-LocalPhotoAlbumManager #428"
+ },
+ "4017186718": {
+  "exclude": false,
+  "why": "card review 2026-11-21: agent notes, gates, stand-ins limited to external services, signals plausible",
+  "pr": "cft0808/edict #12"
+ },
+ "4035652675": {
+  "exclude": false,
+  "why": "card review 2026-11-21: agent notes, gates, stand-ins limited to external services, signals plausible",
+  "pr": "getzep/graphiti #1303"
+ },
+ "4009498604": {
+  "exclude": false,
+  "why": "card review 2026-11-21: agent notes, gates, stand-ins limited to external services, signals plausible",
+  "pr": "osuAkatsuki/bancho.py #748"
+ },
+ "4007793617": {
+  "exclude": false,
+  "why": "card review 2026-11-21: agent notes, gates, stand-ins limited to external services, signals plausible",
+  "pr": "agentscope-ai/QwenPaw #249"
+ },
+ "3845573984": {
+  "exclude": false,
+  "why": "card review 2026-11-21: agent notes, gates, stand-ins limited to external services, signals plausible",
+  "pr": "Whamp/chirp-stt #21"
+ },
+ "3908509929": {
+  "exclude": false,
+  "why": "card review 2026-11-21: agent notes, gates, stand-ins limited to external services, signals plausible",
+  "pr": "FZJ-IEK3-VSA/tsam #147"
+ },
+ "4177804729": {
+  "exclude": false,
+  "why": "card review 2026-11-21: agent notes, gates, stand-ins limited to external services, signals plausible",
+  "pr": "ScrollPrize/villa #802"
+ },
+ "3089612967": {
+  "exclude": false,
+  "why": "card review 2026-11-21: agent notes, gates, stand-ins limited to external services, signals plausible",
+  "pr": "addok/addok #892"
+ },
+ "3771655564": {
+  "exclude": false,
+  "why": "card review 2026-11-21: agent notes, gates, stand-ins limited to external services, signals plausible",
+  "pr": "rush86999/atom #469"
+ },
+ "3210532278": {
+  "exclude": false,
+  "why": "'patch(' is instructor.patch, the library API, not a mock; fake LLM create function only",
+  "pr": "567-labs/instructor #1674"
+ },
+ "3751344465": {
+  "exclude": false,
+  "why": "card review 2026-11-21: agent notes, gates, stand-ins limited to external services, signals plausible",
+  "pr": "The-XSS-Rat/subScraper #46"
+ },
+ "3711770112": {
+  "exclude": false,
+  "why": "card review 2026-11-21: agent notes, gates, stand-ins limited to external services, signals plausible",
+  "pr": "OliverZhaohaibin/iPhotron-LocalPhotoAlbumManager #381"
+ },
+ "3945657455": {
+  "exclude": false,
+  "why": "card review 2026-11-21: agent notes, gates, stand-ins limited to external services, signals plausible",
+  "pr": "nexi-lab/nexus #1622"
+ },
+ "3751451957": {
+  "exclude": false,
+  "why": "card review 2026-11-21: agent notes, gates, stand-ins limited to external services, signals plausible",
+  "pr": "makerforgetech/modular-biped #146"
+ },
+ "3751312130": {
+  "exclude": false,
+  "why": "card review 2026-11-21: agent notes, gates, stand-ins limited to external services, signals plausible",
+  "pr": "OliverZhaohaibin/iPhotron-LocalPhotoAlbumManager #475"
+ },
+ "4025062250": {
+  "exclude": false,
+  "why": "card review 2026-11-21: agent notes, gates, stand-ins limited to external services, signals plausible",
+  "pr": "PrefectHQ/prefect #20973"
+ },
+ "3006534682": {
+  "exclude": false,
+  "why": "bpy 4.4 instead of pinned 3.6 (not on PyPI); same env on both sides",
+  "pr": "saturday06/VRM-Addon-for-Blender #797"
+ },
+ "3246037837": {
+  "exclude": false,
+  "why": "card review 2026-11-21: agent notes, gates, stand-ins limited to external services, signals plausible",
+  "pr": "ayutaz/piper-plus #113"
+ },
+ "3946349670": {
+  "exclude": false,
+  "why": "set aside by rule (python share 0.377)",
+  "pr": "AndyMik90/Aperant #1852"
+ },
+ "3417785336": {
+  "exclude": false,
+  "why": "card review 2026-11-21: agent notes, gates, stand-ins limited to external services, signals plausible",
+  "pr": "ultralytics/ultralytics #22086"
+ },
+ "4103160496": {
+  "exclude": false,
+  "why": "card review 2026-11-21: agent notes, gates, stand-ins limited to external services, signals plausible",
+  "pr": "getnao/nao #488"
+ }
+}

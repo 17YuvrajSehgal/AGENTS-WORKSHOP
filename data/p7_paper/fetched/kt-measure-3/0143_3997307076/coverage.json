@@ -1,0 +1,24 @@
+{
+ "changed_files": [
+  "src/cvxpylayers/interfaces/cuclarabel_if.py",
+  "src/cvxpylayers/interfaces/diffcp_if.py",
+  "src/cvxpylayers/interfaces/moreau_if.py",
+  "src/cvxpylayers/interfaces/mpax_if.py",
+  "src/cvxpylayers/jax/cvxpylayer.py",
+  "src/cvxpylayers/torch/cvxpylayer.py"
+ ],
+ "base": {
+  "changed_executable_lines": 21,
+  "executed": 2,
+  "share": 0.095
+ },
+ "head": {
+  "changed_executable_lines": 82,
+  "executed": 16,
+  "share": 0.195
+ },
+ "output_digest_base": "1f1793ee7f44760a151f05a3f8bc30bc87e791122c72be37966c941494b089b8",
+ "output_digest_head": "1f1793ee7f44760a151f05a3f8bc30bc87e791122c72be37966c941494b089b8",
+ "output_equal": true,
+ "coverage_gate_pass": false
+}

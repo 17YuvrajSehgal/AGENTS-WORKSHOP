@@ -1,0 +1,86 @@
+{
+ "job": {
+  "order": 119,
+  "id": 3797599647,
+  "agent": "Copilot",
+  "repo": "OliverZhaohaibin/iPhotron-LocalPhotoAlbumManager",
+  "number": 516,
+  "api_base_sha": "c1e2c63e8cd15915ab3a6bb0f382c91ea4ae1761",
+  "head_sha": "2786d650e986044f15c5442f49c1f7e6051d009e",
+  "created": "2026-01-09",
+  "changed_files": [
+   "src/iPhoto/gui/ui/controllers/navigation_controller.py",
+   "src/iPhoto/library/manager.py",
+   "tests/test_library_manager_cleanup.py",
+   "tests/test_navigation_controller.py"
+  ],
+  "n_files": 4,
+  "final_diff_files": [
+   "src/iPhoto/gui/ui/controllers/navigation_controller.py",
+   "src/iPhoto/library/manager.py",
+   "tests/test_library_manager_cleanup.py",
+   "tests/test_navigation_controller.py"
+  ]
+ },
+ "agent": {
+  "status": "built",
+  "reason": "none",
+  "tier": "own_calls",
+  "uses_parallelism": true,
+  "behaviour_change_expected": true,
+  "notes": "Installed PyOpenGL (both venvs) and libpulse0 (apt). Workload drives NavigationController.open_recently_deleted with a real LibraryManager/SQLite index under /tmp/kt_516 and stand-in facade/sidebar/dialogs, then runs the Qt event loop so head's QTimer-started cleanup thread runs (cleanup_deleted_index). Covers error branches: unreadable trash, trash disappearing (dangling link), trash linked outside the library, damaged index DB. Head coverage 0.864; base has no removed lines. Outputs differ by design: head removes stale trash rows from the index, base does nothing. Head bug: LOGGER is never defined in navigation_controller.py, so failed cleanups raise NameError in the thread and print a traceback to stderr (does not affect the digest)."
+ },
+ "agent_is_error": false,
+ "timed_out": false,
+ "models": [
+  "claude-opus-5-5"
+ ],
+ "list_usd": 0.783176,
+ "num_turns": 28,
+ "setup_ok": true,
+ "setup_s": 6,
+ "agent_s": 264,
+ "check": {
+  "base_exit_ok": true,
+  "base_last_line": "02fe84e0258f55bf9a4324e8fb24445a59c09d96250e9c5e7212150f49e837cb",
+  "head_exit_ok": true,
+  "head_last_line": "2956906c47920601686c9937082961c6fb53cc4568d5bada7c81cc5e559ac35a",
+  "base_time_s": 1.969,
+  "head_time_s": 2.258,
+  "no_network_ok": true,
+  "coverage": {
+   "changed_files": [
+    "src/iPhoto/gui/ui/controllers/navigation_controller.py",
+    "src/iPhoto/library/manager.py"
+   ],
+   "base": {
+    "changed_executable_lines": 0,
+    "executed": 0,
+    "share": null
+   },
+   "head": {
+    "changed_executable_lines": 59,
+    "executed": 51,
+    "share": 0.864
+   },
+   "output_digest_base": "02fe84e0258f55bf9a4324e8fb24445a59c09d96250e9c5e7212150f49e837cb",
+   "output_digest_head": "2956906c47920601686c9937082961c6fb53cc4568d5bada7c81cc5e559ac35a",
+   "output_equal": false,
+   "coverage_gate_pass": true
+  },
+  "coverage_needed": 0.8,
+  "output_equal": false,
+  "pass": true,
+  "reasons": []
+ },
+ "harness_pass": true,
+ "audit": {
+  "mentions_github_pull": false,
+  "used_gh_cli": false,
+  "read_git_history": false
+ },
+ "changed_code_lines": {
+  "py": 167
+ },
+ "python_share_of_code_change": 1.0
+}

@@ -1,0 +1,88 @@
+{
+ "job": {
+  "order": 55,
+  "id": 3600115578,
+  "agent": "OpenAI_Codex",
+  "repo": "OliverZhaohaibin/iPhotron-LocalPhotoAlbumManager",
+  "number": 140,
+  "api_base_sha": "f5b7e2933441a32f8842edd31610cdf4e73333e6",
+  "head_sha": "496b8320a62fb971d9ea9b6e1ab7d154add22a02",
+  "created": "2025-11-07",
+  "changed_files": [
+   "src/iPhoto/gui/ui/controllers/edit_controller.py",
+   "src/iPhoto/gui/ui/controllers/edit_preview_manager.py",
+   "src/iPhoto/gui/ui/tasks/edit_sidebar_preview_worker.py",
+   "src/iPhoto/gui/ui/widgets/gl_image_viewer.py"
+  ],
+  "n_files": 4,
+  "final_diff_files": [
+   "src/iPhoto/gui/ui/controllers/edit_controller.py",
+   "src/iPhoto/gui/ui/controllers/edit_preview_manager.py",
+   "src/iPhoto/gui/ui/tasks/edit_sidebar_preview_worker.py",
+   "src/iPhoto/gui/ui/widgets/gl_image_viewer.py"
+  ]
+ },
+ "agent": {
+  "status": "built",
+  "reason": "none",
+  "tier": "own_calls",
+  "uses_parallelism": true,
+  "behaviour_change_expected": true,
+  "notes": "Installed PyOpenGL and mapbox-vector-tile into both venvs; apt-installed libpulse0, xvfb and Qt's X11/xcb libraries. The workload starts its own Xvfb display (unix socket only, software Mesa OpenGL, no GPU) and builds the iPhotos.src/iPhotos.maps package layout under /tmp/kt_140: src is a symlink to the code under test, maps is a copy with an empty tiles dir so MainWindow can start. It drives the real MainWindow -> EditController.begin_edit -> image load -> sidebar preview flow on 5 generated images. It also calls _start_sidebar_preview_preparation directly with 2 full-resolution frames and runs EditSidebarPreviewWorker on the main thread with target_height 320 and -1 (repo-test style). Qt thread-pool workers do the real image loading and preview work. Head coverage 0.804 (115/143), base 1.0 (7/7). Digests differ by design: head computes sidebar stats from the GPU-scaled preview, and target_height -1 means pass-through on head but a 64 px scale on base. Each side's digest is the same across repeated runs."
+ },
+ "agent_is_error": false,
+ "timed_out": false,
+ "models": [
+  "claude-opus-5-5"
+ ],
+ "list_usd": 1.5291945999999998,
+ "num_turns": 51,
+ "setup_ok": true,
+ "setup_s": 20,
+ "agent_s": 1039,
+ "check": {
+  "base_exit_ok": true,
+  "base_last_line": "7370a11d5587cacb778b541f9bef170eaa7df36f1a96c533f48031930a51f0b4",
+  "head_exit_ok": true,
+  "head_last_line": "71c038e25390c5dcc5ff2f9ff0a6a29a4451cb4a023caa1bb2819aea8008577c",
+  "base_time_s": 10.365,
+  "head_time_s": 10.018,
+  "no_network_ok": true,
+  "coverage": {
+   "changed_files": [
+    "src/iPhoto/gui/ui/controllers/edit_controller.py",
+    "src/iPhoto/gui/ui/controllers/edit_preview_manager.py",
+    "src/iPhoto/gui/ui/tasks/edit_sidebar_preview_worker.py",
+    "src/iPhoto/gui/ui/widgets/gl_image_viewer.py"
+   ],
+   "base": {
+    "changed_executable_lines": 7,
+    "executed": 7,
+    "share": 1.0
+   },
+   "head": {
+    "changed_executable_lines": 143,
+    "executed": 115,
+    "share": 0.804
+   },
+   "output_digest_base": "7370a11d5587cacb778b541f9bef170eaa7df36f1a96c533f48031930a51f0b4",
+   "output_digest_head": "71c038e25390c5dcc5ff2f9ff0a6a29a4451cb4a023caa1bb2819aea8008577c",
+   "output_equal": false,
+   "coverage_gate_pass": true
+  },
+  "coverage_needed": 0.8,
+  "output_equal": false,
+  "pass": true,
+  "reasons": []
+ },
+ "harness_pass": true,
+ "audit": {
+  "mentions_github_pull": false,
+  "used_gh_cli": false,
+  "read_git_history": false
+ },
+ "changed_code_lines": {
+  "py": 285
+ },
+ "python_share_of_code_change": 1.0
+}

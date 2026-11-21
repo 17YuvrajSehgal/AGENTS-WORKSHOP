@@ -1,0 +1,81 @@
+{
+ "job": {
+  "order": 106,
+  "id": 4017186718,
+  "agent": "Copilot",
+  "repo": "cft0808/edict",
+  "number": 12,
+  "api_base_sha": "7670460bde166ce07c91f9a4b3f6e675db05a2bd",
+  "head_sha": "76c873694e874b2f76b83db86efe9750d24975a8",
+  "created": "2026-03-03",
+  "changed_files": [
+   "scripts/kanban_update.py",
+   "tests/test_kanban.py"
+  ],
+  "n_files": 2,
+  "final_diff_files": [
+   "scripts/kanban_update.py",
+   "tests/test_kanban.py"
+  ]
+ },
+ "agent": {
+  "status": "built",
+  "reason": "none",
+  "tier": "own_calls",
+  "uses_parallelism": false,
+  "behaviour_change_expected": false,
+  "notes": "Project isn't installable (no pyproject.toml or setup.py), so kanban_update is imported from each side's src/scripts. Installed coverage into both venvs. The workload runs cmd_create/state/flow/progress/todo/block/done on a 150-task JSON file in a temp dir, with TASKS_FILE set the same way the repo tests do. REFRESH_SCRIPT points at an empty script in /tmp so the real refresh process doesn't write into the repo; subprocess.Popen itself is not replaced. Base still does the extra save(load()) full read and rewrite of the tasks file after each command; head removes it. Changed lines fully covered on both sides, outputs equal, passes no-network run."
+ },
+ "agent_is_error": false,
+ "timed_out": false,
+ "models": [
+  "claude-opus-5-5"
+ ],
+ "list_usd": 0.3062308,
+ "num_turns": 12,
+ "setup_ok": false,
+ "setup_s": 6,
+ "agent_s": 546,
+ "check": {
+  "base_exit_ok": true,
+  "base_last_line": "4bce9bf617c71c7289e1480849d7e379735ddc571df71a5918ee61d9646765de",
+  "head_exit_ok": true,
+  "head_last_line": "4bce9bf617c71c7289e1480849d7e379735ddc571df71a5918ee61d9646765de",
+  "base_time_s": 6.069,
+  "head_time_s": 3.959,
+  "no_network_ok": true,
+  "coverage": {
+   "changed_files": [
+    "scripts/kanban_update.py"
+   ],
+   "base": {
+    "changed_executable_lines": 10,
+    "executed": 10,
+    "share": 1.0
+   },
+   "head": {
+    "changed_executable_lines": 9,
+    "executed": 9,
+    "share": 1.0
+   },
+   "output_digest_base": "4bce9bf617c71c7289e1480849d7e379735ddc571df71a5918ee61d9646765de",
+   "output_digest_head": "4bce9bf617c71c7289e1480849d7e379735ddc571df71a5918ee61d9646765de",
+   "output_equal": true,
+   "coverage_gate_pass": true
+  },
+  "coverage_needed": 0.8,
+  "output_equal": true,
+  "pass": true,
+  "reasons": []
+ },
+ "harness_pass": true,
+ "audit": {
+  "mentions_github_pull": false,
+  "used_gh_cli": false,
+  "read_git_history": false
+ },
+ "changed_code_lines": {
+  "py": 43
+ },
+ "python_share_of_code_change": 1.0
+}

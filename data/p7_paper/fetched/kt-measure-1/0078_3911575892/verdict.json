@@ -1,0 +1,96 @@
+{
+ "job": {
+  "order": 78,
+  "id": 3911575892,
+  "agent": "OpenAI_Codex",
+  "repo": "OliverZhaohaibin/iPhotron-LocalPhotoAlbumManager",
+  "number": 678,
+  "api_base_sha": "815f270210ce08e098d835b85105e7d5d7c3a989",
+  "head_sha": "201b009d768866c41533559047cd0a344331ea97",
+  "created": "2026-02-07",
+  "changed_files": [
+   "src/iPhoto/gui/ui/controllers/edit_fullscreen_manager.py",
+   "src/iPhoto/gui/ui/controllers/export_controller.py",
+   "src/iPhoto/gui/ui/controllers/player_view_controller.py",
+   "src/iPhoto/gui/ui/widgets/gl_image_viewer/widget.py",
+   "src/iPhoto/gui/ui/widgets/view_transform_controller.py",
+   "src/iPhoto/gui/ui/window_manager.py"
+  ],
+  "n_files": 6,
+  "final_diff_files": [
+   "src/iPhoto/gui/ui/controllers/edit_fullscreen_manager.py",
+   "src/iPhoto/gui/ui/controllers/export_controller.py",
+   "src/iPhoto/gui/ui/controllers/player_view_controller.py",
+   "src/iPhoto/gui/ui/widgets/gl_image_viewer/widget.py",
+   "src/iPhoto/gui/ui/widgets/view_transform_controller.py",
+   "src/iPhoto/gui/ui/window_manager.py"
+  ]
+ },
+ "agent": {
+  "status": "unbuildable",
+  "reason": "change_unreachable",
+  "tier": "own_calls",
+  "uses_parallelism": true,
+  "behaviour_change_expected": false,
+  "notes": "Envs OK after installing PyOpenGL in both. workload.py runs ExportWorker/LibraryExportWorker (head: ThreadPoolExecutor), the PlayerViewController.display_image cache path and GLImageViewer resize/wheel events. Digests match, base 4.8 s, no-network run OK, but head coverage is only 0.589 (needs 0.8). The remaining changed lines (FramelessWindowManager enter/exit_fullscreen, EditFullscreenManager.enter_fullscreen_preview, and the new GLImageViewer/ViewTransformController snapshot methods only they call) need a full MainWindow. MainWindow can't be built because the maps/tiles data directory is missing from the source tree (TileAccessError), and adding it would mean editing src or stubbing non-I/O code. Base counts missing files in the progress total and head doesn't (65 vs 64); the workload hashes only the progress count."
+ },
+ "agent_is_error": false,
+ "timed_out": false,
+ "models": [
+  "claude-opus-5-5"
+ ],
+ "list_usd": 0.8620996,
+ "num_turns": 28,
+ "setup_ok": true,
+ "setup_s": 37,
+ "agent_s": 225,
+ "check": {
+  "base_exit_ok": true,
+  "base_last_line": "aae491b3cd294316dc55a6120526d331d0d01baeb9c8176117c975008433e2d8",
+  "head_exit_ok": true,
+  "head_last_line": "aae491b3cd294316dc55a6120526d331d0d01baeb9c8176117c975008433e2d8",
+  "base_time_s": 4.18,
+  "head_time_s": 5.172,
+  "no_network_ok": true,
+  "coverage": {
+   "changed_files": [
+    "src/iPhoto/gui/ui/controllers/edit_fullscreen_manager.py",
+    "src/iPhoto/gui/ui/controllers/export_controller.py",
+    "src/iPhoto/gui/ui/controllers/player_view_controller.py",
+    "src/iPhoto/gui/ui/widgets/gl_image_viewer/widget.py",
+    "src/iPhoto/gui/ui/widgets/view_transform_controller.py",
+    "src/iPhoto/gui/ui/window_manager.py"
+   ],
+   "base": {
+    "changed_executable_lines": 15,
+    "executed": 13,
+    "share": 0.867
+   },
+   "head": {
+    "changed_executable_lines": 107,
+    "executed": 63,
+    "share": 0.589
+   },
+   "output_digest_base": "aae491b3cd294316dc55a6120526d331d0d01baeb9c8176117c975008433e2d8",
+   "output_digest_head": "aae491b3cd294316dc55a6120526d331d0d01baeb9c8176117c975008433e2d8",
+   "output_equal": true,
+   "coverage_gate_pass": false
+  },
+  "coverage_needed": 0.8,
+  "output_equal": true,
+  "pass": false,
+  "reasons": [
+   "head coverage 0.589 < 0.8"
+  ]
+ },
+ "harness_pass": false,
+ "audit": {
+  "mentions_github_pull": false,
+  "used_gh_cli": false,
+  "read_git_history": false
+ },
+ "changed_code_lines": {
+  "py": 188
+ },
+ "python_share_of_code_change": 1.0
+}

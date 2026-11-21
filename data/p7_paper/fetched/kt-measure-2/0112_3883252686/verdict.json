@@ -1,0 +1,100 @@
+{
+ "job": {
+  "order": 112,
+  "id": 3883252686,
+  "agent": "Copilot",
+  "repo": "groxaxo/Qwen3-TTS-Openai-Fastapi",
+  "number": 12,
+  "api_base_sha": "641bfe10494ae402380eebd9a79404cfa729cdff",
+  "head_sha": "8a32504061562fa258a8591b460fa5ec35c875e8",
+  "created": "2026-02-01",
+  "changed_files": [
+   ".env.example",
+   "CPU_BACKEND_GUIDE.md",
+   "IMPLEMENTATION_SUMMARY.md",
+   "README.md",
+   "api/backends/factory.py",
+   "api/backends/openvino_backend.py",
+   "api/backends/pytorch_backend.py",
+   "api/config.py",
+   "examples/test_cpu_backend.py",
+   "tests/test_backends.py"
+  ],
+  "n_files": 10,
+  "final_diff_files": [
+   ".env.example",
+   "CPU_BACKEND_GUIDE.md",
+   "IMPLEMENTATION_SUMMARY.md",
+   "README.md",
+   "api/backends/factory.py",
+   "api/backends/openvino_backend.py",
+   "api/backends/pytorch_backend.py",
+   "api/config.py",
+   "examples/test_cpu_backend.py",
+   "tests/test_backends.py"
+  ]
+ },
+ "agent": {
+  "status": "built",
+  "reason": "none",
+  "tier": "own_calls",
+  "uses_parallelism": false,
+  "behaviour_change_expected": true,
+  "notes": "Workload calls factory.get_backend()/reset_backend() 40,000 times across official/vllm/bogus/pytorch/openvino env configs, then calls the cheap backend methods. No model loading. On base, pytorch/openvino raise 'Unknown TTS_BACKEND'; on head they build the new PyTorchCPUBackend/OpenVINOBackend, so the digests differ as expected. Head coverage is 52.5%; the uncovered lines are model loading and generation that need real weights. Base runs in 3.1 s, head in 4.0 s."
+ },
+ "agent_is_error": false,
+ "timed_out": false,
+ "models": [
+  "claude-opus-5-5"
+ ],
+ "list_usd": 0.30745120000000004,
+ "num_turns": 10,
+ "setup_ok": true,
+ "setup_s": 5,
+ "agent_s": 107,
+ "check": {
+  "base_exit_ok": true,
+  "base_last_line": "a6e07cf6aa783956657a4ce10f064b363771094657b081e35416d70776955346",
+  "head_exit_ok": true,
+  "head_last_line": "d0caf399f230583aa0cfad83cd57f0d9ede2059b71b16ec5f67228f9f5c53cbd",
+  "base_time_s": 2.981,
+  "head_time_s": 3.891,
+  "no_network_ok": true,
+  "coverage": {
+   "changed_files": [
+    "api/backends/factory.py",
+    "api/backends/openvino_backend.py",
+    "api/backends/pytorch_backend.py",
+    "api/config.py"
+   ],
+   "base": {
+    "changed_executable_lines": 1,
+    "executed": 1,
+    "share": 1.0
+   },
+   "head": {
+    "changed_executable_lines": 280,
+    "executed": 147,
+    "share": 0.525
+   },
+   "output_digest_base": "a6e07cf6aa783956657a4ce10f064b363771094657b081e35416d70776955346",
+   "output_digest_head": "d0caf399f230583aa0cfad83cd57f0d9ede2059b71b16ec5f67228f9f5c53cbd",
+   "output_equal": false,
+   "coverage_gate_pass": false
+  },
+  "coverage_needed": 0.5,
+  "output_equal": false,
+  "pass": true,
+  "reasons": []
+ },
+ "harness_pass": true,
+ "audit": {
+  "mentions_github_pull": false,
+  "used_gh_cli": false,
+  "read_git_history": false
+ },
+ "changed_code_lines": {
+  "py": 1150
+ },
+ "python_share_of_code_change": 1.0
+}

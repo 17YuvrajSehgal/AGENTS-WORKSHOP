@@ -1,0 +1,41 @@
+{
+ "changed_files": [
+  "astrbot/builtin_stars/builtin_commands/commands/plugin.py",
+  "astrbot/builtin_stars/builtin_extension_hub/main.py",
+  "astrbot/cli/commands/cmd_plug.py",
+  "astrbot/core/astr_main_agent.py",
+  "astrbot/core/config/default.py",
+  "astrbot/core/config/i18n_utils.py",
+  "astrbot/core/db/__init__.py",
+  "astrbot/core/db/po.py",
+  "astrbot/core/db/sqlite.py",
+  "astrbot/core/extensions/__init__.py",
+  "astrbot/core/extensions/adapters.py",
+  "astrbot/core/extensions/llm_tools.py",
+  "astrbot/core/extensions/model.py",
+  "astrbot/core/extensions/orchestrator.py",
+  "astrbot/core/extensions/pending_operation.py",
+  "astrbot/core/extensions/policy.py",
+  "astrbot/core/extensions/runtime.py",
+  "astrbot/core/star/plugin_search.py",
+  "astrbot/core/utils/http_ssl.py",
+  "astrbot/dashboard/routes/plugin.py",
+  "astrbot/dashboard/routes/route.py",
+  "astrbot/utils/http_ssl_common.py",
+  "runtime_bootstrap.py"
+ ],
+ "base": {
+  "changed_executable_lines": 9,
+  "executed": 4,
+  "share": 0.444
+ },
+ "head": {
+  "changed_executable_lines": 256,
+  "executed": 138,
+  "share": 0.539
+ },
+ "output_digest_base": "d879362c64961f23a2c6ae2391fadb079f1db11d1d159a93633b860746e590f2",
+ "output_digest_head": "13466d502a5aa85a610b160c996b94967b55d3c9146be4e39485e3361836f00a",
+ "output_equal": false,
+ "coverage_gate_pass": false
+}

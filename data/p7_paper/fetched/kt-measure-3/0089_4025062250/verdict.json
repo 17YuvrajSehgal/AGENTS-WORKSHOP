@@ -1,0 +1,89 @@
+{
+ "job": {
+  "order": 89,
+  "id": 4025062250,
+  "agent": "Devin",
+  "repo": "PrefectHQ/prefect",
+  "number": 20973,
+  "api_base_sha": "7d651d210aa6128a440e9964081f8c0ba0a8b06e",
+  "head_sha": "9534cfebe9016138e5c4f8d6774d35781cfaa484",
+  "created": "2026-03-05",
+  "changed_files": [
+   "src/integrations/prefect-dbt/prefect_dbt/core/_orchestrator.py",
+   "src/prefect/context.py",
+   "src/prefect/settings/models/client.py",
+   "tests/client/test_prefect_client.py",
+   "tests/test_settings.py"
+  ],
+  "n_files": 5,
+  "final_diff_files": [
+   "src/integrations/prefect-dbt/prefect_dbt/core/_orchestrator.py",
+   "src/prefect/context.py",
+   "src/prefect/settings/models/client.py",
+   "tests/client/test_prefect_client.py",
+   "tests/test_settings.py"
+  ]
+ },
+ "agent": {
+  "status": "built",
+  "reason": "none",
+  "tier": "own_calls",
+  "uses_parallelism": false,
+  "behaviour_change_expected": false,
+  "notes": "Workload enters and exits SyncClientContext and AsyncClientContext (including re-entering each one) 150 times each against a local in-process HTTP stub that answers /admin/version. With the default setting (check enabled), this runs every changed line in prefect/context.py on both sides. The prefect_dbt orchestrator change is not covered because prefect-dbt is not installed in either venv. check.py passes: 100% coverage of changed lines on both sides, outputs equal, base run ~6.8 s, no-network run OK. The stub server runs in a daemon thread; it is I/O only and serves one request."
+ },
+ "agent_is_error": false,
+ "timed_out": false,
+ "models": [
+  "claude-opus-5-5"
+ ],
+ "list_usd": 0.173719,
+ "num_turns": 7,
+ "setup_ok": true,
+ "setup_s": 11,
+ "agent_s": 121,
+ "check": {
+  "base_exit_ok": true,
+  "base_last_line": "02f906c5c2ed994087a03d4debd2a4f7a9b3d50d6b3d00cd00a5d8c3394de3e1",
+  "head_exit_ok": true,
+  "head_last_line": "02f906c5c2ed994087a03d4debd2a4f7a9b3d50d6b3d00cd00a5d8c3394de3e1",
+  "base_time_s": 7.43,
+  "head_time_s": 8.769,
+  "no_network_ok": true,
+  "coverage": {
+   "changed_files": [
+    "src/integrations/prefect-dbt/prefect_dbt/core/_orchestrator.py",
+    "src/prefect/context.py",
+    "src/prefect/settings/models/client.py"
+   ],
+   "base": {
+    "changed_executable_lines": 2,
+    "executed": 2,
+    "share": 1.0
+   },
+   "head": {
+    "changed_executable_lines": 7,
+    "executed": 7,
+    "share": 1.0
+   },
+   "output_digest_base": "02f906c5c2ed994087a03d4debd2a4f7a9b3d50d6b3d00cd00a5d8c3394de3e1",
+   "output_digest_head": "02f906c5c2ed994087a03d4debd2a4f7a9b3d50d6b3d00cd00a5d8c3394de3e1",
+   "output_equal": true,
+   "coverage_gate_pass": true
+  },
+  "coverage_needed": 0.8,
+  "output_equal": true,
+  "pass": true,
+  "reasons": []
+ },
+ "harness_pass": true,
+ "audit": {
+  "mentions_github_pull": false,
+  "used_gh_cli": false,
+  "read_git_history": false
+ },
+ "changed_code_lines": {
+  "py": 105
+ },
+ "python_share_of_code_change": 1.0
+}

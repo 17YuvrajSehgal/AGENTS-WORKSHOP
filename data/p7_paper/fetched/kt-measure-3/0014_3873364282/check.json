@@ -1,0 +1,37 @@
+{
+ "base_exit_ok": true,
+ "base_last_line": "b3441f541f32f4b247b518ae9b47a90c8ce7412167e5e5d24d4309658242c661",
+ "head_exit_ok": true,
+ "head_last_line": "b3441f541f32f4b247b518ae9b47a90c8ce7412167e5e5d24d4309658242c661",
+ "base_time_s": 2.439,
+ "head_time_s": 2.052,
+ "no_network_ok": true,
+ "coverage": {
+  "changed_files": [
+   "pythainlp/soundex/prayut_and_somchaip.py",
+   "pythainlp/spell/words_spelling_correction.py",
+   "pythainlp/tokenize/thaisumcut.py",
+   "pythainlp/ulmfit/preprocess.py",
+   "pythainlp/util/date.py",
+   "pythainlp/util/normalize.py"
+  ],
+  "base": {
+   "changed_executable_lines": 10,
+   "executed": 9,
+   "share": 0.9
+  },
+  "head": {
+   "changed_executable_lines": 8,
+   "executed": 7,
+   "share": 0.875
+  },
+  "output_digest_base": "b3441f541f32f4b247b518ae9b47a90c8ce7412167e5e5d24d4309658242c661",
+  "output_digest_head": "b3441f541f32f4b247b518ae9b47a90c8ce7412167e5e5d24d4309658242c661",
+  "output_equal": true,
+  "coverage_gate_pass": true
+ },
+ "coverage_needed": 0.8,
+ "output_equal": true,
+ "pass": true,
+ "reasons": []
+}

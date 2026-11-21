@@ -1,0 +1,20 @@
+{
+ "changed_files": [
+  "binanceneural/data.py",
+  "binanceneural/trainer.py"
+ ],
+ "base": {
+  "changed_executable_lines": 15,
+  "executed": 15,
+  "share": 1.0
+ },
+ "head": {
+  "changed_executable_lines": 57,
+  "executed": 26,
+  "share": 0.456
+ },
+ "output_digest_base": "2e6850728ed3c2402a5d96d6a0e2ad6dec613f61faedab95c8e50f41899a2633",
+ "output_digest_head": "2e6850728ed3c2402a5d96d6a0e2ad6dec613f61faedab95c8e50f41899a2633",
+ "output_equal": true,
+ "coverage_gate_pass": false
+}

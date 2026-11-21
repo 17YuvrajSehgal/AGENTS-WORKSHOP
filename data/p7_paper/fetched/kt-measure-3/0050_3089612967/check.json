@@ -1,0 +1,33 @@
+{
+ "base_exit_ok": true,
+ "base_last_line": "30517455dd64c46ef385dec5a930345936dacdf97790366e8665501206199ba2",
+ "head_exit_ok": true,
+ "head_last_line": "30517455dd64c46ef385dec5a930345936dacdf97790366e8665501206199ba2",
+ "base_time_s": 1.387,
+ "head_time_s": 8.006,
+ "no_network_ok": true,
+ "coverage": {
+  "changed_files": [
+   "addok/config/default.py",
+   "addok/helpers/index.py"
+  ],
+  "base": {
+   "changed_executable_lines": 4,
+   "executed": 4,
+   "share": 1.0
+  },
+  "head": {
+   "changed_executable_lines": 4,
+   "executed": 4,
+   "share": 1.0
+  },
+  "output_digest_base": "30517455dd64c46ef385dec5a930345936dacdf97790366e8665501206199ba2",
+  "output_digest_head": "30517455dd64c46ef385dec5a930345936dacdf97790366e8665501206199ba2",
+  "output_equal": true,
+  "coverage_gate_pass": true
+ },
+ "coverage_needed": 0.8,
+ "output_equal": true,
+ "pass": true,
+ "reasons": []
+}

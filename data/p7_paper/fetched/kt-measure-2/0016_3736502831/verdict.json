@@ -1,0 +1,48 @@
+{
+ "job": {
+  "order": 16,
+  "id": 3736502831,
+  "agent": "Cursor",
+  "repo": "browser-use/browser-use",
+  "number": 3774,
+  "api_base_sha": "a102128317f8051c49d2a55ced556a95700176c3",
+  "head_sha": "b79dffeca4777b81990b4cb7fb99abc196d050c1",
+  "created": "2025-12-16",
+  "changed_files": [
+   "examples/models/bu_oss.py"
+  ],
+  "n_files": 1,
+  "final_diff_files": [
+   "examples/models/bu_oss.py"
+  ]
+ },
+ "agent": {
+  "status": "unbuildable",
+  "reason": "needs_external_service",
+  "tier": "none",
+  "uses_parallelism": false,
+  "behaviour_change_expected": false,
+  "notes": "The only change adds flash_mode=True to examples/models/bu_oss.py. That is a top-level example script: it calls the hosted ChatBrowserUse LLM (needs an API key and network) and drives a real browser to search GitHub. There is no library code change, so nothing can be measured offline."
+ },
+ "agent_is_error": false,
+ "timed_out": false,
+ "models": [
+  "claude-opus-5-5"
+ ],
+ "list_usd": 0.049732599999999995,
+ "num_turns": 3,
+ "setup_ok": true,
+ "setup_s": 6,
+ "agent_s": 6,
+ "check": null,
+ "harness_pass": false,
+ "audit": {
+  "mentions_github_pull": false,
+  "used_gh_cli": false,
+  "read_git_history": false
+ },
+ "changed_code_lines": {
+  "py": 1
+ },
+ "python_share_of_code_change": 1.0
+}

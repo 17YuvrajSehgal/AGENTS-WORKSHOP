@@ -1,0 +1,45 @@
+{
+ "n_compared": 66,
+ "runtime_perf_opus": 21,
+ "runtime_perf_haiku": 19,
+ "runtime_perf_agreement": 0.9091,
+ "runtime_perf_kappa": 0.785,
+ "haiku_precision_vs_opus": 0.8947,
+ "haiku_recall_vs_opus": 0.8095,
+ "role_agreement": 0.8788,
+ "role_kappa": 0.7814,
+ "scope_kappa": 0.7238,
+ "role_confusion_opus_rows_haiku_cols": {
+  "measurement_only": {
+   "measurement_only": 2,
+   "none": 0,
+   "primary": 0,
+   "secondary": 0
+  },
+  "none": {
+   "measurement_only": 0,
+   "none": 37,
+   "primary": 0,
+   "secondary": 6
+  },
+  "primary": {
+   "measurement_only": 0,
+   "none": 0,
+   "primary": 7,
+   "secondary": 1
+  },
+  "secondary": {
+   "measurement_only": 0,
+   "none": 1,
+   "primary": 0,
+   "secondary": 12
+  }
+ },
+ "haiku_quote_not_verbatim": 0,
+ "haiku_not_model_alone": 0,
+ "haiku_no_label": 0,
+ "usd_per_pr_opus": 0.0621,
+ "usd_per_pr_haiku": 0.0015,
+ "tokens_out_mean_opus": 171.5,
+ "tokens_out_mean_haiku": 413.2
+}

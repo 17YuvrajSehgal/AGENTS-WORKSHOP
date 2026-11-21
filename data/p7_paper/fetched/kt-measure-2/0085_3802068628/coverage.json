@@ -1,0 +1,20 @@
+{
+ "changed_files": [
+  "packages/github_agents/src/github_agents/board/cli.py",
+  "packages/github_agents/src/github_agents/board/manager.py"
+ ],
+ "base": {
+  "changed_executable_lines": 7,
+  "executed": 7,
+  "share": 1.0
+ },
+ "head": {
+  "changed_executable_lines": 163,
+  "executed": 54,
+  "share": 0.331
+ },
+ "output_digest_base": "1fbe90f9136e41f1ca2e929c24b255fdf3d3010bb2cb2af5487a216ab74bbbf4",
+ "output_digest_head": "24c1acc2fbacdc529a3e5cd2ae3f45334679e3790e1ed4ebeee831ff0bbb0432",
+ "output_equal": false,
+ "coverage_gate_pass": false
+}

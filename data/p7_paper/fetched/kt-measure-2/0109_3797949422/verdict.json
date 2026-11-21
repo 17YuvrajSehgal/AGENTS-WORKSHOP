@@ -1,0 +1,82 @@
+{
+ "job": {
+  "order": 109,
+  "id": 3797949422,
+  "agent": "Google_Jules",
+  "repo": "ryan112358/mbi",
+  "number": 78,
+  "api_base_sha": "644b1da36ac32ddeba3e26845d4f7b313675ff7d",
+  "head_sha": "951de13413cc8f5a9e4a0018c0ac27c16018e0b3",
+  "created": "2026-01-09",
+  "changed_files": [
+   "src/mbi/dataset.py",
+   "test/test_dataset.py",
+   "test/test_jax_dataset.py"
+  ],
+  "n_files": 3,
+  "final_diff_files": [
+   "src/mbi/dataset.py",
+   "test/test_dataset.py"
+  ]
+ },
+ "agent": {
+  "status": "built",
+  "reason": "none",
+  "tier": "own_calls",
+  "uses_parallelism": false,
+  "behaviour_change_expected": true,
+  "notes": "Workload builds seeded JaxDataset.synthetic datasets (50k records), reads records, and projects onto many column subsets, including empty and weighted ones; it also runs apply_sharding on a one-device mesh and reads records on an empty dataset. On base, project() always raises TypeError with jax 0.8.2 (histogramdd rejects range bins); the workload catches and hashes the error type. Head's bincount-based project works, so the digests differ. The synthetic data hashes the same on both sides. Head coverage 100%, base 56%; base run 4.1 s, head 7.1 s. Timing for project() compares an immediate failure against real work."
+ },
+ "agent_is_error": false,
+ "timed_out": false,
+ "models": [
+  "claude-opus-5-5"
+ ],
+ "list_usd": 0.18460279999999998,
+ "num_turns": 7,
+ "setup_ok": true,
+ "setup_s": 9,
+ "agent_s": 148,
+ "check": {
+  "base_exit_ok": true,
+  "base_last_line": "66d6494ccc9837e2c376996ba4d2b1d582a9a808122aa0de5dfae8cb39d244f0",
+  "head_exit_ok": true,
+  "head_last_line": "b0b6ea0dae57bc8a81bdd26ebea401901810f6727e2b785436a9fd973d071c3a",
+  "base_time_s": 3.88,
+  "head_time_s": 6.873,
+  "no_network_ok": true,
+  "coverage": {
+   "changed_files": [
+    "src/mbi/dataset.py"
+   ],
+   "base": {
+    "changed_executable_lines": 27,
+    "executed": 15,
+    "share": 0.556
+   },
+   "head": {
+    "changed_executable_lines": 22,
+    "executed": 22,
+    "share": 1.0
+   },
+   "output_digest_base": "66d6494ccc9837e2c376996ba4d2b1d582a9a808122aa0de5dfae8cb39d244f0",
+   "output_digest_head": "b0b6ea0dae57bc8a81bdd26ebea401901810f6727e2b785436a9fd973d071c3a",
+   "output_equal": false,
+   "coverage_gate_pass": true
+  },
+  "coverage_needed": 0.8,
+  "output_equal": false,
+  "pass": true,
+  "reasons": []
+ },
+ "harness_pass": true,
+ "audit": {
+  "mentions_github_pull": false,
+  "used_gh_cli": false,
+  "read_git_history": false
+ },
+ "changed_code_lines": {
+  "py": 139
+ },
+ "python_share_of_code_change": 1.0
+}

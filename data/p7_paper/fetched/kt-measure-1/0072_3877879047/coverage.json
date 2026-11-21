@@ -1,0 +1,19 @@
+{
+ "changed_files": [
+  "open_instruct/data_loader.py"
+ ],
+ "base": {
+  "changed_executable_lines": 1,
+  "executed": 1,
+  "share": 1.0
+ },
+ "head": {
+  "changed_executable_lines": 1,
+  "executed": 1,
+  "share": 1.0
+ },
+ "output_digest_base": "7f7f5b8ddbd41c5cf85ed149ffb09cc75f3659318ecb303643b0bbefa0f6ddf4",
+ "output_digest_head": "7f7f5b8ddbd41c5cf85ed149ffb09cc75f3659318ecb303643b0bbefa0f6ddf4",
+ "output_equal": true,
+ "coverage_gate_pass": true
+}

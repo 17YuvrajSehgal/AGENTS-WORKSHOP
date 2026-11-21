@@ -1,0 +1,143 @@
+{
+ "job": {
+  "order": 101,
+  "id": 3246037837,
+  "agent": "Claude_Code",
+  "repo": "ayutaz/piper-plus",
+  "number": 113,
+  "api_base_sha": "f40c294bc1133a8627bb24dcbd496c1332cadb61",
+  "head_sha": "f3da4f34884e149460e0d5e8262ee8fefff5c9af",
+  "created": "2025-07-20",
+  "changed_files": [
+   ".github/workflows/python-lint.yml",
+   ".gitignore",
+   ".ruffignore",
+   "README.md",
+   "TRAINING.md",
+   "docs/COMPLETE_JAPANESE_TRAINING_GUIDE.md",
+   "docs/MULTI_GPU_TRAINING.md",
+   "docs/MULTI_GPU_VERIFICATION_CHECKLIST.md",
+   "docs/README.md",
+   "docs/competitive-analysis/README.md",
+   "docs/competitive-analysis/piper-plus-final-competitive-analysis.md",
+   "docs/competitive-analysis/piper-tts-historical-analysis.md",
+   "docs/webassembly-investigation/README.md",
+   "docs/webassembly-investigation/dictionary-optimization-strategy.md",
+   "docs/webassembly-investigation/index.md",
+   "docs/webassembly-investigation/japanese-tts-implementation.md",
+   "docs/webassembly-investigation/unity-webgl-implementation-strategy.md",
+   "multi_gpu_analysis.md",
+   "multi_gpu_fix_summary.md",
+   "multi_gpu_test_results.md",
+   "pyproject.toml",
+   "scripts/evaluation/run_tts_evaluation.py",
+   "scripts/test_japanese_tts.py",
+   "scripts/test_multi_gpu.py",
+   "scripts/test_multilingual_tts.py",
+   "src/python/.claude/settings.local.json",
+   "src/python/openjtalk_phonemizer.py",
+   "src/python/piper_train/__main__.py",
+   "src/python/piper_train/vits/attentions.py",
+   "src/python/piper_train/vits/lightning.py",
+   "src/python/piper_train/vits/wavfile.py",
+   "src/python/tests/test_integration.py",
+   "src/python/tests/test_performance.py",
+   "src/python/tests/test_phonemize.py"
+  ],
+  "n_files": 34,
+  "final_diff_files": [
+   ".github/workflows/python-lint.yml",
+   ".gitignore",
+   ".ruffignore",
+   "README.md",
+   "TRAINING.md",
+   "docs/COMPLETE_JAPANESE_TRAINING_GUIDE.md",
+   "docs/MULTI_GPU_TRAINING.md",
+   "docs/README.md",
+   "docs/competitive-analysis/README.md",
+   "docs/competitive-analysis/piper-plus-final-competitive-analysis.md",
+   "docs/competitive-analysis/piper-tts-historical-analysis.md",
+   "docs/webassembly-investigation/README.md",
+   "docs/webassembly-investigation/dictionary-optimization-strategy.md",
+   "docs/webassembly-investigation/index.md",
+   "docs/webassembly-investigation/japanese-tts-implementation.md",
+   "docs/webassembly-investigation/unity-webgl-implementation-strategy.md",
+   "pyproject.toml",
+   "scripts/evaluation/run_tts_evaluation.py",
+   "scripts/test_japanese_tts.py",
+   "scripts/test_multi_gpu.py",
+   "scripts/test_multilingual_tts.py",
+   "src/python/openjtalk_phonemizer.py",
+   "src/python/piper_train/__main__.py",
+   "src/python/piper_train/vits/attentions.py",
+   "src/python/piper_train/vits/lightning.py",
+   "src/python/piper_train/vits/wavfile.py",
+   "src/python/tests/test_integration.py",
+   "src/python/tests/test_performance.py",
+   "src/python/tests/test_phonemize.py"
+  ]
+ },
+ "agent": {
+  "status": "built",
+  "reason": "none",
+  "tier": "own_calls",
+  "uses_parallelism": false,
+  "behaviour_change_expected": true,
+  "notes": "Rebuilt both venvs with Python 3.11 because piper-phonemize has no Linux wheel for 3.12. Compiled the monotonic_align Cython extension into each venv (kt_ext/ plus a .pth that registers it in sys.modules), without touching src. The workload trains a tiny VitsModel for 3 steps on synthetic data with Trainer.fit. Head uses manual optimization. On base, PL 2.5 rejects the optimizer_idx-style training_step with a RuntimeError, so the workload falls back to calling training_step(batch, i, idx) with the model's own optimizers. The digests differ as expected. Coverage of changed lines: head 92%, base 86%."
+ },
+ "agent_is_error": false,
+ "timed_out": false,
+ "models": [
+  "claude-opus-5-5"
+ ],
+ "list_usd": 0.5966437999999998,
+ "num_turns": 20,
+ "setup_ok": false,
+ "setup_s": 10,
+ "agent_s": 370,
+ "check": {
+  "base_exit_ok": true,
+  "base_last_line": "93618c69d6688033f9161bfd89ef5ecf4ec5d3a8fdb777c92fca4739f2147171",
+  "head_exit_ok": true,
+  "head_last_line": "e62ce674759403d6c4c419aa29715a89ffc8b11c100cf0aedc3342762629ee3b",
+  "base_time_s": 10.1,
+  "head_time_s": 9.129,
+  "no_network_ok": true,
+  "coverage": {
+   "changed_files": [
+    "src/python/piper_train/__main__.py",
+    "src/python/piper_train/vits/attentions.py",
+    "src/python/piper_train/vits/lightning.py",
+    "src/python/piper_train/vits/wavfile.py"
+   ],
+   "base": {
+    "changed_executable_lines": 7,
+    "executed": 6,
+    "share": 0.857
+   },
+   "head": {
+    "changed_executable_lines": 13,
+    "executed": 12,
+    "share": 0.923
+   },
+   "output_digest_base": "93618c69d6688033f9161bfd89ef5ecf4ec5d3a8fdb777c92fca4739f2147171",
+   "output_digest_head": "e62ce674759403d6c4c419aa29715a89ffc8b11c100cf0aedc3342762629ee3b",
+   "output_equal": false,
+   "coverage_gate_pass": true
+  },
+  "coverage_needed": 0.8,
+  "output_equal": false,
+  "pass": true,
+  "reasons": []
+ },
+ "harness_pass": true,
+ "audit": {
+  "mentions_github_pull": false,
+  "used_gh_cli": false,
+  "read_git_history": false
+ },
+ "changed_code_lines": {
+  "py": 1045
+ },
+ "python_share_of_code_change": 1.0
+}

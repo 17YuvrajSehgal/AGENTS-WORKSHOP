@@ -1,0 +1,20 @@
+{
+ "changed_files": [
+  "src/iPhoto/io/scanner.py",
+  "src/iPhoto/utils/hashutils.py"
+ ],
+ "base": {
+  "changed_executable_lines": 1,
+  "executed": 1,
+  "share": 1.0
+ },
+ "head": {
+  "changed_executable_lines": 29,
+  "executed": 27,
+  "share": 0.931
+ },
+ "output_digest_base": "163f90f4b4cd03f884a430083cd3d982a2fed9c9aa10f85918c855eb8aaa075a",
+ "output_digest_head": "2f4f156a0c005cb647a70a2464caa2179a06707f5946428658b3b681ab942bfe",
+ "output_equal": false,
+ "coverage_gate_pass": true
+}

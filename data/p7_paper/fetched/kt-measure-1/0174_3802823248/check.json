@@ -1,0 +1,38 @@
+{
+ "base_exit_ok": true,
+ "base_last_line": "2fec38ee0095880be1d9eb47ace734d1b1dfb18e27de02e5583a6ab3c2f06ef4",
+ "head_exit_ok": true,
+ "head_last_line": "2fec38ee0095880be1d9eb47ace734d1b1dfb18e27de02e5583a6ab3c2f06ef4",
+ "base_time_s": 2.762,
+ "head_time_s": 2.813,
+ "no_network_ok": true,
+ "coverage": {
+  "changed_files": [
+   "src/ikpy/__init__.py",
+   "src/ikpy/chain.py",
+   "src/ikpy/inverse_kinematics.py",
+   "src/ikpy/jax_backend.py",
+   "src/ikpy/utils/jax_geometry.py"
+  ],
+  "base": {
+   "changed_executable_lines": 10,
+   "executed": 9,
+   "share": 0.9
+  },
+  "head": {
+   "changed_executable_lines": 244,
+   "executed": 28,
+   "share": 0.115
+  },
+  "output_digest_base": "2fec38ee0095880be1d9eb47ace734d1b1dfb18e27de02e5583a6ab3c2f06ef4",
+  "output_digest_head": "2fec38ee0095880be1d9eb47ace734d1b1dfb18e27de02e5583a6ab3c2f06ef4",
+  "output_equal": true,
+  "coverage_gate_pass": false
+ },
+ "coverage_needed": 0.5,
+ "output_equal": true,
+ "pass": false,
+ "reasons": [
+  "head coverage 0.115 < 0.5"
+ ]
+}

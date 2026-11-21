@@ -1,0 +1,50 @@
+{
+ "job": {
+  "order": 18,
+  "id": 3338195960,
+  "agent": "Cursor",
+  "repo": "PostHog/posthog",
+  "number": 36918,
+  "api_base_sha": "b0a64f178134258ffd5672438a47f6866fcafe85",
+  "head_sha": "3bebf37ea7463773d9c549665d2a003c406320f6",
+  "created": "2025-08-20",
+  "changed_files": [
+   "ee/hogai/graph/memory/nodes.py",
+   "ee/hogai/graph/memory/test/test_nodes.py"
+  ],
+  "n_files": 2,
+  "final_diff_files": [
+   "ee/hogai/graph/memory/nodes.py",
+   "ee/hogai/graph/memory/test/test_nodes.py"
+  ]
+ },
+ "agent": {
+  "status": "unbuildable",
+  "reason": "needs_external_service",
+  "tier": "none",
+  "uses_parallelism": false,
+  "behaviour_change_expected": false,
+  "notes": "The PR changes CoreMemory lookups in PostHog's ee/hogai memory nodes to Django ORM get_or_create calls. Running them needs the full PostHog Django app with a migrated PostgreSQL database; the repo's tests also need ClickHouse. The project install also failed on both sides (setuptools package discovery error). SQLite can't stand in because the models use Postgres-specific fields, and stubbing the ORM would mean patching the code under test."
+ },
+ "agent_is_error": false,
+ "timed_out": false,
+ "models": [
+  "claude-opus-5-5"
+ ],
+ "list_usd": 0.0844178,
+ "num_turns": 4,
+ "setup_ok": false,
+ "setup_s": 115,
+ "agent_s": 15,
+ "check": null,
+ "harness_pass": false,
+ "audit": {
+  "mentions_github_pull": false,
+  "used_gh_cli": false,
+  "read_git_history": false
+ },
+ "changed_code_lines": {
+  "py": 17
+ },
+ "python_share_of_code_change": 1.0
+}

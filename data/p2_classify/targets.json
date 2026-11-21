@@ -1,0 +1,9 @@
+{
+ "_note": "runtime-perf PRs to collect per stratum; 'all' = whole stratum. Raise a number and rerun to extend the sample.",
+ "Claude_Code": 463,
+ "Copilot": 250,
+ "OpenAI_Codex": 250,
+ "Devin": "all",
+ "Cursor": "all",
+ "Google_Jules": "all"
+}

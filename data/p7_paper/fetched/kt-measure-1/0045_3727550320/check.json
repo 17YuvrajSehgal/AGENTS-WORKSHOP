@@ -1,0 +1,39 @@
+{
+ "base_exit_ok": true,
+ "base_last_line": "3c560121b1d4004f32829d7baa3fda160de933be469902792f9e6f0960acb4c4",
+ "head_exit_ok": true,
+ "head_last_line": "5ce675dbe6a5ca2162590c2d0e852ad4366d16025c96cab7adc7fae58ae4e3b9",
+ "base_time_s": 1.791,
+ "head_time_s": 2.971,
+ "no_network_ok": true,
+ "coverage": {
+  "changed_files": [
+   "src/iPhoto/cache/index_store.py",
+   "src/iPhoto/gui/ui/models/asset_cache_manager.py",
+   "src/iPhoto/gui/ui/models/asset_row_adapter.py",
+   "src/iPhoto/gui/ui/models/roles.py",
+   "src/iPhoto/gui/ui/tasks/asset_loader_worker.py",
+   "src/iPhoto/gui/ui/widgets/asset_delegate.py",
+   "src/iPhoto/io/scanner.py",
+   "src/iPhoto/utils/image_loader.py"
+  ],
+  "base": {
+   "changed_executable_lines": 1,
+   "executed": 1,
+   "share": 1.0
+  },
+  "head": {
+   "changed_executable_lines": 55,
+   "executed": 51,
+   "share": 0.927
+  },
+  "output_digest_base": "3c560121b1d4004f32829d7baa3fda160de933be469902792f9e6f0960acb4c4",
+  "output_digest_head": "5ce675dbe6a5ca2162590c2d0e852ad4366d16025c96cab7adc7fae58ae4e3b9",
+  "output_equal": false,
+  "coverage_gate_pass": true
+ },
+ "coverage_needed": 0.8,
+ "output_equal": false,
+ "pass": true,
+ "reasons": []
+}

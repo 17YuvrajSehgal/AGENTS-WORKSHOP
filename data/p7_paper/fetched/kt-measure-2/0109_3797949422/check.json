@@ -1,0 +1,32 @@
+{
+ "base_exit_ok": true,
+ "base_last_line": "66d6494ccc9837e2c376996ba4d2b1d582a9a808122aa0de5dfae8cb39d244f0",
+ "head_exit_ok": true,
+ "head_last_line": "b0b6ea0dae57bc8a81bdd26ebea401901810f6727e2b785436a9fd973d071c3a",
+ "base_time_s": 3.88,
+ "head_time_s": 6.873,
+ "no_network_ok": true,
+ "coverage": {
+  "changed_files": [
+   "src/mbi/dataset.py"
+  ],
+  "base": {
+   "changed_executable_lines": 27,
+   "executed": 15,
+   "share": 0.556
+  },
+  "head": {
+   "changed_executable_lines": 22,
+   "executed": 22,
+   "share": 1.0
+  },
+  "output_digest_base": "66d6494ccc9837e2c376996ba4d2b1d582a9a808122aa0de5dfae8cb39d244f0",
+  "output_digest_head": "b0b6ea0dae57bc8a81bdd26ebea401901810f6727e2b785436a9fd973d071c3a",
+  "output_equal": false,
+  "coverage_gate_pass": true
+ },
+ "coverage_needed": 0.8,
+ "output_equal": false,
+ "pass": true,
+ "reasons": []
+}

@@ -1,0 +1,100 @@
+{
+ "job": {
+  "order": 100,
+  "id": 3726274594,
+  "agent": "Google_Jules",
+  "repo": "OliverZhaohaibin/iPhotron-LocalPhotoAlbumManager",
+  "number": 428,
+  "api_base_sha": "761626c8a404250a1898a4b991fd35f87b5ae4a8",
+  "head_sha": "e4fcec867b4525e1ee6e9c204b0e26ddf439a265",
+  "created": "2025-12-13",
+  "changed_files": [
+   "src/iPhoto/app.py",
+   "src/iPhoto/cache/index_store.py",
+   "src/iPhoto/gui/facade.py",
+   "src/iPhoto/gui/services/library_update_service.py",
+   "src/iPhoto/gui/ui/models/asset_data_loader.py",
+   "src/iPhoto/gui/ui/models/asset_list_model.py",
+   "src/iPhoto/gui/ui/models/spacer_proxy_model.py",
+   "src/iPhoto/gui/ui/tasks/asset_loader_worker.py"
+  ],
+  "n_files": 8,
+  "final_diff_files": [
+   "src/iPhoto/app.py",
+   "src/iPhoto/cache/index_store.py",
+   "src/iPhoto/gui/facade.py",
+   "src/iPhoto/gui/services/library_update_service.py",
+   "src/iPhoto/gui/ui/models/asset_data_loader.py",
+   "src/iPhoto/gui/ui/models/asset_list_model.py",
+   "src/iPhoto/gui/ui/models/spacer_proxy_model.py",
+   "src/iPhoto/gui/ui/tasks/asset_loader_worker.py"
+  ]
+ },
+ "agent": {
+  "status": "built",
+  "reason": "none",
+  "tier": "own_calls",
+  "uses_parallelism": true,
+  "behaviour_change_expected": true,
+  "notes": "Workload covers: open_album on an existing index (autoscan=False) and on empty albums (autoscan=True); AssetLoaderWorker._build_payload_chunks for 50 to 10k rows with three filters plus a mid-stream cancel (base single pass vs head LIMIT 100 then OFFSET); IndexStore.read_geometry_only with and without limit/offset (base raises TypeError, caught and recorded as 'unsupported'); the offscreen-Qt AppFacade.open_album path (the head's background pairing runs in a QThreadPool thread, and the asset list model inserts rows in batches); SpacerProxyModel.data; and an album with a blocked manifest.bak backup folder that triggers the head's background-pairing error path. Head coverage 0.80, base 0.93. 12 head lines (PairingWorker.run, sync_metadata) run in Qt pool threads that coverage cannot trace; 3 (the pair=True branch of open_album) are unreachable from base; 3 (the store.count() failure fallback) would need an artificial database failure; 1 is an untriggered error-only exception path. Outputs differ legitimately: head defers pairing (rowCount 120 vs 116 in the blocked album, plus an error message) and supports limit/offset. Base runs take about 9s wall time for about 3.4s of CPU; the cause of the gap was not identified."
+ },
+ "agent_is_error": false,
+ "timed_out": false,
+ "models": [
+  "claude-opus-5-5"
+ ],
+ "list_usd": 1.2947985999999996,
+ "num_turns": 43,
+ "setup_ok": true,
+ "setup_s": 9,
+ "agent_s": 982,
+ "check": {
+  "base_exit_ok": true,
+  "base_last_line": "a21850e0be48422a2fea4fae7949997fc90b8b46379d93b14d1164b8a74d2ff4",
+  "head_exit_ok": true,
+  "head_last_line": "146e6ba9d737c5309ece95ef7c0e404e3cb5be42fe95c1e1d861dc353f753f87",
+  "base_time_s": 7.59,
+  "head_time_s": 9.279,
+  "no_network_ok": true,
+  "coverage": {
+   "changed_files": [
+    "src/iPhoto/app.py",
+    "src/iPhoto/cache/index_store.py",
+    "src/iPhoto/gui/facade.py",
+    "src/iPhoto/gui/services/library_update_service.py",
+    "src/iPhoto/gui/ui/models/asset_data_loader.py",
+    "src/iPhoto/gui/ui/models/asset_list_model.py",
+    "src/iPhoto/gui/ui/models/spacer_proxy_model.py",
+    "src/iPhoto/gui/ui/tasks/asset_loader_worker.py"
+   ],
+   "base": {
+    "changed_executable_lines": 43,
+    "executed": 40,
+    "share": 0.93
+   },
+   "head": {
+    "changed_executable_lines": 95,
+    "executed": 76,
+    "share": 0.8
+   },
+   "output_digest_base": "a21850e0be48422a2fea4fae7949997fc90b8b46379d93b14d1164b8a74d2ff4",
+   "output_digest_head": "146e6ba9d737c5309ece95ef7c0e404e3cb5be42fe95c1e1d861dc353f753f87",
+   "output_equal": false,
+   "coverage_gate_pass": true
+  },
+  "coverage_needed": 0.8,
+  "output_equal": false,
+  "pass": true,
+  "reasons": []
+ },
+ "harness_pass": true,
+ "audit": {
+  "mentions_github_pull": false,
+  "used_gh_cli": false,
+  "read_git_history": false
+ },
+ "changed_code_lines": {
+  "py": 356
+ },
+ "python_share_of_code_change": 1.0
+}

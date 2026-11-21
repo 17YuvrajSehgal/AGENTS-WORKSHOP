@@ -1,0 +1,83 @@
+{
+ "job": {
+  "order": 141,
+  "id": 2889429365,
+  "agent": "Devin",
+  "repo": "crewAIInc/crewAI-tools",
+  "number": 230,
+  "api_base_sha": "2781799bdc19b61a79fc49aaf707666c19f38192",
+  "head_sha": "02ae7bd87791ea97585fd8ef6aac349bfe0e3ff7",
+  "created": "2025-03-02",
+  "changed_files": [
+   "crewai_tools/tools/selenium_scraping_tool/selenium_scraping_tool.py",
+   "tests/tools/selenium_scraping_tool_test.py",
+   "tests/tools/test_selenium_scraping_tool_lazy_init.py"
+  ],
+  "n_files": 3,
+  "final_diff_files": [
+   "crewai_tools/tools/selenium_scraping_tool/selenium_scraping_tool.py",
+   "tests/tools/selenium_scraping_tool_test.py",
+   "tests/tools/test_selenium_scraping_tool_lazy_init.py"
+  ]
+ },
+ "agent": {
+  "status": "built",
+  "reason": "none",
+  "tier": "own_calls",
+  "uses_parallelism": false,
+  "behaviour_change_expected": true,
+  "notes": "Installed selenium into both venvs. Chrome browser replaced by an in-process fake WebDriver (external hardware/browser stand-in); the fake is callable so base's self.driver(options=...) works. Workload constructs SeleniumScrapingTool many times, runs _run with/without cookie and css selector (wait_time=0), then close(). Env vars redirect mem0/embedchain config dirs to /tmp. Digests differ: head creates the driver lazily and close() calls quit() and sets driver to None. Head coverage is 0.81; the new _create_driver_instance method is never called in head and doesn't exist in base."
+ },
+ "agent_is_error": false,
+ "timed_out": false,
+ "models": [
+  "claude-opus-5-5"
+ ],
+ "list_usd": 0.23354840000000002,
+ "num_turns": 11,
+ "setup_ok": true,
+ "setup_s": 5,
+ "agent_s": 205,
+ "check": {
+  "base_exit_ok": true,
+  "base_last_line": "c1bacad768bc392c79f18a39b9c494b25961dd8c9395e83e694925251edc206a",
+  "head_exit_ok": true,
+  "head_last_line": "e8175acc32b9f86482e3a73e77bce5ecb0919fa6f8e18ae14957e476a7f7fc00",
+  "base_time_s": 4.308,
+  "head_time_s": 5.125,
+  "no_network_ok": true,
+  "coverage": {
+   "changed_files": [
+    "crewai_tools/tools/selenium_scraping_tool/selenium_scraping_tool.py"
+   ],
+   "base": {
+    "changed_executable_lines": 3,
+    "executed": 3,
+    "share": 1.0
+   },
+   "head": {
+    "changed_executable_lines": 16,
+    "executed": 13,
+    "share": 0.812
+   },
+   "output_digest_base": "c1bacad768bc392c79f18a39b9c494b25961dd8c9395e83e694925251edc206a",
+   "output_digest_head": "e8175acc32b9f86482e3a73e77bce5ecb0919fa6f8e18ae14957e476a7f7fc00",
+   "output_equal": false,
+   "coverage_gate_pass": true
+  },
+  "coverage_needed": 0.8,
+  "output_equal": false,
+  "pass": true,
+  "reasons": []
+ },
+ "harness_pass": true,
+ "audit": {
+  "mentions_github_pull": false,
+  "used_gh_cli": false,
+  "read_git_history": false
+ },
+ "changed_code_lines": {
+  "py": 113
+ },
+ "python_share_of_code_change": 1.0
+}

@@ -1,0 +1,81 @@
+{
+ "job": {
+  "order": 52,
+  "id": 3400572459,
+  "agent": "Devin",
+  "repo": "crewAIInc/crewAI",
+  "number": 3490,
+  "api_base_sha": "6676d94ba1ea6768df299e9551aed6487ec5ab34",
+  "head_sha": "acff3363634dfcc576043f901f440bab4cf19c9b",
+  "created": "2025-09-10",
+  "changed_files": [
+   "src/crewai/tools/structured_tool.py",
+   "tests/tools/test_structured_tool.py"
+  ],
+  "n_files": 2,
+  "final_diff_files": [
+   "src/crewai/tools/structured_tool.py",
+   "tests/tools/test_structured_tool.py"
+  ]
+ },
+ "agent": {
+  "status": "built",
+  "reason": "none",
+  "tier": "own_calls",
+  "uses_parallelism": false,
+  "behaviour_change_expected": true,
+  "notes": "Workload calls CrewStructuredTool from_function/invoke/ainvoke/_parse_args, plus the usage-limit error. Base runs sync tool functions twice per invoke and head runs them once, so the printed call counts differ (36306 vs 18303). The digest also differs because head chains errors with 'from e', which the workload records. XDG_DATA_HOME is set to /tmp/kt_3490 so the import can create its data folder in the no-network run. Coverage 100% on both sides."
+ },
+ "agent_is_error": false,
+ "timed_out": false,
+ "models": [
+  "claude-opus-5-5"
+ ],
+ "list_usd": 0.18303840000000002,
+ "num_turns": 7,
+ "setup_ok": true,
+ "setup_s": 28,
+ "agent_s": 131,
+ "check": {
+  "base_exit_ok": true,
+  "base_last_line": "0b26e69817a7e9805e391ad57cea2ac2b4d3b94fb627f8a627819f1ba67a26ea",
+  "head_exit_ok": true,
+  "head_last_line": "9472fc94411d7252b91a99182232217c34a51913920985b04b8c6664383d37e7",
+  "base_time_s": 4.459,
+  "head_time_s": 3.111,
+  "no_network_ok": true,
+  "coverage": {
+   "changed_files": [
+    "src/crewai/tools/structured_tool.py"
+   ],
+   "base": {
+    "changed_executable_lines": 9,
+    "executed": 9,
+    "share": 1.0
+   },
+   "head": {
+    "changed_executable_lines": 7,
+    "executed": 7,
+    "share": 1.0
+   },
+   "output_digest_base": "0b26e69817a7e9805e391ad57cea2ac2b4d3b94fb627f8a627819f1ba67a26ea",
+   "output_digest_head": "9472fc94411d7252b91a99182232217c34a51913920985b04b8c6664383d37e7",
+   "output_equal": false,
+   "coverage_gate_pass": true
+  },
+  "coverage_needed": 0.8,
+  "output_equal": false,
+  "pass": true,
+  "reasons": []
+ },
+ "harness_pass": true,
+ "audit": {
+  "mentions_github_pull": false,
+  "used_gh_cli": false,
+  "read_git_history": false
+ },
+ "changed_code_lines": {
+  "py": 94
+ },
+ "python_share_of_code_change": 1.0
+}

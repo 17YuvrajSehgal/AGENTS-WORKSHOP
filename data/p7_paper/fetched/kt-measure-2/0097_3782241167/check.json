@@ -1,0 +1,32 @@
+{
+ "base_exit_ok": true,
+ "base_last_line": "586a03a906e0b56299b9701fc980e200f48d2331332358a4b9e0534281fbc273",
+ "head_exit_ok": true,
+ "head_last_line": "586a03a906e0b56299b9701fc980e200f48d2331332358a4b9e0534281fbc273",
+ "base_time_s": 2.585,
+ "head_time_s": 2.467,
+ "no_network_ok": true,
+ "coverage": {
+  "changed_files": [
+   "src/iPhoto/io/scanner.py"
+  ],
+  "base": {
+   "changed_executable_lines": 16,
+   "executed": 15,
+   "share": 0.938
+  },
+  "head": {
+   "changed_executable_lines": 22,
+   "executed": 21,
+   "share": 0.955
+  },
+  "output_digest_base": "586a03a906e0b56299b9701fc980e200f48d2331332358a4b9e0534281fbc273",
+  "output_digest_head": "586a03a906e0b56299b9701fc980e200f48d2331332358a4b9e0534281fbc273",
+  "output_equal": true,
+  "coverage_gate_pass": true
+ },
+ "coverage_needed": 0.8,
+ "output_equal": true,
+ "pass": true,
+ "reasons": []
+}

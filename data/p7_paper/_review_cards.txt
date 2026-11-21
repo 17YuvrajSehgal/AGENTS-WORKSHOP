@@ -1,0 +1,413 @@
+
+### 3928671597 pocketpaw/pocketpaw #31 (kt-measure-1) tier=own_calls
+  notes: Workload exercises FileMemoryStore (concurrent session saves; reading sessions back; session index; rename/delete, which are awaited only if they return a coroutine because head made them async; corrupt-file paths; tz-aware timestamps; long-term markdown saves with dedup; clear_session) and InjectionScanner.scan. Head coverage 0
+  gates: base 2.314s head 3.312s | cov head 0.821 base 0.883 | equal False | py_share 0.994 | stub words []
+  claim faster_library: "integrate uv package manager for faster installations and updates"
+  claim async_io: "run blocking status check in thread pool to prevent freezing"
+  verdict: speed slower (wall 1.338, A/A 1.004) | held {'async_io': False, 'faster_library': False} | costs {'sys_s': 2.674, 'syscalls': 3.061, 'task-clock': 1.446}
+  top changes: futex_ns 1991135.80, ev:sched_wakeup 48107.00, migrations 16114.00, cpu-migrations 13383.00, sc:futex 8904.00, ev:sched_waking 3008.16, offcpu_ns_total 352.86, switch_out 214.55, context-switches 169.47, ev:timer_hrtimer_expire_exit 130.88
+
+### 3790607299 ryan112358/mbi #76 (kt-measure-1) tier=own_calls
+  notes: Workload calls MarkovRandomField.synthetic_data (round and sample methods, N up to 100k) on a 20-attribute tree model whose marginals are built in numpy. message_passing_stable fails in both envs (chex Numeric isinstance check rejects JAX tracers), so the repo benchmark could not be used. Coverage: head 22/23 changed lines, base
+  gates: base 6.785s head 4.771s | cov head 0.957 base 1.0 | equal False | py_share 1.0 | stub words []
+  claim vectorize_locality: "The new implementation vectorizes the process:"
+  verdict: speed faster (wall 0.69, A/A 0.999) | held {'vectorize_locality': True} | costs {}
+  top changes: sc:madvise 9.00, sys_block_bytes 0.08, ev:irq_handler_exit 1.67?, ev:irq_handler_entry 1.67?, sys_block_rq_issue 0.43, offcpu_ns_total 0.65, futex_ns 0.65, instructions 0.65, user_s 0.68, cycles 0.69
+
+### 3877879047 allenai/open-instruct #1443 (kt-measure-1) tier=own_calls
+  notes: Change adds non_blocking=True to tensor.to() in data_loader.to_device. The normal install failed on both sides (vllm==0.16.0 and openenv-core>=0.2.1 were newer than the cutoff). Both venvs were built by hand from the pyproject deps with the date cutoff: vllm 0.15.0, openenv-core>=0.2.0, flash-attn and flash-attn-3 left out (GPU-
+  gates: base 12.299s head 11.235s | cov head 1.0 base 1.0 | equal True | py_share 1.0 | stub words []
+  claim skip_unneeded_work: "avoiding redundant transfers"
+  claim async_io: "enabling non-blocking device moves"
+  verdict: speed no_change (wall 1.002, A/A 1.002) | held {'async_io': False, 'skip_unneeded_work': False} | costs {}
+  top changes: ev:net_if_receive_skb 2.60?, ev:irq_handler_exit 2.18?, ev:irq_handler_entry 2.18?, irq_on_cpus 2.08?, sc:ppoll 1.67?, switch_out 0.68?, ev:net_dev_xmit 1.18?, sc:recvmsg 1.11?
+
+### 3740869189 OliverZhaohaibin/iPhotron-LocalPhotoAlbumManager #466 (kt-measure-1) tier=own_calls
+  notes: Installed exiftool via apt (libimage-exiftool-perl). Workload calls scanner._process_path_stream on 60 generated images with NFC and NFD filenames in three modes: with exiftool, without exiftool on PATH (empty payloads, so the fallback string lookups run), and an incremental scan whose existing index uses the other Unicode norma
+  gates: base 2.105s head 1.798s | cov head 0.9 base 1.0 | equal False | py_share 1.0 | stub words []
+  claim cache_results: "Prevents cache misses when file system paths (e.g. NFD) differ from index keys (NFC)."
+  claim skip_unneeded_work: "Fixes issue where sub-albums would re-index instead of using cached data."
+  verdict: speed faster (wall 0.852, A/A 1.003) | held {'cache_results': True, 'skip_unneeded_work': True} | costs {}
+  top changes: ev:irq_handler_exit 0.00?, ev:irq_handler_entry 0.00?, ev:block_rq_complete 0.00?, sc:wait4 0.80, sc:vfork 0.80, sc:pipe2 0.80, sc:getuid 0.80, sc:getgid 0.80, sc:getegid 0.80, forks 0.80
+
+### 3775375654 koush/scrypted #1959 (kt-measure-1) tier=own_calls
+  notes: server/python is stdlib-only and not an installable package (install logs show no pyproject); workload adds <venv>/../src/server/python to sys.path. Two RpcPeers connected via prepare_peer_readloop over RpcStreamTransport and RpcPickleStreamTransport (socketpair, 10k calls each) and RpcFileTransport (os.pipe, 2k calls, exercises
+  gates: base 2.145s head 2.302s | cov head 0.857 base 1.0 | equal True | py_share 1.0 | stub words []
+  claim less_memory: "Under high throughput, this can cause unbounded buffer growth."
+  claim async_io: "asyncio.Lock yields control back to the event loop while waiting,"
+  verdict: speed slower (wall 1.08, A/A 1.0) | held {'async_io': False, 'less_memory': False} | costs {}
+  top changes: ev:irq_handler_exit 0.00?, ev:irq_handler_entry 0.00?, ev:block_rq_complete 0.00?, cpu-migrations 1.21, l2_rqsts.miss 1.19, migrations 0.84?, mem_load_retired.l1_miss 1.15, L1-dcache-load-misses 1.15, mem_load_retired.l2_miss 1.13
+
+### 2895289652 crewAIInc/crewAI #2281 (kt-measure-1) tier=own_calls
+  notes: Workload constructs Telemetry() 500 times (300 sequential, 200 from 10 threads), then shuts down each distinct instance (head via the new __del__, base via provider.shutdown()). Base creates a TracerProvider/BatchSpanProcessor thread per call; head returns the singleton. Digests differ legitimately: on head the singleton is the 
+  gates: base 2.731s head 2.166s | cov head 0.821 base 0.706 | equal False | py_share 1.0 | stub words []
+  claim reuse_resources: "ensure that the OtelBatchSpanProcessor is initialized only once per import lifecycle, not per function call"
+  claim less_memory: "potentially causing performance issues and memory leaks"
+  verdict: speed faster (wall 0.944, A/A 1.003) | held {'less_memory': False, 'reuse_resources': True} | costs {}
+  top changes: ev:block_rq_complete 0.00?, ev:sched_wakeup 0.00, cpu-migrations 0.00, migrations 0.01, sc:write 0.01, sc:futex 0.02, switch_out 0.02, threads 0.02, sc:madvise 0.02, sc:exit 0.02
+
+### 3424014219 jannikmi/timezonefinder #343 (kt-measure-1) tier=own_calls
+  notes: Installed pydantic and h3 into both venvs (missing deps of scripts/; numba not installed, so the pure-Python fallback runs on both). The workload imports scripts/ from <side>/src, builds a synthetic fixed-seed GeoJSON with 400 zones, runs compile_h3_map over all res 0 and 1 h3 cells, makes 8000 optimise_shortcut_ordering calls a
+  gates: base 2.728s head 1.997s | cov head 0.969 base 1.0 | equal False | py_share 1.0 | stub words []
+  claim precompute: "pre-sort them with less Python overhead"
+  claim less_output: "throttle shortcut compilation progress output to avoid per-hex flush overhead during long runs"
+  claim cache_results: "cache filtered polygon candidates in Hex objects so boundary filtering is performed only once per cell"
+  verdict: speed faster (wall 0.515, A/A 0.999) | held {'cache_results': True, 'less_output': False, 'precompute': True} | costs {}
+  top changes: instructions 0.38, user_s 0.51, cycles 0.51, wall_s 0.52, task-clock 0.52, runtime_ns 0.52, traced_wall_s 0.52, softirq_on_cpus 0.52, sc:mremap 0.56, hrtimer_on_cpus 0.56
+
+### 3105891938 haasonsaas/ocode #2 (kt-measure-1) tier=own_calls
+  notes: Workload exercises FindTool, HeadTool/TailTool, JsonYamlTool and NotebookRead/EditTool on a generated tree, text file, JSON/YAML files and notebook, covering both success and error paths. The digest records success flags and outputs of successful calls only, because the PR rewrites error messages and Find's metadata (new default
+  gates: base 2.47s head 2.728s | cov head 0.702 base 0.725 | equal True | py_share 1.0 | stub words []
+  claim less_memory: "Replace memory-intensive tail operation with collections.deque(maxlen=N)"
+  claim less_memory: "Add file size limits to prevent memory exhaustion"
+  verdict: speed no_change (wall 1.015, A/A 1.003) | held {'less_memory': False} | costs {}
+  top changes: sc:ppoll 1.43?, sc:stat_any 1.30, sc:newfstatat 1.30, offcpu_ns_main 0.79?, offcpu_ns_total 0.79?
+
+### 4075851542 ayutaz/piper-plus #240 (kt-measure-1) tier=own_calls
+  notes: Installed CPU torch/pytorch-lightning/librosa/scipy into both venvs (torch was missing). Workload runs SynthesizerTrn forward (SDP/DP, single/multi-speaker, train/eval) plus short Lightning Trainer.fit runs of VitsModel with in-memory Batches (dur-disc, dp_lr, cosine+warmup kwargs are ignored by base via **kwargs). Coverage head
+  gates: base 10.113s head 11.745s | cov head 0.917 base 0.875 | equal False | py_share 1.0 | stub words []
+  claim algorithmic: "推論軽量化"
+  claim less_memory: "モデルサイズ34%削減"
+  claim other: "学習高速化5項目"
+  verdict: speed no_change (wall 1.012, A/A 1.004) | held {'algorithmic': False, 'less_memory': False} | costs {}
+  top changes: ev:sched_waking 0.76?, sc:ppoll 1.22?, context-switches 0.89?
+
+### 3550985991 simonw/datasette #2533 (kt-measure-1) tier=own_calls
+  notes: Workload makes 156 HTTP requests through datasette.client: index, database, table, query and JSON pages on 3 SQLite DBs, using a config with database/table/query allow-blocks, as anonymous, alice, bob and root. This runs base's permission_allowed path and head's allowed()/allowed_resources()/actions_sql path. Digests differ: hea
+  gates: base 3.251s head 3.843s | cov head 0.7 base 0.506 | equal False | py_share 0.893 | stub words []
+  claim algorithmic: "This improves performance by reducing permission checks from O(n) to O(1) per table/view"
+  claim less_memory: "Avoids loading thousands of tables into Python memory"
+  claim fewer_db_queries: "Single bulk query replaces N individual permission checks"
+  verdict: speed slower (wall 1.307, A/A 1.006) | held {'algorithmic': False, 'fewer_db_queries': False, 'less_memory': False} | costs {'sys_s': 1.299, 'minor-faults': 3.429, 'syscalls': 1.19, 'instructions': 1.34, 'task-clock': 1.32}
+  top changes: sc:madvise 34.67, ev:x86_exceptions_page_fault_user 3.58, ev:kmem_mm_page_free 3.51, ev:kmem_mm_page_alloc 3.48, minor-faults 3.43, offcpu_ns_main 1.56, sc:mprotect 1.53, l2_rqsts.miss 1.45, ev:timer_hrtimer_expire_exit 1.42, ev:timer_hrtimer_expire_entry 1.42
+
+### 3894815824 geoparquet/geoparquet-io #233 (kt-measure-1) tier=own_calls
+  notes: Workload calls duckdb_metadata get_kv/geo/file/schema functions and detect_geoparquet_file_type on repo test parquet files, a partition dir, synthetic GeoArrow-extension files (with/without geoarrow.pyarrow imported), an invalid file, and with an explicit DuckDB connection. DuckDB spatial extension is copied to /tmp/kt_233 and H
+  gates: base 7.709s head 0.493s | cov head 0.822 base 0.889 | equal False | py_share 1.0 | stub words []
+  claim faster_library: "Use PyArrow for local file metadata reads instead of DuckDB"
+  claim cache_results: "Add LRU cache with mtime-based invalidation for `detect_geoparquet_file_type()`"
+  claim reuse_resources: "Add connection reuse parameter for batch operations"
+  claim lazy_loading: "Add lazy spatial extension loading (only load when DuckDB is actually needed for geometry parsing)"
+  verdict: speed faster (wall 0.04, A/A 1.0) | held {'cache_results': True, 'faster_library': True, 'lazy_loading': True, 'reuse_resources': True} | costs {}
+  top changes: ev:irq_handler_exit 4.00?, ev:irq_handler_entry 4.00?, sc:getpid 3.00, irq_on_cpus 0.00?, ev:net_if_receive_skb 0.00?, sc:pread64 0.00, offcpu_ns_main 0.00, hrtimer_on_cpus 0.00, ev:timer_hrtimer_expire_exit 0.00, ev:timer_hrtimer_expire_entry 0.00
+
+### 2889429365 crewAIInc/crewAI-tools #230 (kt-measure-1) tier=own_calls
+  notes: Installed selenium into both venvs. Chrome browser replaced by an in-process fake WebDriver (external hardware/browser stand-in); the fake is callable so base's self.driver(options=...) works. Workload constructs SeleniumScrapingTool many times, runs _run with/without cookie and css selector (wait_time=0), then close(). Env vars
+  gates: base 4.308s head 5.125s | cov head 0.812 base 1.0 | equal False | py_share 1.0 | stub words ['Fake']
+  claim lazy_loading: "The WebDriver is now only created when the tool is actually used, not when it's instantiated"
+  claim less_memory: "to prevent unwanted browser windows and memory leaks"
+  verdict: speed no_change (wall 0.999, A/A 1.009) | held {'lazy_loading': False, 'less_memory': False} | costs {}
+  top changes: sc:ppoll 1.17?
+
+### 3436791686 saturday06/VRM-Addon-for-Blender #1069 (kt-measure-1) tier=own_calls
+  notes: Envs rebuilt manually: bpy 3.6 is no longer on PyPI, so both venvs use Python 3.11 + bpy==4.4.0 (4.5.x deadlocks at interpreter exit, 4.2.0 segfaults); the project's requires-python==3.10 pin blocks installing it, so its source is put on sys.path via a .pth file (src untouched); X11/GL system libs installed. The workload builds 
+  gates: base 1.988s head 6.739s | cov head 0.861 base 0.743 | equal True | py_share 1.0 | stub words []
+  claim less_memory: "eliminate excessive memory usage"
+  verdict: speed slower (wall 3.459, A/A 1.004) | held {'less_memory': False} | costs {'instructions': 4.365, 'task-clock': 3.486}
+  top changes: instructions 4.36, futex_ns 3.64, offcpu_ns_total 3.64, user_s 3.56, task-clock 3.49, wall_s 3.46, cycles 3.45, runtime_ns 3.43, traced_wall_s 3.42, softirq_on_cpus 3.00
+
+### 3720675869 OliverZhaohaibin/iPhotron-LocalPhotoAlbumManager #407 (kt-measure-1) tier=own_calls
+  notes: Installed ffmpeg via apt (needed for base subprocess path) and av into base venv for parity. Workload generates synthetic videos with cv2 and calls grab_video_frame (base: ffmpeg subprocess; head: PyAV in-memory decode) across sizes/seek targets, plus extract_video_frame directly to cover changed ffmpeg filter strings. Digest di
+  gates: base 5.3s head 3.457s | cov head 0.83 base 1.0 | equal False | py_share 1.0 | stub words []
+  claim fewer_processes: "by eliminating process overhead"
+  verdict: speed faster (wall 0.387, A/A 1.001) | held {'fewer_processes': True} | costs {}
+  top changes: threads 6.00, sc:madvise 6.00, sc:getrusage 6.00, sc:exit 6.00, sc:dup 6.00, sc:clone3 6.00, ev:block_rq_issue 5.00?, ev:block_bio_queue 5.00?, sc:futex 1.80, sc:wait4 0.21
+
+### 3594140296 nexi-lab/nexus #412 (kt-measure-2) tier=own_calls
+  notes: Installed docker==7.1.0 in both venvs. Workload drives NexusFS.sandbox_create/sandbox_list -> SandboxManager -> DockerSandboxProvider (real) with an in-memory stand-in Docker client and SQLite metadata. Head passes sanitized container names to containers.run (base passes none), so digests differ by design. Status-filter body unc
+  gates: base 5.393s head 5.303s | cov head 0.923 base 1.0 | equal False | py_share 0.6 | stub words ['Fake']
+  claim smaller_payload: "Database-level status filtering reduces data transfer"
+  claim faster_db_query: "Database-level status filtering improves performance"
+  verdict: speed no_change (wall 1.004, A/A 0.992) | held {'faster_db_query': False, 'smaller_payload': False} | costs {}
+  top changes: 
+
+### 3206997775 bolna-ai/bolna #221 (kt-measure-2) tier=own_calls
+  notes: Envs rebuilt with Python 3.11 + override lancedb>=0.13 (lancedb==0.12.0 unavailable at that date; torchaudio 2.0.1 has no cp312). Workload drives CartesiaSynthesizer push/sender/receiver/generate against an in-process fake Cartesia websocket (stand-in for external service) and a trivial task-manager stand-in. Head changes contex
+  gates: base 3.237s head 3.174s | cov head 0.8 base 1.0 | equal False | py_share 1.0 | stub words ['Fake']
+  claim polling_sleep: "Changed task manager sleep from 0.2s to 0.01s"
+  verdict: speed no_change (wall 0.989, A/A 0.996) | held {'polling_sleep': False} | costs {}
+  top changes: sys_block_bytes 0.09, sc:getrandom 0.10, sys_block_rq_issue 0.47, switch_out 1.38?, context-switches 1.13?
+
+### 3852338968 Uzay-G/espial #14 (kt-measure-2) tier=own_calls
+  notes: Calls process_markdown on 200 seeded synthetic markdown docs (2000 words each, with stopwords and links) 10 times; SHA-256 digest of outputs. Full coverage of changed lines; outputs equal; base 2.2s, head 1.3s.
+  gates: base 2.279s head 1.297s | cov head 1.0 base 1.0 | equal True | py_share 1.0 | stub words []
+  claim algorithmic: "This provides O(1) lookup instead of O(n) for stopword filtering"
+  claim precompute: "The frozenset is created once at module import instead of on every call"
+  verdict: speed faster (wall 0.574, A/A 1.001) | held {'algorithmic': True, 'precompute': True} | costs {}
+  top changes: ev:irq_handler_exit 0.00?, ev:irq_handler_entry 0.00?, ev:block_rq_complete 0.00?, instructions 0.41, task-clock 0.56, user_s 0.56, cycles 0.56, wall_s 0.57, runtime_ns 0.58, traced_wall_s 0.58
+
+### 3089613637 addok/addok #893 (kt-measure-2) tier=own_calls
+  notes: Installed redis-server via apt; workload launches a local redis-server on a unix socket (no TCP, no persistence), seeds pair sets deterministically, and calls _compute_onetomany_relations / _extract_manytomany_relations on 300 seeded token queries. Full coverage of changed lines on both sides; identical digests. PR's own benchma
+  gates: base 1.662s head 0.861s | cov head 1.0 base 1.0 | equal True | py_share 1.0 | stub words []
+  claim cache_results: "memoize relation lookup in `_compute_onetomany_relations`"
+  verdict: speed faster (wall 0.526, A/A 0.965) | held {'cache_results': True} | costs {}
+  top changes: sc:writev 2265.25, bytes_written 10.89, sc:write 0.01, sc:recvfrom 0.15, sc:getpid 0.15, ev:sched_wakeup 0.15, context-switches 0.15, switch_out 0.16, sc:epoll_wait 0.16, ev:sched_waking 0.16
+
+### 3746765122 mlflow/mlflow #19520 (kt-measure-2) tier=own_calls
+  notes: Flask test client PUT/GET to /api/2.0/mlflow-artifacts/artifacts with local artifact destination; line-heavy text and binary payloads exercise _upload_artifact and _download_artifact streaming (line iteration vs 1MB chunks). Full coverage on both sides, identical digests.
+  gates: base 2.694s head 2.186s | cov head 1.0 base 1.0 | equal True | py_share 1.0 | stub words []
+  claim io_granularity: "Changed to chunked streaming"
+  verdict: speed faster (wall 0.822, A/A 1.0) | held {'io_granularity': True} | costs {}
+  top changes: sc:read 0.24, sys_block_rq_issue 0.54, sys_block_bytes 0.63, futex_ns 0.66, offcpu_ns_total 0.67, instructions 0.73, l2_rqsts.miss 0.77, ev:x86_exceptions_page_fault_user 0.78, ev:kmem_mm_page_free 0.79, ev:kmem_mm_page_alloc 0.79
+
+### 3400572459 crewAIInc/crewAI #3490 (kt-measure-2) tier=own_calls
+  notes: Workload calls CrewStructuredTool from_function/invoke/ainvoke/_parse_args, plus the usage-limit error. Base runs sync tool functions twice per invoke and head runs them once, so the printed call counts differ (36306 vs 18303). The digest also differs because head chains errors with 'from e', which the workload records. XDG_DATA
+  gates: base 4.459s head 3.111s | cov head 1.0 base 1.0 | equal False | py_share 1.0 | stub words []
+  claim skip_unneeded_work: "Removed duplicate `self.func(**parsed_args, **kwargs)` call that occurred after the try-catch block"
+  verdict: speed faster (wall 0.858, A/A 0.999) | held {'skip_unneeded_work': True} | costs {}
+  top changes: ev:irq_handler_exit 1.67?, ev:irq_handler_entry 1.67?, sc:ppoll 0.64?, futex_ns 0.68, offcpu_ns_total 0.70, instructions 0.74, task-clock 0.84, user_s 0.84, cycles 0.85, foreign_switch_in_on_cpus 0.86?
+
+### 3600115578 OliverZhaohaibin/iPhotron-LocalPhotoAlbumManager #140 (kt-measure-2) tier=own_calls
+  notes: Installed PyOpenGL and mapbox-vector-tile into both venvs; apt-installed libpulse0, xvfb and Qt's X11/xcb libraries. The workload starts its own Xvfb display (unix socket only, software Mesa OpenGL, no GPU) and builds the iPhotos.src/iPhotos.maps package layout under /tmp/kt_140: src is a symlink to the code under test, maps is 
+  gates: base 10.365s head 10.018s | cov head 0.804 base 1.0 | equal False | py_share 1.0 | stub words []
+  claim gpu_accelerator: "add an off-screen render helper so the GL image viewer can produce neutral scaled previews on the GPU"
+  claim skip_unneeded_work: "only scales when required"
+  verdict: speed slower (wall 1.065, A/A 1.004) | held {'skip_unneeded_work': False} | costs {}
+  top changes: ev:irq_handler_exit 0.00?, ev:irq_handler_entry 0.00?, foreign_switch_in_on_cpus 1.27?, sys_block_rq_issue 0.88?, offcpu_ns_total 1.10, futex_ns 1.10
+
+### 3970313822 marin-community/marin #2934 (kt-measure-2) tier=own_calls
+  notes: Both envs rebuilt with Python 3.12, installing resiliparse 0.17.2 from the wheel URL in uv.lock (its own index has no upload dates, so the date cutoff dropped it); chex added to both. The workload runs marin tokenize() end to end (TokenizeConfig with train and validation splits of local gz jsonl files, a locally trained BPE toke
+  gates: base 12.56s head 12.862s | cov head 0.935 base 0.857 | equal True | py_share 1.0 | stub words []
+  claim other: "Increase ds.window() from 64 to 1024 for larger tokenization batches"
+  claim less_memory: "Lower worker RAM from 16g to 3g (tokenization is CPU-bound)"
+  claim concurrency_tuning: "Raise max_workers from 128 to 512"
+  verdict: speed no_change (wall 0.99, A/A 1.078) | held {'concurrency_tuning': False, 'less_memory': False} | costs {}
+  top changes: ev:irq_handler_exit 0.00?, ev:irq_handler_entry 0.00?, ev:block_rq_complete 0.00?, sc:sched_yield 0.20, sc:mprotect 1.75, foreign_switch_in_on_cpus 1.21?, ev:net_if_receive_skb 1.20, ev:net_dev_xmit 1.20, sc:connect 1.17, sc:sched_getscheduler 0.85?
+
+### 3423913495 BoundaryML/baml #2467 (kt-measure-2) tier=own_calls
+  notes: Installed baml-py==0.207.1 from PyPI into both venvs (only its compiled part is used); the baml_py Python files, including the changed stream.py, are imported from each side's source tree. The workload sends 60 sync and 60 async streams through BamlSyncStream/BamlStream against a fake OpenAI-style streaming server running locall
+  gates: base 4.133s head 1.255s | cov head 0.917 base 1.0 | equal True | py_share 0.593 | stub words []
+  claim skip_unneeded_work: "effectively skipping older, buffered partial responses"
+  verdict: speed faster (wall 0.294, A/A 0.999) | held {'skip_unneeded_work': False} | costs {}
+  top changes: offcpu_ns_total 0.26, futex_ns 0.26, offcpu_ns_main 0.27, wall_s 0.29, traced_wall_s 0.30, foreign_switch_in_on_cpus 0.81?, ev:timer_hrtimer_expire_exit 1.14?, ev:timer_hrtimer_expire_entry 1.14?, l2_rqsts.miss 0.89, mem_load_retired.l2_miss 0.89
+
+### 3724969747 tinygrad/tinygrad #13664 (kt-measure-2) tier=own_calls
+  notes: Installed clang via apt (tinygrad CPU backend needs it). Workload repeatedly schedules/realizes tensors with Variables bound to varying values (based on new test_schedule_cache tests) plus schedule_with_vars var_vals checks; CACHEDB redirected to /tmp/kt_13664. Full coverage of changed lines on both sides, identical digests; hea
+  gates: base 1.597s head 0.838s | cov head 1.0 base 1.0 | equal True | py_share 1.0 | stub words []
+  claim cache_results: "strip BIND values before computing cache key so different bound values (e.g. KV cache positions) hit the same schedule c"
+  verdict: speed faster (wall 0.55, A/A 0.998) | held {'cache_results': True} | costs {}
+  top changes: ev:irq_handler_exit 0.00?, ev:irq_handler_entry 0.00?, ev:block_rq_complete 0.00?, sc:ppoll 1.83?, futex_ns 0.40, offcpu_ns_total 0.42, instructions 0.51, task-clock 0.54, user_s 0.54, cycles 0.54
+
+### 3714678611 nexi-lab/nexus #623 (kt-measure-2) tier=own_calls
+  notes: Both venvs rebuilt with Python 3.13 (the project needs 3.13+); installed fusepy in both and the libfuse2t64 system library. The workload runs on SQLite (no pooling, like the project; files on /dev/shm with disk sync off). It covers single and batch cache writes, which on head also update file_paths sizes. It calls get_content_si
+  gates: base 7.764s head 8.588s | cov head 0.81 base 1.0 | equal False | py_share 1.0 | stub words ['Fake', 'fake']
+  claim cache_results: "Added _get_size_from_cache() helper"
+  claim fewer_external_calls: "Cache-first strategy avoids unnecessary API calls"
+  claim skip_unneeded_work: "to use metadata.size instead of fetching entire"
+  verdict: speed slower (wall 1.069, A/A 0.998) | held {'cache_results': False, 'skip_unneeded_work': False} | costs {}
+  top changes: sc:ppoll 1.57?, sc:unlinkat 1.44, sys_block_bytes 0.70, sys_block_rq_issue 0.79, sc:ftruncate 0.79, sc:munmap 0.85, sc:unlink 0.87, sc:recvmsg 1.12?, branch-misses 1.11, foreign_switch_in_on_cpus 1.11?
+
+### 3866174642 PrefectHQ/prefect #20440 (kt-measure-2) tier=own_calls
+  notes: PR makes fastapi/uvicorn imports and FastAPI login app creation lazy in prefect.cli.cloud. Workload imports the module and runs login_with_browser 120 times with the real local uvicorn server; only the web browser is replaced by a registered webbrowser stand-in that POSTs success/failure to the localhost callback. Uses anyio wor
+  gates: base 2.57s head 2.309s | cov head 1.0 base 1.0 | equal True | py_share 1.0 | stub words ['Fake', 'fake']
+  claim lazy_loading: "defer fastapi/uvicorn imports"
+  verdict: speed no_change (wall 0.999, A/A 1.0) | held {'lazy_loading': False} | costs {}
+  top changes: sc:munmap 1.21, sc:mmap 1.18, sc:ppoll 0.86?, ev:timer_hrtimer_expire_exit 0.87?, ev:timer_hrtimer_expire_entry 0.87?
+
+### 3961227245 airbytehq/airbyte #73654 (kt-measure-2) tier=own_calls
+  notes: Connector isn't a package; installed airbyte-cdk==6.57.1 (from unit_tests poetry.lock), requests, coverage into both venvs. Workload loads source-bing-ads/components.py from each side's src and runs BingAdsGzipCsvDecoder.decode on gzipped/plain CSVs (various sizes, BOM, empty, corrupt gzip) via requests.Response with BytesIO raw
+  gates: base 2.336s head 2.361s | cov head 0.923 base 0.947 | equal True | py_share 1.0 | stub words []
+  claim less_memory: "streaming decompression in BingAdsGzipCsvDecoder to prevent OOM"
+  verdict: speed no_change (wall 1.0, A/A 0.994) | held {'less_memory': False} | costs {}
+  top changes: context-switches 0.82?, offcpu_ns_total 0.88?, offcpu_ns_main 0.88?
+
+### 4033237246 AstrBotDevs/AstrBot #5798 (kt-measure-2) tier=own_calls
+  notes: Install fixed in both venvs: astrbot needs telegramify-markdown>=1.0.0, but only prereleases exist before 2026-03-07. Installed the dependencies separately with telegramify-markdown 1.0.0rc5, then the project with --no-deps. Pinned apscheduler<4, pydantic<2.13, starlette<1 and defusedxml<0.8 to stable releases (wechatpy 2.0.0a26
+  gates: base 4.39s head 4.709s | cov head 0.539 base 0.444 | equal False | py_share 0.982 | stub words ['Fake', 'stub']
+  claim precompute: "Improves performance for frequent intent detection operations"
+  claim smaller_payload: "improves performance by reducing unnecessary data transfer"
+  verdict: speed slower (wall 1.068, A/A 0.997) | held {'precompute': False, 'smaller_payload': False} | costs {'instructions': 1.132}
+  top changes: sc:mremap 0.00, sys_block_bytes 0.15, sc:ppoll 1.57?, sys_block_rq_issue 0.46?, futex_ns 1.23, ev:x86_exceptions_page_fault_user 0.78, ev:kmem_mm_page_free 0.79, ev:kmem_mm_page_alloc 0.79, minor-faults 0.79, offcpu_ns_total 1.15
+
+### 3467378370 crestalnetwork/intentkit #835 (kt-measure-2) tier=own_calls
+  notes: Both venvs rebuilt with Python 3.12, installing the intentkit subpackage in editable mode (KT_PKGDIR=intentkit) plus requests-oauthlib, tweepy[async] and psycopg[binary]; the workspace root has no package to build. The workload adds the matching side's src to sys.path and uses the project's own in-memory SQLite DB fallback (init
+  gates: base 5.491s head 4.797s | cov head 1.0 base 1.0 | equal True | py_share 1.0 | stub words ['Fake']
+  claim async_io: "run the OAuth2 refresh call in a background thread to avoid blocking the event loop"
+  claim parallelize: "refresh multiple expiring tokens concurrently when scheduling"
+  verdict: speed no_change (wall 0.952, A/A 1.009) | held {'async_io': True, 'parallelize': False} | costs {}
+  top changes: migrations 91.00, cpu-migrations 85.00, threads 13.00, sc:clone3 13.00, ev:sched_wakeup_new 13.00, sc:rt_sigprocmask 10.60, ev:sched_process_exit 7.00, sc:gettid 5.80, sc:set_robust_list 4.00, sc:rseq 4.00
+
+### 3782241167 OliverZhaohaibin/iPhotron-LocalPhotoAlbumManager #494 (kt-measure-2) tier=repo_tests
+  notes: Workload builds a synthetic library under /tmp/kt_494: 1,800 files in nested dirs with .iPhoto/exported subfolders at several depths and broken symlinks. It calls gather_media_paths six times, plus once with the root inside .iPhoto, and hashes the sorted results because rglob and os.walk return files in different orders. Base an
+  gates: base 2.585s head 2.467s | cov head 0.955 base 0.938 | equal True | py_share 1.0 | stub words []
+  claim skip_unneeded_work: "By using `os.walk`, we can prune these heavy directories *before* entering them, effectively skipping the entire subtree"
+  verdict: speed no_change (wall 0.954, A/A 1.001) | held {'skip_unneeded_work': True} | costs {}
+  top changes: sc:newlstat 11.29, sc:ppoll 1.83?, sc:getdents64 0.20, sc:close 0.29, sc:openat 0.33, sc:newfstat 0.35, sc:newstat 0.37, foreign_switch_in_on_cpus 1.60?, sys_s 0.53, switch_out 1.40?
+
+### 3726274594 OliverZhaohaibin/iPhotron-LocalPhotoAlbumManager #428 (kt-measure-2) tier=own_calls
+  notes: Workload covers: open_album on an existing index (autoscan=False) and on empty albums (autoscan=True); AssetLoaderWorker._build_payload_chunks for 50 to 10k rows with three filters plus a mid-stream cancel (base single pass vs head LIMIT 100 then OFFSET); IndexStore.read_geometry_only with and without limit/offset (base raises T
+  gates: base 7.59s head 9.279s | cov head 0.8 base 0.93 | equal False | py_share 1.0 | stub words []
+  claim streaming_output: "fetch the first 100 items immediately, then stream the rest"
+  claim async_io: "to force background loading and prevent UI blocking"
+  claim other: "handle pairing in the background after the album opens"
+  verdict: speed no_change (wall 1.015, A/A 0.999) | held {'async_io': False} | costs {'sys_s': 1.968, 'syscalls': 1.49}
+  top changes: sc:eventfd2 37.60, threads 21.33, sc:madvise 21.33, sc:exit 21.33, sc:clone3 21.33, ev:sched_wakeup_new 21.33, sc:rt_sigprocmask 20.26, ev:sched_process_exit 19.30, sc:futex 16.48, sc:set_robust_list 16.25
+
+### 4017186718 cft0808/edict #12 (kt-measure-2) tier=own_calls
+  notes: Project isn't installable (no pyproject.toml or setup.py), so kanban_update is imported from each side's src/scripts. Installed coverage into both venvs. The workload runs cmd_create/state/flow/progress/todo/block/done on a 150-task JSON file in a temp dir, with TASKS_FILE set the same way the repo tests do. REFRESH_SCRIPT point
+  gates: base 6.069s head 3.959s | cov head 1.0 base 1.0 | equal True | py_share 1.0 | stub words []
+  claim skip_unneeded_work: "avoid redundant kanban file rewrite after atomic update"
+  claim avoid_repeated_io: "减少冗余 I/O"
+  verdict: speed faster (wall 0.805, A/A 1.0) | held {'avoid_repeated_io': True, 'skip_unneeded_work': True} | costs {}
+  top changes: sc:flock 0.33, sc:mkdir 0.34, sc:wait4 1.60, offcpu_ns_total 1.50, sc:rename 0.50, ev:block_rq_issue 0.50, ev:block_bio_queue 0.50, sc:write 0.50, bytes_written 0.50, sc:mremap 0.50
+
+### 4035652675 getzep/graphiti #1303 (kt-measure-3) tier=own_calls
+  notes: Installed kuzu 0.11.3 (optional project extra) into both venvs. Workload builds an in-memory Kuzu graph, creates FTS indices via get_fulltext_indices, and calls resolve_extracted_edges (which calls get_between_nodes on base and get_between_nodes_bidirectional on head) with deterministic stand-ins for LLM/embedder/cross-encoder. 
+  gates: base 5.626s head 5.67s | cov head 1.0 base None | equal False | py_share 1.0 | stub words ['Stub']
+  claim parallelize: "running both direction queries in a single semaphore_gather call instead of two sequential ones"
+  claim fewer_db_queries: "to avoid doubling queries"
+  verdict: speed no_change (wall 1.01, A/A 1.003) | held {'fewer_db_queries': False, 'parallelize': False} | costs {}
+  top changes: sc:clock_nanosleep 0.00?, ev:irq_handler_exit 0.00?, ev:irq_handler_entry 0.00?, ev:block_rq_issue 0.00?, ev:block_bio_queue 0.00?, foreign_switch_in_on_cpus 0.72?
+
+### 4009498604 osuAkatsuki/bancho.py #748 (kt-measure-3) tier=own_calls
+  notes: Installed deps from pyproject manually (poetry non-package install failed; needed apt cargo for akatsuki-pp-py, plus pyyaml/coverage). Workload: 300 in-memory players, ChangeAction packets via BanchoPacketReader, Player priv/stats_from_sql_full calls, and 60 full handle_osu_login_request calls; MySQL/Redis replaced by in-memory 
+  gates: base 2.031s head 1.898s | cov head 0.867 base 0.667 | equal False | py_share 1.0 | stub words ['Fake']
+  claim cache_results: "Adds lazy caching of `user_presence` and `user_stats` packet serialization on each `Player` object"
+  verdict: speed faster (wall 0.926, A/A 1.003) | held {'cache_results': True} | costs {}
+  top changes: context-switches 0.85?, instructions 0.87, mem_load_retired.l1_miss 0.89
+
+### 4007793617 agentscope-ai/QwenPaw #249 (kt-measure-3) tier=own_calls
+  notes: Calls the list_skills and get_available_skills route handlers directly, with 40 generated skills under a temporary COPAW_WORKING_DIR and HOME. Outputs differ: by default head drops the references/scripts trees, and head's list_skills raises AttributeError when any skill is active, because it calls .name on the strings returned b
+  gates: base 4.257s head 4.273s | cov head 1.0 base 1.0 | equal False | py_share 1.0 | stub words []
+  claim smaller_payload: "return lightweight payloads by default"
+  claim algorithmic: "use set for O(1) skill name lookup in list_skills"
+  verdict: speed no_change (wall 1.003, A/A 1.0) | held {'algorithmic': False, 'smaller_payload': False} | costs {}
+  top changes: ev:irq_handler_exit 0.00?, ev:irq_handler_entry 0.00?, ev:block_rq_complete 0.00?, offcpu_ns_main 0.81?, offcpu_ns_total 0.82?, sc:ppoll 1.17?, ev:sched_waking 0.86?, context-switches 0.88?
+
+### 3845573984 Whamp/chirp-stt #21 (kt-measure-3) tier=own_calls
+  notes: Audio hardware modules (sounddevice, winsound) are replaced by recording stand-ins because PortAudio is unavailable. The workload repeatedly plays bundled and generated WAVs through both backend paths, so base re-reads the files each time while head caches them. The digest covers what is played through sounddevice and the winsou
+  gates: base 1.144s head 0.471s | cov head 0.9 base 0.909 | equal True | py_share 1.0 | stub words ['Fake']
+  claim avoid_repeated_io: "Reduces disk I/O to zero for subsequent plays."
+  claim cache_results: "Reduces CPU overhead for parsing WAV headers and converting to numpy arrays"
+  verdict: speed faster (wall 0.42, A/A 1.005) | held {'avoid_repeated_io': True, 'cache_results': True} | costs {}
+  top changes: bytes_read 0.00, sc:ioctl 0.01, sc:read 0.01, sc:lseek 0.02, sc:close 0.02, sc:newfstat 0.03, sys_block_bytes 0.08, sc:openat 0.13, sys_s 0.22, branch-misses 0.33
+
+### 3908509929 FZJ-IEK3-VSA/tsam #147 (kt-measure-3) tier=own_calls
+  notes: Calls tsam.utils.durationRepresentation.durationRepresentation(distributionPeriodWise=True) directly on seeded synthetic data, with representMinMax both off and on. Every changed line runs on both sides. Base and head digests differ because the new stable argsort and sort order tied values differently (the PR updates its golden 
+  gates: base 2.674s head 1.772s | cov head 1.0 base 1.0 | equal False | py_share 1.0 | stub words []
+  claim vectorize_locality: "eliminating the per-attribute Python loop"
+  claim faster_library: "No pandas in hot path"
+  verdict: speed faster (wall 0.456, A/A 0.999) | held {'faster_library': True, 'vectorize_locality': True} | costs {}
+  top changes: l2_rqsts.references 0.28, mem_load_retired.l1_miss 0.29, L1-dcache-load-misses 0.30, user_s 0.43, cycles 0.44, task-clock 0.45, wall_s 0.46, runtime_ns 0.47, traced_wall_s 0.47, instructions 0.48
+
+### 4177804729 ScrollPrize/villa #802 (kt-measure-3) tier=own_calls
+  notes: Installed CPU torch 2.8 + scikit-image in both venvs (missing). Workload calls MedialSurfaceTransform on synthetic sparse 3D/2D segmentations (head adds bbox-ROI skeletonization + memory/disk caching), plus create_validation_transforms (result not hashed since head returns None). Digests equal; coverage ~95% both sides. Changes 
+  gates: base 3.563s head 2.464s | cov head 0.954 base 0.96 | equal True | py_share 1.0 | stub words []
+  claim parallelize: "kept distributed validation with coherent rank-0 W&B aggregation"
+  claim algorithmic: "added a binary `edt` fast path for `surface` dilation"
+  claim cache_results: "kept persistent derived-target caching for validation and memory-only caching for training"
+  claim other: "added NUMA pinning support for CUDA DDP ranks and inherited worker affinity"
+  claim other: "moved active run outputs and local W&B data to `/ephemeral`"
+  verdict: speed faster (wall 0.739, A/A 1.0) | held {'algorithmic': True, 'cache_results': True, 'parallelize': False} | costs {}
+  top changes: bytes_written 45912.12, sc:write 19.00, sc:mkdir 7.00, sys_block_bytes 0.08, sc:fcntl 1.64, sys_block_rq_issue 0.42, instructions 0.53, sc:ppoll 0.55?, sc:madvise 0.65, softirq_on_cpus 0.70
+
+### 3089612967 addok/addok #892 (kt-measure-3) tier=own_calls
+  notes: Calls addok.helpers.index.preprocess (unbounded dict cache in base vs lru_cache(10000) in head) and extract_tokens on 15k seeded unique address strings plus repeated single words, over 6 rounds. Config is loaded with TESTING=True and no Redis is needed. Outputs are identical. Head is about 4x slower because 15k unique keys repla
+  gates: base 1.387s head 8.006s | cov head 1.0 base 1.0 | equal True | py_share 1.0 | stub words []
+  claim cache_results: "speed up token preprocessing with `functools.lru_cache`"
+  verdict: speed slower (wall 3.959, A/A 0.997) | held {'cache_results': False} | costs {'instructions': 4.028, 'task-clock': 3.997}
+  top changes: l2_rqsts.references 5.39, L1-dcache-load-misses 4.51, mem_load_retired.l1_miss 4.33, user_s 4.08, instructions 4.03, task-clock 4.00, cycles 4.00, wall_s 3.96, runtime_ns 3.90, traced_wall_s 3.87
+
+### 3771655564 rush86999/atom #469 (kt-measure-3) tier=own_calls
+  notes: Backend isn't an installable package; installed lancedb/pandas/pyarrow/fastapi/openai/cryptography etc. into both venvs. Workload ingests messages/records into a local LanceDB (/tmp) via CommunicationIngestionPipeline.ingest_message and AtomIngestionPipeline.ingest_record (sync in base, async + run_in_executor default thread poo
+  gates: base 5.014s head 5.054s | cov head 0.857 base 0.714 | equal False | py_share 1.0 | stub words []
+  claim parallelize: "enables parallel ingestion pipelines"
+  claim async_io: "preventing the event loop from being blocked and enabling concurrent processing"
+  verdict: speed no_change (wall 1.012, A/A 1.004) | held {'async_io': False, 'parallelize': False} | costs {}
+  top changes: context-switches 1.73?, sc:exit 1.67, sc:mprotect 0.60?, sc:futex 1.29?, sc:madvise 1.22?, migrations 1.20, cpu-migrations 1.18?, ev:sched_waking 1.12?, sc:prctl 0.89?, switch_out 1.10?
+
+### 3210532278 567-labs/instructor #1674 (kt-measure-3) tier=own_calls
+  notes: The workload calls instructor.patch (sync and async) on a local fake create function that returns a canned OpenAI ChatCompletion, passing cache= and cache_ttl= kwargs. It also builds clients with from_provider(..., cache=) using a dummy key and makes no requests. AutoCache/DiskCache come from instructor.cache when it exists (hea
+  gates: base 6.505s head 6.885s | cov head 0.821 base 0.333 | equal True | py_share 1.0 | stub words ['fake', 'patch(']
+  claim cache_results: "Added AutoCache adapter for simple in-memory caching with TTL support"
+  verdict: speed slower (wall 1.068, A/A 1.002) | held {'cache_results': False} | costs {}
+  top changes: bytes_written 34579.86, sc:fcntl 287.43, sc:pread64 10.33, sc:getpid 8.06, switch_out 4.94, context-switches 4.62, sys_block_bytes 4.15?, sc:geteuid 4.00, offcpu_ns_total 2.74, offcpu_ns_main 2.74
+
+### 3751344465 The-XSS-Rat/subScraper #46 (kt-measure-3) tier=own_calls
+  notes: Builds a local SQLite DB in /tmp/kt_46 (400 targets, 9,400 subdomains) and calls load_state() and build_state_payload_summary() 15 times each. These are the functions where the PR replaces one query per target with a single JOIN. It also serves the app's own HTTP handler on 127.0.0.1 (ThreadingHTTPServer in a thread) and request
+  gates: base 3.212s head 2.77s | cov head 0.746 base 0.714 | equal False | py_share 1.0 | stub words []
+  claim fewer_db_queries: "Replaced N+1 query pattern with single JOIN query"
+  claim faster_db_query: "Added `idx_subdomains_domain_subdomain` for JOIN optimization"
+  claim less_memory: "Reduced command history from 5000 to 1000 entries"
+  claim smaller_payload: "Added page/per_page parameters to `/api/state`"
+  claim other: "Increased cache size from 2MB to 64MB"
+  verdict: speed faster (wall 0.871, A/A 0.997) | held {'faster_db_query': True, 'fewer_db_queries': True, 'less_memory': True, 'smaller_payload': False} | costs {}
+  top changes: sys_block_bytes 10.99?, sc:ftruncate 3.00, bytes_written 2.28, sc:fcntl 0.02, sc:pread64 0.05, bytes_read 0.08, sc:pwrite64 1.73, ev:x86_exceptions_page_fault_kernel 0.28, ev:net_if_receive_skb 0.35, ev:net_dev_xmit 0.35
+
+### 3711770112 OliverZhaohaibin/iPhotron-LocalPhotoAlbumManager #381 (kt-measure-3) tier=own_calls
+  notes: Installed exiftool system package (libimage-exiftool-perl) so metadata extraction runs for real. Workload builds a 300-JPEG album plus a corrupt-file album in /tmp/kt_381 and runs scan_album (full, early-closed), process_media_paths, app.rescan, and ScannerWorker/RescanWorker.run() directly. Head uses a background FileDiscoverer
+  gates: base 6.378s head 10.289s | cov head 0.827 base 0.843 | equal True | py_share 1.0 | stub words []
+  claim parallelize: "implementing parallel file discovery"
+  claim ui_rendering: "Throttled UI progress updates to improve performance."
+  verdict: speed slower (wall 1.502, A/A 1.001) | held {'parallelize': False} | costs {'sys_s': 1.925, 'minor-faults': 2.96, 'syscalls': 1.17, 'instructions': 1.338, 'task-clock': 1.37, 'bytes_read': 2.049}
+  top changes: ev:sched_wakeup 61.00, sc:futex 27.44, migrations 8.00, cpu-migrations 7.00, sys_block_bytes 5.94?, context-switches 5.80, sc:gettid 5.67, switch_out 4.98, sc:getgid 4.88, sc:getegid 4.88
+
+### 3945657455 nexi-lab/nexus #1622 (kt-measure-3) tier=own_calls
+  notes: Own calls on SQLite: OAuthCrypto(db_url) key loading, TokenManager(session_factory+db_url) -> OAuthCrypto, and the OAuthService PKCE/non-PKCE auth-url plus exchange flow (stand-ins only for the OAuth provider and its factory, which are network clients). Also AsyncSemanticSearch construct/close, SearchDaemon DB pool + FTS/semanti
+  gates: base 3.947s head 3.868s | cov head 0.844 base 1.0 | equal True | py_share 1.0 | stub words ['Fake']
+  claim reuse_resources: "created once in `_init_database_pool()` instead of per-method (6x less overhead)"
+  verdict: speed faster (wall 0.946, A/A 1.0) | held {'reuse_resources': True} | costs {}
+  top changes: futex_ns 0.21, threads 0.50, sc:madvise 0.50, sc:exit 0.50, sc:clone3 0.50, ev:sched_wakeup_new 0.50, sc:rt_sigprocmask 0.51, ev:sched_process_exit 0.52, sc:gettid 0.52, sc:set_robust_list 0.55
+
+### 3751451957 makerforgetech/modular-biped #146 (kt-measure-3) tier=own_calls
+  notes: PR changes SystemLoop.DEFAULT_SLEEP_INTERVAL from 0.1 to 0.01. Installed pyyaml, pypubsub and coverage into both venvs (the repo has no installable package). The workload uses the real PubSubMessagingService, drives the throttle/wake/motion state changes, then runs SystemLoop.start() for 60 loop iterations. A subscriber stops th
+  gates: base 6.098s head 0.679s | cov head 1.0 base 1.0 | equal False | py_share 1.0 | stub words []
+  claim polling_sleep: "Corrects `DEFAULT_SLEEP_INTERVAL` from 0.1 to 0.01 seconds"
+  verdict: speed faster (wall 0.11, A/A 1.0) | held {'polling_sleep': True} | costs {}
+  top changes: offcpu_ns_total 0.10, offcpu_ns_main 0.10, wall_s 0.11, traced_wall_s 0.11, softirq_on_cpus 0.14, foreign_switch_in_on_cpus 0.50?, ev:irq_softirq_exit 1.20?, ev:irq_softirq_entry 1.20?, ev:sched_waking 1.11?
+
+### 3751312130 OliverZhaohaibin/iPhotron-LocalPhotoAlbumManager #475 (kt-measure-3) tier=own_calls
+  notes: Synthetic album tree in /tmp/kt_475 (with .iPhoto/exported dirs to prune and excluded globs); calls gather_media_paths and runs FileDiscoverer thread with a bounded queue, 4 reps; sorted results hashed. Outputs equal; coverage ~85-89%.
+  gates: base 3.745s head 3.482s | cov head 0.853 base 0.889 | equal True | py_share 1.0 | stub words []
+  claim skip_unneeded_work: "By using `os.walk` and modifying the `dirnames` list in-place, we prevent the scanner from entering ignored directories "
+  claim less_memory: "Reduced memory usage during scan by avoiding creation of thousands of `Path` objects."
+  verdict: speed no_change (wall 0.948, A/A 0.971) | held {'less_memory': False, 'skip_unneeded_work': True} | costs {}
+  top changes: ev:irq_handler_exit 0.00?, ev:irq_handler_entry 0.00?, ev:block_rq_complete 0.00?, sc:stat_any 0.09, sc:newfstatat 0.09, ev:sched_wakeup 0.12, sc:futex 0.17, ev:sched_waking 0.17, switch_out 0.17, context-switches 0.22
+
+### 4025062250 PrefectHQ/prefect #20973 (kt-measure-3) tier=own_calls
+  notes: Workload enters and exits SyncClientContext and AsyncClientContext (including re-entering each one) 150 times each against a local in-process HTTP stub that answers /admin/version. With the default setting (check enabled), this runs every changed line in prefect/context.py on both sides. The prefect_dbt orchestrator change is no
+  gates: base 7.43s head 8.769s | cov head 1.0 base 1.0 | equal True | py_share 1.0 | stub words []
+  claim skip_unneeded_work: "avoiding redundant version checks per subprocess"
+  verdict: speed no_change (wall 1.0, A/A 1.0) | held {'skip_unneeded_work': False} | costs {}
+  top changes: sys_block_bytes 0.86?
+
+### 3006534682 saturday06/VRM-Addon-for-Blender #797 (kt-measure-3) tier=repo_tests
+  notes: The project pins bpy==3.6.*, but PyPI no longer has it (only bpy>=4.2, which needs Python 3.11). I rebuilt both venvs by hand with Python 3.11: bpy 4.4 at the exclude-newer date, numpy<2 (bpy's compiled modules fail under numpy 2), coverage, and the add-on installed editable with --no-deps. These manual steps are recorded in reb
+  gates: base 3.224s head 3.392s | cov head 1.0 base 1.0 | equal True | py_share 1.0 | stub words []
+  claim cache_results: "複数回使用される行列演算結果をキャッシュ"
+  verdict: speed no_change (wall 0.991, A/A 1.001) | held {'cache_results': False} | costs {}
+  top changes: foreign_switch_in_on_cpus 1.25?, hrtimer_on_cpus 0.83?, offcpu_ns_main 0.87?
+
+### 3246037837 ayutaz/piper-plus #113 (kt-measure-3) tier=own_calls
+  notes: Rebuilt both venvs with Python 3.11 because piper-phonemize has no Linux wheel for 3.12. Compiled the monotonic_align Cython extension into each venv (kt_ext/ plus a .pth that registers it in sys.modules), without touching src. The workload trains a tiny VitsModel for 3 steps on synthetic data with Trainer.fit. Head uses manual 
+  gates: base 10.1s head 9.129s | cov head 0.923 base 0.857 | equal False | py_share 1.0 | stub words []
+  claim parallelize: "マルチGPU学習サポートの実装"
+  claim other: "`find_unused_parameters=False`: パフォーマンス向上"
+  claim less_memory: "メモリ効率改善"
+  claim reuse_resources: "`persistent_workers=True`でワーカーを再利用"
+  claim concurrency_tuning: "GPUあたり4ワーカーの自動計算"
+  claim other: "`pin_memory=True`でGPU転送を最適化"
+  verdict: speed faster (wall 0.807, A/A 0.985) | held {'concurrency_tuning': False, 'less_memory': True, 'parallelize': False, 'reuse_resources': False} | costs {}
+  top changes: ev:irq_handler_exit 0.00?, ev:irq_handler_entry 0.00?, switch_out 0.23?, sc:ppoll 1.57?, sc:rt_sigaction 1.48, offcpu_ns_total 0.69?, offcpu_ns_main 0.69?, mem_load_retired.l1_miss 0.70, mem_load_retired.l2_miss 0.70, l2_rqsts.miss 0.71
+
+### 3946349670 AndyMik90/Aperant #1852 (kt-measure-3) tier=own_calls
+  notes: The project install fails on both sides (setuptools rejects the flat layout), so only the needed dependencies were installed into both venvs (claude-agent-sdk, python-dotenv, pydantic, secretstorage, coverage), and the source tree is added to sys.path. The workload runs ParallelOrchestratorReviewer.review() end to end on 150 see
+  gates: base 2.645s head 1.674s | cov head 1.0 base 1.0 | equal False | py_share 0.377 | stub words ['Fake', 'fake']
+  claim algorithmic: "reducing the number of iterations over the findings list"
+  verdict: speed no_change (wall 1.019, A/A 1.005) | held {'algorithmic': False} | costs {}
+  top changes: sc:ppoll 1.83?, switch_out 1.67?, ev:timer_hrtimer_expire_exit 1.23?, ev:timer_hrtimer_expire_entry 1.23?, context-switches 0.79?, hrtimer_on_cpus 1.18?, offcpu_ns_total 0.83?, offcpu_ns_main 0.83?, sc:recvmsg 1.15?, softirq_on_cpus 1.11?
+
+### 3417785336 ultralytics/ultralytics #22086 (kt-measure-3) tier=own_calls
+  notes: Builds YOLO models from bundled yaml configs (no downloads) and repeatedly re-wraps existing instances via YOLO(m)/Model(m), exercising the removed __dict__-copy path (base) and the new __new__/_initialized path (head). Settings dir set to /tmp/kt_22086 so it runs offline. Digest excludes object identity (head returns the same i
+  gates: base 3.241s head 4.502s | cov head 1.0 base 1.0 | equal True | py_share 1.0 | stub words []
+  claim reuse_resources: "Created pseudo-copies instead of reusing existing instances"
+  claim less_memory: "Memory efficient**: `YOLO(existing_model) is existing_model` returns the same instance"
+  verdict: speed no_change (wall 0.994, A/A 0.997) | held {'less_memory': False, 'reuse_resources': False} | costs {}
+  top changes: sc:ppoll 0.55?, offcpu_ns_main 1.23?, offcpu_ns_total 1.22?, switch_out 0.83?, ev:irq_softirq_exit 1.13, ev:irq_softirq_entry 1.13, softirq_on_cpus 1.11, sc:recvmsg 0.89?
+
+### 4103160496 getnao/nao #488 (kt-measure-3) tier=own_calls
+  notes: Replaced urllib.request.urlopen with an in-process fake PyPI response; the fake raises an error on one call in seven. Cache file is in /tmp/kt_488 and UI console output goes to an in-memory buffer. 4000 rounds of clear cache, check_for_updates on a miss, then on a hit, then get_latest_version. On head, the miss starts a backgrou
+  gates: base 1.957s head 2.374s | cov head 0.87 base 1.0 | equal False | py_share 1.0 | stub words ['fake']
+  claim async_io: "Move the PyPI fetch to a background daemon thread so it never blocks CLI startup"
+  verdict: speed faster (wall 0.83, A/A 1.003) | held {'async_io': False} | costs {'sys_s': 9.311, 'minor-faults': 1.535, 'syscalls': 1.554}
+  top changes: futex_ns 24739.39, sc:rt_sigprocmask 18290.00, ev:sched_process_exit 4573.00, sc:gettid 3049.00, sc:futex 2762.24, sc:set_robust_list 1525.00, sc:rseq 1525.00, switch_out 1303.12, context-switches 1214.80, ev:sched_waking 1071.31

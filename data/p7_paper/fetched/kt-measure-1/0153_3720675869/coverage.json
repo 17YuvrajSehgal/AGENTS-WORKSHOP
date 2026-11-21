@@ -1,0 +1,21 @@
+{
+ "changed_files": [
+  "src/iPhoto/gui/ui/tasks/video_frame_grabber.py",
+  "src/iPhoto/utils/ffmpeg.py",
+  "src/iPhoto/utils/image_loader.py"
+ ],
+ "base": {
+  "changed_executable_lines": 10,
+  "executed": 10,
+  "share": 1.0
+ },
+ "head": {
+  "changed_executable_lines": 53,
+  "executed": 44,
+  "share": 0.83
+ },
+ "output_digest_base": "a24b625af0083fe492f652e0ed9708fd375f345ea54ef0fc4a4587495c7010da",
+ "output_digest_head": "76c7f18c180b0f46b65a75b9dc7bdc96ab55acb4193e6be21a3a71522a649303",
+ "output_equal": false,
+ "coverage_gate_pass": true
+}

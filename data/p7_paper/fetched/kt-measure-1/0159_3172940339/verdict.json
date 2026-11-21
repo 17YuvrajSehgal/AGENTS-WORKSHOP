@@ -1,0 +1,90 @@
+{
+ "job": {
+  "order": 159,
+  "id": 3172940339,
+  "agent": "Cursor",
+  "repo": "browser-use/browser-use",
+  "number": 2090,
+  "api_base_sha": "e7a6e2b2970248e5db3e06550d44d9f368e7326c",
+  "head_sha": "2be3c98f284d3da28dd8ad34241477e2550417c4",
+  "created": "2025-06-24",
+  "changed_files": [
+   "MEMORY_FILESYSTEM_PR.md",
+   "browser_use/agent/service.py",
+   "browser_use/agent/views.py",
+   "browser_use/controller/service.py",
+   "browser_use/filesystem/memory_file_system.py"
+  ],
+  "n_files": 5,
+  "final_diff_files": [
+   "MEMORY_FILESYSTEM_PR.md",
+   "browser_use/agent/service.py",
+   "browser_use/agent/views.py",
+   "browser_use/controller/service.py",
+   "browser_use/filesystem/memory_file_system.py"
+  ]
+ },
+ "agent": {
+  "status": "built",
+  "reason": "none",
+  "tier": "own_calls",
+  "uses_parallelism": false,
+  "behaviour_change_expected": true,
+  "notes": "Builds Agent (fake LLM stand-in, never invoked) to hit _set_file_system, then runs write/append/read/done controller actions via registry.execute_action on agent.file_system (disk FileSystem on base, MemoryFileSystem on head), plus AgentState construction. Config dirs redirected to /tmp/kt_2090 for the no-network run. Digests differ because head swaps in a different filesystem implementation (likely different describe/read output formats); attachment paths are reduced to basenames before hashing."
+ },
+ "agent_is_error": false,
+ "timed_out": false,
+ "models": [
+  "claude-opus-5-5"
+ ],
+ "list_usd": 0.33467040000000003,
+ "num_turns": 13,
+ "setup_ok": true,
+ "setup_s": 7,
+ "agent_s": 146,
+ "check": {
+  "base_exit_ok": true,
+  "base_last_line": "09642ae1f6833f1d2f45512032eb6ace0fd4a525e978d9cf3430c6a2dc2b9b81",
+  "head_exit_ok": true,
+  "head_last_line": "0c90fdbd620c20f80481911e9ced8ff751532f819007b129f17aee59146f660a",
+  "base_time_s": 1.866,
+  "head_time_s": 1.678,
+  "no_network_ok": true,
+  "coverage": {
+   "changed_files": [
+    "browser_use/agent/service.py",
+    "browser_use/agent/views.py",
+    "browser_use/controller/service.py",
+    "browser_use/filesystem/memory_file_system.py"
+   ],
+   "base": {
+    "changed_executable_lines": 14,
+    "executed": 11,
+    "share": 0.786
+   },
+   "head": {
+    "changed_executable_lines": 161,
+    "executed": 134,
+    "share": 0.832
+   },
+   "output_digest_base": "09642ae1f6833f1d2f45512032eb6ace0fd4a525e978d9cf3430c6a2dc2b9b81",
+   "output_digest_head": "0c90fdbd620c20f80481911e9ced8ff751532f819007b129f17aee59146f660a",
+   "output_equal": false,
+   "coverage_gate_pass": true
+  },
+  "coverage_needed": 0.8,
+  "output_equal": false,
+  "pass": true,
+  "reasons": []
+ },
+ "harness_pass": true,
+ "audit": {
+  "mentions_github_pull": false,
+  "used_gh_cli": false,
+  "read_git_history": false
+ },
+ "changed_code_lines": {
+  "py": 290
+ },
+ "python_share_of_code_change": 1.0
+}

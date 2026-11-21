@@ -1,0 +1,19 @@
+{
+ "changed_files": [
+  "app/services/twitter/oauth2_refresh.py"
+ ],
+ "base": {
+  "changed_executable_lines": 3,
+  "executed": 3,
+  "share": 1.0
+ },
+ "head": {
+  "changed_executable_lines": 5,
+  "executed": 5,
+  "share": 1.0
+ },
+ "output_digest_base": "f607b0e13a12f486c3ea2055bd5e68c314a30f20b08ef4c6af60df2d6b014c42",
+ "output_digest_head": "f607b0e13a12f486c3ea2055bd5e68c314a30f20b08ef4c6af60df2d6b014c42",
+ "output_equal": true,
+ "coverage_gate_pass": true
+}

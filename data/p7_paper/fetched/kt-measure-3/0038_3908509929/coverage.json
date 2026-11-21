@@ -1,0 +1,19 @@
+{
+ "changed_files": [
+  "src/tsam/utils/durationRepresentation.py"
+ ],
+ "base": {
+  "changed_executable_lines": 16,
+  "executed": 16,
+  "share": 1.0
+ },
+ "head": {
+  "changed_executable_lines": 20,
+  "executed": 20,
+  "share": 1.0
+ },
+ "output_digest_base": "c3de5c3c7b9e2bcd90a42d296870f5bd386173960f6eccc1fd52b71e2d58e6e2",
+ "output_digest_head": "ccac9cd18212bd0f0ef3a8aeaf0c66f3d843c7580451d14eb8ad330e26f940d5",
+ "output_equal": false,
+ "coverage_gate_pass": true
+}

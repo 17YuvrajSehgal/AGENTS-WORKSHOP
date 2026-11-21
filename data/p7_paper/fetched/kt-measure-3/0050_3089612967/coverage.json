@@ -1,0 +1,20 @@
+{
+ "changed_files": [
+  "addok/config/default.py",
+  "addok/helpers/index.py"
+ ],
+ "base": {
+  "changed_executable_lines": 4,
+  "executed": 4,
+  "share": 1.0
+ },
+ "head": {
+  "changed_executable_lines": 4,
+  "executed": 4,
+  "share": 1.0
+ },
+ "output_digest_base": "30517455dd64c46ef385dec5a930345936dacdf97790366e8665501206199ba2",
+ "output_digest_head": "30517455dd64c46ef385dec5a930345936dacdf97790366e8665501206199ba2",
+ "output_equal": true,
+ "coverage_gate_pass": true
+}

@@ -1,0 +1,32 @@
+{
+ "base_exit_ok": true,
+ "base_last_line": "26637d6771081aae385ec851e4234a4c8fd4072a9cf5323d28f8957cba6c49ce",
+ "head_exit_ok": true,
+ "head_last_line": "26637d6771081aae385ec851e4234a4c8fd4072a9cf5323d28f8957cba6c49ce",
+ "base_time_s": 2.279,
+ "head_time_s": 1.297,
+ "no_network_ok": true,
+ "coverage": {
+  "changed_files": [
+   "espial/analysis.py"
+  ],
+  "base": {
+   "changed_executable_lines": 2,
+   "executed": 2,
+   "share": 1.0
+  },
+  "head": {
+   "changed_executable_lines": 2,
+   "executed": 2,
+   "share": 1.0
+  },
+  "output_digest_base": "26637d6771081aae385ec851e4234a4c8fd4072a9cf5323d28f8957cba6c49ce",
+  "output_digest_head": "26637d6771081aae385ec851e4234a4c8fd4072a9cf5323d28f8957cba6c49ce",
+  "output_equal": true,
+  "coverage_gate_pass": true
+ },
+ "coverage_needed": 0.8,
+ "output_equal": true,
+ "pass": true,
+ "reasons": []
+}
