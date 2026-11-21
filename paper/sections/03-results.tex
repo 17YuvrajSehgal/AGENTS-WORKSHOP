@@ -7,11 +7,12 @@ Of the \nClaims runtime-performance PRs, \nNoMech (\pctNoMech) name no
 mechanism at all. The most common mechanisms are skipping unneeded work
 (\mechSkipUnneededWork), reducing memory use or copies (\mechLessMemory)
 and caching results (\mechCacheResults) (Table~\ref{tab:oracle}). Most
-claims are not measured. \evReasoning PRs support their claim by reasoning
-only and \evNone offer no evidence (together \pctReasonNone). \evBenchmark
-cite a benchmark (\pctBenchmark), \evTest a test, and \evProfile a profile.
-Only \nEffect (\pctEffect) state an effect size. \nMeasurableClaims PRs
-claim at least one mechanism that has a kernel or hardware signal. The
+claims are not measured: \evReasoning PRs support their claim by reasoning
+only and \evNone offer no evidence (together \pctReasonNone), while
+\evBenchmark cite a benchmark (\pctBenchmark), \evTest a test, and
+\evProfile a profile.
+Only \nEffect (\pctEffect) state an effect size. In total, \nMeasurableClaims
+PRs claim at least one mechanism that has a kernel or hardware signal. The
 rest claim only GPU, external-API, user-interface or uncategorized
 mechanisms, or no mechanism.
 
@@ -99,8 +100,8 @@ is faster, its claimed mechanism usually holds (\qFH of \nFaster); when it
 is slower, it rarely does (\qSH of \nSlower). In this sample, a missing
 footprint rarely comes with a speed-up. Many of these holds rest on
 hardware counters, mainly the instruction count: with kernel-trace signals
-alone, \nHeldKernel of the \nHeld mechanisms hold, and \nHeldFastKernel of
-the \nHeldFast faster ones (\nHeldHwOnly PRs claim only mechanisms that
+alone, the mechanism holds in \nHeldKernel of the \nHeld PRs, and in
+\nHeldFastKernel of the \nHeldFast faster ones (\nHeldHwOnly PRs claim only mechanisms that
 have no kernel signal). The rule does not fire by chance:
 applied to base against base again, no signal moves in any of
 \aaSigTests tests (\aaSigRate).
@@ -120,14 +121,15 @@ carries information about the mechanism that a stopwatch and an
 instruction counter lack. It is not perfectly specific, however: a held
 mechanism is evidence consistent with the claim, not proof of it.
 
-\nBehaviour PRs also change the output of the workload, for example
+In \nBehaviour PRs, the output of the workload also changes, for example
 through new defaults or new error messages; Qi et al.\ report the same
 for merged agent fixes~\cite{qi2026merged}. Such changes do not drive the
 pattern above. Of the \nSame PRs with unchanged output, \qFHSame are
 faster with the mechanism present and \qFNSame faster without it; of the
 \nChg PRs with changed output, the numbers are \qFHChg and \qFNChg.
-\nHiddenCost PRs make at least one resource clearly worse: system time,
-memory, page faults, system calls, instructions, CPU time or bytes read.
+Finally, \nHiddenCost PRs make at least one resource clearly worse: system
+time, memory, page faults, system calls, instructions, CPU time or bytes
+read.
 
 \begin{table}[t]
 \caption{Analysed PRs by agent and by the evidence the PR offers for its
