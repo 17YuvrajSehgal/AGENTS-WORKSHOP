@@ -19,14 +19,17 @@ changes. The trace shows a likely cause: \texttt{getdents64}, the call that
 lists a directory, rises from \caseBGetdentsBase\ to \caseBGetdentsHead\
 (\caseBGetdents), and instructions grow \caseBInstr.
 
-\paragraph{The mechanism happens, but hurts}
-iPhotron PR~\#445 (Jules) moves asset loading onto a thread pool with
-back-pressure and time slicing. The concurrency footprint appears, so the
-mechanism holds by our rule, but the workload is \caseDWall\ slower: the
-main thread spends \caseDOffcpu\ more time off the CPU, futex waiting grows
-\caseDFutex\ and CPU migrations go from \caseDMigrBase\ to \caseDMigrHead.
+\paragraph{Half the mechanism happens, and it hurts}
+A Claude Code PR to gemini-notebook-mcp-cli (\#16) claims non-blocking
+I/O and HTTP connection pooling. The first part appears: the main thread
+spends \caseDOffcpu\ of its former time off the CPU. The second does not:
+the workload opens \caseDSocketHead\ sockets and \caseDConnectHead\
+connections on both versions. Meanwhile syscalls grow \caseDSyscalls,
+\texttt{futex} calls \caseDFutexc\ and CPU time \caseDTask, and the
+workload is \caseDWall\ slower (\caseDWallBase\,s to \caseDWallHead\,s).
 
 \paragraph{A claim that holds}
-btcrecover PR~\#633 (Codex) stops batch work once a seed matches. Wall
-time falls to \caseCWall\ of the base (\caseCWallBase\,s to
-\caseCWallHead\,s) and instructions to \caseCInstr, as the claim predicts.
+mlflow PR~\#19520 (Copilot) changes artifact transfer to chunked streaming.
+The footprint is exactly the claimed one: \texttt{read} calls fall from
+\caseCReadBase\ to \caseCReadHead\ (\caseCRead) for the same bytes read,
+instructions fall to \caseCInstr\ and wall time to \caseCWall\ of the base.

@@ -12,7 +12,11 @@ claims into checkable ones.
 (\nAnalysed PRs, up to \maxPerRepo from one repository), so the shares in
 Table~\ref{tab:quadrant} are preliminary. Workloads are written by an
 agent: although it never sees the claim and an independent check enforces
-coverage of the changed lines, a workload may not reflect real use.
+coverage of the changed lines, a workload may not reflect real use. Because
+the agent is blind to the claim, it may exercise a different part of a
+large PR than the one the claim is about; the review removed such PRs when
+it found them, but others may remain and would bias towards
+``mechanism absent''.
 Classification and claim extraction are done by LLMs; a human check of a
 stratified sample of 300 PRs is prepared but not yet done. Kernel signals are evidence for a
 mechanism, not proof; the control programs show that each signal responds
@@ -24,12 +28,20 @@ characterize topics~\cite{opu2025bertopic}, optimization
 patterns~\cite{peng2025optimization}, mutation
 patterns~\cite{dovhoshliubnyi2026mutation} and how agents report
 validation~\cite{peng2026validation}, all from text and code. Qi et
-al.\ re-execute 53 fixes from AIDev~\cite{qi2026merged}. Benchmarks
-such as SWE-fficiency~\cite{ma2025swefficiency} and
-FormulaCode~\cite{sehgal2026formulacode} measure whether agents can make
-given workloads faster, and their reliability has been
-questioned~\cite{chen2026benchmarks}. We instead check, with kernel traces, the
-mechanism that agent PRs claim.
+al.\ re-execute 53 fixes from AIDev~\cite{qi2026merged}. Gong et al.\
+find agent PR descriptions that claim changes the code does not
+implement~\cite{gong2026inconsistency}; we check a claim's runtime
+effect instead of its presence in the diff. Benchmarks
+such as PIE~\cite{shypula2024pie}, EffiBench~\cite{huang2024effibench},
+SWE-Perf~\cite{he2025sweperf}, GSO~\cite{shetty2025gso},
+PerfBench~\cite{garg2025perfbench}, SWE-fficiency~\cite{ma2025swefficiency}
+and FormulaCode~\cite{sehgal2026formulacode} measure whether models or
+agents can make given code faster, and their reliability has been
+questioned~\cite{chen2026benchmarks}. Performance bugs in human-written
+code have long been studied~\cite{jin2012perfbugs,zaman2012perfbugs}, and
+kernel traces have been used to explain where execution time
+goes~\cite{giraldeau2016wait,ezzatijivan2017multiscale}. We instead check,
+with kernel traces, the mechanism that agent PRs claim.
 
 \textbf{Conclusion.} Agents' performance claims are mostly unmeasured, and
 a stopwatch cannot tell whether they are true for the stated reason. Our

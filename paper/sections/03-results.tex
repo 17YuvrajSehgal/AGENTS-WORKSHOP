@@ -36,7 +36,9 @@ We analyse the \nAnalysed measured PRs (from \nReposAnalysed repositories)
 whose claim names at least one checkable mechanism and whose change is
 mostly Python; \nLowPy measured PRs whose change is mostly non-Python code
 are set aside, because their claim may concern code we do not execute.
-\nExcludedNoisy PR is excluded because its A/A control (base against base)
+The manual review excludes \nExcludedReview PRs: in three the claimed
+mechanism lies in code the workload never runs, and in one the base
+version fails on the measured path. \nExcludedNoisy PR is excluded because its A/A control (base against base)
 itself differs by more than 5\%; for the others the A/A wall-time ratio
 stays within \aaMin--\aaMax, so the noise floor is small. A PR is \emph{faster} if its
 median wall time drops by at least 5\% and every head run is faster than
@@ -85,9 +87,12 @@ $\pm$5\% zone counted as no clear change.}
 Table~\ref{tab:quadrant} and Figure~\ref{fig:wall} show the first results. Of the \nAnalysed PRs,
 \nFaster are faster, \nNoChange show no clear change and \nSlower are
 slower than before the change; the claimed mechanism holds in \nHeld.
-\nBehaviour PRs also change the output of the workload, although they are
-presented as performance changes, and \nHiddenCost make at least one
-resource clearly worse (system time, memory, page faults, syscalls,
+When a PR is faster, its claimed mechanism usually appears (\qFH of
+\nFaster); when it is slower, it rarely does (\qSH of \nSlower). In this
+sample, a missing footprint rarely comes with a speed-up.
+\nBehaviour PRs also change the output of the workload (for example new
+defaults or error messages), so these performance PRs change behaviour
+too, and \nHiddenCost make at least one resource clearly worse (system time, memory, page faults, syscalls,
 instructions, CPU time or bytes read).
 
 \input{sections/03b-cases}

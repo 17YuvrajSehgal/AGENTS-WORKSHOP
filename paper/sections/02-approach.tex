@@ -46,7 +46,7 @@ two-thread mutex against per-thread counters.
 
 \begin{table}[t]
 \caption{Claimed mechanism, share of the \nClaims runtime-performance PRs
-that claim it (a PR may claim several), and the signal that must move.}
+that claim it (a PR may claim several), and the signals that must move (one is enough).}
 \label{tab:oracle}
 \centering\scriptsize
 \setlength{\tabcolsep}{3pt}
@@ -56,15 +56,15 @@ mechanism claimed & PRs & signal (head vs.\ base) \\
 \midrule
 skip unneeded work & \mechSkipUnneededWork & fewer syscalls / instructions \\
 less memory, fewer copies & \mechLessMemory & fewer page faults, page allocations \\
-cache results & \mechCacheResults & fewer instructions (and syscalls) \\
-algorithmic & \mechAlgorithmic & fewer instructions, syscalls unchanged \\
+cache results & \mechCacheResults & fewer instructions or syscalls \\
+algorithmic & \mechAlgorithmic & fewer instructions \\
 parallelize & \mechParallelize & wall time down, CPU time not down \\
 async / non-blocking I/O & \mechAsyncIo & less off-CPU time on the main thread \\
-precompute & \mechPrecompute & fewer instructions on the hot path \\
+precompute & \mechPrecompute & fewer instructions \\
 faster library & \mechFasterLibrary & fewer instructions \\
 concurrency tuning & \mechConcurrencyTuning & threads, context switches, futex \\
 lazy loading & \mechLazyLoading & fewer \texttt{openat} / bytes read \\
-reuse resources & \mechReuseResources & fewer \texttt{socket}/\texttt{connect}/\texttt{clone} \\
+reuse resources & \mechReuseResources & fewer \texttt{socket}/\texttt{connect}, threads, forks \\
 DB: faster / fewer queries & \mechFasterDbQuery\,/\,\mechFewerDbQueries & fewer page reads, round trips \\
 vectorize, locality & \mechVectorizeLocality & fewer instructions, cache misses \\
 avoid repeated I/O & \mechAvoidRepeatedIo & fewer \texttt{openat}/\texttt{read}, bytes \\
@@ -78,7 +78,8 @@ less locking & \mechLessLocking & less futex wait \\
 For each PR, the harness checks out the merge base and the PR head (the
 API's base commit can be later than the branch point and would mix in
 unrelated changes), installs both with dependencies frozen at the PR's
-creation date, and hands them to a build agent (Claude Code, Opus~5.5).
+creation date, and hands them to a build agent (Claude Code, Opus~5.5),
+which may repair a failed install the same way on both sides.
 The agent is \emph{blind to the claim}: it sees the code, the diff and the
 changed files, but not the title, description, commit messages or our
 extracted claim, and the git history is moved out of its reach. It must
@@ -94,8 +95,10 @@ Measurements run on \nVMs identical Google Cloud C4 virtual machines with
 the performance-monitoring unit enabled, one job per machine at a time.
 Workloads run on dedicated cores (one, or two for parallel workloads):
 system services are confined to the other cores with systemd, because \texttt{isolcpus} disables load balancing
-(a two-process pool ran on a single core). Per PR we run base, head and
-base again (an A/A control): 3+3 warm-up runs, 10 untraced timing runs per
+(a two-process pool ran on a single core). Cloud machines make
+performance results vary~\cite{laaber2019cloud}, and small setup details
+can bias a comparison~\cite{mytkowicz2009wrong}, so per PR we run base,
+head and base again (an A/A control that measures this noise directly): 3+3 warm-up runs, 10 untraced timing runs per
 variant, 5 runs of 3 hardware-counter groups (at most four programmable
 events each, so no counter is multiplexed), and 5 full LTTng kernel traces
 per variant (all syscalls, scheduling, block I/O, interrupts, page faults,

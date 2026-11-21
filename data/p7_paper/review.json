@@ -72,8 +72,8 @@
   "why": "CDP stand-in returns synthetic DOM; serializer runs unpatched"
  },
  "3928671597": {
-  "exclude": false,
-  "why": "extracted mechanisms (uv installer, thread-pool status check) concern other parts of a large PR than the covered memory-store code; kept, noted as claim/workload mismatch risk",
+  "exclude": true,
+  "why": "claim not exercised: extracted mechanisms (uv installer, thread-pool status check) are in other parts of the PR than the memory-store code the workload runs",
   "pr": "pocketpaw/pocketpaw #31"
  },
  "3790607299": {
@@ -330,5 +330,105 @@
   "exclude": false,
   "why": "card review 2026-11-21: agent notes, gates, stand-ins limited to external services, signals plausible",
   "pr": "getnao/nao #488"
+ },
+ "4025060586": {
+  "exclude": false,
+  "why": "card review 2026-11-21: notes, gates, stand-ins limited to external services, signals plausible",
+  "pr": "PrefectHQ/prefect #20972"
+ },
+ "3172940339": {
+  "exclude": false,
+  "why": "card review 2026-11-21: notes, gates, stand-ins limited to external services, signals plausible",
+  "pr": "browser-use/browser-use #2090"
+ },
+ "4053408604": {
+  "exclude": false,
+  "why": "python share 0.696; kept",
+  "pr": "BerriAI/litellm #23281"
+ },
+ "3934859819": {
+  "exclude": false,
+  "why": "card review 2026-11-21: notes, gates, stand-ins limited to external services, signals plausible",
+  "pr": "allenai/olmoearth_pretrain #493"
+ },
+ "3797949422": {
+  "exclude": true,
+  "why": "base fails on the measured path: project() raises TypeError on base (jax 0.8.2), so base does less work than head; speed comparison invalid",
+  "pr": "ryan112358/mbi #78"
+ },
+ "3883252686": {
+  "exclude": true,
+  "why": "claim not exercised: claims are about CPU inference speed (thread tuning, IPEX) but the workload never loads a model; base raises 'Unknown TTS_BACKEND' for half the configs",
+  "pr": "groxaxo/Qwen3-TTS-Openai-Fastapi #12"
+ },
+ "3947734832": {
+  "exclude": false,
+  "why": "card review 2026-11-21: notes, gates, stand-ins limited to external services, signals plausible",
+  "pr": "shotgun-sh/shotgun #461"
+ },
+ "3731874671": {
+  "exclude": true,
+  "why": "claim not exercised: claimed O(n^2)->O(n) tokenization fix is outside the code the workload runs (Apriel2Cache); head coverage 0.631 under the >200-line rule",
+  "pr": "ServiceNow/Fast-LLM #422"
+ },
+ "3617786284": {
+  "exclude": false,
+  "why": "card review 2026-11-21: notes, gates, stand-ins limited to external services, signals plausible",
+  "pr": "PrefectHQ/prefect #19427"
+ },
+ "3854969732": {
+  "exclude": false,
+  "why": "card review 2026-11-21: notes, gates, stand-ins limited to external services, signals plausible",
+  "pr": "jacob-bd/gemini-notebook-mcp-cli #16"
+ },
+ "3336159265": {
+  "exclude": false,
+  "why": "card review 2026-11-21: notes, gates, stand-ins limited to external services, signals plausible",
+  "pr": "browser-use/browser-use #2727"
+ },
+ "3797599647": {
+  "exclude": false,
+  "why": "card review 2026-11-21: notes, gates, stand-ins limited to external services, signals plausible",
+  "pr": "OliverZhaohaibin/iPhotron-LocalPhotoAlbumManager #516"
+ },
+ "3427603369": {
+  "exclude": false,
+  "why": "card review 2026-11-21: notes, gates, stand-ins limited to external services, signals plausible",
+  "pr": "bolna-ai/bolna #277"
+ },
+ "4081613712": {
+  "exclude": false,
+  "why": "card review 2026-11-21: notes, gates, stand-ins limited to external services, signals plausible",
+  "pr": "DataDog/datadog-serverless-functions #1080"
+ },
+ "4160998324": {
+  "exclude": false,
+  "why": "most claims are Postgres-only (not exercised); the JSON-storage set filter claim is exercised; kept",
+  "pr": "HKUDS/LightRAG #2853"
+ },
+ "4107903785": {
+  "exclude": false,
+  "why": "card review 2026-11-21: notes, gates, stand-ins limited to external services, signals plausible",
+  "pr": "jvnhaoWen/PolyAgent #8"
+ },
+ "3737405427": {
+  "exclude": false,
+  "why": "set aside by rule (python share 0.172; Rust change)",
+  "pr": "gerlero/foamlib #742"
+ },
+ "3162346531": {
+  "exclude": false,
+  "why": "card review 2026-11-21: notes, gates, stand-ins limited to external services, signals plausible",
+  "pr": "digitaldemocracy2030/kouchou-ai #609"
+ },
+ "4142942163": {
+  "exclude": false,
+  "why": "real mlx CPU codecs; head coverage 0.697 passes the >200-line rule; digests differ by design (new rotation)",
+  "pr": "Neywa-Labs/mlx-vlm #860"
+ },
+ "3751760746": {
+  "exclude": false,
+  "why": "local HTTP server stand-in only; claimed async path runs on head",
+  "pr": "jellyfin/jellyfin-apiclient-python #72"
  }
 }

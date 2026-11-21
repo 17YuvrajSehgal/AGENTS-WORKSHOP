@@ -16,9 +16,9 @@ performance PR usually claims a mechanism: \emph{cache the result},
 \emph{read the file once}, \emph{stream in 1\,MB chunks}, \emph{remove the
 lock}. Each mechanism leaves a footprint in the operating system: fewer
 \texttt{read} calls, fewer page faults, less time waiting on a futex. If
-the footprint is absent, the claim is wrong even when the code is faster;
-if it is present but the code is not faster, the mechanism was not the
-bottleneck. Neither case is visible to a stopwatch.
+the footprint is absent, the stated reason does not explain the result,
+even when the code is faster; if it is present but the code is not faster,
+the mechanism was not the bottleneck. Neither case is visible to a stopwatch.
 
 We present \sys, a method and pipeline that checks agents' performance
 claims at the kernel level. It (i)~finds performance PRs and extracts the
