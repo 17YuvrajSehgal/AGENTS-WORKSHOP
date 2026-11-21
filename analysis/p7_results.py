@@ -181,7 +181,7 @@ def write_macros(df):
     m("aaMax", f"{an.aa_ratio.max():.3f}" if len(an) else "-", "max A/A wall ratio")
     # Figure 1 data: one row per analysed PR, sorted by wall ratio
     fig = an.assign(h=held.astype(int), b=an.behaviour_change.astype(int)).sort_values("wall_ratio")
-    with open(ROOT / "paper" / "fig_wall.dat", "w") as f:
+    with open(ROOT / "paper" / "fig_wall.dat", "w", newline="\n") as f:  # LF: pgfplots
         f.write("rank ratio held behaviour\n")
         for i, r in enumerate(fig.itertuples(), 1):
             f.write(f"{i} {r.wall_ratio} {r.h} {r.b}\n")
