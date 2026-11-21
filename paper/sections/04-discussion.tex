@@ -8,24 +8,21 @@ a workload exists, kernel signals are cheap to collect. Agents could be
 asked to attach trace evidence for the mechanism they claim; this would
 turn many claims that cannot be checked today into claims that can.
 
-\textbf{Threats to validity.} The measured sample is small and early:
-\nAnalysed PRs, with up to \maxPerRepo from one repository. The shares in
-Table~\ref{tab:quadrant} are therefore preliminary. Workloads are written
-by an agent. It never sees the claim, and an independent check enforces
-coverage of the changed lines, but a workload may still not reflect real
-use. Because the agent is blind to the claim, it may run a different part
+\textbf{Threats to validity.} The sample is small and early (\nAnalysed PRs,
+up to \maxPerRepo from one repository), so the shares in
+Table~\ref{tab:quadrant} are preliminary. Even with the coverage check, an
+agent-written workload may not reflect real use. Because the agent is blind to the claim, it may run a different part
 of a large PR than the one the claim is about. The review removed such
 PRs when it found them, but others may remain; they would bias results
 towards ``mechanism absent''. ``Absent'' can also mean that the workload
 never reaches the conditions in which a mechanism matters, such as
 repeated calls for a cache or large files for streaming. Stand-ins for
-external services cannot show network or database mechanisms. Signals
+external services cannot show network latency or server-side database
+work, although they still show the client's connections and calls. Signals
 count the whole process tree, including interpreter start-up, which can
 hide small effects. Labels, claims and workloads all come from Claude
 models, and Claude Code is one of the agents we study. A human check of a
-stratified sample of 300 PRs is prepared but not yet done. The control
-programs show that each signal responds to its mechanism, but not that it
-ignores other mechanisms. Each PR is measured once, on one machine.
+stratified sample of 300 PRs is prepared but not yet done. Each PR is measured once, on one machine.
 
 \textbf{Related work.} Studies of agent performance PRs describe their
 topics~\cite{opu2025bertopic}, optimization

@@ -28,7 +28,8 @@ A Claude Code PR to gemini-notebook-mcp-cli (\#16) claims non-blocking I/O
 and HTTP connection pooling. The first part appears: the main thread
 spends \caseDOffcpu\ of its former time off the CPU. The second does not:
 both versions open \caseDSocketHead\ sockets and \caseDConnectHead\
-connections to the workload's local stand-in server. Meanwhile, system
+connections to the workload's local stand-in server; connection reuse
+would still show against a local server. Meanwhile, system
 calls grow \caseDSyscalls, \texttt{futex} calls \caseDFutexc\ and CPU time
 \caseDTask, and head is \caseDWall\ slower (base \caseDWallBase\,s, head
 \caseDWallHead\,s).
