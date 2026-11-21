@@ -4,7 +4,7 @@
 iPhotron PR~\#453 (Copilot) claims to remove the slowdown of deep SQL
 pagination and to load assets on demand instead of all at once. The workload
 runs \caseAWall\ of the base wall time (\caseAWallBase\,s to
-\caseAWallHead\,s), yet the kernel shows more work, not less: \caseASyscalls\
+\caseAWallHead\,s; all ratios use unrounded medians), yet the kernel shows more work, not less: \caseASyscalls\
 the syscalls (\caseASyscallsBase\ to \caseASyscallsHead), \caseAPread\ the
 \texttt{pread64} calls, \caseABytes\ the bytes read and \caseASys\ the system
 time. Total CPU time grows \caseATask\ while the process runs

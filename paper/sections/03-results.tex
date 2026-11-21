@@ -20,7 +20,8 @@ none.
 Of the \nMeasurableClaims PRs, \nGhError are no longer available on GitHub
 and \nNoPyFinal do not change Python code in their final diff (AIDev's
 per-commit file lists include commits merged in from the base branch),
-leaving \nJobs build jobs. In the first batch, the build agent produced a
+leaving \nJobs build jobs in one fixed random order. In the first batch
+(the first \nAttempted of that order), the build agent produced a
 workload that passed the harness checks for \funPassed of \nAttempted
 attempted PRs (\pctPassed), at about \usdPerBuild per PR. The others need
 an external service (\funNeedsExternalService), add only new code that the
@@ -28,7 +29,7 @@ base version cannot run (\funNewCodeOnly), need a GPU (\funNeedsGpu), failed
 to install (\funInstallFailed), had unreachable changed code
 (\funChangeUnreachable), or did not change Python in a runnable way
 (\funNotPythonChange); for \funFailedCheck the agent reported success but
-the independent check failed, and \funOther was unclassified.
+the independent check failed, and \funOther could not be classified.
 
 \subsection{Do the claims hold below the stopwatch?}
 \label{sec:measure}
@@ -89,10 +90,20 @@ Table~\ref{tab:quadrant} and Figure~\ref{fig:wall} show the first results. Of th
 slower than before the change; the claimed mechanism holds in \nHeld.
 When a PR is faster, its claimed mechanism usually appears (\qFH of
 \nFaster); when it is slower, it rarely does (\qSH of \nSlower). In this
-sample, a missing footprint rarely comes with a speed-up.
+sample, a missing footprint rarely comes with a speed-up. The rule does not
+fire by chance: applied to base against base again, it moves none of
+\aaSigTests signal tests (\aaSigRate). It is, however, only partly
+specific, because several mechanisms share the instruction count: for the
+faster PRs, the signals of mechanisms a PR did \emph{not} claim also move
+in \spUnclaimedRateFast of cases, against \spClaimedRateFast for the
+claimed ones. A held mechanism is therefore evidence consistent with the
+claim, not proof of it.
 \nBehaviour PRs also change the output of the workload (for example new
-defaults or error messages), so these performance PRs change behaviour
-too, and \nHiddenCost make at least one resource clearly worse (system time, memory, page faults, syscalls,
+defaults or error messages), as Qi et al.\ also observe for merged agent
+fixes~\cite{qi2026merged}. The pattern is the same with and without such
+changes: of the \nSame PRs whose output is unchanged, \qFHSame are faster
+with the mechanism present and \qFNSame faster without it. \nHiddenCost
+PRs make at least one resource clearly worse (system time, memory, page faults, syscalls,
 instructions, CPU time or bytes read).
 
 \input{sections/03b-cases}

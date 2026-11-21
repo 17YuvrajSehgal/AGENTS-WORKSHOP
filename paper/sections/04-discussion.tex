@@ -16,11 +16,17 @@ coverage of the changed lines, a workload may not reflect real use. Because
 the agent is blind to the claim, it may exercise a different part of a
 large PR than the one the claim is about; the review removed such PRs when
 it found them, but others may remain and would bias towards
-``mechanism absent''.
-Classification and claim extraction are done by LLMs; a human check of a
-stratified sample of 300 PRs is prepared but not yet done. Kernel signals are evidence for a
-mechanism, not proof; the control programs show that each signal responds
-as expected. Each PR is measured once on one machine; repeated measurements on a
+``mechanism absent''. ``Absent'' can also mean that the workload never
+reaches the regime where a mechanism matters (repeated calls for a cache,
+large files for streaming), and stubbed external services cannot show
+network or database mechanisms. Signals count the whole process tree,
+including interpreter start-up, which can dilute small effects.
+Classification, claim extraction and workloads all come from Claude
+models, and Claude Code is one of the agents we study; a human check of a
+stratified sample of 300 PRs is prepared but not yet done. Kernel signals
+are evidence for a mechanism, not proof: the control programs show that
+each signal responds to its mechanism, but not that it ignores others.
+Each PR is measured once on one machine; repeated measurements on a
 second machine may be added later.
 
 \textbf{Related work.} Studies of agent performance PRs
@@ -28,7 +34,8 @@ characterize topics~\cite{opu2025bertopic}, optimization
 patterns~\cite{peng2025optimization}, mutation
 patterns~\cite{dovhoshliubnyi2026mutation} and how agents report
 validation~\cite{peng2026validation}, all from text and code. Qi et
-al.\ re-execute 53 fixes from AIDev~\cite{qi2026merged}. Gong et al.\
+al.\ re-execute 53 fixes from AIDev~\cite{qi2026merged}; they show whether a fix delivers its claim,
+while kernel signals add why it does or does not. Gong et al.\
 find agent PR descriptions that claim changes the code does not
 implement~\cite{gong2026inconsistency}; we check a claim's runtime
 effect instead of its presence in the diff. Benchmarks

@@ -1831,6 +1831,44 @@
   "tier":"own_calls"
  },
  {
+  "vm":"kt-measure-2",
+  "id":3377998462,
+  "repo":"curvedinf\/dir-assistant",
+  "number":41,
+  "agent":"Google_Jules",
+  "wall_ratio":3.191,
+  "wall_sep":"up",
+  "aa_ratio":1.003,
+  "speed":"slower",
+  "mechanisms":[
+   "concurrency_tuning",
+   "parallelize"
+  ],
+  "checkable":[
+   "concurrency_tuning",
+   "parallelize"
+  ],
+  "held":{
+   "concurrency_tuning":true,
+   "parallelize":false
+  },
+  "mechanism_held":true,
+  "hidden_costs":{
+   "sys_s":12.188,
+   "minor-faults":1.711,
+   "syscalls":5.654,
+   "instructions":2.353,
+   "task-clock":4.041,
+   "bytes_read":2.925
+  },
+  "behaviour_change":false,
+  "py_share":1.0,
+  "integrity":[
+
+  ],
+  "tier":"own_calls"
+ },
+ {
   "vm":"kt-measure-3",
   "id":4135047845,
   "repo":"airbytehq\/airbyte",

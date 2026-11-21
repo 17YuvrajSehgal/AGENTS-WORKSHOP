@@ -430,5 +430,10 @@
   "exclude": false,
   "why": "local HTTP server stand-in only; claimed async path runs on head",
   "pr": "jellyfin/jellyfin-apiclient-python #72"
+ },
+ "3377998462": {
+  "exclude": false,
+  "why": "local hash stand-in only for the embedding model; parallel embedding path runs on head; equal outputs",
+  "pr": "curvedinf/dir-assistant #41"
  }
 }

@@ -15,19 +15,23 @@ Figure~\ref{fig:overview} shows the six steps of the pipeline.
 
 \subsection{Performance PRs and their claims}
 \label{sec:data}
-We use AIDev~\cite{li2026aidev} (version~5, pinned to one dataset commit),
+We use AIDev~\cite{li2026aidev} in its version~5~\cite{aidev2026v5},
+pinned to one dataset commit,
 restricted to its \emph{AIDev-pop} subset of \nPop agent PRs from
 \nPopRepos repositories with more than 100 stars. A keyword filter over
 titles, bodies and commit messages (after removing per-agent template
 text) keeps \nCand candidates (\pctCand). An LLM classifier with a written
 codebook labels whether a PR's goal is to make the software run faster or
-use fewer resources; on a random sample of \nPilot candidates,
+use fewer resources; on a separate pilot sample of \nPilot candidates,
 \pctPilotRuntime are runtime-performance PRs and \pctPilotNone are not
 about performance at all. A stratified run over candidates that change
-Python code (fixed random order per agent, with a stop rule per agent)
-classifies \nStratClassified PRs and yields \nRuntimePRs runtime-performance
-PRs. Labels come from Claude Opus~5.5 (\nStratOpus PRs) and, to save cost,
-Claude Haiku~5.5 (\nStratHaiku PRs); on \haikuAgreeN PRs labelled by both,
+Python code classifies each agent's candidates in a fixed random order
+until a target number of runtime-performance PRs is reached (all
+candidates for the three agents with few PRs). It classifies
+\nStratClassified PRs and yields \nRuntimePRs runtime-performance PRs.
+Labels come from Claude Opus~5.5 (\nStratOpus PRs) and, to save cost,
+Claude Haiku~5.5 (\nStratHaiku PRs); one answer was rejected because a
+fallback model produced it. On \haikuAgreeN PRs labelled by both,
 they agree on \haikuAgree (Cohen's $\kappa=\haikuKappa$). Every label
 must quote its evidence verbatim from the PR; code checks the quote.
 
@@ -97,7 +101,8 @@ Workloads run on dedicated cores (one, or two for parallel workloads):
 system services are confined to the other cores with systemd, because \texttt{isolcpus} disables load balancing
 (a two-process pool ran on a single core). Cloud machines make
 performance results vary~\cite{laaber2019cloud}, and small setup details
-can bias a comparison~\cite{mytkowicz2009wrong}, so per PR we run base,
+can bias a comparison~\cite{mytkowicz2009wrong}; versions should be
+compared over repeated runs~\cite{georges2007rigorous}. So per PR we run base,
 head and base again (an A/A control that measures this noise directly): 3+3 warm-up runs, 10 untraced timing runs per
 variant, 5 runs of 3 hardware-counter groups (at most four programmable
 events each, so no counter is multiplexed), and 5 full LTTng kernel traces
