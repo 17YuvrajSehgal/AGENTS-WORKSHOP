@@ -78,6 +78,12 @@ claimed mechanism absent & \qFN & \qNN & \qSN \\
   restrict expr to domain={\thisrow{held}}{1:1}] {fig_wall.dat};
 \addplot[only marks, mark=o, black] table[x=ratio, y=rank,
   restrict expr to domain={\thisrow{held}}{0:0}] {fig_wall.dat};
+\addplot[only marks, mark=none, point meta=explicit,
+  nodes near coords={\pgfmathprintnumber[fixed,precision=2]{\pgfplotspointmeta}$\times$},
+  nodes near coords align={anchor=east},
+  every node near coord/.append style={font=\scriptsize, xshift=-2pt}]
+  table[x=ratio, y=rank, meta=ratio,
+  restrict expr to domain={\thisrow{ratio}}{10:1000}] {fig_wall.dat};
 \legend{mechanism holds, mechanism absent}
 \end{semilogxaxis}
 \end{tikzpicture}
