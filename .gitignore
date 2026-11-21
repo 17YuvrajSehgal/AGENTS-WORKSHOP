@@ -28,3 +28,6 @@ related-papers/_txt/
 
 # answer key for the blinded human labelling: labellers must not see it before they finish
 labels/human/key.csv
+
+# IDE settings
+.idea/
