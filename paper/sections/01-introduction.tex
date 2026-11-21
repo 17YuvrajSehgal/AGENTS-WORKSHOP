@@ -23,7 +23,9 @@ code is not faster, the mechanism was not the bottleneck. A stopwatch sees
 neither case.
 
 We present \sys, a method and pipeline that checks agents' performance
-claims at the kernel level. It (i)~finds performance PRs and extracts the
+claims at the kernel level. Its name comes from its main idea: it looks
+below the stopwatch, at what the operating system and the hardware
+actually did. \sys (i)~finds performance PRs and extracts the
 mechanism each one claims; (ii)~maps each mechanism to the kernel and
 hardware signals that must change if the claim is true; (iii)~uses a
 \emph{blind} build agent, which never sees the claim, to rebuild the code

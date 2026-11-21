@@ -1,12 +1,12 @@
 Coding agents open many pull requests (PRs) that claim to make software
 faster. Most such claims also give a reason, such as ``cache the result''
 or ``read the file once''. A stopwatch can show that code got faster, but
-not that it got faster for the stated reason. We check these reasons at
-the kernel level. From \nRuntimePRs runtime-performance PRs in the AIDev
-dataset, we extract the mechanism each PR claims and map it to the kernel
+not that it got faster for the stated reason. We present \sys, a
+pipeline that checks these reasons at the kernel level. From \nRuntimePRs
+runtime-performance PRs in the AIDev dataset, \sys extracts the mechanism each PR claims and maps it to the kernel
 and hardware signals that must change if the claim is true. A build agent
-that never sees the claim rebuilds the code before and after each PR. We
-then measure both versions with plain timing runs, hardware counters and
+that never sees the claim rebuilds the code before and after each PR.
+\sys then measures both versions with plain timing runs, hardware counters and
 LTTng kernel traces. Most claims are not measured: \pctReasonNone of the
 PRs offer only reasoning or no evidence, and only \pctEffect state an
 effect size. Of \nAnalysed measured PRs, \nFaster ran faster, \nNoChange
