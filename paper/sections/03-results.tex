@@ -91,7 +91,11 @@ the \nAnalysed PRs, \nFaster are faster, \nNoChange show no clear change
 and \nSlower are slower. The claimed mechanism holds in \nHeld. When a PR
 is faster, its claimed mechanism usually holds (\qFH of \nFaster); when it
 is slower, it rarely does (\qSH of \nSlower). In this sample, a missing
-footprint rarely comes with a speed-up. The rule does not fire by chance:
+footprint rarely comes with a speed-up. Many of these holds rest on
+hardware counters, mainly the instruction count: with kernel-trace signals
+alone, \nHeldKernel of the \nHeld mechanisms hold, and \nHeldFastKernel of
+the \nHeldFast faster ones (\nHeldHwOnly PRs claim only mechanisms that
+have no kernel signal). The rule does not fire by chance:
 applied to base against base again, no signal moves in any of
 \aaSigTests tests (\aaSigRate).
 

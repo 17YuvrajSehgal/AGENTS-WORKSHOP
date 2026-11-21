@@ -132,6 +132,15 @@ def irates(ids):
 
 i_fast = irates([i for i in an_ids if V[i]["speed"] == "faster"])
 
+# 2c. how many "holds" survive with kernel-trace signals only (no hardware counters)
+k_held_ids = [i for i in an_ids if V[i]["mechanism_held"]
+              and any(kheld(meas[i], m) for m in set(V[i]["checkable"]) & set(KMECH))]
+k_held_fast = [i for i in k_held_ids if V[i]["speed"] == "faster"]
+held_fast = [i for i in an_ids if V[i]["mechanism_held"] and V[i]["speed"] == "faster"]
+# held PRs whose claimed mechanisms have no kernel signal at all (only counters can show them)
+held_hw_only = [i for i in an_ids if V[i]["mechanism_held"]
+                and not (set(V[i]["checkable"]) & set(KMECH))]
+
 # 5. outcome by the evidence the agent offered (claims_pr.parquet)
 import pandas as pd  # noqa: E402
 ev = pd.read_parquet(ROOT / "data" / "p5_claims" / "all_v1" / "claims_pr.parquet").set_index("id")["evidence"]
@@ -190,6 +199,8 @@ m("iClaimedFast", pct(i_fast[0], i_fast[1])); m("iUnclaimedFast", pct(i_fast[2],
 m("kRatioFast", f"{(k_fast[0] / k_fast[1]) / (k_fast[2] / k_fast[3]):.1f}")
 m("kRatioSlow", f"{(k_nfast[0] / k_nfast[1]) / (k_nfast[2] / k_nfast[3]):.1f}")
 m("iRatioFast", f"{(i_fast[0] / i_fast[1]) / (i_fast[2] / i_fast[3]):.2f}")
+m("nHeldKernel", len(k_held_ids)); m("nHeldFastKernel", len(k_held_fast))
+m("nHeldFast", len(held_fast)); m("nHeldHwOnly", len(held_hw_only))
 # Table III body: outcome by agent and by evidence offered
 NAMES = {"Claude_Code": "Claude Code", "Google_Jules": "Jules", "OpenAI_Codex": "Codex",
          "Copilot": "Copilot", "Devin": "Devin", "Cursor": "Cursor"}
@@ -222,3 +233,5 @@ print(f"   kernel-only, faster: claimed {k_fast[0]}/{k_fast[1]} = {pct(k_fast[0]
 print(f"   kernel-only, not faster: claimed {k_nfast[0]}/{k_nfast[1]} = {pct(k_nfast[0], k_nfast[1])}; unclaimed {k_nfast[2]}/{k_nfast[3]} = {pct(k_nfast[2], k_nfast[3])}")
 print(f"   instructions-only, faster: claimed {i_fast[0]}/{i_fast[1]} = {pct(i_fast[0], i_fast[1])}; unclaimed {i_fast[2]}/{i_fast[3]} = {pct(i_fast[2], i_fast[3])}")
 print("5. by evidence (n, faster, held):", by_ev)
+print(f"2c. held with kernel signals only: {len(k_held_ids)} of {sum(bool(V[i]['mechanism_held']) for i in an_ids)}; "
+      f"faster & held: {len(k_held_fast)} of {len(held_fast)}; held but mechanism has no kernel signal: {len(held_hw_only)}")

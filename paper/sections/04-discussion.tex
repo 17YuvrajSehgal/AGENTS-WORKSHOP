@@ -49,9 +49,11 @@ goes~\cite{giraldeau2016wait,ezzatijivan2017multiscale}. We use kernel
 traces to check the mechanism that agent PRs claim.
 
 \textbf{Conclusion.} Most agent performance claims are not measured. When
-a PR is faster, its claimed mechanism usually leaves its footprint, and
-kernel signals tell claimed from unclaimed mechanisms better than the
-instruction count. By looking below the stopwatch, \sys shows why a
+a PR is faster, its claimed mechanism usually leaves a footprint, but
+only \nHeldFastKernel of these \nHeldFast show it in kernel-trace signals;
+the rest show it only in hardware counters such as the instruction count.
+Kernel-trace signals tell claimed
+from unclaimed mechanisms better than the instruction count does. By looking below the stopwatch, \sys shows why a
 change is faster, not only whether it is. The full study of all \nJobs build jobs is
 under way. Code, data and all kernel traces are
 available\footnote{\url{https://doi.org/10.5281/zenodo.24413315}}.
