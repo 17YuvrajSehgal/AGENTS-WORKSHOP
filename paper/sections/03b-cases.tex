@@ -6,9 +6,9 @@ medians.
 \paragraph{Faster, but not for the claimed reason}
 iPhotron PR~\#453 (Copilot) claims to remove the slowdown of deep SQL
 pagination and to load assets on demand instead of all at once. Head takes
-\caseAWall\ of base's wall time (\caseAWallBase\,s against
+\caseAWall\ of base's wall time (base \caseAWallBase\,s, head
 \caseAWallHead\,s). Yet the kernel shows more work, not less: \caseASyscalls\
-as many system calls (\caseASyscallsBase\ against \caseASyscallsHead),
+as many system calls (base \caseASyscallsBase, head \caseASyscallsHead),
 \caseAPread\ as many \texttt{pread64} calls, \caseABytes\ the bytes read
 and \caseASys\ the system time. Total CPU time grows \caseATask, while the
 process runs \caseAThreadsHead\ threads instead of \caseAThreadsBase. Peak
@@ -18,11 +18,11 @@ not support it.
 \paragraph{Slower, and the trace shows where}
 iPhotron PR~\#564 (Jules) uses pre-generated thumbnails. Our workload keeps
 500 unrelated files in the thumbnail folder. On it, head is \caseBWall\
-slower than base (\caseBWallBase\,s against \caseBWallHead\,s), and its
-output changes. The trace points to a likely cause: \texttt{getdents64},
-the system call that lists a directory, rises from \caseBGetdentsBase\ to
-\caseBGetdentsHead\ calls (\caseBGetdents), and instructions grow
-\caseBInstr.
+slower than base (base \caseBWallBase\,s, head \caseBWallHead\,s), and its
+output changes. The trace points to a likely cause: calls to
+\texttt{getdents64}, the system call that lists a directory, grow
+\caseBGetdents\ (base \caseBGetdentsBase, head \caseBGetdentsHead), and
+instructions grow \caseBInstr.
 
 \paragraph{Half the mechanism happens, and it hurts}
 A Claude Code PR to gemini-notebook-mcp-cli (\#16) claims non-blocking I/O
@@ -31,12 +31,12 @@ spends \caseDOffcpu\ of its former time off the CPU. The second does not:
 both versions open \caseDSocketHead\ sockets and \caseDConnectHead\
 connections to the workload's local stand-in server. Meanwhile, system
 calls grow \caseDSyscalls, \texttt{futex} calls \caseDFutexc\ and CPU time
-\caseDTask, and head is \caseDWall\ slower (\caseDWallBase\,s against
+\caseDTask, and head is \caseDWall\ slower (base \caseDWallBase\,s, head
 \caseDWallHead\,s).
 
 \paragraph{A claim that holds}
 mlflow PR~\#19520 (Copilot) changes artifact transfer to chunked
-streaming. The footprint matches the claim: \texttt{read} calls fall from
-\caseCReadBase\ to \caseCReadHead\ (\caseCRead) for the same number of
-bytes read. Instructions fall to \caseCInstr\ and wall time to
+streaming. The footprint matches the claim: \texttt{read} calls fall to
+\caseCRead\ (base \caseCReadBase, head \caseCReadHead) for the same number
+of bytes read. Instructions fall to \caseCInstr\ and wall time to
 \caseCWall\ of base.
