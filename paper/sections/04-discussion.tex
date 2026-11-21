@@ -2,55 +2,55 @@
 \label{sec:discussion}
 
 \textbf{What this means for agent builders and reviewers.} A performance
-PR whose mechanism leaves no kernel footprint, or whose speed-up comes with
-a changed output, should not be merged on its description. Kernel signals
-are cheap to collect once a workload exists; asking agents to attach the
-trace evidence for the mechanism they claim would turn many unverifiable
-claims into checkable ones.
+PR should not be merged on its description alone if its mechanism leaves
+no kernel footprint, or if its speed-up comes with a changed output. Once
+a workload exists, kernel signals are cheap to collect. Agents could be
+asked to attach trace evidence for the mechanism they claim; this would
+turn many claims that cannot be checked today into claims that can.
 
-\textbf{Threats to validity.} The measured sample is small and early
-(\nAnalysed PRs, up to \maxPerRepo from one repository), so the shares in
-Table~\ref{tab:quadrant} are preliminary. Workloads are written by an
-agent: although it never sees the claim and an independent check enforces
-coverage of the changed lines, a workload may not reflect real use. Because
-the agent is blind to the claim, it may exercise a different part of a
-large PR than the one the claim is about; the review removed such PRs when
-it found them, but others may remain and would bias towards
-``mechanism absent''. ``Absent'' can also mean that the workload never
-reaches the regime where a mechanism matters (repeated calls for a cache,
-large files for streaming), and stubbed external services cannot show
-network or database mechanisms. Signals count the whole process tree,
-including interpreter start-up, which can dilute small effects.
-Classification, claim extraction and workloads all come from Claude
-models, and Claude Code is one of the agents we study; a human check of a
-stratified sample of 300 PRs is prepared but not yet done. Kernel signals
-are evidence for a mechanism, not proof: the control programs show that
-each signal responds to its mechanism, but not that it ignores others.
-Each PR is measured once on one machine; repeated measurements on a
-second machine may be added later.
+\textbf{Threats to validity.} The measured sample is small and early:
+\nAnalysed PRs, with up to \maxPerRepo from one repository. The shares in
+Table~\ref{tab:quadrant} are therefore preliminary. Workloads are written
+by an agent. It never sees the claim, and an independent check enforces
+coverage of the changed lines, but a workload may still not reflect real
+use. Because the agent is blind to the claim, it may run a different part
+of a large PR than the one the claim is about. The review removed such
+PRs when it found them, but others may remain; they would bias results
+towards ``mechanism absent''. ``Absent'' can also mean that the workload
+never reaches the conditions in which a mechanism matters, such as
+repeated calls for a cache or large files for streaming. Stand-ins for
+external services cannot show network or database mechanisms. Signals
+count the whole process tree, including interpreter start-up, which can
+hide small effects. Labels, claims and workloads all come from Claude
+models, and Claude Code is one of the agents we study. A human check of a
+stratified sample of 300 PRs is prepared but not yet done. The control
+programs show that each signal responds to its mechanism, but not that it
+ignores other mechanisms. Each PR is measured once, on one machine.
 
-\textbf{Related work.} Studies of agent performance PRs
-characterize topics~\cite{opu2025bertopic}, optimization
+\textbf{Related work.} Studies of agent performance PRs describe their
+topics~\cite{opu2025bertopic}, optimization
 patterns~\cite{peng2025optimization}, mutation
 patterns~\cite{dovhoshliubnyi2026mutation} and how agents report
-validation~\cite{peng2026validation}, all from text and code. Qi et
-al.\ re-execute 53 fixes from AIDev~\cite{qi2026merged}; they show whether a fix delivers its claim,
-while kernel signals add why it does or does not. Gong et al.\
-find agent PR descriptions that claim changes the code does not
-implement~\cite{gong2026inconsistency}; we check a claim's runtime
-effect instead of its presence in the diff. Benchmarks
-such as PIE~\cite{shypula2024pie}, EffiBench~\cite{huang2024effibench},
+validation~\cite{peng2026validation}, all from text and code. Qi et al.\
+re-execute 53 fixes from AIDev~\cite{qi2026merged}. They show whether a
+fix delivers its claim; kernel signals add why it does or does not. Gong
+et al.\ find agent PR descriptions that claim changes the code does not
+implement~\cite{gong2026inconsistency}. We check a claim's effect at run
+time, not its presence in the diff. Benchmarks such as
+PIE~\cite{shypula2024pie}, EffiBench~\cite{huang2024effibench},
 SWE-Perf~\cite{he2025sweperf}, GSO~\cite{shetty2025gso},
 PerfBench~\cite{garg2025perfbench}, SWE-fficiency~\cite{ma2025swefficiency}
 and FormulaCode~\cite{sehgal2026formulacode} measure whether models or
-agents can make given code faster, and their reliability has been
+agents can make given code faster; their reliability has been
 questioned~\cite{chen2026benchmarks}. Performance bugs in human-written
 code have long been studied~\cite{jin2012perfbugs,zaman2012perfbugs}, and
 kernel traces have been used to explain where execution time
-goes~\cite{giraldeau2016wait,ezzatijivan2017multiscale}. We instead check,
-with kernel traces, the mechanism that agent PRs claim.
+goes~\cite{giraldeau2016wait,ezzatijivan2017multiscale}. We use kernel
+traces to check the mechanism that agent PRs claim.
 
-\textbf{Conclusion.} Agents' performance claims are mostly unmeasured, and
-a stopwatch cannot tell whether they are true for the stated reason. Our
-pipeline checks the claimed mechanism in the kernel; the full study is
-under way on \nJobs PRs.
+\textbf{Conclusion.} Most agent performance claims are not measured. When
+a PR is faster, its claimed mechanism usually leaves its footprint, and
+kernel signals tell claimed from unclaimed mechanisms far better than the
+instruction count. Looking below the stopwatch thus shows why a change is
+faster, not only whether it is. The full study of all \nJobs build jobs is
+under way.

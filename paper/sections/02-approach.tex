@@ -11,42 +11,49 @@ step~3 goes straight to the decision in step~6.}
 \label{fig:overview}
 \end{figure*}
 
-Figure~\ref{fig:overview} shows the six steps of the pipeline.
+Figure~\ref{fig:overview} shows the six steps of the pipeline. Throughout,
+\emph{base} is the code just before a PR and \emph{head} is the code with
+the PR applied.
 
 \subsection{Performance PRs and their claims}
 \label{sec:data}
-We use AIDev~\cite{li2026aidev} in its version~5~\cite{aidev2026v5},
-pinned to one dataset commit,
-restricted to its \emph{AIDev-pop} subset of \nPop agent PRs from
+We use version~5 of AIDev~\cite{li2026aidev,aidev2026v5}, pinned to one
+dataset commit. We keep its \emph{AIDev-pop} subset: \nPop agent PRs from
 \nPopRepos repositories with more than 100 stars. A keyword filter over
-titles, bodies and commit messages (after removing per-agent template
-text) keeps \nCand candidates (\pctCand). An LLM classifier with a written
-codebook labels whether a PR's goal is to make the software run faster or
-use fewer resources; on a separate pilot sample of \nPilot candidates,
-\pctPilotRuntime are runtime-performance PRs and \pctPilotNone are not
-about performance at all. A stratified run over candidates that change
-Python code classifies each agent's candidates in a fixed random order
-until a target number of runtime-performance PRs is reached (all
-candidates for the three agents with few PRs). It classifies
-\nStratClassified PRs and yields \nRuntimePRs runtime-performance PRs.
-Labels come from Claude Opus~5.5 (\nStratOpus PRs) and, to save cost,
-Claude Haiku~5.5 (\nStratHaiku PRs); one answer was rejected because a
-fallback model produced it. On \haikuAgreeN PRs labelled by both,
-they agree on \haikuAgree (Cohen's $\kappa=\haikuKappa$). Every label
-must quote its evidence verbatim from the PR; code checks the quote.
+titles, descriptions and commit messages keeps \nCand candidates
+(\pctCand); it first removes template text that some agents add to every
+PR. A language model then labels each candidate, following written
+labelling rules (a codebook): is the PR's goal to make the software run
+faster or use fewer resources? On a separate pilot sample of \nPilot
+candidates, \pctPilotRuntime are such runtime-performance PRs and
+\pctPilotNone are not about performance at all.
 
-A second codebook, revised once after open coding of 100 PRs and then
-frozen, extracts from each runtime-performance PR the mechanism(s) it
-claims (28 categories), the claimed effect size, and the evidence it
-offers (Table~\ref{tab:oracle} lists the measurable mechanisms).
+We study PRs that change Python code. For each agent, we label its
+candidates in a fixed random order until we reach a target number of
+runtime-performance PRs; for the three agents with few PRs, we label all
+of them. This labels \nStratClassified PRs and yields \nRuntimePRs
+runtime-performance PRs. Claude Opus~5.5 labelled \nStratOpus PRs and,
+to save cost, Claude Haiku~5.5 labelled \nStratHaiku; one answer was
+rejected because a fallback model had produced it. On \haikuAgreeN PRs
+labelled by both models, they agree on \haikuAgree (Cohen's
+$\kappa=\haikuKappa$). Every label must quote its evidence word for word
+from the PR, and code checks that the quote is there.
+
+A second codebook extracts, from each runtime-performance PR, the
+mechanisms it claims (28 categories), the effect size it claims, and the
+evidence it offers. We built its categories by reading 100 PRs, revised
+it once, and then froze it. Table~\ref{tab:oracle} lists the measurable
+mechanisms.
 
 \subsection{From claimed mechanism to kernel signal}
 \label{sec:oracle}
-Each mechanism is mapped, before any measurement, to the signals that must
-move if the claim is true (Table~\ref{tab:oracle}). Twelve pairs of small
-control programs, one pair per signal family, show that each signal moves
-as designed: e.g.\ reading a file 2,000 times instead of once, or a
-two-thread mutex against per-thread counters.
+Before any measurement, we mapped each mechanism to the signals that must
+change if the claim is true (Table~\ref{tab:oracle}). A mechanism
+\emph{holds} if at least one of its signals changes as expected. To check
+that each signal responds as designed, we wrote twelve pairs of small
+control programs, one pair per signal family. For example, one program
+reads a file 2,000 times and its partner reads it once; another has two
+threads share one lock, and its partner gives each thread its own counter.
 
 \begin{table}[t]
 \caption{Claimed mechanism, share of the \nClaims runtime-performance PRs
@@ -79,40 +86,51 @@ less locking & \mechLessLocking & less futex wait \\
 
 \subsection{Blind build agent and measurement}
 \label{sec:harness}
-For each PR, the harness checks out the merge base and the PR head (the
-API's base commit can be later than the branch point and would mix in
-unrelated changes), installs both with dependencies frozen at the PR's
-creation date, and hands them to a build agent (Claude Code, Opus~5.5),
-which may repair a failed install the same way on both sides.
-The agent is \emph{blind to the claim}: it sees the code, the diff and the
-changed files, but not the title, description, commit messages or our
-extracted claim, and the git history is moved out of its reach. It must
-write a deterministic workload that runs the changed code on both
-versions, may stub only external I/O, and must not patch the code under
-test. The harness then re-checks independently: both versions run, the
-workload executes at least 80\% of the executable lines the PR adds or
-changes (50\% for PRs with over 200 such lines), the base version runs 0.5--30\,s, the
-workload runs without a network, and the two output digests are compared.
-Transcripts are audited for access to the PR on GitHub.
+For each PR, the harness checks out base and head. Base is the merge base
+of the PR, because the base commit that the GitHub API reports can be
+later than the branch point and would mix in unrelated changes. The
+harness installs both versions with dependencies frozen at the PR's
+creation date. It then hands them to a build agent (Claude Code,
+Opus~5.5), which may repair a failed install, the same way on both sides.
+The agent is \emph{blind to the claim}. It sees the code, the diff and
+the changed files. It does not see the PR title, description, commit
+messages or our extracted claim, and the git history is moved out of its
+reach. It must write a deterministic workload that runs the changed code
+on both versions. It may replace external services with stand-ins, but it
+must not patch the code under test. The harness then checks the workload
+independently: both versions must run; the workload must run at least
+80\% of the executable lines the PR adds or changes (50\% for PRs with
+more than 200 such lines); base must take 0.5--30\,s; and the workload must
+run without a network. It also compares a hash of each version's output.
+Finally, we audit the agent's transcript for any access to the PR on
+GitHub.
 
 Measurements run on \nVMs identical Google Cloud C4 virtual machines with
 the performance-monitoring unit enabled, one job per machine at a time.
-Workloads run on dedicated cores (one, or two for parallel workloads):
-system services are confined to the other cores with systemd, because \texttt{isolcpus} disables load balancing
-(a two-process pool ran on a single core). Cloud machines make
-performance results vary~\cite{laaber2019cloud}, and small setup details
-can bias a comparison~\cite{mytkowicz2009wrong}; versions should be
-compared over repeated runs~\cite{georges2007rigorous}. So per PR we run base,
-head and base again (an A/A control that measures this noise directly): 3+3 warm-up runs, 10 untraced timing runs per
-variant, 5 runs of 3 hardware-counter groups (at most four programmable
-events each, so no counter is multiplexed), and 5 full LTTng kernel traces
-per variant (all syscalls, scheduling, block I/O, interrupts, page faults,
-page allocation), filtered to the workload's process tree and with per-file
-I/O attribution. PRs with any lost trace events or multiplexed counters are excluded from
-the analysis. On each machine,
-the \nControls control pairs pass \ctrlPassMin--\ctrlPassMax of \nChecks
-checks; the only failure is context switches under lock contention, a
-non-deterministic signal whose primary signal (\texttt{futex}) passes. An
-exact-instruction loop is counted within a relative error of
-$\counterErrMax$, and LTTng's page-fault events agree with perf's fault
-counter at a median ratio of \faultRatioMed.
+Workloads run on dedicated CPU cores (one, or two for parallel
+workloads). We confine all system services to the other cores with
+systemd. We do not use the kernel's \texttt{isolcpus} option, because it
+disables load balancing: in a test, a two-process pool ran on a single
+core. Cloud machines make performance results vary~\cite{laaber2019cloud},
+small setup details can bias a comparison~\cite{mytkowicz2009wrong}, and
+versions should be compared over repeated runs~\cite{georges2007rigorous}.
+We therefore measure three variants per PR: base, head, and base again.
+The second base run is an \emph{A/A control}: base against itself shows
+how much the machine alone varies. After 3 warm-up runs each of base and
+head, we interleave the three variants in every round, so slow drift
+affects all three alike. Each variant gets 10 timing runs without
+tracing, so the tracer cannot slow them. It also gets 5 runs of each of 3
+hardware-counter groups, with at most four programmable counters per
+group, so that no counter is sampled part-time (multiplexed). Finally,
+it gets 5 full LTTng kernel traces: all system calls, scheduling, block
+I/O, interrupts, page faults and page allocations. We keep only the
+events of the workload's own processes and attribute file I/O to each
+file. PRs with any lost trace event or multiplexed counter are excluded.
+
+The control programs confirm the setup. On each machine, the
+\nControls pairs pass \ctrlPassMin--\ctrlPassMax of \nChecks checks. The
+only failure is the number of context switches under lock contention,
+which varies from run to run; the main signal for locking, \texttt{futex}
+wait time, passes. A loop with a known number of instructions is counted
+within a relative error of $\counterErrMax$. LTTng's page-fault events
+and perf's page-fault counter agree at a median ratio of \faultRatioMed.

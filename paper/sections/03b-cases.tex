@@ -1,35 +1,42 @@
 % Case studies. Every number is a macro from analysis/p7_cases.py, which
 % reads the medians of the measured runs and asserts full separation.
+Four PRs show what the kernel view adds. All ratios below use unrounded
+medians.
+
 \paragraph{Faster, but not for the claimed reason}
 iPhotron PR~\#453 (Copilot) claims to remove the slowdown of deep SQL
-pagination and to load assets on demand instead of all at once. The workload
-runs \caseAWall\ of the base wall time (\caseAWallBase\,s to
-\caseAWallHead\,s; all ratios use unrounded medians), yet the kernel shows more work, not less: \caseASyscalls\
-the syscalls (\caseASyscallsBase\ to \caseASyscallsHead), \caseAPread\ the
-\texttt{pread64} calls, \caseABytes\ the bytes read and \caseASys\ the system
-time. Total CPU time grows \caseATask\ while the process runs
-\caseAThreadsHead\ threads instead of \caseAThreadsBase. Peak memory does not
-change. A stopwatch would credit the claim; the trace does not support it.
+pagination and to load assets on demand instead of all at once. Head takes
+\caseAWall\ of base's wall time (\caseAWallBase\,s against
+\caseAWallHead\,s). Yet the kernel shows more work, not less: \caseASyscalls\
+as many system calls (\caseASyscallsBase\ against \caseASyscallsHead),
+\caseAPread\ as many \texttt{pread64} calls, \caseABytes\ the bytes read
+and \caseASys\ the system time. Total CPU time grows \caseATask, while the
+process runs \caseAThreadsHead\ threads instead of \caseAThreadsBase. Peak
+memory does not change. A stopwatch would credit the claim; the trace does
+not support it.
 
 \paragraph{Slower, and the trace shows where}
-iPhotron PR~\#564 (Jules) uses pre-generated thumbnails. On our workload,
-which keeps 500 unrelated files in the thumbnail folder, it is
-\caseBWall\ slower (\caseBWallBase\,s to \caseBWallHead\,s) and its output
-changes. The trace shows a likely cause: \texttt{getdents64}, the call that
-lists a directory, rises from \caseBGetdentsBase\ to \caseBGetdentsHead\
-(\caseBGetdents), and instructions grow \caseBInstr.
+iPhotron PR~\#564 (Jules) uses pre-generated thumbnails. Our workload keeps
+500 unrelated files in the thumbnail folder. On it, head is \caseBWall\
+slower than base (\caseBWallBase\,s against \caseBWallHead\,s), and its
+output changes. The trace points to a likely cause: \texttt{getdents64},
+the system call that lists a directory, rises from \caseBGetdentsBase\ to
+\caseBGetdentsHead\ calls (\caseBGetdents), and instructions grow
+\caseBInstr.
 
 \paragraph{Half the mechanism happens, and it hurts}
-A Claude Code PR to gemini-notebook-mcp-cli (\#16) claims non-blocking
-I/O and HTTP connection pooling. The first part appears: the main thread
+A Claude Code PR to gemini-notebook-mcp-cli (\#16) claims non-blocking I/O
+and HTTP connection pooling. The first part appears: the main thread
 spends \caseDOffcpu\ of its former time off the CPU. The second does not:
-the workload opens \caseDSocketHead\ sockets and \caseDConnectHead\
-connections on both versions. Meanwhile syscalls grow \caseDSyscalls,
-\texttt{futex} calls \caseDFutexc\ and CPU time \caseDTask, and the
-workload is \caseDWall\ slower (\caseDWallBase\,s to \caseDWallHead\,s).
+both versions open \caseDSocketHead\ sockets and \caseDConnectHead\
+connections to the workload's local stand-in server. Meanwhile, system
+calls grow \caseDSyscalls, \texttt{futex} calls \caseDFutexc\ and CPU time
+\caseDTask, and head is \caseDWall\ slower (\caseDWallBase\,s against
+\caseDWallHead\,s).
 
 \paragraph{A claim that holds}
-mlflow PR~\#19520 (Copilot) changes artifact transfer to chunked streaming.
-The footprint is exactly the claimed one: \texttt{read} calls fall from
-\caseCReadBase\ to \caseCReadHead\ (\caseCRead) for the same bytes read,
-instructions fall to \caseCInstr\ and wall time to \caseCWall\ of the base.
+mlflow PR~\#19520 (Copilot) changes artifact transfer to chunked
+streaming. The footprint matches the claim: \texttt{read} calls fall from
+\caseCReadBase\ to \caseCReadHead\ (\caseCRead) for the same number of
+bytes read. Instructions fall to \caseCInstr\ and wall time to
+\caseCWall\ of base.

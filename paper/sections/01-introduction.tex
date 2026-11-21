@@ -1,37 +1,39 @@
 \section{Introduction}
 \label{sec:intro}
 
-Coding agents now open pull requests (PRs) at scale: the latest release of
-the AIDev dataset~\cite{li2026aidev} alone records \nAllPRs agent-authored
-PRs from six agents~\cite{aidev2026v5}.
-Many of these PRs claim to make software faster or lighter. Studies of such
-performance PRs read their text~\cite{opu2025bertopic,peng2025optimization,
-dovhoshliubnyi2026mutation,peng2026validation} or, at most, re-execute a
-few dozen of them~\cite{qi2026merged}. They find that agents rely more on
-static reasoning and less on benchmarks than humans
-do~\cite{peng2026validation}, and that re-executed claims often do not
-hold~\cite{qi2026merged}.
+Coding agents now open pull requests (PRs) at scale. The latest release of
+the AIDev dataset~\cite{li2026aidev} alone records \nAllPRs PRs written by
+six agents~\cite{aidev2026v5}. Many of these PRs claim to make software
+faster or lighter. Existing studies of such performance PRs read their
+text~\cite{opu2025bertopic,peng2025optimization,
+dovhoshliubnyi2026mutation,peng2026validation}, or re-execute a few dozen
+of them~\cite{qi2026merged}. They find that agents rely more on reasoning
+and less on benchmarks than humans do~\cite{peng2026validation}, and that
+re-executed claims often do not hold~\cite{qi2026merged}.
 
-A stopwatch answers whether a change is faster, not \emph{why}. Yet a
-performance PR usually claims a mechanism: \emph{cache the result},
+A stopwatch tells us whether a change is faster, but not \emph{why}. Yet a
+performance PR usually names a mechanism: \emph{cache the result},
 \emph{read the file once}, \emph{stream in 1\,MB chunks}, \emph{remove the
-lock}. Each mechanism leaves a footprint in the operating system: fewer
-\texttt{read} calls, fewer page faults, less time waiting on a futex. If
-the footprint is absent, the stated reason does not explain the result,
-even when the code is faster; if it is present but the code is not faster,
-the mechanism was not the bottleneck. Neither case is visible to a stopwatch.
+lock}. Each mechanism should leave a trace in the operating system, which
+we call its \emph{footprint}: fewer \texttt{read} system calls, fewer page
+faults, or less time waiting on a lock (a \texttt{futex} wait). Two cases
+matter. If the code is faster but the footprint is missing, the stated
+reason does not explain the speed-up. If the footprint is present but the
+code is not faster, the mechanism was not the bottleneck. A stopwatch sees
+neither case.
 
 We present \sys, a method and pipeline that checks agents' performance
 claims at the kernel level. It (i)~finds performance PRs and extracts the
-mechanism each one claims, (ii)~maps each mechanism to the kernel and
-hardware signals that must move if the claim is true, (iii)~uses a
-\emph{blind} build agent to rebuild the code before and after each PR and
-write a workload that runs the changed code, and (iv)~measures both
-versions with untraced timing, hardware counters and full LTTng kernel
-traces~\cite{desnoyers2006lttng}. We ask three questions.
-\textbf{RQ1:} What mechanisms do agents claim, and how do they back them?
-\textbf{RQ2:} Can a blind build agent produce workloads that exercise the
-changed code? \textbf{RQ3:} Do claimed mechanisms leave their kernel
-footprint, and do kernel signals tell mechanisms apart better than timing
-and instruction counts? We answer them for \nClaims agent performance claims
-and \nAnalysed measured PRs.
+mechanism each one claims; (ii)~maps each mechanism to the kernel and
+hardware signals that must change if the claim is true; (iii)~uses a
+\emph{blind} build agent, which never sees the claim, to rebuild the code
+before and after each PR and to write a workload that runs the changed
+code; and (iv)~measures both versions with plain timing runs, hardware
+counters and full LTTng kernel traces~\cite{desnoyers2006lttng}. We ask
+three research questions.
+\textbf{RQ1:} What mechanisms do agents claim, and how do they support
+them? \textbf{RQ2:} Can a blind build agent write workloads that run the
+changed code? \textbf{RQ3:} Do claimed mechanisms leave their footprint,
+and do kernel signals tell mechanisms apart better than timing and
+instruction counts? We answer them for \nClaims performance claims and
+\nAnalysed measured PRs.
