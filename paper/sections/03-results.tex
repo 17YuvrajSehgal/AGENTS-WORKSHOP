@@ -1,7 +1,7 @@
 \section{Results}
 \label{sec:results}
 
-\subsection{What agents claim, and how they back it}
+\subsection{RQ1: What agents claim, and how they back it}
 \label{sec:claims}
 Of the \nClaims runtime-performance PRs, \nNoMech (\pctNoMech) name no
 mechanism at all. The most common mechanisms are skipping unneeded work
@@ -15,7 +15,7 @@ at least one mechanism with a kernel or hardware signal; the rest claim
 only GPU, external-API, user-interface or uncategorized mechanisms, or
 none.
 
-\subsection{Building the PRs}
+\subsection{RQ2: Building the PRs}
 \label{sec:funnel}
 Of the \nMeasurableClaims PRs, \nGhError are no longer available on GitHub
 and \nNoPyFinal do not change Python code in their final diff (AIDev's
@@ -31,7 +31,7 @@ to install (\funInstallFailed), had unreachable changed code
 (\funNotPythonChange); for \funFailedCheck the agent reported success but
 the independent check failed, and \funOther could not be classified.
 
-\subsection{Do the claims hold below the stopwatch?}
+\subsection{RQ3: Do the claims hold below the stopwatch?}
 \label{sec:measure}
 We analyse the \nAnalysed measured PRs (from \nReposAnalysed repositories)
 whose claim names at least one checkable mechanism and whose change is
@@ -92,12 +92,21 @@ When a PR is faster, its claimed mechanism usually appears (\qFH of
 \nFaster); when it is slower, it rarely does (\qSH of \nSlower). In this
 sample, a missing footprint rarely comes with a speed-up. The rule does not
 fire by chance: applied to base against base again, it moves none of
-\aaSigTests signal tests (\aaSigRate). It is, however, only partly
-specific, because several mechanisms share the instruction count: for the
-faster PRs, the signals of mechanisms a PR did \emph{not} claim also move
-in \spUnclaimedRateFast of cases, against \spClaimedRateFast for the
-claimed ones. A held mechanism is therefore evidence consistent with the
-claim, not proof of it.
+\aaSigTests signal tests (\aaSigRate).
+
+\textbf{Do kernel signals tell mechanisms apart?} A signal is only useful
+if it moves for the claimed mechanism more often than for others. We
+therefore also test every PR against the signals of mechanisms it did
+\emph{not} claim. The instruction count barely separates them: among
+faster PRs it drops for \iClaimedFast of claimed and \iUnclaimedFast of
+unclaimed mechanisms (ratio \iRatioFast), because almost any speed-up
+removes instructions. Kernel-trace signals alone (syscalls, futex,
+off-CPU time, page allocations, bytes read, processes) separate them
+better: \kClaimedFast against \kUnclaimedFast for faster PRs (ratio
+\kRatioFast) and \kClaimedSlow against \kUnclaimedSlow for the others
+(ratio \kRatioSlow). The kernel view thus carries mechanism information
+that a stopwatch and an instruction counter lack, but it is not perfectly
+specific: a held mechanism is evidence consistent with the claim, not proof.
 \nBehaviour PRs also change the output of the workload (for example new
 defaults or error messages), as Qi et al.\ also observe for merged agent
 fixes~\cite{qi2026merged}. The pattern is the same with and without such
@@ -105,5 +114,18 @@ changes: of the \nSame PRs whose output is unchanged, \qFHSame are faster
 with the mechanism present and \qFNSame faster without it. \nHiddenCost
 PRs make at least one resource clearly worse (system time, memory, page faults, syscalls,
 instructions, CPU time or bytes read).
+
+\begin{table}[t]
+\caption{Analysed PRs by agent and by the evidence the PR offers for its
+claim: number of PRs, faster, and claimed mechanism held.}
+\label{tab:agents}
+\centering\footnotesize
+\input{table_agents}
+\end{table}
+
+\textbf{Agents and evidence.} Table~\ref{tab:agents} splits the results.
+Claims backed by a benchmark were faster more often than claims backed by
+reasoning alone, which supports asking agents to measure; the groups are
+small, so we report this as a first observation, not a finding.
 
 \input{sections/03b-cases}

@@ -20,6 +20,7 @@ GEN = [
     (["analysis/p7_results.py", "data/p7_paper/fetched"], "results.tex"),
     (["analysis/p7_cases.py"], "cases.tex"),
     (["analysis/p7_extra.py"], "extra.tex"),
+    (["analysis/p7_extra.py"], "table_agents.tex"),
 ]
 bad = 0
 for args, out in GEN:

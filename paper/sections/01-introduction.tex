@@ -28,6 +28,10 @@ hardware signals that must move if the claim is true, (iii)~uses a
 \emph{blind} build agent to rebuild the code before and after each PR and
 write a workload that runs the changed code, and (iv)~measures both
 versions with untraced timing, hardware counters and full LTTng kernel
-traces~\cite{desnoyers2006lttng}. This short paper reports the method, its
-validation, a characterization of \nClaims agent performance claims, and
-first measurement results.
+traces~\cite{desnoyers2006lttng}. We ask three questions.
+\textbf{RQ1:} What mechanisms do agents claim, and how do they back them?
+\textbf{RQ2:} Can a blind build agent produce workloads that exercise the
+changed code? \textbf{RQ3:} Do claimed mechanisms leave their kernel
+footprint, and do kernel signals tell mechanisms apart better than timing
+and instruction counts? We answer them for \nClaims agent performance claims
+and \nAnalysed measured PRs.
