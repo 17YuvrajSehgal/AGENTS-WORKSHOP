@@ -1,5 +1,7 @@
 # Below the Stopwatch: artifact
 
+DOI: [10.5281/zenodo.24413315](https://doi.org/10.5281/zenodo.24413315)
+
 Code and data for the paper *Below the Stopwatch: Checking the Performance
 Claims of Coding Agents in the Kernel* (AGENT 2027 workshop at ICSE 2027),
 by Yuvraj Sehgal, Sneh Patel, Mahsa Panahandeh and Naser Ezzati-Jivan.
@@ -112,7 +114,7 @@ control.
 |---|---|---|
 | Raw AIDev v5 parquet files (15 GB) | public and large | `analysis/p1_download.py` downloads the exact commit in `data/aidev-v5-manifest.json` and checks every sha256 |
 | `data/p1_candidates.parquet`, `data/p2_classify/inputs.jsonl` | derived from AIDev, over 100 MB | `analysis/p1_keyword_filter.py`; `analysis/p2_classify.py prepare` |
-| Raw LTTng traces (several GB per PR) | size | kept by the authors; available on request |
+| Raw LTTng traces (51.2 GB before compression) | size; they are separate files in the same Zenodo record | `below-traces-<vm>.tar.zst` (one per machine) and `below-controls-<vm>.tar.zst`, each with a `.sha256` file of per-file checksums; unpack with `zstd -d --long=27 -c FILE \| tar -xf -`. Trace folders use the same `<order>_<pr id>` names as `data/p7_paper/fetched/`, then `<variant>/<run>/` |
 | Answer key of the human-labelling sheets | the human check is not done yet; labellers must not see the model labels | released after the check |
 | PDFs of related papers | copyright | see the paper's references |
 
